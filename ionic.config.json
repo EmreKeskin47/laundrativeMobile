@@ -1,0 +1,7 @@
+{
+  "name": "laundrativeMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
