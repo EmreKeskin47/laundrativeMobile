@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ComponentsModule } from './../components/components.module';
 import { IonicModule } from '@ionic/angular';
 
 import { CreateOrderPageRoutingModule } from './create-order-routing.module';
@@ -15,6 +15,7 @@ import { DiscountComponent } from '../components/discount/discount.component';
     FormsModule,
     IonicModule,
     CreateOrderPageRoutingModule,
+    ComponentsModule,
   ],
   declarations: [CreateOrderPage, DiscountComponent],
 })

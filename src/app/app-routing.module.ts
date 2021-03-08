@@ -36,6 +36,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
+];
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+
+/*
   {
     path: 'homepage',
     loadChildren: () =>
@@ -48,11 +58,4 @@ const routes: Routes = [
         (m) => m.AvailableStoresListPageModule
       ),
   },
-];
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-  ],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+  */

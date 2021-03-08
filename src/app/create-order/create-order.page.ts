@@ -10,6 +10,7 @@ interface Address {
   styleUrls: ['./create-order.page.scss'],
 })
 export class CreateOrderPage {
+  title = 'mağaza arayın';
   image =
     'https://media.istockphoto.com/photos/colorful-clothes-in-laundry-basket-blue-indigo-purple-picture-id119623848?k=6&m=119623848&s=612x612&w=0&h=g8_MG32-0cSlkH4RjBHzMiyH_gGPPg9rObdK-i-FUNk=';
   addressList: Address[] = [

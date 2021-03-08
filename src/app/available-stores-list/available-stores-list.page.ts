@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./available-stores-list.page.scss'],
 })
 export class AvailableStoresListPage implements OnInit {
+  title = 'mağazalar';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

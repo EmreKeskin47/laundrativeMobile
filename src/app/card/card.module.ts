@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ComponentsModule } from './../components/components.module';
 
 import { IonicModule } from '@ionic/angular';
-
 import { CardPageRoutingModule } from './card-routing.module';
-
 import { CardPage } from './card.page';
 
 @NgModule({
@@ -13,8 +12,9 @@ import { CardPage } from './card.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CardPageRoutingModule
+    CardPageRoutingModule,
+    ComponentsModule,
   ],
-  declarations: [CardPage]
+  declarations: [CardPage],
 })
 export class CardPageModule {}
