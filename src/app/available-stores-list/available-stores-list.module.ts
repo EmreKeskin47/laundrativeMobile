@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { AvailableStoresListPageRoutingModule } from './available-stores-list-routing.module';
 
 import { AvailableStoresListPage } from './available-stores-list.page';
-import { StoreCardComponent } from './../components/store-card/store-card.component';
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import { StoreCardComponent } from './../components/store-card/store-card.compon
     AvailableStoresListPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [AvailableStoresListPage, StoreCardComponent],
+  declarations: [AvailableStoresListPage],
 })
 export class AvailableStoresListPageModule {}

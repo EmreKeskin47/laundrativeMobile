@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardPage implements OnInit {
   title = 'sepet';
+  storeName = 'Bil wash laundry ';
+  location = 'ümitköy mah. çankaya';
+  timeInterval = '09:30-17:00';
+  day = 'Hemen teslim alabilir';
+  minFee = '40,00tl';
+
+  discountFee = '50,00tl ';
+  discountText = 'üzeri siparişlerde ücretsiz servis';
 
   constructor() {}
 

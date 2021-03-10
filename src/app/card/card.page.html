@@ -1,3 +1,225 @@
 <app-header headerTitle="{{title}}"></app-header>
 
-<ion-content> </ion-content>
+<ion-content color="medium">
+  <!-- Store Info -->
+  <div class="container-padding card-border-radius">
+    <div class="relative container card-border-radius">
+      <div class="content">
+        <ion-icon name="card-sharp" class="icon black-text"></ion-icon>
+        <div style="padding-top: 20px">
+          <ion-card-subtitle class="card-title black-text"
+            >{{ storeName }}</ion-card-subtitle
+          >
+          <ion-card-title class="card-subtitle black-text">
+            {{ location }}
+          </ion-card-title>
+        </div>
+      </div>
+
+      <div class="min-fee black-text">
+        min sipariş tutarı {{ minFee }}
+        <br />
+        {{discountFee + discountText}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Contents -->
+  <div class="card-padding">
+    <div class="card-container container">
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        deliveryDate="express teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr />
+
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        deliveryDate="express teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr />
+
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        deliveryDate="express teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+
+      <hr class="rounded" />
+
+      <!--Cost labels and fees-->
+      <ion-grid>
+        <ion-row>
+          <ion-col> </ion-col>
+          <ion-col class="cost-labels black-text">
+            <div>hizmet toplamı</div>
+            <div>servis ücreti</div>
+            <div>cyberpark indirimi (%5)</div>
+            <div>kdv (%8)</div>
+          </ion-col>
+          <ion-col class="label-fee black-text">
+            <div>36,11 tl</div>
+            <div>10,00 tl</div>
+            <div>4,00 tl</div>
+            <div>2,89 tl</div>
+          </ion-col>
+        </ion-row>
+        <hr class="half-width-seperator" />
+      </ion-grid>
+      <ion-grid style="padding-top: 30px; display: block">
+        <!--Total Cost -->
+        <ion-row>
+          <ion-col> </ion-col>
+          <ion-col class="cost-labels black-text">
+            <div>toplam ödeme</div>
+          </ion-col>
+          <ion-col class="total-cost">
+            <div>35,00 tl</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <!-- Footnote for order-->
+  <div style="text-align: end; font-size: 10px; padding-right: 20px">
+    sepetinize 15,00 tl’lik ürün daha ekleyerek ücretsiz servis
+    <br />
+    hizmetinden faydalanabilirsiniz
+  </div>
+
+  <!--Sign up / add address container-->
+  <div style="padding-top: 30px; text-align: center; font-size: 13px">
+    teslimat adresi ekleyebilmek ve ödeme
+    <br />
+    yapabilmek için lütfen kullanıcı girişi yapın
+  </div>
+  <div style="padding: 10px; border-radius: 50px">
+    <ion-button shape="round" expand="block">giriş yap</ion-button>
+  </div>
+  <div style="padding: 10px; color: primary; background-color: primary">
+    <ion-button shape="round" fill="outline" expand="block" color="primary">
+      yeni hesap oluştur</ion-button
+    >
+  </div>
+</ion-content>
+
+<style>
+  .container-padding {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+  }
+  .container {
+    height: 8vh;
+    background-color: whitesmoke;
+    padding: 5;
+  }
+  .card-border-radius {
+    border-radius: 20px;
+  }
+  .content {
+    display: flex;
+  }
+  .icon {
+    font-size: 30px;
+    padding-top: 25px;
+    padding-right: 10px;
+  }
+  .card-title {
+    font-size: 12px;
+  }
+  .card-subtitle {
+    font-size: 11px;
+  }
+  .relative {
+    position: relative;
+  }
+  .min-fee {
+    text-align: end;
+    font-size: 9px;
+    position: absolute;
+    right: 1vh;
+    bottom: 0vh;
+  }
+
+  .card-content-container {
+    height: 50vh;
+    background-color: whitesmoke;
+  }
+
+  .cost-labels {
+    text-align: right;
+    font-size: 10px;
+    vertical-align: middle;
+  }
+
+  .label-fee {
+    text-align: right;
+    font-size: 10px;
+  }
+
+  .black-text {
+    color: black;
+  }
+  .half-width-seperator {
+    width: 50vw;
+    border-top: 2px solid rgb(36, 35, 35);
+    border-radius: 1px;
+    opacity: 0.7;
+    float: right;
+  }
+
+  .total-cost {
+    text-align: right;
+    font-size: 20px;
+    color: #eb4691;
+    font-weight: bold;
+  }
+
+  .card-container {
+    border-radius: 20px;
+    height: 43vh;
+    background-color: whitesmoke;
+  }
+  .card-padding {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+  }
+  .card-text {
+    text-align: start;
+    font-size: 10px;
+    color: black;
+  }
+  .card-icon {
+    font-size: 30px;
+    padding-top: 15px;
+    padding-right: 10px;
+  }
+  .card-container-border-radius {
+    border-radius: 20px;
+  }
+  .card-items-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  .flex {
+    display: flex;
+  }
+  .cost {
+    padding-top: 20px;
+    font-size: 20px;
+    color: #eb4691;
+    font-weight: bold;
+  }
+  .rounded {
+    border-top: 2px solid rgb(116, 114, 114);
+    border-radius: 1px;
+    opacity: 0.5;
+  }
+</style>
