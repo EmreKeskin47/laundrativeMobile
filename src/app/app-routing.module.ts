@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
+  {
+    path: 'store-menu',
+    loadChildren: () => import('./store-menu/store-menu.module').then( m => m.StoreMenuPageModule)
+  },
 ];
 @NgModule({
   imports: [
