@@ -1,0 +1,120 @@
+<app-header headerTitle="{{pageTitle}}"></app-header>
+
+<ion-content color="medium">
+  <ion-text>
+    <h1 class="title">hoş geldiniz</h1>
+  </ion-text>
+
+  <div class="input-container" style="display: block">
+    <ion-item class="text-color">
+      <ion-icon name="mail-sharp" class="card-icon text-color"></ion-icon>
+      <ion-label class="label" position="floating">e-mail</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="input-container" style="display: block">
+    <ion-item class="text-color">
+      <ion-icon name="lock-closed" class="card-icon text-color"></ion-icon>
+      <ion-label class="label" position="floating">parola</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </div>
+
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      color: black;
+    "
+  >
+    <div>
+      <ion-button fill="clear" shape="round">
+        <ion-icon
+          name="checkmark-circle-outline"
+          class="text-color amount-icons"
+        >
+        </ion-icon>
+        <p style="text-align: center; padding-left: 20px; padding-top: 10px">
+          beni hatırla
+        </p>
+      </ion-button>
+    </div>
+    <ion-button fill="clear" shape="round">parolamı hatırlamıyorum</ion-button>
+  </div>
+
+  <div class="button-padding">
+    <ion-button shape="round" expand="block">giriş yap</ion-button>
+  </div>
+  <div style="display: flex; justify-content: space-between; padding: 10px">
+    <ion-button size="medium" color="light"
+      ><ion-icon name="logo-google" class="text-color amount-icons"> </ion-icon>
+      <p
+        style="
+          text-align: center;
+          padding-left: 20px;
+          padding-top: 10px;
+          font-size: 10px;
+        "
+      >
+        sign in with google
+      </p>
+    </ion-button>
+    <ion-button size="medium" color="light"
+      ><ion-icon name="logo-facebook" class="text-color amount-icons">
+      </ion-icon>
+      <p
+        style="
+          text-align: center;
+          padding-left: 20px;
+          padding-top: 10px;
+          font-size: 10px;
+        "
+      >
+        sign in with google
+      </p>
+    </ion-button>
+  </div>
+  <div class="button-padding btn-color">
+    <ion-button shape="round" fill="outline" expand="block" color="primary">
+      yeni hesap oluştur</ion-button
+    >
+  </div>
+</ion-content>
+
+<style>
+  .title {
+    text-align: center;
+    font-size: 37px;
+    padding-top: 10vh;
+    color: #5e5e5e;
+  }
+  .input-container {
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .label {
+    padding-left: 12vw;
+  }
+
+  .card-icon {
+    position: absolute;
+    top: 3vh;
+    font-size: 30px;
+  }
+
+  .amount-icons {
+    font-size: 20px;
+    color: #e75761;
+  }
+
+  .button-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 45px;
+  }
+  .btn-color {
+    color: #e75761;
+  }
+</style>
