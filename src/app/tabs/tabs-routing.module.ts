@@ -32,10 +32,7 @@ const routes: Routes = [
       {
         path: 'tab5',
         loadChildren: () =>
-          //import('../profile/profile.module').then((m) => m.ProfilePageModule),
-          import('../store-menu/store-menu.module').then(
-            (m) => m.StoreMenuPageModule
-          ),
+          import('../profile/profile.module').then((m) => m.ProfilePageModule),
       },
       {
         path: '',

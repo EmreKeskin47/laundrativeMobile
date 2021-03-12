@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -16,7 +17,11 @@ export class CardPage implements OnInit {
   discountFee = '50,00tl ';
   discountText = 'üzeri siparişlerde ücretsiz servis';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
 }

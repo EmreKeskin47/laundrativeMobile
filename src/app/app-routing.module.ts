@@ -5,10 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      //import('./tabs/tabs.module').then((m) => m.TabsPageModule),
-      //import('./homepage/homepage.module').then((m) => m.HomepagePageModule),
-      //import('./login/login.module').then((m) => m.LoginPageModule),
-      import('./signin/signin.module').then((m) => m.SigninPageModule),
+      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
 
   {
@@ -39,6 +36,18 @@ const routes: Routes = [
       import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
   {
+    path: 'homepage',
+    loadChildren: () =>
+      import('./homepage/homepage.module').then((m) => m.HomepagePageModule),
+  },
+  {
+    path: 'available-stores-list',
+    loadChildren: () =>
+      import('./available-stores-list/available-stores-list.module').then(
+        (m) => m.AvailableStoresListPageModule
+      ),
+  },
+  {
     path: 'store-menu',
     loadChildren: () =>
       import('./store-menu/store-menu.module').then(
@@ -65,16 +74,5 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 /*
-  {
-    path: 'homepage',
-    loadChildren: () =>
-      import('./homepage/homepage.module').then((m) => m.HomepagePageModule),
-  },
-  {
-    path: 'available-stores-list',
-    loadChildren: () =>
-      import('./available-stores-list/available-stores-list.module').then(
-        (m) => m.AvailableStoresListPageModule
-      ),
-  },
+  
   */

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 interface Address {
   id: number;
@@ -27,4 +28,9 @@ export class CreateOrderPage {
       first: 'Address3',
     },
   ];
+  constructor(private router: Router) {}
+
+  navigateToStoreList() {
+    this.router.navigate(['/available-stores-list']);
+  }
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvailableStoresListPage implements OnInit {
   title = 'mağazalar';
+  numbers = Array(12)
+    .fill(0)
+    .map((x, i) => i);
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigateToStore() {
+    this.router.navigate(['/store-menu']);
+  }
 }
