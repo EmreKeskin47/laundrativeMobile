@@ -77,6 +77,10 @@ const routes: Routes = [
     path: 'add-address',
     loadChildren: () => import('./pages/add-address/add-address.module').then( m => m.AddAddressPageModule)
   },
+  {
+    path: 'add-address-result',
+    loadChildren: () => import('./pages/add-address-result/add-address-result.module').then( m => m.AddAddressResultPageModule)
+  },
 ];
 @NgModule({
   imports: [

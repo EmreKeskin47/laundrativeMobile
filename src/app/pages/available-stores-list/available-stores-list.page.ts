@@ -8,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvailableStoresListPage implements OnInit {
   title = 'mağazalar';
-  numbers = Array(12)
-    .fill(0)
-    .map((x, i) => i);
 
   constructor(private router: Router) {}
 

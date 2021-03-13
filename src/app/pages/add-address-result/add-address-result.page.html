@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--Icon and message -->
+  <div class="message-container">
+    <ion-icon name="checkmark-circle" class="icon"> </ion-icon>
+    <div>
+      <div class="black-color title">adresiniz eklenmiştir<br /></div>
+      <div class="text-color message">
+        sepetine geri dönebilir, ya da kredi kartı bilginizi
+        <br />ekleyebilirsiniz.
+      </div>
+    </div>
+  </div>
+
+  <div class="button-padding">
+    <ion-button
+      shape="round"
+      expand="block"
+      color="primary"
+      class="toLowerCase"
+      (click)="navigateToCard()"
+    >
+      sepete dön</ion-button
+    >
+  </div>
+</ion-content>
