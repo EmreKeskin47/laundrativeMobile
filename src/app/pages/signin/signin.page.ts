@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class SigninPage implements OnInit {
   pageTitle = 'hesap oluştur';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigateToAccount() {
+    this.router.navigate(['/account-create-result']);
+  }
 }

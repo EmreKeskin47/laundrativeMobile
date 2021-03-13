@@ -66,6 +66,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/signin/signin.module').then((m) => m.SigninPageModule),
   },
+  {
+    path: 'account-create-result',
+    loadChildren: () =>
+      import('./pages/account-create-result/account-create-result.module').then(
+        (m) => m.AccountCreateResultPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [
@@ -74,7 +81,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
-/*
-  
-  */

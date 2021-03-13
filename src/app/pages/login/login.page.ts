@@ -16,4 +16,8 @@ export class LoginPage implements OnInit {
   navigateToSignup() {
     this.router.navigate(['/signin']);
   }
+
+  navigateToAccount() {
+    this.router.navigate(['/account-create-result']);
+  }
 }
