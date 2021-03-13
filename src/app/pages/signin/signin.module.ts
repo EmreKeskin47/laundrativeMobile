@@ -1,21 +1,22 @@
+import { ComponentsModule } from '../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ComponentsModule } from './../components/components.module';
+
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { SigninPageRoutingModule } from './signin-routing.module';
 
-import { ProfilePage } from './profile.page';
+import { SigninPage } from './signin.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule,
+    SigninPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [ProfilePage],
+  declarations: [SigninPage],
 })
-export class ProfilePageModule {}
+export class SigninPageModule {}

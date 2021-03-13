@@ -1,4 +1,4 @@
-import { CreateOrderPage } from './../create-order/create-order.page';
+import { CreateOrderPage } from '../pages/create-order/create-order.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -11,43 +11,47 @@ const routes: Routes = [
       {
         path: 'card',
         loadChildren: () =>
-          import('../card/card.module').then((m) => m.CardPageModule),
+          import('../pages/card/card.module').then((m) => m.CardPageModule),
       },
       {
         path: 'orders',
         loadChildren: () =>
-          import('../orders/orders.module').then((m) => m.OrdersPageModule),
+          import('../pages/orders/orders.module').then(
+            (m) => m.OrdersPageModule
+          ),
       },
       {
         path: 'create-order',
         loadChildren: () =>
-          import('../create-order/create-order.module').then(
+          import('../pages/create-order/create-order.module').then(
             (m) => m.CreateOrderPageModule
           ),
       },
       {
         path: 'create-order/available-stores-list',
         loadChildren: () =>
-          import('../available-stores-list/available-stores-list.module').then(
-            (m) => m.AvailableStoresListPageModule
-          ),
+          import(
+            '../pages/available-stores-list/available-stores-list.module'
+          ).then((m) => m.AvailableStoresListPageModule),
       },
       {
         path: 'create-order/store-menu',
         loadChildren: () =>
-          import('../store-menu/store-menu.module').then(
+          import('../pages/store-menu/store-menu.module').then(
             (m) => m.StoreMenuPageModule
           ),
       },
       {
         path: 'help',
         loadChildren: () =>
-          import('../help/help.module').then((m) => m.HelpPageModule),
+          import('../pages/help/help.module').then((m) => m.HelpPageModule),
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('../profile/profile.module').then((m) => m.ProfilePageModule),
+          import('../pages/profile/profile.module').then(
+            (m) => m.ProfilePageModule
+          ),
       },
       {
         path: '',

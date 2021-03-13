@@ -1,22 +1,21 @@
-import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ComponentsModule } from '../../components/components.module';
 import { IonicModule } from '@ionic/angular';
 
-import { HelpPageRoutingModule } from './help-routing.module';
+import { ProfilePageRoutingModule } from './profile-routing.module';
 
-import { HelpPage } from './help.page';
+import { ProfilePage } from './profile.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HelpPageRoutingModule,
+    ProfilePageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [HelpPage],
+  declarations: [ProfilePage],
 })
-export class HelpPageModule {}
+export class ProfilePageModule {}

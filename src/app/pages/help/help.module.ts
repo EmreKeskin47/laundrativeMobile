@@ -1,20 +1,22 @@
+import { ComponentsModule } from '../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ComponentsModule } from './../components/components.module';
 
 import { IonicModule } from '@ionic/angular';
-import { CardPageRoutingModule } from './card-routing.module';
-import { CardPage } from './card.page';
+
+import { HelpPageRoutingModule } from './help-routing.module';
+
+import { HelpPage } from './help.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CardPageRoutingModule,
+    HelpPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [CardPage],
+  declarations: [HelpPage],
 })
-export class CardPageModule {}
+export class HelpPageModule {}
