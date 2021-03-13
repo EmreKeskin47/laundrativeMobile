@@ -31,6 +31,6 @@ export class CreateOrderPage {
   constructor(private router: Router) {}
 
   navigateToStoreList() {
-    this.router.navigate(['/available-stores-list']);
+    this.router.navigate(['/create-order/available-stores-list']);
   }
 }

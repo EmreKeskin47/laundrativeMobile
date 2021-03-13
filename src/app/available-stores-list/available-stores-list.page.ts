@@ -17,6 +17,6 @@ export class AvailableStoresListPage implements OnInit {
   ngOnInit() {}
 
   navigateToStore() {
-    this.router.navigate(['/store-menu']);
+    this.router.navigate(['create-order/store-menu']);
   }
 }
