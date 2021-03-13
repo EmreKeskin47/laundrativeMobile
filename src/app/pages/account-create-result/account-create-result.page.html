@@ -29,6 +29,7 @@
       expand="block"
       color="primary"
       class="toLowerCase"
+      (click)="navigateToCard()"
     >
       sepete dön</ion-button
     >
@@ -36,7 +37,11 @@
 
   <!--add address button-->
   <div class="btn-container">
-    <ion-button size="medium" color="secondary">
+    <ion-button
+      (click)="navigateToAddAddress()"
+      size="medium"
+      color="secondary"
+    >
       <ion-icon class="btn-icon" name="home"></ion-icon>
       <p class="btn-label toLowerCase">adres ekle</p>
     </ion-button>

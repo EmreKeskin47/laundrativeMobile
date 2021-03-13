@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <div class="input-container">
+    <ion-item class="address-input">
+      <ion-label class="gray-text" position="floating">şehir</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item class="address-input">
+      <ion-label class="gray-text" position="floating">mahalle</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item class="address-input">
+      <ion-label class="gray-text" position="floating">adres</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </div>
+
+  <!--address edit buttons-->
+  <div class="btn-container">
+    <ion-button size="medium" color="tertiary">
+      <ion-icon name="calendar"></ion-icon>
+      <p class="btn-label toLowerCase">teslim alma adresi yap</p>
+    </ion-button>
+
+    <ion-button size="medium" color="tertiary">
+      <ion-icon name="location"></ion-icon>
+      <p class="btn-label toLowerCase">teslim etme adresi yap</p>
+    </ion-button>
+  </div>
+
+  <!--Add address button-->
+  <div class="button-padding">
+    <ion-button
+      shape="round"
+      expand="block"
+      color="primary"
+      size="large"
+      class="toLowerCase"
+    >
+      adresi kaydet</ion-button
+    >
+  </div>
+
+  <!--Saved addresses label-->
+  <ion-item class="address-input input-container">
+    <ion-icon name="location" class="btn-icon"></ion-icon>
+    <ion-label> kayıtlı adreslerim </ion-label>
+    <ion-button size="medium" color="light" class="toLowerCase">
+      <ion-icon name="add"></ion-icon>
+      yeni ekle
+    </ion-button>
+  </ion-item>
+
+  <!--List of addresses-->
+
+  <div style="display: flex" *ngFor="let number of [0,1]">
+    <ion-item class="address-component">
+      <ion-label position="stacked"></ion-label>
+      <ion-input placeholder="Address Line 1"></ion-input>
+      <ion-input placeholder="Address Line 2"></ion-input>
+      <ion-input placeholder="City"></ion-input>
+
+      <div class="address-component-bottom gray-text">
+        <div style="display: flex">
+          <ion-icon name="calendar" class="address-icon"></ion-icon>
+          <p class="toLowerCase address-label">teslim alma adresi</p>
+        </div>
+        <div style="display: flex">
+          <ion-icon name="location" class="address-icon"></ion-icon>
+          <p class="toLowerCase address-label">teslim etme adresi</p>
+        </div>
+      </div>
+    </ion-item>
+
+    <!--buttons for edit and delete-->
+    <div class="edit-delete-btn-container">
+      <div>
+        <ion-button color="secondary" class="toLowerCase">
+          <ion-icon name="pencil-outline"></ion-icon>
+          düzenle
+        </ion-button>
+      </div>
+      <div>
+        <ion-button color="primary" class="toLowerCase delete-btn">
+          <ion-icon name="close-outline"></ion-icon>
+          sil
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
