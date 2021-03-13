@@ -1,0 +1,98 @@
+.container-padding {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+.card-border-radius {
+  border-radius: 20px;
+}
+.relative {
+  position: relative;
+}
+.container {
+  height: 8vh;
+  background-color: whitesmoke;
+  padding: 5;
+}
+.content {
+  display: flex;
+}
+.icon {
+  font-size: 30px;
+  padding-top: 25px;
+  padding-right: 10px;
+}
+.card-title {
+  font-size: 12px;
+}
+.card-subtitle {
+  font-size: 11px;
+}
+.min-fee {
+  text-align: end;
+  font-size: 9px;
+  position: absolute;
+  right: 1vh;
+  bottom: 0vh;
+}
+.cost-labels {
+  text-align: right;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.label-fee {
+  text-align: right;
+  font-size: 10px;
+}
+
+.black-text {
+  color: black;
+}
+.half-width-seperator {
+  width: 50vw;
+  border-top: 2px solid rgb(36, 35, 35);
+  border-radius: 1px;
+  opacity: 0.7;
+  float: right;
+}
+.total-cost {
+  text-align: right;
+  font-size: 20px;
+  color: #eb4691;
+  font-weight: bold;
+}
+.card-container {
+  border-radius: 20px;
+  height: 45vh;
+  background-color: whitesmoke;
+}
+.card-padding {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+.rounded {
+  border-top: 2px solid rgb(116, 114, 114);
+  border-radius: 1px;
+  opacity: 0.5;
+}
+.total-cost-grid {
+  padding-top: 30px;
+  display: block;
+}
+.footnote-order {
+  text-align: end;
+  font-size: 10px;
+  padding-right: 20px;
+}
+.signup-buttons-container {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+}
+.button-padding {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+}

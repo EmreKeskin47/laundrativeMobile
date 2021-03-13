@@ -1,0 +1,118 @@
+<app-header headerTitle="{{title}}"></app-header>
+
+<ion-content color="medium">
+  <!-- Store Info -->
+  <div class="container-padding card-border-radius">
+    <div class="relative container card-border-radius">
+      <div class="content">
+        <ion-icon name="card-sharp" class="icon black-text"></ion-icon>
+        <div style="padding-top: 20px">
+          <ion-card-subtitle class="card-title black-text"
+            >{{ storeName }}</ion-card-subtitle
+          >
+          <ion-card-title class="card-subtitle black-text">
+            {{ location }}
+          </ion-card-title>
+        </div>
+      </div>
+
+      <div class="min-fee black-text">
+        min sipariş tutarı {{ minFee }}
+        <br />
+        {{discountFee + discountText}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Contents -->
+  <div class="card-padding">
+    <div class="card-container container">
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        deliveryDate="express teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr class="rounded" />
+
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        deliveryDate="express teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr class="rounded" />
+
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        deliveryDate="express teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr class="rounded" />
+
+      <!--Cost labels and fees-->
+      <ion-grid>
+        <ion-row>
+          <ion-col> </ion-col>
+          <ion-col class="cost-labels black-text">
+            <div>hizmet toplamı</div>
+            <div>servis ücreti</div>
+            <div>cyberpark indirimi (%5)</div>
+            <div>kdv (%8)</div>
+          </ion-col>
+          <ion-col class="label-fee black-text">
+            <div>36,11 tl</div>
+            <div>10,00 tl</div>
+            <div>4,00 tl</div>
+            <div>2,89 tl</div>
+          </ion-col>
+        </ion-row>
+        <hr class="half-width-seperator" />
+      </ion-grid>
+
+      <!--Total Cost -->
+      <ion-grid class="total-cost-grid">
+        <ion-row>
+          <ion-col> </ion-col>
+          <ion-col class="cost-labels black-text">
+            <div>toplam ödeme</div>
+          </ion-col>
+          <ion-col class="total-cost">
+            <div>35,00 tl</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <!-- Footnote for order-->
+  <div class="footnote-order black-text">
+    sepetinize 15,00 tl’lik ürün daha ekleyerek ücretsiz servis
+    <br />
+    hizmetinden faydalanabilirsiniz
+  </div>
+
+  <!--Sign up / add address container-->
+  <div class="signup-buttons-container black-text">
+    teslimat adresi ekleyebilmek ve ödeme
+    <br />
+    yapabilmek için lütfen kullanıcı girişi yapın
+  </div>
+  <div class="button-padding">
+    <ion-button (click)="navigateToLogin()" shape="round" expand="block"
+      >giriş yap</ion-button
+    >
+  </div>
+  <div class="button-padding black-text">
+    <ion-button
+      (click)="navigateToSignup()"
+      shape="round"
+      fill="outline"
+      expand="block"
+      color="primary"
+    >
+      yeni hesap oluştur</ion-button
+    >
+  </div>
+</ion-content>

@@ -1,49 +1,68 @@
+import { CreateOrderPage } from '../pages/create-order/create-order.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'card',
         loadChildren: () =>
-          import('../card/card.module').then((m) => m.CardPageModule),
+          import('../pages/card/card.module').then((m) => m.CardPageModule),
       },
       {
-        path: 'tab2',
+        path: 'orders',
         loadChildren: () =>
-          import('../orders/orders.module').then((m) => m.OrdersPageModule),
+          import('../pages/orders/orders.module').then(
+            (m) => m.OrdersPageModule
+          ),
       },
       {
-        path: 'tab3',
+        path: 'create-order',
         loadChildren: () =>
-          import('../create-order/create-order.module').then(
+          import('../pages/create-order/create-order.module').then(
             (m) => m.CreateOrderPageModule
           ),
       },
       {
-        path: 'tab4',
+        path: 'create-order/available-stores-list',
         loadChildren: () =>
-          import('../help/help.module').then((m) => m.HelpPageModule),
+          import(
+            '../pages/available-stores-list/available-stores-list.module'
+          ).then((m) => m.AvailableStoresListPageModule),
       },
       {
-        path: 'tab5',
+        path: 'create-order/store-menu',
         loadChildren: () =>
-          import('../profile/profile.module').then((m) => m.ProfilePageModule),
+          import('../pages/store-menu/store-menu.module').then(
+            (m) => m.StoreMenuPageModule
+          ),
+      },
+      {
+        path: 'help',
+        loadChildren: () =>
+          import('../pages/help/help.module').then((m) => m.HelpPageModule),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('../pages/profile/profile.module').then(
+            (m) => m.ProfilePageModule
+          ),
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/create-order',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/create-order',
     pathMatch: 'full',
   },
 ];

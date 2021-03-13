@@ -1,0 +1,23 @@
+<div class="container-padding card-border-radius">
+  <div class="relative container card-border-radius">
+    <div class="content">
+      <ion-icon name="card-sharp" class="icon"></ion-icon>
+      <div style="padding-top: 25px">
+        <ion-card-subtitle class="card-title">{{
+          storeName
+        }}</ion-card-subtitle>
+        <ion-card-title class="card-subtitle">{{ location }}</ion-card-title>
+      </div>
+    </div>
+
+    <div class="absolute child">
+      <ion-card color="tertiary" class="card-border-radius">
+        <div style="padding: 10px">
+          <ion-card-title class="card-title">{{ timeInterval }}</ion-card-title>
+          <ion-card-subtitle class="card-subtitle">{{ day }}</ion-card-subtitle>
+        </div>
+      </ion-card>
+      <div class="min-fee">min sipariş tutarı {{ minFee }}</div>
+    </div>
+  </div>
+</div>

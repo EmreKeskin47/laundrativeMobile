@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
+<app-header headerTitle="{{pageTitle}}"></app-header>
+-->
+
+<ion-content color="medium">
+  <ion-text>
+    <h1 class="title">hoş geldiniz</h1>
+  </ion-text>
+
+  <div class="input-container" style="display: block">
+    <ion-item class="text-color">
+      <ion-icon name="mail-sharp" class="card-icon text-color"></ion-icon>
+      <ion-label class="label" position="floating">e-mail</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="input-container" style="display: block">
+    <ion-item class="text-color">
+      <ion-icon name="lock-closed" class="card-icon text-color"></ion-icon>
+      <ion-label class="label" position="floating">parola</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="first-button-container">
+    <div>
+      <ion-button fill="clear" shape="round">
+        <ion-icon
+          name="checkmark-circle-outline"
+          class="text-color amount-icons"
+        >
+        </ion-icon>
+        <p class="remember-me toLowerCase">beni hatırla</p>
+      </ion-button>
+    </div>
+    <ion-button
+      fill="clear"
+      shape="round"
+      style="font-size: 11px"
+      class="toLowerCase"
+      >parolamı hatırlamıyorum</ion-button
+    >
+  </div>
+
+  <div class="button-padding">
+    <ion-button
+      (click)="navigateToAccount()"
+      shape="round"
+      expand="block"
+      class="toLowerCase"
+      >giriş yap</ion-button
+    >
+  </div>
+  <div class="sign-in-buttons-container">
+    <ion-button size="medium" color="light" shape="round"
+      ><ion-icon name="logo-google" class="text-color amount-icons"> </ion-icon>
+      <p class="sign-options toLowerCase">sign in with google</p>
+    </ion-button>
+    <ion-button size="medium" color="light" shape="round"
+      ><ion-icon name="logo-facebook" class="text-color amount-icons">
+      </ion-icon>
+      <p class="sign-options toLowerCase">sign in with google</p>
+    </ion-button>
+  </div>
+  <div class="button-padding btn-color">
+    <ion-button
+      (click)="navigateToSignup()"
+      shape="round"
+      fill="outline"
+      expand="block"
+      color="primary"
+      class="toLowerCase"
+    >
+      yeni hesap oluştur</ion-button
+    >
+  </div>
+</ion-content>

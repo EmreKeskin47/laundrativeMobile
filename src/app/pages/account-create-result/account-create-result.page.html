@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--Icon and message -->
+  <div class="message-container">
+    <ion-icon name="checkmark-circle" class="icon"> </ion-icon>
+    <div>
+      <div class="black-color title">
+        hesabınız başarıyla oluşturulmuştur<br />
+      </div>
+      <div class="text-color message">
+        sepetine geri dönebilir, ya da adres bilginizi ve <br />
+        kredi kartı bilginizi girebilirsiniz.<br />
+        Bu işlemleri daha sonra da yapabilirsiniz
+      </div>
+    </div>
+  </div>
+
+  <div class="button-padding">
+    <ion-button
+      shape="round"
+      expand="block"
+      color="primary"
+      class="toLowerCase"
+      (click)="navigateToCard()"
+    >
+      sepete dön</ion-button
+    >
+  </div>
+
+  <!--add address button-->
+  <div class="btn-container">
+    <ion-button
+      (click)="navigateToAddAddress()"
+      size="medium"
+      color="secondary"
+    >
+      <ion-icon class="btn-icon" name="home"></ion-icon>
+      <p class="btn-label toLowerCase">adres ekle</p>
+    </ion-button>
+
+    <ion-button size="medium" color="tertiary">
+      <ion-icon class="btn-icon" name="card"></ion-icon>
+      <p class="btn-label toLowerCase">kredi kartı ekle</p>
+    </ion-button>
+  </div>
+
+  <!--Bottom text-->
+  <div class="bottom-text-container">
+    <div class="text-color message">
+      teslim alma ve teslim etme adreslerinizi ekleyebilirsiniz
+    </div>
+
+    <div class="text-color message">
+      <br />kredi kartı bilgileriniz Bankacılık Düzenleme ve <br />denetleme
+      kurulu onaylı Iyzico Ödeme Hizmetleri A.Ş. <br />tarafından
+      saklanmaktadır.
+    </div>
+  </div>
+</ion-content>

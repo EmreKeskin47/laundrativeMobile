@@ -1,0 +1,147 @@
+//store card
+.container-padding {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+.card-border-radius {
+  border-radius: 20px;
+}
+.relative {
+  position: relative;
+}
+.container {
+  height: 8vh;
+  background-color: whitesmoke;
+  padding: 5;
+}
+.content {
+  display: flex;
+}
+.icon {
+  font-size: 30px;
+  padding-top: 15px;
+  padding-right: 10px;
+}
+.card-title {
+  font-size: 12px;
+}
+.card-subtitle {
+  font-size: 11px;
+}
+.min-fee {
+  text-align: end;
+  font-size: 9px;
+  position: absolute;
+  right: 1vh;
+  bottom: 0vh;
+}
+
+//service and discount button
+.button-container {
+  padding-left: 10px;
+  padding: 5px;
+  justify-content: space-between;
+  display: flex;
+}
+
+//card item
+.card-container {
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+.card-padding {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.card-text {
+  text-align: start;
+  font-size: 10px;
+  padding-top: 5px;
+}
+.card-icon {
+  font-size: 30px;
+  padding-top: 15px;
+  padding-right: 10px;
+}
+
+.card-items-content {
+  display: flex;
+  justify-content: space-between;
+}
+.flex {
+  display: flex;
+}
+.card-item-date {
+  right: 0;
+  padding-top: 20px;
+  font-size: 9px;
+  text-align: right;
+  font-size: 10px;
+}
+.text-color {
+  color: #000;
+  font-family: "Avenir";
+}
+.container {
+  height: 6vh;
+  background-color: whitesmoke;
+  padding: 5;
+}
+
+//amount container
+.amount-container {
+  background-color: whitesmoke;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+.amount-icons {
+  font-size: 30px;
+  color: #e75761;
+}
+
+.cost {
+  padding-top: 10px;
+  font-size: 25px;
+  color: #eb4691;
+  font-weight: bold;
+}
+.amount-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 13px;
+  padding-top: 5px;
+}
+
+//Services card
+.service-card-container {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  max-width: 30vw;
+  height: 12vh;
+}
+.card-content {
+  display: flex;
+  justify-content: space-between;
+}
+.fee {
+  font-size: 11px;
+  padding-top: 20px;
+}
+.card-date {
+  font-size: 10px;
+  text-align: end;
+}
+
+.col-padding {
+  padding-left: 10px;
+}
+
+//add item button
+.btn-padding {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 30px;
+}

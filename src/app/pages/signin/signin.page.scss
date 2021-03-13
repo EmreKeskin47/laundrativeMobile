@@ -1,0 +1,39 @@
+.input-container {
+  padding: 10px;
+  border-radius: 20px;
+}
+.label {
+  padding-left: 12vw;
+}
+
+.card-icon {
+  position: absolute;
+  top: 1.5vh;
+  font-size: 30px;
+}
+
+.amount-icons {
+  font-size: 15px;
+  color: #e75761;
+}
+
+.sign-in-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+.sign-options {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 10px;
+}
+
+.button-padding {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 45px;
+}
+
+.toLowerCase {
+  text-transform: lowercase;
+}

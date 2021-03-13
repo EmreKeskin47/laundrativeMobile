@@ -1,0 +1,191 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!-- Store Info -->
+  <div class="container-padding card-border-radius">
+    <div class="relative container card-border-radius">
+      <div class="content">
+        <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
+        <div style="padding-top: 15px">
+          <ion-card-subtitle class="card-title text-color"
+            >{{ storeName }}</ion-card-subtitle
+          >
+          <ion-card-title class="card-subtitle text-color">
+            {{ location }}
+          </ion-card-title>
+        </div>
+      </div>
+
+      <div class="min-fee text-color">
+        min sipariş tutarı {{ minFee }}
+        <br />
+        {{discountFee + discountText}}
+      </div>
+    </div>
+  </div>
+
+  <!--service and discount button-->
+  <div class="button-container">
+    <ion-button color="secondary" shape="round">
+      <ion-icon slot="start" name="ellipse-outline"></ion-icon>
+      <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
+      çamaşır yıkama
+    </ion-button>
+
+    <ion-button class="text-color" color="medium" href="#">
+      <ion-icon
+        slot="start"
+        name="settings-sharp"
+        class="text-color"
+      ></ion-icon>
+      <div class="text-color">kampanyalar</div>
+    </ion-button>
+  </div>
+
+  <!-- Searchbar with cancel button never shown -->
+  <ion-searchbar showCancelButton="focus" class="text-color"></ion-searchbar>
+
+  <!-- card item -->
+  <div class="card-padding">
+    <div class="card-container container">
+      <div class="card-items-content">
+        <div class="flex">
+          <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
+          <div style="padding-top: 10px">
+            <ion-card-title class="card-text text-color"
+              >1 makina çamaşır yıkama
+            </ion-card-title>
+          </div>
+        </div>
+        <div class="card-item-date text-color">
+          express teslimat<br />
+          29.12.20 Pazartesi 16:30’a kadar teslim edilir
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- amount controller -->
+  <div style="padding: 10px">
+    <div class="amount-container">
+      <div style="display: flex; padding: 10px">
+        <ion-icon name="remove-sharp" class="amount-icons"></ion-icon>
+        <div class="amount-text text-color">1 Adet</div>
+        <ion-icon name="add-sharp" class="amount-icons"></ion-icon>
+      </div>
+      <div class="cost" style="padding-right: 15px">25,00 tl</div>
+    </div>
+  </div>
+
+  <!-- Grid of Services-->
+  <ion-row>
+    <ion-col class="col-padding">
+      <div class="service-card-container">
+        <div class="card-content">
+          <div>
+            <div class="text-color fee">
+              20,00 tl
+              <br /><b> standard </b>
+            </div>
+          </div>
+          <div style="padding-left: 25px">
+            <ion-button fill="clear" shape="round" slot="end">
+              <ion-icon
+                name="checkmark-circle-outline"
+                class="text-color"
+              ></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <ion-card-content class="card-date text-color">
+          29.12.20
+          <br />
+          Pazartesi 16:30
+        </ion-card-content>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div class="service-card-container">
+        <div class="card-content">
+          <div>
+            <div class="text-color fee">
+              25,00 tl
+              <br /><b> standard </b>
+            </div>
+          </div>
+          <div style="padding-left: 25px">
+            <ion-button fill="clear" shape="round" slot="end">
+              <ion-icon
+                name="checkmark-circle-outline"
+                class="text-color cost"
+              ></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <ion-card-content class="card-date text-color">
+          29.12.20
+          <br />
+          Pazartesi 16:30
+        </ion-card-content>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div class="service-card-container">
+        <div class="card-content">
+          <div>
+            <div class="text-color fee">
+              35,00 tl
+              <br /><b> premium </b>
+            </div>
+          </div>
+          <div style="padding-left: 25px">
+            <ion-button fill="clear" shape="round" slot="end">
+              <ion-icon
+                name="checkmark-circle-outline"
+                class="text-color"
+              ></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <ion-card-content class="card-date text-color">
+          29.12.20
+          <br />
+          Pazar 13:30
+        </ion-card-content>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <!--Button to add to card-->
+  <div class="btn-padding">
+    <ion-button shape="round" expand="block">sepete ekle</ion-button>
+  </div>
+
+  <!--Rest of store-->
+  <div>
+    <app-store-item
+      itemName="Nevresim Takımı Tek Kişilik "
+      itemCost="20,00tl"
+    ></app-store-item>
+    <app-store-item
+      itemName="Elyaf Yastık "
+      itemCost="15,00tl"
+    ></app-store-item>
+    <app-store-item
+      itemName="Battaniye Tek Kişilik "
+      itemCost="15,00tl"
+    ></app-store-item>
+  </div>
+</ion-content>
