@@ -12,15 +12,40 @@
   padding-left: 12vw;
 }
 
+.first-button-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: black;
+}
+
+.remember-me {
+  text-align: center;
+  padding-left: 20px;
+  padding-top: 15px;
+  font-size: 11px;
+}
+
 .card-icon {
   position: absolute;
-  top: 3vh;
+  top: 1.5vh;
   font-size: 30px;
 }
 
 .amount-icons {
   font-size: 20px;
   color: #e75761;
+}
+
+.sign-in-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+.sign-options {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 10px;
 }
 
 .button-padding {
@@ -30,4 +55,8 @@
 }
 .btn-color {
   color: #e75761;
+}
+
+.toLowerCase {
+  text-transform: lowercase;
 }

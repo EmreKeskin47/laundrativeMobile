@@ -6,9 +6,11 @@
     <ion-title>{{ pageTitle }}</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <!--
 <app-header headerTitle="{{pageTitle}}"></app-header>
 -->
+
 <ion-content color="medium">
   <ion-text>
     <h1 class="title">hoş geldiniz</h1>
@@ -30,14 +32,7 @@
     </ion-item>
   </div>
 
-  <div
-    style="
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      color: black;
-    "
-  >
+  <div class="first-button-container">
     <div>
       <ion-button fill="clear" shape="round">
         <ion-icon
@@ -45,44 +40,32 @@
           class="text-color amount-icons"
         >
         </ion-icon>
-        <p style="text-align: center; padding-left: 20px; padding-top: 10px">
-          beni hatırla
-        </p>
+        <p class="remember-me toLowerCase">beni hatırla</p>
       </ion-button>
     </div>
-    <ion-button fill="clear" shape="round">parolamı hatırlamıyorum</ion-button>
+    <ion-button
+      fill="clear"
+      shape="round"
+      style="font-size: 11px"
+      class="toLowerCase"
+      >parolamı hatırlamıyorum</ion-button
+    >
   </div>
 
   <div class="button-padding">
-    <ion-button shape="round" expand="block">giriş yap</ion-button>
+    <ion-button shape="round" expand="block" class="toLowerCase"
+      >giriş yap</ion-button
+    >
   </div>
-  <div style="display: flex; justify-content: space-between; padding: 10px">
-    <ion-button size="medium" color="light"
+  <div class="sign-in-buttons-container">
+    <ion-button size="medium" color="light" shape="round"
       ><ion-icon name="logo-google" class="text-color amount-icons"> </ion-icon>
-      <p
-        style="
-          text-align: center;
-          padding-left: 20px;
-          padding-top: 10px;
-          font-size: 10px;
-        "
-      >
-        sign in with google
-      </p>
+      <p class="sign-options toLowerCase">sign in with google</p>
     </ion-button>
-    <ion-button size="medium" color="light"
+    <ion-button size="medium" color="light" shape="round"
       ><ion-icon name="logo-facebook" class="text-color amount-icons">
       </ion-icon>
-      <p
-        style="
-          text-align: center;
-          padding-left: 20px;
-          padding-top: 10px;
-          font-size: 10px;
-        "
-      >
-        sign in with google
-      </p>
+      <p class="sign-options toLowerCase">sign in with google</p>
     </ion-button>
   </div>
   <div class="button-padding btn-color">
@@ -92,6 +75,7 @@
       fill="outline"
       expand="block"
       color="primary"
+      class="toLowerCase"
     >
       yeni hesap oluştur</ion-button
     >

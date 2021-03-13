@@ -1,4 +1,15 @@
-<app-header headerTitle="{{pageTitle}}"></app-header>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
+  <app-header headerTitle="{{pageTitle}}"></app-header>
+  -->
 
 <ion-content color="medium">
   <div class="input-container" style="display: block; padding-top: 10vh">
@@ -26,16 +37,19 @@
   </div>
 
   <div class="button-padding">
-    <ion-button shape="round" expand="block">yeni hesap oluştur</ion-button>
+    <ion-button shape="round" expand="block" class="toLowerCase"
+      >yeni hesap oluştur</ion-button
+    >
   </div>
-  <div style="display: flex; justify-content: space-between; padding: 10px">
-    <ion-button size="medium" color="light"
-      ><ion-icon name="logo-google" class="text-color btn-icons"> </ion-icon>
-      <p class="btn">sign up with google</p>
+  <div class="sign-in-buttons-container">
+    <ion-button size="medium" color="light" shape="round"
+      ><ion-icon name="logo-google" class="text-color amount-icons"> </ion-icon>
+      <p class="sign-options toLowerCase">sign in with google</p>
     </ion-button>
-    <ion-button size="medium" color="light"
-      ><ion-icon name="logo-facebook" class="text-color btn-icons"> </ion-icon>
-      <p class="btn">sign up with google</p>
+    <ion-button size="medium" color="light" shape="round"
+      ><ion-icon name="logo-facebook" class="text-color amount-icons">
+      </ion-icon>
+      <p class="sign-options toLowerCase">sign in with google</p>
     </ion-button>
   </div>
 </ion-content>

@@ -24,4 +24,8 @@ export class CardPage implements OnInit {
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
+
+  navigateToSignup() {
+    this.router.navigate(['/signin']);
+  }
 }
