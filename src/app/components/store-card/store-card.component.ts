@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-store-card',
@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./store-card.component.scss'],
 })
 export class StoreCardComponent implements OnInit {
-  storeName = 'Bil wash laundry ';
-  location = 'ümitköy mah. çankaya';
+  @Input() public storeName;
+  @Input() public location;
   timeInterval = '09:30-17:00';
   day = 'Hemen teslim alabilir';
   minFee = '40tl';

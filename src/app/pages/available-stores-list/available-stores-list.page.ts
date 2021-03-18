@@ -1,3 +1,5 @@
+import { Institution } from './../../../models/Institution';
+import { InstitutionService } from './../../services/institution.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvailableStoresListPage implements OnInit {
   title = 'mağazalar';
+  institutionList: Institution[];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private institutionService: InstitutionService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.institutionService.getAllInstitutions().subscribe((kurum) => {
+      this.institutionList;
+    });
+  }
 
   navigateToStore() {
     this.router.navigate(['create-order/store-menu']);
