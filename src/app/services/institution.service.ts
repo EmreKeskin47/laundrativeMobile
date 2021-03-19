@@ -16,7 +16,7 @@ export class InstitutionService {
     try {
       return this.http.get<Institution[]>(this.url);
     } catch (err) {
-      console.log(err);
+      console.log('GET institution err ', err);
     }
   }
 }
