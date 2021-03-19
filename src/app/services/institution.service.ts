@@ -8,7 +8,7 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class InstitutionService {
-  url: string = `${BASE_URL}/user/institution`;
+  url: string = `${BASE_URL}/user/institution/`;
   constructor(private http: HttpClient) {}
 
   //Get institutions
@@ -16,7 +16,7 @@ export class InstitutionService {
     try {
       return this.http.get<Institution[]>(this.url);
     } catch (err) {
-      return throwError(err);
+      console.log(err);
     }
   }
 }
