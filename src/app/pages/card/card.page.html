@@ -97,25 +97,29 @@
   </div>
 
   <!--Sign up / add address container-->
-  <div class="signup-buttons-container black-text">
-    teslimat adresi ekleyebilmek ve ödeme
-    <br />
-    yapabilmek için lütfen kullanıcı girişi yapın
+  <div *ngIf="!isLogged; else logged">
+    <div class="signup-buttons-container black-text">
+      teslimat adresi ekleyebilmek ve ödeme
+      <br />
+      yapabilmek için lütfen kullanıcı girişi yapın
+    </div>
+    <div class="button-padding">
+      <ion-button (click)="navigateToLogin()" shape="round" expand="block"
+        >giriş yap</ion-button
+      >
+    </div>
+    <div class="button-padding black-text">
+      <ion-button
+        (click)="navigateToSignup()"
+        shape="round"
+        fill="outline"
+        expand="block"
+        color="primary"
+      >
+        yeni hesap oluştur</ion-button
+      >
+    </div>
   </div>
-  <div class="button-padding">
-    <ion-button (click)="navigateToLogin()" shape="round" expand="block"
-      >giriş yap</ion-button
-    >
-  </div>
-  <div class="button-padding black-text">
-    <ion-button
-      (click)="navigateToSignup()"
-      shape="round"
-      fill="outline"
-      expand="block"
-      color="primary"
-    >
-      yeni hesap oluştur</ion-button
-    >
-  </div>
+
+  <ng-template #logged> </ng-template>
 </ion-content>

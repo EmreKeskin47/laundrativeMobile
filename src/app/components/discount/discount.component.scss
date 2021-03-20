@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 4rem;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 90%;
+  text-align: right;
+}
+.amount {
+  padding-top: 1rem;
+  font-size: 0.7rem;
+  color: rgb(241, 10, 106);
+  line-height: 0;
+}
+.bank {
+  font-size: 1rem;
+  line-height: 0;
+}
+.percentage {
+  line-height: 0;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+}

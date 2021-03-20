@@ -1,14 +1,17 @@
 <app-header headerTitle="{{title}}"></app-header>
 
-<ion-content>
+<ion-content color="medium">
   <!-- Address Component-->
   <div class="address-container">
     <ion-list>
       <ion-item>
         <div class="address-bar">
-          <ion-icon name="location" class="location-icon"></ion-icon>
+          <ion-icon
+            name="location"
+            class="location-icon primary-color"
+          ></ion-icon>
         </div>
-        <ion-label> Adres </ion-label>
+        <ion-label class="text-1rem"> Adres </ion-label>
         <ion-select>
           <ion-select-option
             *ngFor="let address of addressList"
@@ -22,17 +25,17 @@
 
   <!-- DatePicker Component-->
   <div class="date-container">
-    <ion-label> Ne zaman alalım </ion-label>
+    <ion-label class="text-1rem"> Ne zaman alalım </ion-label>
     <ion-item-group>
       <div class="date-content">
-        <ion-icon name="calendar" class="date-icon"></ion-icon>
+        <ion-icon name="calendar" class="date-icon primary-color"></ion-icon>
         <div style="width: 80%">
           <ion-item>
-            <ion-label>Gün</ion-label>
+            <ion-label class="text-1rem">Gün</ion-label>
             <ion-datetime displayFormat="MMMM DD"></ion-datetime>
           </ion-item>
           <ion-item>
-            <ion-label>Saat</ion-label>
+            <ion-label class="text-1rem">Saat</ion-label>
             <ion-datetime
               displayFormat="hh:mm A"
               minuteValues="0,15,30,45"
@@ -47,7 +50,7 @@
   <div class="discount-container">
     <app-discount></app-discount>
     <div style="text-align: end">
-      <button>tüm kampanyaları gör</button>
+      <button style="font-size: 0.7rem">tüm kampanyaları gör</button>
     </div>
   </div>
 
