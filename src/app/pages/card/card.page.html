@@ -127,7 +127,11 @@
         calenderTitle="teslim alma zamanı"
       ></app-address-date-field>
       <div class="pay-btn">
-        <ion-button class="lowerCase" shape="round" expand="block"
+        <ion-button
+          (click)="navigateToPayment()"
+          class="lowerCase"
+          shape="round"
+          expand="block"
           >ödeme yap</ion-button
         >
       </div>

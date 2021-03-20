@@ -81,6 +81,10 @@ const routes: Routes = [
     path: 'add-address-result',
     loadChildren: () => import('./pages/add-address-result/add-address-result.module').then( m => m.AddAddressResultPageModule)
   },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
 ];
 @NgModule({
   imports: [

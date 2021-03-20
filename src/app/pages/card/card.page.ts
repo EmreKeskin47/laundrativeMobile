@@ -30,4 +30,8 @@ export class CardPage implements OnInit {
   navigateToSignup() {
     this.router.navigate(['/signin']);
   }
+
+  navigateToPayment() {
+    this.router.navigate(['card/payment']);
+  }
 }

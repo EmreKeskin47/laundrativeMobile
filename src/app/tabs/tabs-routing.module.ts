@@ -1,4 +1,3 @@
-import { CreateOrderPage } from '../pages/create-order/create-order.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -12,6 +11,13 @@ const routes: Routes = [
         path: 'card',
         loadChildren: () =>
           import('../pages/card/card.module').then((m) => m.CardPageModule),
+      },
+      {
+        path: 'card/payment',
+        loadChildren: () =>
+          import('../pages/payment/payment.module').then(
+            (m) => m.PaymentPageModule
+          ),
       },
       {
         path: 'orders',

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--Cost and message -->
+  <div class="message-container">
+    <div class="total-container">
+      <div class="total-text">
+        <ion-text class="black-color title">toplam ödeme</ion-text>
+      </div>
+      <div class="total-cost">
+        <ion-text color="primary" class="cost">35.00tl</ion-text>
+      </div>
+    </div>
+
+    <div class="text-color cost-label">
+      3465 ile biten kredi kartınızdan 35,00 tl tutarında ödeme alınacaktır,
+      onaylıyor musunuz ?
+    </div>
+  </div>
+
+  <div class="button-padding">
+    <ion-button
+      shape="round"
+      expand="block"
+      color="primary"
+      class="toLowerCase"
+    >
+      ödeme yap</ion-button
+    >
+    <ion-button
+      class="toLowerCase btn-color"
+      shape="round"
+      fill="outline"
+      expand="block"
+      color="primary"
+    >
+      vazgeç</ion-button
+    >
+  </div>
+</ion-content>
