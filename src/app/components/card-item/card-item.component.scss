@@ -1,12 +1,12 @@
 .card-text {
   text-align: start;
-  font-size: 9px;
+  font-size: 0.5rem;
   color: black;
 }
 .card-icon {
-  font-size: 30px;
+  font-size: 2rem;
   padding-top: 5px;
-  padding-right: 10px;
+  padding-right: 0.5rem;
 }
 .card-container-border-radius {
   border-radius: 20px;
@@ -19,11 +19,20 @@
   display: flex;
 }
 .cost {
-  padding-top: 10px;
-  font-size: 20px;
+  margin-top: 0.5rem;
+  margin-right: 0.2rem;
+  font-size: 1.2rem;
   color: #eb4691;
   font-weight: bold;
 }
 .text-color {
   color: #000;
+}
+
+.type-color {
+  color: #eb4691;
+}
+
+.toLowerCase {
+  text-transform: lowercase;
 }

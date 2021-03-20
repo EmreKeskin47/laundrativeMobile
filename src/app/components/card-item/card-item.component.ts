@@ -9,6 +9,7 @@ export class CardItemComponent implements OnInit {
   @Input() public itemCost;
   @Input() public deliveryDate;
   @Input() public itemName;
+  @Input() public type;
 
   constructor() {}
 

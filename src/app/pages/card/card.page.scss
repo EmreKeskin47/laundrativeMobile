@@ -1,7 +1,7 @@
 .container-padding {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 20px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
 }
 .card-border-radius {
   border-radius: 20px;
@@ -10,7 +10,7 @@
   position: relative;
 }
 .container {
-  height: 8vh;
+  height: 4rem;
   background-color: whitesmoke;
   padding: 5;
 }
@@ -18,32 +18,33 @@
   display: flex;
 }
 .icon {
-  font-size: 30px;
-  padding-top: 25px;
-  padding-right: 10px;
+  font-size: 2rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
 }
 .card-title {
-  font-size: 12px;
+  font-size: 0.6rem;
 }
 .card-subtitle {
-  font-size: 11px;
+  font-size: 0.5rem;
 }
 .min-fee {
   text-align: end;
-  font-size: 9px;
+  font-size: 0.5rem;
   position: absolute;
-  right: 1vh;
+  right: 1rem;
   bottom: 0vh;
 }
 .cost-labels {
   text-align: right;
-  font-size: 10px;
-  vertical-align: middle;
+  font-size: 0.5rem;
+  font-weight: bold;
 }
 
 .label-fee {
   text-align: right;
-  font-size: 10px;
+  font-size: 0.5rem;
+  font-weight: bold;
 }
 
 .black-text {
@@ -55,44 +56,48 @@
   border-radius: 1px;
   opacity: 0.7;
   float: right;
+  margin: 0;
 }
 .total-cost {
   text-align: right;
-  font-size: 20px;
+  font-size: 1.2rem;
   color: #eb4691;
   font-weight: bold;
+  margin: 0;
+  padding: 0;
 }
 .card-container {
   border-radius: 20px;
-  height: 45vh;
+  height: 18rem;
   background-color: whitesmoke;
 }
 .card-padding {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 20px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
 }
 .rounded {
   border-top: 2px solid rgb(116, 114, 114);
   border-radius: 1px;
   opacity: 0.5;
+  margin: 0rem;
+  margin-bottom: 0.5rem;
 }
 .total-cost-grid {
-  padding-top: 30px;
   display: block;
 }
 .footnote-order {
   text-align: end;
-  font-size: 10px;
-  padding-right: 20px;
+  font-size: 0.5rem;
+  padding-right: 1.5rem;
 }
 .signup-buttons-container {
-  padding-top: 20px;
+  padding-top: 1rem;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.5rem;
 }
 .button-padding {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
 }

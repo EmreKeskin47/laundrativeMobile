@@ -2,7 +2,7 @@
   <div class="card-items-content">
     <div class="flex">
       <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
-      <div style="padding-top: 15px">
+      <div style="padding-top: 1.5rem">
         <ion-card-title class="card-text text-color">{{
           itemName
         }}</ion-card-title>
@@ -12,7 +12,10 @@
       <div class="cost">{{ itemCost }}</div>
     </div>
   </div>
-  <ion-card-subtitle class="card-text text-color">
-    {{ deliveryDate }} a kadar teslim edilir
+  <ion-card-subtitle class="card-text text-color toLowerCase">
+    <div style="display: flex">
+      <div class="type-color">{{ type }} &nbsp;</div>
+      <div>{{ deliveryDate }} a kadar teslim edilir</div>
+    </div>
   </ion-card-subtitle>
 </div>
