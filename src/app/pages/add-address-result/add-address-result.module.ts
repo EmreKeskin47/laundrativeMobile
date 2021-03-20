@@ -13,8 +13,8 @@ import { AddAddressResultPage } from './add-address-result.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddAddressResultPageRoutingModule
+    AddAddressResultPageRoutingModule,
   ],
-  declarations: [AddAddressResultPage]
+  declarations: [AddAddressResultPage],
 })
 export class AddAddressResultPageModule {}

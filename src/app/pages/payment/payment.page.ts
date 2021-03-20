@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentPage implements OnInit {
   public pageTitle: 'ödeme';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigateToPaymentSuccess() {
+    this.router.navigate(['card/payment/payment-success']);
+  }
+  backToCard() {
+    this.router.navigate(['/card']);
+  }
 }

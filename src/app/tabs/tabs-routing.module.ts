@@ -20,6 +20,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'card/payment/payment-success',
+        loadChildren: () =>
+          import('../pages/payment-success/payment-success.module').then(
+            (m) => m.PaymentSuccessPageModule
+          ),
+      },
+      {
         path: 'orders',
         loadChildren: () =>
           import('../pages/orders/orders.module').then(
