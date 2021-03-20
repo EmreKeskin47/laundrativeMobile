@@ -1,49 +1,10 @@
 <app-header headerTitle="{{title}}"></app-header>
 
 <ion-content color="medium">
-  <!-- Address Component-->
-  <div class="address-container">
-    <ion-list>
-      <ion-item>
-        <div class="address-bar">
-          <ion-icon
-            name="location"
-            class="location-icon primary-color"
-          ></ion-icon>
-        </div>
-        <ion-label class="text-1rem"> Adres </ion-label>
-        <ion-select>
-          <ion-select-option
-            *ngFor="let address of addressList"
-            [value]="address"
-            >{{address.first }}</ion-select-option
-          >
-        </ion-select>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <!-- DatePicker Component-->
-  <div class="date-container">
-    <ion-label class="text-1rem"> Ne zaman alalım </ion-label>
-    <ion-item-group>
-      <div class="date-content">
-        <ion-icon name="calendar" class="date-icon primary-color"></ion-icon>
-        <div style="width: 80%">
-          <ion-item>
-            <ion-label class="text-1rem">Gün</ion-label>
-            <ion-datetime displayFormat="MMMM DD"></ion-datetime>
-          </ion-item>
-          <ion-item>
-            <ion-label class="text-1rem">Saat</ion-label>
-            <ion-datetime
-              displayFormat="hh:mm A"
-              minuteValues="0,15,30,45"
-            ></ion-datetime>
-          </ion-item>
-        </div>
-      </div>
-    </ion-item-group>
+  <div style="padding-top: 1rem">
+    <app-address-date-field
+      calenderTitle="ne zaman alalım"
+    ></app-address-date-field>
   </div>
 
   <!-- Discount Component-->
@@ -132,12 +93,18 @@
 
   <!-- Search Buttons-->
   <div class="select-shop-container">
-    <ion-button (click)="navigateToStoreList()" expand="block"
+    <ion-button
+      class="lowerCase"
+      (click)="navigateToStoreList()"
+      shape="round"
+      expand="block"
       >teslim alma için uygun mağazaları göster</ion-button
     >
   </div>
 
   <div class="search-container">
-    <ion-button color="secondary">detaylı ara </ion-button>
+    <ion-button class="lowerCase" shape="round" color="secondary"
+      >detaylı ara
+    </ion-button>
   </div>
 </ion-content>

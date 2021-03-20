@@ -1,0 +1,87 @@
+<!-- Address Component-->
+<div class="address-container">
+  <ion-list class="list">
+    <ion-item>
+      <div class="address-bar">
+        <ion-icon
+          name="location"
+          class="location-icon primary-color"
+        ></ion-icon>
+      </div>
+      <ion-label class="text-1rem"> Adres </ion-label>
+      <ion-select>
+        <ion-select-option
+          *ngFor="let address of addressList"
+          [value]="address"
+          >{{ address.first }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>
+
+<!-- DatePicker Component-->
+<div class="date-container">
+  <ion-label class="text-1rem"> {{ calenderTitle }}</ion-label>
+  <ion-item-group>
+    <div class="date-content">
+      <ion-icon name="calendar" class="date-icon primary-color"></ion-icon>
+      <div style="width: 80%">
+        <ion-item class="border-radius">
+          <ion-label class="text-1rem">Gün</ion-label>
+          <ion-datetime displayFormat="MMMM DD"></ion-datetime>
+        </ion-item>
+        <ion-item class="border-radius">
+          <ion-label class="text-1rem">Saat</ion-label>
+          <ion-datetime
+            displayFormat="hh:mm A"
+            minuteValues="0,15,30,45"
+          ></ion-datetime>
+        </ion-item>
+      </div>
+    </div>
+  </ion-item-group>
+</div>
+
+<style>
+  .list {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 20px;
+  }
+  .address-container {
+    padding: 0.5rem;
+  }
+  .address-bar {
+    background-color: primary;
+    background-color: transparent;
+    padding-right: 1rem;
+  }
+  .location-icon {
+    padding-top: 0.4rem;
+    font-size: 2rem;
+  }
+  .primary-color {
+    color: #e75761;
+  }
+  .text-1rem {
+    font-size: 1rem;
+    color: black;
+  }
+  .date-container {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  .date-content {
+    display: flex;
+    justify-content: space-around;
+  }
+  .date-icon {
+    font-size: 2rem;
+    padding-top: 2rem;
+  }
+
+  .border-radius {
+    border-radius: 20px;
+  }
+</style>

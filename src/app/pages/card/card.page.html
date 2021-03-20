@@ -121,5 +121,16 @@
     </div>
   </div>
 
-  <ng-template #logged> </ng-template>
+  <ng-template #logged>
+    <div style="padding-top: 1.5rem">
+      <app-address-date-field
+        calenderTitle="teslim alma zamanı"
+      ></app-address-date-field>
+      <div class="pay-btn">
+        <ion-button class="lowerCase" shape="round" expand="block"
+          >ödeme yap</ion-button
+        >
+      </div>
+    </div>
+  </ng-template>
 </ion-content>

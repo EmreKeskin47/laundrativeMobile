@@ -3,30 +3,6 @@
   text-align: center;
   padding: inherit;
 }
-.address-container {
-  padding-top: 1rem;
-}
-.address-bar {
-  background-color: primary;
-  background-color: transparent;
-  padding-right: 1rem;
-}
-.location-icon {
-  padding-top: 0.4rem;
-  font-size: 2rem;
-}
-.date-container {
-  padding-top: 1rem;
-  padding-left: 1rem;
-}
-.date-content {
-  display: flex;
-  justify-content: space-around;
-}
-.date-icon {
-  font-size: 2rem;
-  padding-top: 2rem;
-}
 .discount-container {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -72,7 +48,6 @@
   font-size: 1rem;
   color: black;
 }
-
-.primary-color {
-  color: #e75761;
+.lowerCase {
+  text-transform: lowercase;
 }
