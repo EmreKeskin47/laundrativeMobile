@@ -17,7 +17,7 @@ export class CardPage implements OnInit {
   discountFee = '50,00tl ';
   discountText = 'üzeri siparişlerde ücretsiz servis';
 
-  isLogged = true;
+  isLogged = false;
 
   constructor(private router: Router) {}
 
