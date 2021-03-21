@@ -18,6 +18,7 @@
 .icon {
   font-size: 2rem;
   padding-right: 1rem;
+  padding-top: 0.6rem;
 }
 .text-1rem {
   font-size: 0.8rem;
@@ -52,12 +53,15 @@
   padding: 1rem;
 }
 .sign-options {
-  padding-left: 1rem;
+  padding-left: 0.4rem;
   padding-top: 1rem;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
+  flex: 1;
 }
 .sign-btn {
-  width: 10rem;
+  width: 9rem;
+  border-radius: 10px;
+  box-shadow: 1px 2px #888888;
 }
 
 .button-padding {

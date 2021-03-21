@@ -7,14 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<!--
-  <app-header headerTitle="{{pageTitle}}"></app-header>
-  -->
-
 <ion-content color="medium">
   <div class="input-container" style="display: block; padding-top: 10vh">
     <ion-item class="text-color">
-      <ion-icon name="mail-sharp" class="card-icon text-color"></ion-icon>
+      <ion-icon name="mail-sharp" class="card-icon icon-clr"></ion-icon>
       <ion-label class="label" position="floating">e-mail</ion-label>
       <ion-input></ion-input>
     </ion-item>
@@ -22,7 +18,7 @@
 
   <div class="input-container" style="display: block">
     <ion-item class="text-color">
-      <ion-icon name="lock-closed" class="card-icon text-color"></ion-icon>
+      <ion-icon name="lock-closed" class="card-icon icon-clr"></ion-icon>
       <ion-label class="label" position="floating">parola</ion-label>
       <ion-input></ion-input>
     </ion-item>
@@ -30,7 +26,7 @@
 
   <div class="input-container" style="display: block">
     <ion-item class="text-color">
-      <ion-icon name="lock-closed" class="card-icon text-color"></ion-icon>
+      <ion-icon name="lock-closed" class="card-icon icon-clr"></ion-icon>
       <ion-label class="label" position="floating">parola tekrar</ion-label>
       <ion-input></ion-input>
     </ion-item>
@@ -46,14 +42,13 @@
     >
   </div>
   <div class="sign-in-buttons-container">
-    <ion-button size="medium" color="light" shape="round"
-      ><ion-icon name="logo-google" class="text-color amount-icons"> </ion-icon>
-      <p class="sign-options toLowerCase">sign in with google</p>
+    <ion-button class="sign-btn" color="light"
+      ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
+      <p class="sign-options toLowerCase">sign up with google</p>
     </ion-button>
-    <ion-button size="medium" color="light" shape="round"
-      ><ion-icon name="logo-facebook" class="text-color amount-icons">
-      </ion-icon>
-      <p class="sign-options toLowerCase">sign in with google</p>
+    <ion-button class="sign-btn" color="light"
+      ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
+      <p class="sign-options toLowerCase">sign up with google</p>
     </ion-button>
   </div>
 </ion-content>

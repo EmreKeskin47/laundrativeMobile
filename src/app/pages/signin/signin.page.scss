@@ -1,39 +1,47 @@
 .input-container {
-  padding: 10px;
+  padding: 0.5rem;
   border-radius: 20px;
 }
 .label {
-  padding-left: 12vw;
+  padding-left: 3rem;
 }
 
 .card-icon {
   position: absolute;
-  top: 1.5vh;
-  font-size: 30px;
+  margin-top: 1.5rem;
+  font-size: 2rem;
 }
 
-.amount-icons {
-  font-size: 15px;
-  color: #e75761;
+.toLowerCase {
+  text-transform: lowercase;
 }
 
 .sign-in-buttons-container {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 1rem;
 }
 .sign-options {
-  padding-left: 20px;
-  padding-top: 10px;
-  font-size: 10px;
+  padding-left: 0.4rem;
+  padding-top: 1rem;
+  font-size: 0.6rem;
+  flex: 1;
+}
+.sign-btn {
+  width: 9rem;
+  border-radius: 10px;
+  box-shadow: 1px 2px #888888;
 }
 
 .button-padding {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 45px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+}
+.btn-color {
+  color: #e75761;
 }
 
-.toLowerCase {
-  text-transform: lowercase;
+.icon-clr {
+  color: #5e5e5e;
 }
