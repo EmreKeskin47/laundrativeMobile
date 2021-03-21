@@ -1,14 +1,14 @@
 .container-padding {
-  padding-top: 20px;
-  padding-bottom: 6px;
+  padding-top: 1.4rem;
+  padding-bottom: 0.5rem;
 }
 
 .container {
-  height: 8vh;
+  height: 4rem;
   width: 90vw;
   background-color: whitesmoke;
   padding: 5;
-  box-shadow: 6px 6px #b9bed1;
+  box-shadow: 2px 2px #b9bed1;
 }
 .card-border-radius {
   border-radius: 20px;
@@ -17,26 +17,26 @@
   display: flex;
 }
 .icon {
-  font-size: 30px;
-  padding-top: 25px;
-  padding-right: 10px;
+  font-size: 1.5rem;
+  padding-top: 1.3rem;
+  padding-right: 0.5rem;
 }
 .card-title {
-  font-size: 12px;
+  font-size: 0.6rem;
   text-align: center;
 }
 .card-subtitle {
-  font-size: 11px;
+  font-size: 0.6rem;
 }
 
 .child {
-  height: 11vh;
+  height: 6.5rem;
 }
 
 .absolute {
   position: absolute;
-  bottom: 1vh;
-  right: 0vw;
+  bottom: 0;
+  right: -3vw;
 }
 
 .relative {
@@ -44,8 +44,12 @@
 }
 .min-fee {
   text-align: end;
-  font-size: 12px;
+  font-size: 0.6rem;
   position: absolute;
-  right: 1vh;
-  bottom: 0vh;
+  right: 3vh;
+  bottom: 0.3rem;
+}
+
+.text-color {
+  color: #5e5e5e;
 }
