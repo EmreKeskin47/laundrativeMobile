@@ -1,57 +1,69 @@
 .title {
   text-align: center;
-  font-size: 37px;
-  padding-top: 10vh;
+  font-size: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  font-weight: bold;
   color: #5e5e5e;
 }
-.input-container {
-  padding: 10px;
+.list {
+  padding-top: 0px;
+  padding-bottom: 0px;
   border-radius: 20px;
 }
-.label {
-  padding-left: 12vw;
+.input-container {
+  padding: 0.5rem;
 }
 
+.icon {
+  font-size: 2rem;
+  padding-right: 1rem;
+}
+.text-1rem {
+  font-size: 0.8rem;
+  color: black;
+}
 .first-button-container {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   color: black;
 }
 
 .remember-me {
   text-align: center;
-  padding-left: 20px;
-  padding-top: 15px;
-  font-size: 11px;
+  padding-left: 1rem;
+  font-size: 0.7rem;
 }
 
 .card-icon {
   position: absolute;
-  top: 1.5vh;
-  font-size: 30px;
+  top: 1.5rem;
+  font-size: 2rem;
 }
 
-.amount-icons {
-  font-size: 20px;
-  color: #e75761;
+.icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
 }
 
 .sign-in-buttons-container {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 1rem;
 }
 .sign-options {
-  padding-left: 20px;
-  padding-top: 10px;
-  font-size: 10px;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  font-size: 0.5rem;
+}
+.sign-btn {
+  width: 10rem;
 }
 
 .button-padding {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 45px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
 }
 .btn-color {
   color: #e75761;
@@ -59,4 +71,8 @@
 
 .toLowerCase {
   text-transform: lowercase;
+}
+
+.icon-color {
+  color: #5e5e5e;
 }

@@ -18,9 +18,9 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.institutionService.getAllInstitutions().subscribe((kurum) => {
-      this.institutionList;
-    });
+    //this.institutionService.getAllInstitutions().subscribe((kurum) => {
+    //this.institutionList;
+    //});
   }
 
   navigateToStore() {
