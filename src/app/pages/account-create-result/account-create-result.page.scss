@@ -1,15 +1,15 @@
 .icon {
-  font-size: 30px;
+  font-size: 2rem;
   color: #e75761;
-  padding-right: 3vw;
+  padding-right: 1rem;
 }
 .toLowerCase {
   text-transform: lowercase;
 }
 .message-container {
   display: flex;
-  padding-top: 5vh;
-  padding-left: 10vw;
+  padding-top: 3rem;
+  padding-left: 2rem;
 }
 .text-color {
   color: gray;
@@ -20,11 +20,11 @@
 }
 .title {
   font-weight: bold;
-  font-size: 14px;
-  padding-bottom: 1vh;
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
 }
 .message {
-  font-size: 14px;
+  font-size: 0.7rem;
 }
 
 .toLowerCase {
@@ -32,29 +32,29 @@
 }
 
 .button-padding {
-  padding: 20px;
-  padding-top: 7vh;
+  padding: 1rem;
+  padding-top: 5rem;
 }
 .bottom-text-container {
-  padding-top: 2vh;
-  padding-left: 10vw;
+  padding-top: 1rem;
+  padding-left: 2rem;
 }
 
 .btn-icon {
-  font-size: 25px;
-  padding-right: 10px;
+  font-size: 1.2rem;
+  padding-right: 0.5rem;
 }
 
 .btn-label {
-  font-size: 14px;
-  padding-top: 15px;
-  padding-left: 5px;
+  font-size: 0.7rem;
+  padding-top: 1rem;
+  padding-left: 0.2rem;
   font-weight: bold;
 }
 
 .btn-container {
   display: flex;
   justify-content: space-between;
-  padding: 25px;
-  padding-top: 20vh;
+  padding: 1rem;
+  padding-top: 9rem;
 }
