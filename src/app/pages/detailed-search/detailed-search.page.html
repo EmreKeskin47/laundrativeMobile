@@ -8,6 +8,67 @@
 </ion-header>
 
 <ion-content color="medium">
+  <!--Address and Date-->
+  <div class="date-adress-label text-color">
+    <ion-label>adres ve tarih seçin</ion-label>
+  </div>
+  <app-adress-field></app-adress-field>
   <app-date-field calenderTitle="ne zaman teslim alınsın"></app-date-field>
   <app-date-field calenderTitle="ne zaman teslim edilsin"></app-date-field>
+
+  <!--Search Service-->
+  <div class="date-adress-label text-color">
+    <ion-label>ürün/hizmet arayın</ion-label>
+  </div>
+  <ion-searchbar showCancelButton="focus" class="text-color"></ion-searchbar>
+  <ion-infinite-scroll>
+    <div class="relative">
+      <app-store-item
+        itemName="Nevresim Takımı Tek Kişilik"
+        itemCategory="çamaşır yıkama"
+      ></app-store-item>
+      <ion-button class="select-btn" color="primary">seç</ion-button>
+    </div>
+
+    <div class="relative">
+      <app-store-item
+        itemName="Nevresim Takımı Tek Kişilik"
+        itemCategory="ütüleme"
+      ></app-store-item>
+      <ion-button class="select-btn" color="primary">seç</ion-button>
+    </div>
+
+    <div class="relative">
+      <app-store-item
+        itemName="Nevresim Takımı Çift Kişilik"
+        itemCategory="ütüleme"
+      ></app-store-item>
+      <ion-button class="select-btn" color="primary">seç</ion-button>
+    </div>
+  </ion-infinite-scroll>
+
+  <!--Aramaya eklenen ürünler-->
+  <div style="padding-top: 0.5rem">
+    <hr class="rounded" />
+  </div>
+  <div class="date-adress-label text-color">
+    <ion-label>aramaya eklenen ürünler</ion-label>
+  </div>
+
+  <ion-item lines="none" color="medium" style="height: 1.9rem">
+    <ion-label class="text-color checkbox-text">ücretsiz teslimat</ion-label>
+    <ion-checkbox class="checkbox" color="primary" slot="start"></ion-checkbox>
+  </ion-item>
+  <ion-item lines="none" color="medium" style="height: 1.9rem">
+    <ion-label class="text-color checkbox-text"
+      >sadece promosyon olanları göster</ion-label
+    >
+    <ion-checkbox class="checkbox" color="primary" slot="start"></ion-checkbox>
+  </ion-item>
+
+  <div class="search-btn">
+    <ion-button class="lowerCase" (click)="navigateToStoreList()" expand="block"
+      >teslim alma için uygun mağazaları göster</ion-button
+    >
+  </div>
 </ion-content>

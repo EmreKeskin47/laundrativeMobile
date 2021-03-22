@@ -31,8 +31,15 @@
 
 .card-icon {
   font-size: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
   padding-right: 0.4rem;
+}
+
+.category-label {
+  font-size: 0.7rem;
+  font-weight: bold;
+  align-self: flex-end;
+  margin-left: 1rem;
 }
 
 .store-item-card-text {

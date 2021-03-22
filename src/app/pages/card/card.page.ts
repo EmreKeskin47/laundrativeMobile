@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -17,9 +17,9 @@ export class CardPage implements OnInit {
   discountFee = '50,00tl ';
   discountText = 'üzeri siparişlerde ücretsiz servis';
 
-  isLogged = false;
+  isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {}
 

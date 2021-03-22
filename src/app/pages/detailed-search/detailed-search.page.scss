@@ -1,0 +1,42 @@
+.date-adress-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: end;
+  padding: 1rem 1rem 0 0;
+}
+.text-color {
+  color: gray;
+}
+.rounded {
+  border-top: 3px solid rgb(26, 25, 25);
+  width: 85%;
+  opacity: 0.8;
+  margin: auto;
+}
+.checkbox {
+  --size: 1rem;
+  margin: 0.5rem;
+}
+.checkbox-text {
+  font-size: 0.5rem;
+}
+
+.search-btn {
+  padding-top: 3rem;
+  padding: 3rem 1rem 3rem 1rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.select-btn {
+  padding-right: 1.5rem;
+  margin-top: 1rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  z-index: 9;
+  font-size: 1rem;
+}

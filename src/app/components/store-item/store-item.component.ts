@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StoreItemComponent implements OnInit {
   @Input() public itemName;
   @Input() public itemCost;
+  @Input() public itemCategory;
 
   constructor() {}
 
