@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <div class="root">
+    <div>
+      <div class="message-container">
+        <div class="black-color title">gittiğinize üzüldük</div>
+        <div class="text-color message">
+          hesabınızı silme nedeninizi bize söyleme ister
+          <br />misiniz ?
+        </div>
+      </div>
+
+      <div>
+        <ion-item lines="none" class="checkbox-label">
+          <ion-label>başka bir platform kullanıyorum</ion-label>
+          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none" class="checkbox-label">
+          <ion-label>ihtiyacım yok</ion-label>
+          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none" class="checkbox-label">
+          <ion-label> sorun yaşadım</ion-label>
+          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none" class="checkbox-label">
+          <ion-label>diğer</ion-label>
+          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none" class="checkbox-label">
+          <ion-textarea
+            placeholder="ayrılma sebebinizi bize yazarsanız seviniriz..."
+          ></ion-textarea>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="btn-padding">
+      <div class="text-color message message-container">
+        hesabınızı silerseniz daha önceki siparişleriniz, <br />
+        tercihleriniz, tüm bilgileriniz ve tanımlı <br />
+        promosyonlarınız silinecektir. her hangi sorun <br />
+        yaşıyorsanız bize buradan ulaşabilirsiniz. <br />
+      </div>
+      <ion-button (click)="navigateToLogin()" expand="block"
+        >hesabımı sil</ion-button
+      >
+    </div>
+  </div>
+</ion-content>
+
+<style>
+  .root {
+    height: 100%;
+    display: grid;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+  .message-container {
+    padding: 2rem 0rem 2rem 3rem;
+  }
+  .text-color {
+    color: gray;
+  }
+  .black-color {
+    color: black;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 1vh;
+  }
+  .message {
+    font-size: 0.7rem;
+  }
+  .checkbox-label {
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    --border-radius: 20px;
+    font-size: 0.8rem;
+  }
+  .btn-padding {
+    padding-bottom: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+</style>

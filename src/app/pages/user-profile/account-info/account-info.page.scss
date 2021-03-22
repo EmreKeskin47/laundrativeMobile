@@ -1,3 +1,9 @@
+.root {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
 .input-item {
   --border-radius: 20px;
   padding: 0.7rem 0.5rem 0rem 0.5rem;

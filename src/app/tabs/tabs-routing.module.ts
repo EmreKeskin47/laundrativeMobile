@@ -81,6 +81,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'profile/delete-account',
+        loadChildren: () =>
+          import(
+            '../pages/user-profile/delete-account/delete-account.module'
+          ).then((m) => m.DeleteAccountPageModule),
+      },
+      {
         path: '',
         redirectTo: '/create-order',
         pathMatch: 'full',

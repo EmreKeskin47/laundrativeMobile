@@ -8,14 +8,7 @@
 </ion-header>
 
 <ion-content color="medium">
-  <div
-    style="
-      height: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      align-content: space-between;
-    "
-  >
+  <div class="root">
     <!-- Account info labels-->
     <div>
       <ion-item lines="none" class="input-item">
@@ -67,7 +60,7 @@
     </div>
     <!--Delete Account-->
     <div>
-      <ion-chip color="medium">
+      <ion-chip (click)="navigateToDeleteAccount()" color="medium">
         <ion-icon name="triangle-sharp"></ion-icon>
         <ion-label>hesabımı laundrative’den sil</ion-label>
       </ion-chip>

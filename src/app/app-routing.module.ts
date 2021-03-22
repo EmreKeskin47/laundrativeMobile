@@ -115,11 +115,12 @@ const routes: Routes = [
         (m) => m.AccountInfoPageModule
       ),
   },
+
   {
-    path: 'account-info',
+    path: 'delete-account',
     loadChildren: () =>
-      import('./pages/user-profile/account-info/account-info.module').then(
-        (m) => m.AccountInfoPageModule
+      import('./pages/user-profile/delete-account/delete-account.module').then(
+        (m) => m.DeleteAccountPageModule
       ),
   },
 ];

@@ -20,4 +20,8 @@ export class AccountInfoPage implements OnInit {
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
+
+  navigateToDeleteAccount() {
+    this.router.navigate(['/profile/delete-account']);
+  }
 }
