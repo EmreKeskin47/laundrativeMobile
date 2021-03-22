@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <div
+    style="
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+    "
+  >
+    <!-- Account info labels-->
+    <div>
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="person-sharp" class="icon text-color"></ion-icon>
+        <div class="input-label">
+          <ion-label class="text-color"> isim soyisim</ion-label>
+          <ion-input>{{name}} </ion-input>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="mail-sharp" class="icon text-color"></ion-icon>
+        <div class="input-label">
+          <ion-label class="text-color"> email adresi</ion-label>
+          <ion-input>{{email}} </ion-input>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="lock-closed-sharp" class="icon text-color"></ion-icon>
+        <div class="input-label">
+          <ion-label class="text-color"> parola</ion-label>
+          <ion-input>{{password}}</ion-input>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="call-sharp" class="icon text-color"></ion-icon>
+        <div class="input-label">
+          <ion-label class="text-color"> telefon numaranız</ion-label>
+          <ion-input>{{phone}} </ion-input>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="cog-sharp" class="icon text-color"></ion-icon>
+        <div class="input-label">
+          <ion-label class="text-color"> bağlı hesaplar </ion-label>
+          <ion-input>google</ion-input>
+        </div>
+      </ion-item>
+      <!--edit save buttons-->
+      <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
+        <ion-chip class="sec-bcg">
+          <ion-icon class="white-text" name="checkmark"></ion-icon>
+          <ion-label class="white-text">düzenle</ion-label>
+        </ion-chip>
+        <ion-chip class="ter-bcg">
+          <ion-icon class="white-text" name="pencil"></ion-icon>
+          <ion-label class="white-text">kayder</ion-label>
+        </ion-chip>
+      </div>
+    </div>
+    <!--Delete Account-->
+    <div>
+      <ion-chip color="medium">
+        <ion-icon name="triangle-sharp"></ion-icon>
+        <ion-label>hesabımı laundrative’den sil</ion-label>
+      </ion-chip>
+    </div>
+
+    <!--Log out button-->
+    <div class="log-out-btn">
+      <ion-button (click)="navigateToLogin()" expand="block"
+        >çıkış yap</ion-button
+      >
+    </div>
+  </div>
+</ion-content>

@@ -69,8 +69,15 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () =>
-          import('../pages/profile/profile.module').then(
+          import('../pages/user-profile/profile/profile.module').then(
             (m) => m.ProfilePageModule
+          ),
+      },
+      {
+        path: 'profile/account-info',
+        loadChildren: () =>
+          import('../pages/user-profile/account-info/account-info.module').then(
+            (m) => m.AccountInfoPageModule
           ),
       },
       {

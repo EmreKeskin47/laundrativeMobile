@@ -16,4 +16,8 @@ export class ProfilePage implements OnInit {
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
+
+  navigateToAccountInfo() {
+    this.router.navigate(['profile/account-info']);
+  }
 }

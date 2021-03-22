@@ -33,7 +33,9 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () =>
-      import('./pages/profile/profile.module').then((m) => m.ProfilePageModule),
+      import('./pages/user-profile/profile/profile.module').then(
+        (m) => m.ProfilePageModule
+      ),
   },
   {
     path: 'homepage',
@@ -75,23 +77,50 @@ const routes: Routes = [
   },
   {
     path: 'add-address',
-    loadChildren: () => import('./pages/add-address/add-address.module').then( m => m.AddAddressPageModule)
+    loadChildren: () =>
+      import('./pages/add-address/add-address.module').then(
+        (m) => m.AddAddressPageModule
+      ),
   },
   {
     path: 'add-address-result',
-    loadChildren: () => import('./pages/add-address-result/add-address-result.module').then( m => m.AddAddressResultPageModule)
+    loadChildren: () =>
+      import('./pages/add-address-result/add-address-result.module').then(
+        (m) => m.AddAddressResultPageModule
+      ),
   },
   {
     path: 'payment',
-    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+    loadChildren: () =>
+      import('./pages/payment/payment.module').then((m) => m.PaymentPageModule),
   },
   {
     path: 'payment-success',
-    loadChildren: () => import('./pages/payment-success/payment-success.module').then( m => m.PaymentSuccessPageModule)
+    loadChildren: () =>
+      import('./pages/payment-success/payment-success.module').then(
+        (m) => m.PaymentSuccessPageModule
+      ),
   },
   {
     path: 'detailed-search',
-    loadChildren: () => import('./pages/detailed-search/detailed-search.module').then( m => m.DetailedSearchPageModule)
+    loadChildren: () =>
+      import('./pages/detailed-search/detailed-search.module').then(
+        (m) => m.DetailedSearchPageModule
+      ),
+  },
+  {
+    path: 'account-info',
+    loadChildren: () =>
+      import('./pages/user-profile/account-info/account-info.module').then(
+        (m) => m.AccountInfoPageModule
+      ),
+  },
+  {
+    path: 'account-info',
+    loadChildren: () =>
+      import('./pages/user-profile/account-info/account-info.module').then(
+        (m) => m.AccountInfoPageModule
+      ),
   },
 ];
 @NgModule({
