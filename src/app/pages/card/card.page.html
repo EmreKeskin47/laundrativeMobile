@@ -123,9 +123,8 @@
 
   <ng-template #logged>
     <div style="padding-top: 1.5rem">
-      <app-address-date-field
-        calenderTitle="teslim alma zamanı"
-      ></app-address-date-field>
+      <app-adress-field></app-adress-field>
+      <app-date-field calenderTitle="teslim alma zamanı"></app-date-field>
       <div class="pay-btn">
         <ion-button
           (click)="navigateToPayment()"

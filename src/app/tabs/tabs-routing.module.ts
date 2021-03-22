@@ -41,6 +41,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'create-order/detailed-search',
+        loadChildren: () =>
+          import('../pages/detailed-search/detailed-search.module').then(
+            (m) => m.DetailedSearchPageModule
+          ),
+      },
+      {
         path: 'create-order/available-stores-list',
         loadChildren: () =>
           import(

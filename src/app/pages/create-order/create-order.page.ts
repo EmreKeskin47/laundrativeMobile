@@ -33,4 +33,7 @@ export class CreateOrderPage {
   navigateToStoreList() {
     this.router.navigate(['/create-order/available-stores-list']);
   }
+  navigateToDetailedSearch() {
+    this.router.navigate(['/create-order//detailed-search']);
+  }
 }

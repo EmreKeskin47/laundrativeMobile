@@ -2,9 +2,8 @@
 
 <ion-content color="medium">
   <div style="padding-top: 1rem">
-    <app-address-date-field
-      calenderTitle="ne zaman alalım"
-    ></app-address-date-field>
+    <app-adress-field></app-adress-field>
+    <app-date-field calenderTitle="ne zaman alalım"></app-date-field>
   </div>
 
   <!-- Discount Component-->
@@ -103,7 +102,11 @@
   </div>
 
   <div class="search-container">
-    <ion-button class="lowerCase" shape="round" color="secondary"
+    <ion-button
+      class="lowerCase"
+      shape="round"
+      color="secondary"
+      (click)="navigateToDetailedSearch()"
       >detaylı ara
     </ion-button>
   </div>

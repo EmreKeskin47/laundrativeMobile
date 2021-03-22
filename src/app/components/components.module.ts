@@ -1,4 +1,5 @@
-import { AddressDateFieldComponent } from './address-date-field/address-date-field.component';
+import { AdressFieldComponent } from './adress-field/adress-field.component';
+import { DateFieldComponent } from './date-field/date-field.component';
 import { StoreItemComponent } from './store-item/store-item.component';
 import { CardItemComponent } from './card-item/card-item.component';
 import { StoreCardComponent } from './store-card/store-card.component';
@@ -14,14 +15,16 @@ import { IonicModule } from '@ionic/angular';
     StoreCardComponent,
     CardItemComponent,
     StoreItemComponent,
-    AddressDateFieldComponent,
+    DateFieldComponent,
+    AdressFieldComponent,
   ],
   exports: [
     HeaderComponent,
     StoreCardComponent,
     CardItemComponent,
     StoreItemComponent,
-    AddressDateFieldComponent,
+    DateFieldComponent,
+    AdressFieldComponent,
   ],
 })
 export class ComponentsModule {}

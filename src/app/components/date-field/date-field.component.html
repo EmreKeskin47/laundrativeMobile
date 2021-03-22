@@ -1,25 +1,3 @@
-<!-- Address Component-->
-<div class="address-container">
-  <ion-list class="list">
-    <ion-item>
-      <div class="address-bar">
-        <ion-icon
-          name="location"
-          class="location-icon primary-color"
-        ></ion-icon>
-      </div>
-      <ion-label class="text-1rem"> Adres </ion-label>
-      <ion-select>
-        <ion-select-option
-          *ngFor="let address of addressList"
-          [value]="address"
-          >{{ address.first }}</ion-select-option
-        >
-      </ion-select>
-    </ion-item>
-  </ion-list>
-</div>
-
 <!-- DatePicker Component-->
 <div class="date-container">
   <ion-label class="text-1rem"> {{ calenderTitle }}</ion-label>

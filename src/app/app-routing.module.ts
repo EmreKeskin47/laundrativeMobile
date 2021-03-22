@@ -89,6 +89,10 @@ const routes: Routes = [
     path: 'payment-success',
     loadChildren: () => import('./pages/payment-success/payment-success.module').then( m => m.PaymentSuccessPageModule)
   },
+  {
+    path: 'detailed-search',
+    loadChildren: () => import('./pages/detailed-search/detailed-search.module').then( m => m.DetailedSearchPageModule)
+  },
 ];
 @NgModule({
   imports: [
