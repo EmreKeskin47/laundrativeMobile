@@ -22,7 +22,7 @@
             <ion-label class="label text-color bold-text">adreslerim</ion-label>
           </div>
 
-          <ion-button class="navigate-btn">
+          <ion-button (click)="navigateToAddressList()" class="navigate-btn">
             <ion-icon
               class="text-color"
               name="chevron-forward-sharp"
@@ -42,7 +42,7 @@
           >
         </div>
 
-        <ion-button class="navigate-btn">
+        <ion-button (click)="navigateToNotifications()" class="navigate-btn">
           <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
         </ion-button>
       </ion-chip>
@@ -52,7 +52,7 @@
           <ion-icon class="icon text-color" name="gift-sharp"></ion-icon>
           <ion-label class="label text-color bold-text">kampanyalar</ion-label>
         </div>
-        <ion-button class="navigate-btn">
+        <ion-button (click)="navigateToDiscountList()" class="navigate-btn">
           <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
         </ion-button>
       </ion-chip>
@@ -63,7 +63,7 @@
           <ion-label class="label text-color bold-text">bize ulaşın</ion-label>
         </div>
 
-        <ion-button class="navigate-btn">
+        <ion-button (click)="navigateToContact()" class="navigate-btn">
           <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
         </ion-button>
       </ion-chip>

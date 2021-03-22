@@ -20,4 +20,19 @@ export class ProfilePage implements OnInit {
   navigateToAccountInfo() {
     this.router.navigate(['profile/account-info']);
   }
+
+  navigateToAddressList() {
+    this.router.navigate(['profile/address-list']);
+  }
+  navigateToContact() {
+    this.router.navigate(['/profile/contact']);
+  }
+
+  navigateToDiscountList() {
+    this.router.navigate(['/profile/discount-list']);
+  }
+
+  navigateToNotifications() {
+    this.router.navigate(['/profile/notification-settings']);
+  }
 }

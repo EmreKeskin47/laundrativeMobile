@@ -88,6 +88,34 @@ const routes: Routes = [
           ).then((m) => m.DeleteAccountPageModule),
       },
       {
+        path: 'profile/address-list',
+        loadChildren: () =>
+          import('../pages/user-profile/address-list/address-list.module').then(
+            (m) => m.AddressListPageModule
+          ),
+      },
+      {
+        path: 'profile/contact',
+        loadChildren: () =>
+          import('../pages/user-profile/contact/contact.module').then(
+            (m) => m.ContactPageModule
+          ),
+      },
+      {
+        path: 'profile/discount-list',
+        loadChildren: () =>
+          import(
+            '../pages/user-profile/discount-list/discount-list.module'
+          ).then((m) => m.DiscountListPageModule),
+      },
+      {
+        path: 'profile/notification-settings',
+        loadChildren: () =>
+          import(
+            '../pages/user-profile/notification-settings/notification-settings.module'
+          ).then((m) => m.NotificationSettingsPageModule),
+      },
+      {
         path: '',
         redirectTo: '/create-order',
         pathMatch: 'full',

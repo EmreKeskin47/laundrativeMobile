@@ -123,6 +123,22 @@ const routes: Routes = [
         (m) => m.DeleteAccountPageModule
       ),
   },
+  {
+    path: 'address-list',
+    loadChildren: () => import('./pages/user-profile/address-list/address-list.module').then( m => m.AddressListPageModule)
+  },
+  {
+    path: 'notification-settings',
+    loadChildren: () => import('./pages/user-profile/notification-settings/notification-settings.module').then( m => m.NotificationSettingsPageModule)
+  },
+  {
+    path: 'discount-list',
+    loadChildren: () => import('./pages/user-profile/discount-list/discount-list.module').then( m => m.DiscountListPageModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/user-profile/contact/contact.module').then( m => m.ContactPageModule)
+  },
 ];
 @NgModule({
   imports: [
