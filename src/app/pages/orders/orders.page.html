@@ -1,2 +1,15 @@
-<app-header headerTitle="{{title}}"></app-header>
-<ion-content> </ion-content>
+<app-header headerTitle="{{pageTitle}}"></app-header>
+<ion-content color="medium">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule">
+        <ion-label>Tüm siparişler</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button tab="speakers">
+        <ion-label>Planlanan siparişler</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

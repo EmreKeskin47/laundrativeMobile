@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  title = 'profil';
+  pageTitle = 'profil';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
 }

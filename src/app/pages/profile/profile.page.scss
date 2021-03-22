@@ -1,0 +1,47 @@
+.root {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.container {
+  width: 95%;
+  height: 3rem;
+  background-color: whitesmoke;
+  margin: 1.3rem 0.5rem 0 0.5rem;
+  justify-content: space-between;
+}
+.icon {
+  font-size: 1.2rem;
+  padding-right: 1rem;
+}
+.navigate-btn {
+  --background: whitesmoke;
+  --padding-end: 0rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  padding-top: 0.2rem;
+}
+
+.text-color {
+  color: #5e5e5e;
+}
+
+.contact-us-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.button-padding {
+  margin: 0rem 0.5rem 1.3rem 0.5rem;
+}
+.bottom-container {
+  width: 100%;
+}
