@@ -9,16 +9,30 @@
     </div>
 
     <div *ngIf="onlyDone; else all">
-      <app-order-card></app-order-card>
+      <app-order-card
+        currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
+        currentOrderAddress="17.06.2021 Salı 16:30"
+      ></app-order-card>
+      <!--edit save buttons-->
+      <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
+        <ion-chip class="ter-bcg">
+          <ion-icon class="white-text" name="pencil"></ion-icon>
+          <ion-label class="white-text">düzenle</ion-label>
+        </ion-chip>
+        <ion-chip class="sec-bcg">
+          <ion-icon class="white-text" name="close"></ion-icon>
+          <ion-label class="white-text">sil</ion-label>
+        </ion-chip>
+      </div>
     </div>
 
     <ng-template #all>
-      <app-order-card></app-order-card>
-      <app-order-card></app-order-card>
-      <app-order-card></app-order-card>
-      <app-order-card></app-order-card>
-      <app-order-card></app-order-card>
-      <app-order-card></app-order-card>
+      <app-order-card [orderDone]="true"></app-order-card>
+      <app-order-card [orderDone]="true"></app-order-card>
+      <app-order-card [orderDone]="true"></app-order-card>
+      <app-order-card [orderDone]="true"></app-order-card>
+      <app-order-card [orderDone]="true"></app-order-card>
+      <app-order-card [orderDone]="true"></app-order-card>
     </ng-template>
   </div>
 </ion-content>

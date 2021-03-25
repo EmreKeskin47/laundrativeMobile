@@ -4,6 +4,7 @@
 .card-container {
   border-radius: 20px;
   margin: 0.6rem;
+  box-shadow: 1px 4px #484955;
 }
 .card-title-container {
   justify-content: space-between;
@@ -60,4 +61,10 @@
   opacity: 0.5;
   margin: 0rem;
   margin-bottom: 0.5rem;
+}
+
+.text-tick-container {
+  display: flex;
+  height: 1.3rem;
+  margin: 0.3rem;
 }

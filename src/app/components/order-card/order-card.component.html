@@ -1,29 +1,73 @@
 <ion-card class="card-container">
   <ion-item button detail="false" (click)="showDetails()">
     <div class="card-title-container">
-      <div>
-        <ion-label class="date-label">17.06.2020 </ion-label>
+      <!-- If order is not completed date and code is returned-->
+      <div *ngIf="orderDone; else orderNotDone">
         <ion-label class="order-number-label">A4567</ion-label>
+        <ion-label class="date-label">17.06.2020 </ion-label>
+        <!--Address is shown if order is not yet completed-->
       </div>
+      <ng-template #orderNotDone>
+        <div>
+          <div>
+            <ion-label class="order-number-label">A4567</ion-label>
+          </div>
+          <div>
+            <ion-label style="font-size: 0.7rem; font-weight: bold">
+              {{ currentOrderAddress }}
+            </ion-label>
+            <ion-text style="font-size: 0.6rem">
+              <p>
+                {{ currentOrderDate }}
+              </p>
+            </ion-text>
+          </div>
+        </div>
+      </ng-template>
       <div>
-        <div style="display: flex; height: 1.3rem; margin: 0.3rem">
+        <div *ngIf="orderDone; else onlyText" class="text-tick-container">
           <ion-icon name="checkmark-circle-outline" class="check"></ion-icon>
           <ion-label class="gray is-done-label">tamamlandı</ion-label>
         </div>
+        <ng-template #onlyText>
+          <ion-label class="gray is-done-label">planlandı</ion-label>
+        </ng-template>
         <ion-label class="total-cost">77.00tl</ion-label>
       </div>
     </div>
   </ion-item>
 
   <ion-card-content *ngIf="details">
-    <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
-    </app-card-item>
+    <div *ngIf="orderDone; else orderWithType">
+      <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
+      </app-card-item>
+      <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
+      </app-card-item>
 
-    <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
-    </app-card-item>
+      <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
+      </app-card-item>
+    </div>
+    <ng-template #orderWithType>
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        type="std "
+      >
+      </app-card-item>
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        type="std "
+      >
+      </app-card-item>
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        type="std "
+      >
+      </app-card-item>
+    </ng-template>
 
-    <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
-    </app-card-item>
     <hr class="rounded" />
 
     <!--Cost labels and fees-->

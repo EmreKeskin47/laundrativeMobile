@@ -7,7 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OrderCardComponent implements OnInit {
   details = false;
-  @Input() public orderDate;
+  @Input() public orderDone;
+  @Input() public currentOrderDate;
+  @Input() public currentOrderAddress;
 
   constructor() {}
 
