@@ -1,0 +1,62 @@
+<ion-card class="card-container">
+  <ion-item button detail="false" (click)="showDetails()">
+    <div class="card-title-container">
+      <div>
+        <ion-label class="date-label">17.06.2020 </ion-label>
+        <ion-label class="order-number-label">A4567</ion-label>
+      </div>
+      <div>
+        <div style="display: flex; height: 1.3rem; margin: 0.3rem">
+          <ion-icon name="checkmark-circle-outline" class="check"></ion-icon>
+          <ion-label class="gray is-done-label">tamamlandı</ion-label>
+        </div>
+        <ion-label class="total-cost">77.00tl</ion-label>
+      </div>
+    </div>
+  </ion-item>
+
+  <ion-card-content *ngIf="details">
+    <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
+    </app-card-item>
+
+    <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
+    </app-card-item>
+
+    <app-card-item itemName="1 Makine Çamaşır Yıkama" itemCost="25,00 tl">
+    </app-card-item>
+    <hr class="rounded" />
+
+    <!--Cost labels and fees-->
+    <ion-grid>
+      <ion-row>
+        <ion-col> </ion-col>
+        <ion-col class="cost-labels black-text">
+          <div>hizmet toplamı</div>
+          <div>servis ücreti</div>
+          <div>cyberpark indirimi(%5)</div>
+          <div>kdv(%8)</div>
+        </ion-col>
+        <ion-col class="label-fee black-text">
+          <div>36,11 tl</div>
+          <div>10,00 tl</div>
+          <div>4,00 tl</div>
+          <div>2,89 tl</div>
+        </ion-col>
+      </ion-row>
+      <hr class="half-width-seperator" />
+    </ion-grid>
+
+    <!--Total Cost -->
+    <ion-grid class="total-cost-grid">
+      <ion-row>
+        <ion-col> </ion-col>
+        <ion-col class="cost-labels black-text">
+          <div>toplam ödeme</div>
+        </ion-col>
+        <ion-col class="total-cost">
+          <div>35,00 tl</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

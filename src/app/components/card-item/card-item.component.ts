@@ -10,8 +10,13 @@ export class CardItemComponent implements OnInit {
   @Input() public deliveryDate;
   @Input() public itemName;
   @Input() public type;
+  public oldOrder;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.deliveryDate) {
+      this.oldOrder = false;
+    } else this.oldOrder = true;
+  }
 }

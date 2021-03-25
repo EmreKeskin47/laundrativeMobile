@@ -1,4 +1,5 @@
-<div class="card-container-border-radius">
+<!--If delivery date is given, this component represents current order-->
+<div *ngIf="!oldOrder; else oldOrderType" class="card-container-border-radius">
   <div class="card-items-content">
     <div class="flex">
       <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
@@ -12,10 +13,29 @@
       <div class="cost">{{ itemCost }}</div>
     </div>
   </div>
-  <ion-card-subtitle class="card-text text-color toLowerCase">
-    <div style="display: flex">
-      <div class="type-color">{{ type }} &nbsp;</div>
-      <div>{{ deliveryDate }} a kadar teslim edilir</div>
-    </div>
-  </ion-card-subtitle>
+  <div>
+    <ion-card-subtitle class="card-text text-color toLowerCase">
+      <div style="display: flex">
+        <div class="type-color">{{ type }} &nbsp;</div>
+        <div>{{ deliveryDate }} a kadar teslim edilir</div>
+      </div>
+    </ion-card-subtitle>
+  </div>
 </div>
+
+<!--If delivery date is not given, this component represents an old order-->
+<ng-template #oldOrderType>
+  <div class="card-items-content">
+    <div class="flex">
+      <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
+      <div style="padding-top: 1.5rem">
+        <ion-card-title class="card-text text-color">{{
+          itemName
+        }}</ion-card-title>
+      </div>
+    </div>
+    <div class="old-order-type">{{ type }} &nbsp;</div>
+
+    <div class="cost">{{ itemCost }}</div>
+  </div>
+</ng-template>

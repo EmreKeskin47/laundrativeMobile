@@ -1,15 +1,24 @@
 <app-header headerTitle="{{pageTitle}}"></app-header>
 <ion-content color="medium">
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule">
-        <ion-label>Tüm siparişler</ion-label>
-        <ion-badge>6</ion-badge>
-      </ion-tab-button>
+  <div>
+    <div class="button-padding">
+      <ion-button (click)="allOrders()">tüm siparişler</ion-button>
+      <ion-button (click)="currentOrders()" fill="outline" class="btn-clr">
+        planlanan siparişler</ion-button
+      >
+    </div>
 
-      <ion-tab-button tab="speakers">
-        <ion-label>Planlanan siparişler</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+    <div *ngIf="onlyDone; else all">
+      <app-order-card></app-order-card>
+    </div>
+
+    <ng-template #all>
+      <app-order-card></app-order-card>
+      <app-order-card></app-order-card>
+      <app-order-card></app-order-card>
+      <app-order-card></app-order-card>
+      <app-order-card></app-order-card>
+      <app-order-card></app-order-card>
+    </ng-template>
+  </div>
 </ion-content>
