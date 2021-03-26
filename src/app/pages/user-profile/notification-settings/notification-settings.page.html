@@ -7,4 +7,112 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium"> </ion-content>
+<ion-content color="medium">
+  <div>
+    <ion-item lines="none" color="medium" class="title-container">
+      <ion-icon name="document-text" class="icon"></ion-icon>
+      <ion-label class="text-color bold-text">bildirim başlıkları</ion-label>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label"
+        >ödeme alındı, siparişiniz onaylandı</ion-label
+      >
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">teslim alma durumu</ion-label>
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">sipariş durumu</ion-label>
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">teslim etme durumu</ion-label>
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">adresinizdeyiz</ion-label>
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">genel kampanyalar</ion-label>
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">size özel promosyonlar</ion-label>
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" color="medium" class="item-container">
+      <div>
+        <ion-label class="text-color label">hatırlatıcılar</ion-label>
+        <ion-label class="text-color reminder"
+          >* planlanan siparişlerde bu özellik kapatılamaz</ion-label
+        >
+      </div>
+
+      <ion-checkbox
+        color="primary"
+        checked
+        slot="start"
+        class="checkbox"
+      ></ion-checkbox>
+    </ion-item>
+  </div>
+  <div>
+    <ion-item lines="none" color="medium" class="title-container">
+      <ion-icon name="notifications" class="icon"></ion-icon>
+      <ion-label class="text-color bold-text">bildirim kanalları</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">mobil bildirimler</ion-label>
+      <ion-toggle
+        slot="start"
+        name="blueberry"
+        checked
+        class="toggle"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="none" color="medium" class="item-container">
+      <ion-label class="text-color label">email bildirimler</ion-label>
+      <ion-toggle slot="start" name="blueberry" class="toggle"></ion-toggle>
+    </ion-item>
+  </div>
+</ion-content>
