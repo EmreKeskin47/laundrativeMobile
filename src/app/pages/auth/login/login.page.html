@@ -8,72 +8,80 @@
 </ion-header>
 
 <ion-content color="medium">
-  <ion-text>
-    <h1 class="title">hoş geldiniz</h1>
-  </ion-text>
+  <div class="root">
+    <div class="full-width">
+      <ion-text>
+        <h1 class="title">hoş geldiniz</h1>
+      </ion-text>
+    </div>
+    <div class="full-width">
+      <div class="input-container">
+        <ion-list class="list">
+          <ion-item lines="none">
+            <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
+            <ion-label class="text-1rem"> e-mail</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-list>
+      </div>
 
-  <div class="input-container">
-    <ion-list class="list">
-      <ion-item>
-        <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
-        <ion-label class="text-1rem"> e-mail</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-list>
-  </div>
+      <div class="input-container">
+        <ion-list class="list">
+          <ion-item lines="none">
+            <ion-icon name="lock-closed" class="icon icon-color"></ion-icon>
+            <ion-label class="text-1rem"> parola</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-list>
+      </div>
 
-  <div class="input-container">
-    <ion-list class="list">
-      <ion-item>
-        <ion-icon name="lock-closed" class="icon icon-color"></ion-icon>
-        <ion-label class="text-1rem"> parola</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-list>
-  </div>
+      <div class="first-button-container">
+        <ion-item lines="none" color="medium">
+          <ion-label class="text-1rem">beni hatırla</ion-label>
+          <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+        </ion-item>
 
-  <div class="first-button-container">
-    <ion-button fill="clear" shape="round">
-      <ion-icon
-        name="checkmark-circle-outline"
-        class="btn-color icon"
-      ></ion-icon>
-      <p class="remember-me toLowerCase">beni hatırla</p>
-    </ion-button>
-    <ion-button
-      fill="clear"
-      expand="block"
-      style="font-size: 0.8rem"
-      class="toLowerCase"
-      >parolamı hatırlamıyorum</ion-button
-    >
-  </div>
-
-  <div class="button-padding">
-    <ion-button (click)="navigateToAccount()" expand="block" class="toLowerCase"
-      >giriş yap</ion-button
-    >
-  </div>
-  <div class="sign-in-buttons-container">
-    <ion-button class="sign-btn" color="light"
-      ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
-      <p class="sign-options toLowerCase">sign in with google</p>
-    </ion-button>
-    <ion-button class="sign-btn" color="light"
-      ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
-      <p class="sign-options toLowerCase">sign in with facebook</p>
-    </ion-button>
-  </div>
-
-  <div class="button-padding btn-color">
-    <ion-button
-      (click)="navigateToSignup()"
-      fill="outline"
-      expand="block"
-      color="primary"
-      class="toLowerCase"
-    >
-      yeni hesap oluştur</ion-button
-    >
+        <ion-button
+          fill="clear"
+          expand="block"
+          style="font-size: 0.8rem"
+          class="toLowerCase"
+          >parolamı hatırlamıyorum</ion-button
+        >
+      </div>
+    </div>
+    <div class="full-width">
+      <div class="button-padding">
+        <ion-button
+          (click)="navigateToAccount()"
+          expand="block"
+          class="toLowerCase"
+          >giriş yap</ion-button
+        >
+      </div>
+      <div class="sign-in-buttons-container">
+        <ion-button class="sign-btn" color="light"
+          ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
+          <p class="sign-options toLowerCase">sign in with google</p>
+        </ion-button>
+        <ion-button class="sign-btn" color="light"
+          ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
+          <p class="sign-options toLowerCase">sign in with facebook</p>
+        </ion-button>
+      </div>
+    </div>
+    <div class="full-width">
+      <div class="button-padding btn-color">
+        <ion-button
+          (click)="navigateToSignup()"
+          fill="outline"
+          expand="block"
+          color="primary"
+          class="toLowerCase"
+        >
+          yeni hesap oluştur</ion-button
+        >
+      </div>
+    </div>
   </div>
 </ion-content>

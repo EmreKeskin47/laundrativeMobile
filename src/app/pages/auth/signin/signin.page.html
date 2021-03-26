@@ -8,43 +8,55 @@
 </ion-header>
 
 <ion-content color="medium">
-  <div class="input-container" style="display: block; padding-top: 10vh">
-    <ion-item class="text-color">
-      <ion-icon name="mail-sharp" class="card-icon icon-clr"></ion-icon>
-      <ion-label class="label" position="floating">e-mail</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-  </div>
+  <div style="padding-top: 5rem">
+    <div class="input-container">
+      <ion-list class="list">
+        <ion-item lines="none">
+          <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
+          <ion-label class="text-1rem"> e-mail</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
 
-  <div class="input-container" style="display: block">
-    <ion-item class="text-color">
-      <ion-icon name="lock-closed" class="card-icon icon-clr"></ion-icon>
-      <ion-label class="label" position="floating">parola</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-  </div>
+    <div class="input-container">
+      <ion-list class="list">
+        <ion-item lines="none">
+          <ion-icon name="lock-closed" class="icon icon-color"></ion-icon>
+          <ion-label class="text-1rem"> parola</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
 
-  <div class="input-container" style="display: block">
-    <ion-item class="text-color">
-      <ion-icon name="lock-closed" class="card-icon icon-clr"></ion-icon>
-      <ion-label class="label" position="floating">parola tekrar</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
+    <div class="input-container">
+      <ion-list class="list">
+        <ion-item lines="none">
+          <ion-icon name="lock-closed" class="icon icon-color"></ion-icon>
+          <ion-label class="text-1rem"> parola tekrar</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
-
-  <div class="button-padding">
-    <ion-button (click)="navigateToAccount()" expand="block" class="toLowerCase"
-      >yeni hesap oluştur</ion-button
-    >
-  </div>
-  <div class="sign-in-buttons-container">
-    <ion-button class="sign-btn" color="light"
-      ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
-      <p class="sign-options toLowerCase">sign up with google</p>
-    </ion-button>
-    <ion-button class="sign-btn" color="light"
-      ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
-      <p class="sign-options toLowerCase">sign up with google</p>
-    </ion-button>
+  <div style="padding-top: 2rem">
+    <div class="button-padding">
+      <ion-button
+        (click)="navigateToAccount()"
+        expand="block"
+        class="toLowerCase"
+        >yeni hesap oluştur</ion-button
+      >
+    </div>
+    <div class="sign-in-buttons-container">
+      <ion-button class="sign-btn" color="light"
+        ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
+        <p class="sign-options toLowerCase">sign up with google</p>
+      </ion-button>
+      <ion-button class="sign-btn" color="light"
+        ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
+        <p class="sign-options toLowerCase">sign up with google</p>
+      </ion-button>
+    </div>
   </div>
 </ion-content>

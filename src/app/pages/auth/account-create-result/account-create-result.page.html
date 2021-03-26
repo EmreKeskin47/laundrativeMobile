@@ -9,59 +9,67 @@
 
 <ion-content color="medium">
   <!--Icon and message -->
-  <div class="message-container">
-    <ion-icon name="checkmark-circle" class="icon"> </ion-icon>
-    <div>
-      <div class="black-color title">
-        hesabınız başarıyla oluşturulmuştur<br />
-      </div>
-      <div class="text-color message">
-        sepetine geri dönebilir, ya da adres bilginizi ve <br />
-        kredi kartı bilginizi girebilirsiniz.<br />
-        Bu işlemleri daha sonra da yapabilirsiniz
+  <div class="root">
+    <div class="full-width">
+      <div class="message-container">
+        <ion-icon name="checkmark-circle" class="icon"> </ion-icon>
+        <div>
+          <div class="black-color title">
+            hesabınız başarıyla oluşturulmuştur<br />
+          </div>
+          <div class="text-color message">
+            sepetine geri dönebilir, ya da adres bilginizi ve <br />
+            kredi kartı bilginizi girebilirsiniz.<br />
+            Bu işlemleri daha sonra da yapabilirsiniz
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="full-width">
+      <div class="button-padding">
+        <ion-button
+          expand="block"
+          color="primary"
+          class="toLowerCase"
+          (click)="navigateToCard()"
+        >
+          sepete dön</ion-button
+        >
+      </div>
+    </div>
+    <div class="full-width">
+      <!--add address button-->
+      <div class="btn-container">
+        <ion-button
+          (click)="navigateToAddAddress()"
+          expand="block"
+          size="medium"
+          color="secondary"
+        >
+          <ion-icon class="btn-icon" name="home"></ion-icon>
+          <p class="btn-label toLowerCase">adres ekle</p>
+        </ion-button>
 
-  <div class="button-padding">
-    <ion-button
-      expand="block"
-      color="primary"
-      class="toLowerCase"
-      (click)="navigateToCard()"
-    >
-      sepete dön</ion-button
-    >
-  </div>
+        <ion-button size="medium" color="tertiary">
+          <ion-icon class="btn-icon" name="card"></ion-icon>
+          <p class="btn-label toLowerCase">kredi kartı ekle</p>
+        </ion-button>
+      </div>
+    </div>
+    <div class="full-width">
+      <div class="bottom-text-container">
+        <div class="text-color message">
+          teslim alma ve teslim etme adreslerinizi ekleyebilirsiniz
+        </div>
 
-  <!--add address button-->
-  <div class="btn-container">
-    <ion-button
-      (click)="navigateToAddAddress()"
-      expand="block"
-      size="medium"
-      color="secondary"
-    >
-      <ion-icon class="btn-icon" name="home"></ion-icon>
-      <p class="btn-label toLowerCase">adres ekle</p>
-    </ion-button>
-
-    <ion-button size="medium" color="tertiary">
-      <ion-icon class="btn-icon" name="card"></ion-icon>
-      <p class="btn-label toLowerCase">kredi kartı ekle</p>
-    </ion-button>
+        <div class="text-color message">
+          <br />kredi kartı bilgileriniz Bankacılık Düzenleme ve <br />denetleme
+          kurulu onaylı Iyzico Ödeme Hizmetleri A.Ş. <br />tarafından
+          saklanmaktadır.
+        </div>
+      </div>
+    </div>
   </div>
 
   <!--Bottom text-->
-  <div class="bottom-text-container">
-    <div class="text-color message">
-      teslim alma ve teslim etme adreslerinizi ekleyebilirsiniz
-    </div>
-
-    <div class="text-color message">
-      <br />kredi kartı bilgileriniz Bankacılık Düzenleme ve <br />denetleme
-      kurulu onaylı Iyzico Ödeme Hizmetleri A.Ş. <br />tarafından
-      saklanmaktadır.
-    </div>
-  </div>
 </ion-content>

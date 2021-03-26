@@ -1,8 +1,15 @@
+.root {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+.full-width {
+  width: 100%;
+}
 .title {
   text-align: center;
   font-size: 3rem;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
   font-weight: bold;
   color: #5e5e5e;
 }
@@ -20,10 +27,15 @@
   padding-right: 1rem;
   padding-top: 0.6rem;
 }
+.icon-color {
+  color: #5e5e5e;
+}
+
 .text-1rem {
   font-size: 0.8rem;
   color: black;
 }
+
 .first-button-container {
   display: flex;
   justify-content: space-between;
@@ -67,7 +79,6 @@
 .button-padding {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 2rem;
 }
 .btn-color {
   color: #e75761;
@@ -75,8 +86,4 @@
 
 .toLowerCase {
   text-transform: lowercase;
-}
-
-.icon-color {
-  color: #5e5e5e;
 }
