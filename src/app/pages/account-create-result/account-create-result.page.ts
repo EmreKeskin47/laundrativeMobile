@@ -18,6 +18,6 @@ export class AccountCreateResultPage implements OnInit {
   }
 
   navigateToAddAddress() {
-    this.router.navigate(['/add-address']);
+    this.router.navigate(['/profile/create-address']);
   }
 }
