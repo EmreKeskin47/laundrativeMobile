@@ -95,6 +95,20 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'profile/create-address',
+        loadChildren: () =>
+          import(
+            '../pages/user-profile/create-address/create-address.module'
+          ).then((m) => m.CreateAddressPageModule),
+      },
+      {
+        path: 'profile/add-address-result',
+        loadChildren: () =>
+          import(
+            '../pages/user-profile/add-address-result/add-address-result.module'
+          ).then((m) => m.AddAddressResultPageModule),
+      },
+      {
         path: 'profile/contact',
         loadChildren: () =>
           import('../pages/user-profile/contact/contact.module').then(

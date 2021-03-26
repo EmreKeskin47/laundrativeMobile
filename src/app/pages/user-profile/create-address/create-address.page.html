@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <div class="root">
+    <div style="width: 100%">
+      <ion-item class="item-container">
+        <ion-label class="gray-text">il</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)"
+        >
+        </ionic-selectable>
+      </ion-item>
+
+      <ion-item class="item-container">
+        <ion-label class="gray-text">ilçe</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)"
+        >
+        </ionic-selectable>
+      </ion-item>
+
+      <ion-item class="item-container">
+        <ion-label class="gray-text">mahalle</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)"
+        >
+        </ionic-selectable>
+      </ion-item>
+
+      <ion-item lines="none" class="item-container">
+        <ion-icon name="home" slot="start" class="input-icon white"></ion-icon>
+        <div>
+          <ion-label class="label-size gray-text">adres başlığı *</ion-label>
+          <ion-input class="input-text gray-text"></ion-input>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" class="item-container">
+        <ion-icon
+          name="home"
+          slot="start"
+          class="input-icon gray-text"
+        ></ion-icon>
+        <ion-label class="label-size gray-text" position="stacked"
+          >adres</ion-label
+        >
+        <ion-textarea
+          autoGrow="false"
+          rows="3"
+          class="input-text gray-text"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item lines="none" class="item-container">
+        <ion-icon
+          name="location"
+          slot="start"
+          class="input-icon gray-text"
+        ></ion-icon>
+        <div>
+          <ion-label class="label-size gray-text"
+            >konum ekle (opsiyonel)</ion-label
+          >
+          <ion-input class="input-text gray-text"></ion-input>
+        </div>
+      </ion-item>
+
+      <!--Contact info-->
+      <div style="padding: 0.5rem 0.5rem 0.5rem 1rem">
+        <ion-checkbox
+          (click)="onChange()"
+          style="--size: 1rem; margin-right: 0.5rem"
+        ></ion-checkbox>
+        <ion-label class="gray-text">başka bir alıcı</ion-label>
+      </div>
+      <div *ngIf="anotherUser">
+        <ion-item lines="none" class="item-container">
+          <ion-icon
+            name="person"
+            slot="start"
+            class="input-icon gray-text"
+          ></ion-icon>
+          <div>
+            <ion-label class="label-size gray-text">isim soyisim</ion-label>
+            <ion-input class="input-text gray-text"></ion-input>
+          </div>
+        </ion-item>
+        <ion-item lines="none" class="item-container">
+          <ion-icon
+            name="call"
+            slot="start"
+            class="input-icon gray-text"
+          ></ion-icon>
+          <div>
+            <ion-label class="label-size gray-text"
+              >telefon numaranız</ion-label
+            >
+            <ion-input class="input-text gray-text"></ion-input>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="new-address">
+      <ion-button (click)="navigateToAddressList()" expand="block"
+        >kaydet</ion-button
+      >
+    </div>
+  </div>
+</ion-content>
+
+<style>
+  .label-size {
+    font-size: 0.6rem;
+  }
+  .input-icon {
+    margin-top: 0.2rem;
+    font-size: 1.4rem;
+  }
+  .item-container {
+    --border-radius: 20px;
+    padding: 0.5rem;
+  }
+  .input-text {
+    font-size: 0.6rem;
+  }
+  .white {
+    color: white;
+  }
+
+  .gray-text {
+    color: gray;
+  }
+
+  .new-address {
+    width: 100%;
+    padding: 1rem;
+  }
+  .root {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+</style>

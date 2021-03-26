@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Address } from './../../../../models/ui/Address';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,7 +20,10 @@ export class AddressListPage implements OnInit {
     'https://goo.gl/maps/R8PMLM7z4FWGFHRB7'
   );
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  navigateToCreateAddress() {
+    this.router.navigate(['profile/create-address']);
+  }
   ngOnInit() {}
 }

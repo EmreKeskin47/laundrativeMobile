@@ -85,9 +85,9 @@ const routes: Routes = [
   {
     path: 'add-address-result',
     loadChildren: () =>
-      import('./pages/add-address-result/add-address-result.module').then(
-        (m) => m.AddAddressResultPageModule
-      ),
+      import(
+        './pages/user-profile/add-address-result/add-address-result.module'
+      ).then((m) => m.AddAddressResultPageModule),
   },
   {
     path: 'payment',
@@ -125,19 +125,38 @@ const routes: Routes = [
   },
   {
     path: 'address-list',
-    loadChildren: () => import('./pages/user-profile/address-list/address-list.module').then( m => m.AddressListPageModule)
+    loadChildren: () =>
+      import('./pages/user-profile/address-list/address-list.module').then(
+        (m) => m.AddressListPageModule
+      ),
   },
   {
     path: 'notification-settings',
-    loadChildren: () => import('./pages/user-profile/notification-settings/notification-settings.module').then( m => m.NotificationSettingsPageModule)
+    loadChildren: () =>
+      import(
+        './pages/user-profile/notification-settings/notification-settings.module'
+      ).then((m) => m.NotificationSettingsPageModule),
   },
   {
     path: 'discount-list',
-    loadChildren: () => import('./pages/user-profile/discount-list/discount-list.module').then( m => m.DiscountListPageModule)
+    loadChildren: () =>
+      import('./pages/user-profile/discount-list/discount-list.module').then(
+        (m) => m.DiscountListPageModule
+      ),
   },
   {
     path: 'contact',
-    loadChildren: () => import('./pages/user-profile/contact/contact.module').then( m => m.ContactPageModule)
+    loadChildren: () =>
+      import('./pages/user-profile/contact/contact.module').then(
+        (m) => m.ContactPageModule
+      ),
+  },
+  {
+    path: 'create-address',
+    loadChildren: () =>
+      import('./pages/user-profile/create-address/create-address.module').then(
+        (m) => m.CreateAddressPageModule
+      ),
   },
 ];
 @NgModule({
