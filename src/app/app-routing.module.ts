@@ -61,19 +61,21 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+      import('./pages/auth/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'signin',
     loadChildren: () =>
-      import('./pages/signin/signin.module').then((m) => m.SigninPageModule),
+      import('./pages/auth/signin/signin.module').then(
+        (m) => m.SigninPageModule
+      ),
   },
   {
     path: 'account-create-result',
     loadChildren: () =>
-      import('./pages/account-create-result/account-create-result.module').then(
-        (m) => m.AccountCreateResultPageModule
-      ),
+      import(
+        './pages/auth/account-create-result/account-create-result.module'
+      ).then((m) => m.AccountCreateResultPageModule),
   },
   {
     path: 'add-address-result',

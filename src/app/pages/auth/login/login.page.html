@@ -42,7 +42,7 @@
     </ion-button>
     <ion-button
       fill="clear"
-      shape="round"
+      expand="block"
       style="font-size: 0.8rem"
       class="toLowerCase"
       >parolamı hatırlamıyorum</ion-button
@@ -50,11 +50,7 @@
   </div>
 
   <div class="button-padding">
-    <ion-button
-      (click)="navigateToAccount()"
-      shape="round"
-      expand="block"
-      class="toLowerCase"
+    <ion-button (click)="navigateToAccount()" expand="block" class="toLowerCase"
       >giriş yap</ion-button
     >
   </div>
@@ -72,7 +68,6 @@
   <div class="button-padding btn-color">
     <ion-button
       (click)="navigateToSignup()"
-      shape="round"
       fill="outline"
       expand="block"
       color="primary"
