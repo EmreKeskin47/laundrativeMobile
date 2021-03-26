@@ -96,42 +96,44 @@
     hizmetinden faydalanabilirsiniz
   </div>
 
-  <!--Sign up / add address container-->
-  <div *ngIf="!isLogged; else logged">
-    <div class="signup-buttons-container black-text">
-      teslimat adresi ekleyebilmek ve ödeme
-      <br />
-      yapabilmek için lütfen kullanıcı girişi yapın
-    </div>
-    <div class="button-padding">
-      <ion-button (click)="navigateToLogin()" expand="block"
-        >giriş yap</ion-button
-      >
-    </div>
-    <div class="button-padding black-text">
-      <ion-button
-        (click)="navigateToSignup()"
-        fill="outline"
-        expand="block"
-        class="btn-clr"
-      >
-        yeni hesap oluştur</ion-button
-      >
-    </div>
-  </div>
-
-  <ng-template #logged>
-    <div style="padding-top: 1.5rem">
-      <app-adress-field></app-adress-field>
-      <app-date-field calenderTitle="teslim alma zamanı"></app-date-field>
-      <div class="pay-btn">
+  <div>
+    <!--Sign up / add address container-->
+    <div *ngIf="!isLogged; else logged">
+      <div class="signup-buttons-container black-text">
+        teslimat adresi ekleyebilmek ve ödeme
+        <br />
+        yapabilmek için lütfen kullanıcı girişi yapın
+      </div>
+      <div class="button-padding">
+        <ion-button (click)="navigateToLogin()" expand="block"
+          >giriş yap</ion-button
+        >
+      </div>
+      <div class="button-padding black-text">
         <ion-button
-          (click)="navigateToPayment()"
-          class="lowerCase"
+          (click)="navigateToSignup()"
+          fill="outline"
           expand="block"
-          >ödeme yap</ion-button
+          class="btn-clr"
+        >
+          yeni hesap oluştur</ion-button
         >
       </div>
     </div>
-  </ng-template>
+
+    <ng-template #logged>
+      <div style="padding-top: 1.5rem">
+        <app-adress-field></app-adress-field>
+        <app-date-field calenderTitle="teslim alma zamanı"></app-date-field>
+        <div class="pay-btn">
+          <ion-button
+            (click)="navigateToPayment()"
+            class="lowerCase"
+            expand="block"
+            >ödeme yap</ion-button
+          >
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </ion-content>
