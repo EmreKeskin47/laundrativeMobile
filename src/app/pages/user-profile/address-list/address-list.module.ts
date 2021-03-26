@@ -1,11 +1,9 @@
+import { ComponentsModule } from './../../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { AddressListPageRoutingModule } from './address-list-routing.module';
-
 import { AddressListPage } from './address-list.page';
 
 @NgModule({
@@ -13,8 +11,9 @@ import { AddressListPage } from './address-list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddressListPageRoutingModule
+    AddressListPageRoutingModule,
+    ComponentsModule,
   ],
-  declarations: [AddressListPage]
+  declarations: [AddressListPage],
 })
 export class AddressListPageModule {}

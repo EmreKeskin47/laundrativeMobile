@@ -1,0 +1,47 @@
+<ion-card class="card-container">
+  <div style="display: flex">
+    <ion-icon class="address-icon" name="home"></ion-icon>
+    <div>
+      <div>
+        <ion-label class="text gray-text">{{ address.addressTitle }}</ion-label>
+      </div>
+      <ion-label class="title-label black-text">
+        {{ address.addressLocation }}
+      </ion-label>
+    </div>
+  </div>
+  <hr class="rounded" />
+
+  <div style="padding-left: 3rem">
+    <div>
+      <ion-label class="text gray-text"> {{ address.name }} </ion-label>
+    </div>
+    <div>
+      <ion-label class="text gray-text"> {{ address.phone1 }} </ion-label>
+      <ion-label class="text gray-text"> {{ address.phone2 }} </ion-label>
+    </div>
+    <ion-label class="text gray-text">
+      {{ address.addressDescription }}
+    </ion-label>
+  </div>
+
+  <div style="display: flex">
+    <ion-icon class="location-icon" name="location"></ion-icon>
+    <div>
+      <div>
+        <ion-label class="title-label black-text">paylaşılan konum</ion-label>
+      </div>
+      <ion-label class="text gray-text">{{ address.locationLink }}</ion-label>
+    </div>
+  </div>
+</ion-card>
+<div style="text-align: end; padding-right: 1rem">
+  <ion-chip class="ter-bcg">
+    <ion-icon class="white-text" name="pencil"></ion-icon>
+    <ion-label class="white-text">düzenle</ion-label>
+  </ion-chip>
+  <ion-chip class="sec-bcg">
+    <ion-icon class="white-text" name="close"></ion-icon>
+    <ion-label class="white-text">kaldır</ion-label>
+  </ion-chip>
+</div>

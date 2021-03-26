@@ -1,3 +1,4 @@
+import { AddressCardComponent } from './address-card/address-card.component';
 import { OrderCardComponent } from './order-card/order-card.component';
 import { AdressFieldComponent } from './adress-field/adress-field.component';
 import { DateFieldComponent } from './date-field/date-field.component';
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     DateFieldComponent,
     AdressFieldComponent,
     OrderCardComponent,
+    AddressCardComponent,
   ],
   exports: [
     HeaderComponent,
@@ -29,6 +31,7 @@ import { CommonModule } from '@angular/common';
     DateFieldComponent,
     AdressFieldComponent,
     OrderCardComponent,
+    AddressCardComponent,
   ],
 })
 export class ComponentsModule {}

@@ -1,0 +1,43 @@
+.card-container {
+  border-radius: 20px;
+  margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
+.title-label {
+  font-size: 0.9rem;
+  font-weight: "bold";
+}
+.text {
+  font-size: 0.7rem;
+}
+.address-icon {
+  font-size: 1.1rem;
+  padding: 1.2rem 1rem 1rem 1rem;
+}
+.location-icon {
+  font-size: 1.1rem;
+  padding: 1rem 1rem 2.3rem 1rem;
+}
+.rounded {
+  border-top: 1px solid rgb(34, 33, 33);
+  border-radius: 1px;
+  opacity: 0.8;
+  margin: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 85%;
+  margin: 0rem 0rem 0rem 2rem;
+}
+.black-text {
+  color: black;
+}
+.gray-text {
+  color: rgb(75, 75, 75);
+}
+.sec-bcg {
+  --background: linear-gradient(-45deg, #e75761, #db5776, #cf4f87, #b84092);
+}
+.ter-bcg {
+  --background: linear-gradient(-45deg, #ff9300, #ee5f5f);
+}
+.white-text {
+  color: white;
+}
