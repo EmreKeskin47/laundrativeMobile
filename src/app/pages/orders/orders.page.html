@@ -1,38 +1,46 @@
 <app-header headerTitle="{{pageTitle}}"></app-header>
 <ion-content color="medium">
-  <div>
-    <div class="button-padding">
-      <ion-button (click)="allOrders()">tüm siparişler</ion-button>
-      <ion-button (click)="currentOrders()" fill="outline" class="btn-clr">
-        planlanan siparişler</ion-button
-      >
-    </div>
+  <div class="button-padding">
+    <ion-button (click)="allOrders()">tüm siparişler</ion-button>
+    <ion-button (click)="currentOrders()" fill="outline" class="btn-clr">
+      planlanan siparişler</ion-button
+    >
+  </div>
 
-    <div *ngIf="onlyDone; else all">
-      <app-order-card
-        currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
-        currentOrderAddress="17.06.2021 Salı 16:30"
-      ></app-order-card>
-      <!--edit save buttons-->
-      <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
-        <ion-chip class="ter-bcg">
-          <ion-icon class="white-text" name="pencil"></ion-icon>
-          <ion-label class="white-text">düzenle</ion-label>
-        </ion-chip>
-        <ion-chip class="sec-bcg">
-          <ion-icon class="white-text" name="close"></ion-icon>
-          <ion-label class="white-text">sil</ion-label>
-        </ion-chip>
+  <div *ngIf="onlyDone; else all" style="height: 80%">
+    <div class="root">
+      <div>
+        <app-order-card
+          currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
+          currentOrderAddress="17.06.2021 Salı 16:30"
+        ></app-order-card>
+        <!--edit save buttons-->
+        <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
+          <ion-chip class="ter-bcg">
+            <ion-icon class="white-text" name="pencil"></ion-icon>
+            <ion-label class="white-text">düzenle</ion-label>
+          </ion-chip>
+          <ion-chip class="sec-bcg">
+            <ion-icon class="white-text" name="close"></ion-icon>
+            <ion-label class="white-text">sil</ion-label>
+          </ion-chip>
+        </div>
+      </div>
+
+      <div class="new-order">
+        <ion-button (click)="navigateToCreateOrder()" expand="block"
+          >yeni sipariş oluştur</ion-button
+        >
       </div>
     </div>
-
-    <ng-template #all>
-      <app-order-card [orderDone]="true"></app-order-card>
-      <app-order-card [orderDone]="true"></app-order-card>
-      <app-order-card [orderDone]="true"></app-order-card>
-      <app-order-card [orderDone]="true"></app-order-card>
-      <app-order-card [orderDone]="true"></app-order-card>
-      <app-order-card [orderDone]="true"></app-order-card>
-    </ng-template>
   </div>
+
+  <ng-template #all>
+    <app-order-card [orderDone]="true"></app-order-card>
+    <app-order-card [orderDone]="true"></app-order-card>
+    <app-order-card [orderDone]="true"></app-order-card>
+    <app-order-card [orderDone]="true"></app-order-card>
+    <app-order-card [orderDone]="true"></app-order-card>
+    <app-order-card [orderDone]="true"></app-order-card>
+  </ng-template>
 </ion-content>

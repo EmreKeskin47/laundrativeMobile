@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class OrdersPage implements OnInit {
   pageTitle = 'siparişleriniz';
   onlyDone = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   currentOrders() {
     this.onlyDone = true;
@@ -17,6 +18,10 @@ export class OrdersPage implements OnInit {
 
   allOrders() {
     this.onlyDone = false;
+  }
+
+  navigateToCreateOrder() {
+    this.router.navigate(['/create-order']);
   }
 
   ngOnInit() {}
