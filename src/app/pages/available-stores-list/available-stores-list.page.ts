@@ -1,4 +1,4 @@
-import { Institution } from './../../../models/Institution';
+import { Institution } from '../../models/Institution';
 import { InstitutionService } from './../../services/institution.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -18,9 +18,10 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.institutionService.getAllInstitutions().subscribe((kurum) => {
-    //this.institutionList;
-    //});
+    this.institutionService.getAllInstitutions().subscribe((kurum) => {
+      this.institutionList = kurum;
+    });
+    console.log(this.institutionList);
   }
 
   navigateToStore() {

@@ -1,4 +1,4 @@
-import { Address } from './../../../models/ui/Address';
+import { Address } from '../../models/ui/Address';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

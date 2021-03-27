@@ -1,4 +1,4 @@
-import { Price } from './../../models/Price';
+import { Price } from '../models/Price';
 import { Injectable } from '@angular/core';
 import { BASE_URL } from './../api/baseUrl';
 import { HttpClient } from '@angular/common/http';

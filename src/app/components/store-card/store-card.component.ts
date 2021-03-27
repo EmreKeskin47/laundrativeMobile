@@ -6,10 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./store-card.component.scss'],
 })
 export class StoreCardComponent implements OnInit {
-  //@Input() public storeName;
-  //@Input() public location;
-  storeName = 'Bil wash laundry ';
-  location = 'ümitköy mah. çankaya';
+  @Input() public storeName;
+  @Input() public location;
+  //storeName = 'Bil wash laundry ';
+  //location = 'ümitköy mah. çankaya';
   timeInterval = '09:30-17:00';
   day = 'Hemen teslim alabilir';
   minFee = '40tl';
