@@ -3,11 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../components/components.module';
 import { IonicModule } from '@ionic/angular';
-
 import { CreateOrderPageRoutingModule } from './create-order-routing.module';
-
 import { CreateOrderPage } from './create-order.page';
-import { DiscountComponent } from '../../components/discount/discount.component';
 
 @NgModule({
   imports: [
@@ -17,6 +14,6 @@ import { DiscountComponent } from '../../components/discount/discount.component'
     CreateOrderPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [CreateOrderPage, DiscountComponent],
+  declarations: [CreateOrderPage],
 })
 export class CreateOrderPageModule {}

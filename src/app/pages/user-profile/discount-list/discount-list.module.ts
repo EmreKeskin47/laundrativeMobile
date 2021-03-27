@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +14,9 @@ import { DiscountListPage } from './discount-list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DiscountListPageRoutingModule
+    DiscountListPageRoutingModule,
+    ComponentsModule,
   ],
-  declarations: [DiscountListPage]
+  declarations: [DiscountListPage],
 })
 export class DiscountListPageModule {}

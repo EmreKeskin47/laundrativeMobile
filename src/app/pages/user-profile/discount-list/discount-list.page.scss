@@ -1,0 +1,52 @@
+.text-color {
+  color: gray;
+}
+.title-container {
+  padding-top: 2rem;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+.icon {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.5rem;
+}
+.discount {
+  padding: 0.5rem;
+}
+.card-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5rem;
+  --border-radius: 20px;
+}
+.store-icon {
+  font-size: 2rem;
+  padding: 0 0 2rem 0;
+}
+.store-name {
+  margin: 0;
+  font-size: 0.6rem;
+}
+.card-right-content {
+  text-align: end;
+  font-size: 0.6rem;
+}
+.link {
+  font-size: 1rem;
+  color: #eb4691;
+  font-weight: bold;
+}
+.discount-text {
+  font-size: 0.7rem;
+}
+.root {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-width {
+  width: 100%;
+}

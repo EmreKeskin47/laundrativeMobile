@@ -36,4 +36,7 @@ export class CreateOrderPage {
   navigateToDetailedSearch() {
     this.router.navigate(['/create-order/detailed-search']);
   }
+  navigateToDiscount() {
+    this.router.navigate(['/profile/discount-list']);
+  }
 }
