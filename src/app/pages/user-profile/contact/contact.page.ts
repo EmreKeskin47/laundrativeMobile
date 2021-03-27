@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactPage implements OnInit {
   pageTitle = 'bize ulaşın';
+  showMessage = false;
 
   constructor() {}
+
+  messagePressed() {
+    this.showMessage = !this.showMessage;
+  }
 
   ngOnInit() {}
 }

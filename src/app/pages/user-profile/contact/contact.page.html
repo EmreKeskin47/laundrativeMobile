@@ -7,4 +7,85 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium"> </ion-content>
+<ion-content color="medium">
+  <div>
+    <ion-chip disabled="false" class="container">
+      <div style="display: flex">
+        <ion-icon color="danger" class="icon" name="cog-sharp"></ion-icon>
+        <ion-label class="label text-color bold-text"
+          >nasıl çalışıyoruz ?</ion-label
+        >
+      </div>
+
+      <ion-button class="navigate-btn">
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
+      </ion-button>
+    </ion-chip>
+
+    <div>
+      <ion-chip class="container">
+        <div style="display: flex">
+          <ion-icon color="danger" class="icon" name="help-sharp"></ion-icon>
+          <ion-label class="label text-color bold-text"
+            >laundrative nasıl kullanılır ?</ion-label
+          >
+        </div>
+
+        <ion-button class="navigate-btn">
+          <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
+        </ion-button>
+      </ion-chip>
+    </div>
+
+    <ion-chip disabled="false" class="container">
+      <div style="display: flex">
+        <ion-icon color="danger" class="icon" name="mail-sharp"></ion-icon>
+        <ion-label class="label text-color bold-text">mesaj gönderin</ion-label>
+      </div>
+
+      <ion-button (click)="messagePressed()" class="navigate-btn">
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
+      </ion-button>
+    </ion-chip>
+
+    <!--Message container-->
+    <div *ngIf="showMessage">
+      <ion-item lines="none" class="item-container">
+        <ion-input class="input-text gray-text" placeholder="konu"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="item-container">
+        <ion-textarea
+          rows="4"
+          class="input-text gray-text"
+          placeholder="mesaj"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item lines="none" class="item-container">
+        <ion-input
+          class="input-text gray-text"
+          placeholder="efe cobanoglu"
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="item-container">
+        <ion-input
+          class="input-text gray-text"
+          placeholder="efecobanoglu@gmail.com"
+        ></ion-input>
+      </ion-item>
+      <div class="send-btn">
+        <ion-button> gönder</ion-button>
+      </div>
+    </div>
+
+    <ion-chip disabled="false" class="container">
+      <div style="display: flex">
+        <ion-icon color="danger" class="icon" name="call-sharp"></ion-icon>
+        <ion-label class="label text-color bold-text">sizi arayalım</ion-label>
+      </div>
+
+      <ion-button class="navigate-btn">
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
+      </ion-button>
+    </ion-chip>
+  </div>
+</ion-content>
