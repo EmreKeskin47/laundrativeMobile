@@ -12,7 +12,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: inherit;
 }
 .image {
   width: 100%;
@@ -25,11 +24,14 @@
 }
 .grid-element {
   display: inline-grid;
-  margin-top: 10%;
   justify-items: center;
 }
 .grid-item {
   padding-top: 2px;
+  border-radius: 20px;
+  width: 100%;
+  --padding-start: 0;
+  --inner-padding-end: 0;
 }
 
 .grid-label {

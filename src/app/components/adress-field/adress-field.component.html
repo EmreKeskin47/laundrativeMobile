@@ -9,7 +9,7 @@
         ></ion-icon>
       </div>
       <ion-label class="text-1rem"> Adres </ion-label>
-      <ion-select>
+      <ion-select (ionChange)="addressChange($event)">
         <ion-select-option
           *ngFor="let address of addressList"
           [value]="address"

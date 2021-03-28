@@ -19,76 +19,169 @@
   <!-- Grid of Services-->
   <ion-row>
     <ion-col>
-      <div class="grid-item">
+      <ion-item
+        color="medium"
+        button
+        lines="none"
+        detail="false"
+        class="grid-item"
+        (click)="laundry()"
+      >
         <div class="container">
           <img src="../../assets/images/camasirYikama.png" class="image" />
           <div class="centered">
             <div class="grid-element">
-              <ion-icon name="cut-outline" class="icon"> </ion-icon>
-              <ion-label class="grid-label"> çamaşır yıkama</ion-label>
+              <div *ngIf="!isSelected1 else selected1">
+                <ion-icon name="cut-outline" class="icon"> </ion-icon>
+                <ion-label class="grid-label"> çamaşır yıkama</ion-label>
+              </div>
+              <ng-template #selected1>
+                <ion-icon
+                  name="checkmark-done-circle-outline"
+                  class="icon"
+                ></ion-icon>
+              </ng-template>
             </div>
           </div>
         </div>
-      </div>
-      <div class="grid-item">
+      </ion-item>
+
+      <ion-item
+        color="medium"
+        button
+        lines="none"
+        detail="false"
+        class="grid-item"
+        (click)="terziTadilat()"
+      >
         <div class="container">
           <img src="../../assets/images/terziTadilat.png" class="image" />
           <div class="centered">
             <div class="grid-element">
-              <ion-icon name="cut-outline" class="icon"> </ion-icon>
-              <ion-label class="grid-label"> terzi tadilat</ion-label>
+              <div *ngIf="!isSelected6 else selected6">
+                <ion-icon name="cut-outline" class="icon"> </ion-icon>
+                <ion-label class="grid-label"> terzi tadilat</ion-label>
+              </div>
+              <ng-template #selected6>
+                <ion-icon
+                  name="checkmark-done-circle-outline"
+                  class="icon"
+                ></ion-icon>
+              </ng-template>
             </div>
           </div>
         </div>
-      </div>
+      </ion-item>
     </ion-col>
     <ion-col>
-      <div class="grid-item">
+      <ion-item
+        color="medium"
+        button
+        lines="none"
+        detail="false"
+        class="grid-item"
+        (click)="iron()"
+      >
         <div class="container">
           <img src="../../assets/images/Utuleme.png" alt="temp" class="image" />
           <div class="centered">
             <div class="grid-element">
-              <ion-icon name="cut-outline" class="icon"> </ion-icon>
-              <ion-label class="grid-label"> ütüleme</ion-label>
+              <div *ngIf="!isSelected2 else selected2">
+                <ion-icon name="cut-outline" class="icon"> </ion-icon>
+                <ion-label class="grid-label"> ütüleme</ion-label>
+              </div>
+              <ng-template #selected2>
+                <ion-icon
+                  name="checkmark-done-circle-outline"
+                  class="icon"
+                ></ion-icon>
+              </ng-template>
             </div>
           </div>
         </div>
-      </div>
-      <div class="grid-item">
+      </ion-item>
+
+      <ion-item
+        color="medium"
+        button
+        lines="none"
+        detail="false"
+        class="grid-item"
+        (click)="lostra()"
+      >
         <div class="container">
           <img src="../../assets/images/lostra.png" alt="temp" class="image" />
           <div class="centered">
             <div class="grid-element">
-              <ion-icon name="cut-outline" class="icon"> </ion-icon>
-              <ion-label class="grid-label"> lostra</ion-label>
+              <div *ngIf="!isSelected7 else selected7">
+                <ion-icon name="cut-outline" class="icon"> </ion-icon>
+                <ion-label class="grid-label"> lostra</ion-label>
+              </div>
+              <ng-template #selected7>
+                <ion-icon
+                  name="checkmark-done-circle-outline"
+                  class="icon"
+                ></ion-icon>
+              </ng-template>
             </div>
           </div>
         </div>
-      </div>
+      </ion-item>
     </ion-col>
     <ion-col>
-      <div class="grid-item">
+      <ion-item
+        color="medium"
+        button
+        lines="none"
+        detail="false"
+        class="grid-item"
+        (click)="dryClean()"
+      >
         <div class="container">
           <img src="../../assets/images/kuruTemizleme.png" class="image" />
           <div class="centered">
             <div class="grid-element">
-              <ion-icon name="cut-outline" class="icon"> </ion-icon>
-              <ion-label class="grid-label"> kuru temizleme</ion-label>
+              <div *ngIf="!isSelected3 else selected3">
+                <ion-icon name="cut-outline" class="icon"> </ion-icon>
+                <ion-label class="grid-label"> kuru temizleme</ion-label>
+              </div>
+              <ng-template #selected3>
+                <ion-icon
+                  name="checkmark-done-circle-outline"
+                  class="icon"
+                ></ion-icon>
+              </ng-template>
             </div>
           </div>
         </div>
-      </div>
-      <div class="grid-item">
+      </ion-item>
+
+      <ion-item
+        color="medium"
+        button
+        lines="none"
+        detail="false"
+        class="grid-item"
+        (click)="haliYikama()"
+      >
         <div class="container">
           <img src="../../assets/images/haliYikama.png" class="image" />
           <div class="centered">
             <div class="grid-element">
-              <ion-icon name="cut-outline" class="icon"> </ion-icon>
-              <ion-label class="grid-label"> halı yıkama</ion-label>
+              <div *ngIf="!isSelected5 else selected5">
+                <ion-icon name="cut-outline" class="icon"> </ion-icon>
+                <ion-label class="grid-label"> halı yıkama</ion-label>
+              </div>
+              <ng-template #selected5>
+                <ion-icon
+                  name="checkmark-done-circle-outline"
+                  class="icon"
+                ></ion-icon>
+              </ng-template>
             </div>
           </div>
         </div>
-      </div>
+      </ion-item>
     </ion-col>
   </ion-row>
 

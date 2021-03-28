@@ -13,12 +13,12 @@
       <ion-item lines="none" class="item-container">
         <ion-label class="gray-text">il</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedProvince"
+          [items]="provinceList"
           itemValueField="id"
-          itemTextField="name"
+          itemTextField="provinceName"
           [canSearch]="true"
-          (onChange)="portChange($event)"
+          (onChange)="provinceChange($event)"
         >
         </ionic-selectable>
       </ion-item>
@@ -26,12 +26,25 @@
       <ion-item lines="none" class="item-container">
         <ion-label class="gray-text">ilçe</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedDistrict"
+          [items]="districtList"
           itemValueField="id"
-          itemTextField="name"
+          itemTextField="districtName"
           [canSearch]="true"
-          (onChange)="portChange($event)"
+          (onChange)="districtChange($event)"
+        >
+        </ionic-selectable>
+      </ion-item>
+
+      <ion-item lines="none" class="item-container">
+        <ion-label class="gray-text">semt</ion-label>
+        <ionic-selectable
+          [(ngModel)]="selectedCounty"
+          [items]="countyList"
+          itemValueField="id"
+          itemTextField="countyName"
+          [canSearch]="true"
+          (onChange)="countyChange($event)"
         >
         </ionic-selectable>
       </ion-item>
@@ -39,12 +52,12 @@
       <ion-item lines="none" class="item-container">
         <ion-label class="gray-text">mahalle</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedNeighborhood"
+          [items]="neighborhoodList"
           itemValueField="id"
-          itemTextField="name"
+          itemTextField="neighborhoodName"
           [canSearch]="true"
-          (onChange)="portChange($event)"
+          (onChange)="neighborhoodChange($event)"
         >
         </ionic-selectable>
       </ion-item>
