@@ -1,0 +1,132 @@
+<!-- amount controller -->
+<div style="padding: 10px">
+  <div class="amount-container">
+    <div style="display: flex">
+      <div *ngIf="cardSize > 1; else noMinus">
+        <ion-button
+          fill="clear"
+          shape="round"
+          class="plus-minus-btn"
+          (click)="minus()"
+        >
+          <ion-icon name="remove-sharp" class="amount-icons"></ion-icon>
+        </ion-button>
+      </div>
+      <ng-template #noMinus>
+        <ion-button
+          fill="clear"
+          shape="round"
+          class="plus-minus-btn"
+          (click)="removeFromCard()"
+        >
+          <ion-icon name="remove-sharp" class="amount-icons"></ion-icon>
+        </ion-button>
+      </ng-template>
+
+      <ion-label class="amount-text text-color">{{ cardSize }} Adet</ion-label>
+      <ion-button
+        fill="clear"
+        shape="round"
+        class="plus-minus-btn"
+        (click)="plus()"
+      >
+        <ion-icon name="add-sharp" class="amount-icons"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="cost" style="padding-right: 1rem">{{ totalCost }},00tl</div>
+  </div>
+</div>
+
+<!-- Grid of Services-->
+
+<ion-row>
+  <ion-col class="col-padding">
+    <div class="service-card-container">
+      <div class="card-content">
+        <div class="text-color fee">
+          {{ itemCost }},00 tl <br /><b> standard </b>
+        </div>
+        <ion-button
+          fill="clear"
+          shape="round"
+          class="check-btn"
+          (click)="selectType(1)"
+        >
+          <ion-icon
+            [ngClass]="{
+              'text-color': selectedType != 1,
+              selected: selectedType == 1
+            }"
+            name="checkmark-circle-outline"
+          ></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="card-date text-color">
+        29.12.20
+        <br />
+        Pazartesi 16:30
+      </div>
+    </div>
+  </ion-col>
+
+  <ion-col>
+    <div class="service-card-container">
+      <div class="card-content">
+        <div class="text-color fee">
+          {{ itemCost + 5 }},00 tl <br /><b> express </b>
+        </div>
+        <ion-button
+          fill="clear"
+          shape="round"
+          class="check-btn"
+          (click)="selectType(2)"
+        >
+          <ion-icon
+            [ngClass]="{
+              'text-color': selectedType != 2,
+              selected: selectedType == 2
+            }"
+            name="checkmark-circle-outline"
+          ></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="card-date text-color">
+        29.12.20
+        <br />
+        Pazartesi 16:30
+      </div>
+    </div>
+  </ion-col>
+
+  <ion-col>
+    <div class="service-card-container">
+      <div class="card-content">
+        <div class="text-color fee">
+          {{ itemCost + 15 }},00 tl <br /><b> premium </b>
+        </div>
+        <ion-button
+          fill="clear"
+          shape="round"
+          class="check-btn"
+          (click)="selectType(3)"
+        >
+          <ion-icon
+            [ngClass]="{
+              'text-color': selectedType != 3,
+              selected: selectedType == 3
+            }"
+            name="checkmark-circle-outline"
+          ></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="card-date text-color">
+        29.12.20
+        <br />
+        Pazar 13:30
+      </div>
+    </div>
+  </ion-col>
+</ion-row>

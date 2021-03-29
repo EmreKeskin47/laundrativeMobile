@@ -47,6 +47,7 @@
 .discount-btn {
   padding-right: 0.5rem;
 }
+
 //card item
 .card-container {
   border-radius: 20px;
@@ -87,60 +88,6 @@
   font-family: "Avenir";
 }
 
-//amount container
-.amount-container {
-  background-color: whitesmoke;
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-.amount-icons {
-  font-size: 1.5rem;
-  color: #e75761;
-}
-
-.cost {
-  font-size: 1.3rem;
-  margin-top: 0.4rem;
-  color: #eb4691;
-  font-weight: bold;
-}
-.amount-text {
-  padding: 0.2rem;
-  font-size: 0.7rem;
-}
-
-//Services card
-.service-card-container {
-  background-color: whitesmoke;
-  border-radius: 20px;
-  max-width: 29vw;
-  height: 7rem;
-}
-.card-content {
-  display: flex;
-  justify-content: space-between;
-}
-.fee {
-  font-size: 0.7rem;
-  padding-top: 1.3rem;
-  padding-left: 0.5rem;
-}
-.card-date {
-  font-size: 0.5rem;
-  text-align: end;
-  margin-top: 0.5rem;
-}
-
-.col-padding {
-  padding-left: 0.5rem;
-}
-
-.check-btn {
-  top: 0;
-  margin: 0;
-}
-
 //add item button
 .btn-padding {
   padding: 1rem;
@@ -152,4 +99,18 @@
 
 .store-items-container {
   padding-bottom: 3rem;
+}
+
+.store-menu-container {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+}
+
+.gray-text {
+  color: gray;
+}
+.item-container {
+  --border-radius: 20px;
+  padding: 0.5rem;
 }

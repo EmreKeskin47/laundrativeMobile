@@ -50,132 +50,91 @@
   </div>
 
   <!-- Searchbar with cancel button never shown -->
-  <ion-searchbar showCancelButton="focus" class="text-color"></ion-searchbar>
-
-  <!-- card item -->
-  <div class="card-padding">
-    <div class="card-container">
-      <div class="card-items-content">
-        <div class="flex">
-          <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
-          <div style="padding-top: 0.5rem">
-            <ion-card-title class="card-text text-color"
-              >1 makina çamaşır yıkama
-            </ion-card-title>
-          </div>
-        </div>
-        <div class="card-item-date text-color">
-          express teslimat<br />
-          29.12.20 Pazartesi 16:30’a kadar teslim edilir
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- amount controller -->
-  <div style="padding: 10px">
-    <div class="amount-container">
-      <div style="display: flex; padding: 10px">
-        <ion-icon name="remove-sharp" class="amount-icons"></ion-icon>
-        <div class="amount-text text-color">1 Adet</div>
-        <ion-icon name="add-sharp" class="amount-icons"></ion-icon>
-      </div>
-      <div class="cost" style="padding-right: 15px">25,00 tl</div>
-    </div>
-  </div>
-
-  <!-- Grid of Services-->
-  <ion-row>
-    <ion-col class="col-padding">
-      <div class="service-card-container">
-        <div class="card-content">
-          <div class="text-color fee">
-            20,00 tl
-            <br /><b> standard </b>
-          </div>
-          <ion-button fill="clear" shape="round" slot="end" class="check-btn">
-            <ion-icon
-              name="checkmark-circle-outline"
-              class="text-color"
-            ></ion-icon>
-          </ion-button>
-        </div>
-
-        <ion-card-content class="card-date text-color">
-          29.12.20
-          <br />
-          Pazartesi 16:30
-        </ion-card-content>
-      </div>
-    </ion-col>
-
-    <ion-col>
-      <div class="service-card-container">
-        <div class="card-content">
-          <div class="text-color fee">
-            25,00 tl
-            <br /><b> standard </b>
-          </div>
-          <ion-button fill="clear" shape="round" slot="end" class="check-btn">
-            <ion-icon
-              name="checkmark-circle-outline"
-              class="text-color cost"
-            ></ion-icon>
-          </ion-button>
-        </div>
-
-        <ion-card-content class="card-date text-color">
-          29.12.20
-          <br />
-          Pazartesi 16:30
-        </ion-card-content>
-      </div>
-    </ion-col>
-
-    <ion-col>
-      <div class="service-card-container">
-        <div class="card-content">
-          <div class="text-color fee">
-            35,00 tl
-            <br /><b> premium </b>
-          </div>
-          <ion-button fill="clear" shape="round" slot="end" class="check-btn">
-            <ion-icon
-              name="checkmark-circle-outline"
-              class="text-color"
-            ></ion-icon>
-          </ion-button>
-        </div>
-
-        <ion-card-content class="card-date text-color">
-          29.12.20
-          <br />
-          Pazar 13:30
-        </ion-card-content>
-      </div>
-    </ion-col>
-  </ion-row>
-
-  <!--Button to add to card-->
-  <div class="btn-padding">
-    <ion-button shape="round" expand="block" (click)="navigateToCard()"
-      >sepete ekle</ion-button
+  <ion-item lines="none" class="item-container">
+    <ion-label class="gray-text">ürün ara </ion-label>
+    <ionic-selectable
+      [(ngModel)]="selected"
+      [items]="tempStoreItemList"
+      itemValueField="id"
+      itemTextField="itemName"
+      [canSearch]="true"
+      (onChange)="selectFromSearch($event)"
     >
+    </ionic-selectable>
+  </ion-item>
+
+  <div *ngIf="select else onlyItemList">
+    <!-- card item -->
+    <div class="card-padding">
+      <div class="card-container">
+        <div class="card-items-content">
+          <div class="flex">
+            <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
+            <div style="padding-top: 0.5rem">
+              <ion-card-title class="card-text text-color"
+                >{{selected.itemName}}
+              </ion-card-title>
+            </div>
+          </div>
+          <div class="card-item-date text-color">
+            express teslimat<br />
+            29.12.20 Pazartesi 16:30’a kadar teslim edilir
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-types
+      [itemCost]="selected.itemCost"
+      [totalCost]="selected.itemCost"
+      [cardSize]="1"
+      (cancelled)="cancelSelected(false)"
+    ></app-types>
+
+    <!--Button to add to card-->
+    <div class="btn-padding">
+      <ion-button shape="round" expand="block" (click)="navigateToCard()"
+        >sepete ekle</ion-button
+      >
+    </div>
+
+    <div class="store-items-container">
+      <div *ngFor="let item of tempStoreItemList">
+        <ion-item
+          button
+          lines="none"
+          detail="false"
+          color="medium"
+          class="store-menu-container"
+          (click)="selectItem(item)"
+        >
+          <app-store-item
+            itemName="{{item.itemName}}"
+            itemCost="{{item.itemCost}}"
+            style="width: 100%"
+          ></app-store-item>
+        </ion-item>
+      </div>
+    </div>
   </div>
 
   <!--Rest of store-->
-  <div class="store-items-container">
-    <app-store-item
-      itemName="Nevresim Takımı Tek Kişilik "
-      itemCost="20,00tl"
-    ></app-store-item>
-    <app-store-item
-      itemName="Elyaf Yastık "
-      itemCost="15,00tl"
-    ></app-store-item>
-    <app-store-item
-      itemName="Battaniye Tek Kişilik "
-      itemCost="15,00tl"
-    ></app-store-item>
-  </div>
+  <ng-template #onlyItemList class="store-items-container">
+    <div *ngFor="let item of tempStoreItemList">
+      <ion-item
+        button
+        lines="none"
+        detail="false"
+        color="medium"
+        class="store-menu-container"
+        (click)="selectItem(item)"
+      >
+        <app-store-item
+          itemName="{{item.itemName}}"
+          itemCost="{{item.itemCost}}"
+          style="width: 100%"
+        ></app-store-item>
+      </ion-item>
+    </div>
+  </ng-template>
 </ion-content>

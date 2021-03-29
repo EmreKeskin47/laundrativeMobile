@@ -1,3 +1,4 @@
+import { TypesComponent } from './types/types.component';
 import { DiscountComponent } from './discount/discount.component';
 import { AddressCardComponent } from './address-card/address-card.component';
 import { OrderCardComponent } from './order-card/order-card.component';
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
     OrderCardComponent,
     AddressCardComponent,
     DiscountComponent,
+    TypesComponent,
   ],
   exports: [
     HeaderComponent,
@@ -35,6 +37,7 @@ import { CommonModule } from '@angular/common';
     OrderCardComponent,
     AddressCardComponent,
     DiscountComponent,
+    TypesComponent,
   ],
 })
 export class ComponentsModule {}
