@@ -26,33 +26,26 @@
 
   <!-- Card Contents -->
   <div class="card-padding">
-    <div class="card-container container">
-      <app-card-item
-        itemName="1 Makine Çamaşır Yıkama"
-        itemCost="25,00 tl"
-        type="express "
-        deliveryDate=" teslimat 29.12.20 Pazartesi 16:30"
-      >
-      </app-card-item>
-      <hr class="rounded" />
-
-      <app-card-item
-        itemName="1 Makine Çamaşır Yıkama"
-        itemCost="25,00 tl"
-        type="express "
-        deliveryDate=" teslimat 29.12.20 Pazartesi 16:30"
-      >
-      </app-card-item>
-      <hr class="rounded" />
-
-      <app-card-item
-        itemName="1 Makine Çamaşır Yıkama"
-        itemCost="25,00 tl"
-        type="express "
-        deliveryDate=" teslimat 29.12.20 Pazartesi 16:30"
-      >
-      </app-card-item>
-      <hr class="rounded" />
+    <ion-content scrollY="true" class="card-container container">
+      <div *ngFor="let item of cardItems">
+        <ion-item
+          button
+          lines="none"
+          detail="false"
+          class="card-item-container"
+        >
+          <app-card-item
+            itemName="{{item.itemName}}"
+            itemCost="{{item.itemCost}}"
+            type="{{item.type}}"
+            deliveryDate="{{item.deliveryDate}}"
+            itemIcon="{{item.itemIcon}}"
+            style="width: 100%"
+          >
+          </app-card-item>
+        </ion-item>
+        <hr class="rounded" />
+      </div>
 
       <!--Cost labels and fees-->
       <ion-grid>
@@ -86,7 +79,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </div>
+    </ion-content>
   </div>
 
   <!-- Footnote for order-->
@@ -137,3 +130,26 @@
     </ng-template>
   </div>
 </ion-content>
+
+<!--
+
+
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        type="express "
+        deliveryDate=" teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr class="rounded" />
+
+      <app-card-item
+        itemName="1 Makine Çamaşır Yıkama"
+        itemCost="25,00 tl"
+        type="express "
+        deliveryDate=" teslimat 29.12.20 Pazartesi 16:30"
+      >
+      </app-card-item>
+      <hr class="rounded" />
+      
+-->

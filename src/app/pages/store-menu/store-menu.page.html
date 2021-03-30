@@ -89,11 +89,12 @@
       [totalCost]="selected.itemCost"
       [cardSize]="1"
       (cancelled)="cancelSelected(false)"
+      (type)="changeTypeOfSelected($event)"
     ></app-types>
 
     <!--Button to add to card-->
     <div class="btn-padding">
-      <ion-button shape="round" expand="block" (click)="navigateToCard()"
+      <ion-button shape="round" expand="block" (click)="addToCard()"
         >sepete ekle</ion-button
       >
     </div>

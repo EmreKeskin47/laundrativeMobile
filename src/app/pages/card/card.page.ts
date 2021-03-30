@@ -1,3 +1,5 @@
+import { CardItem } from './../../models/ui/CardItem';
+import { OrderService } from './../../services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,11 +19,19 @@ export class CardPage implements OnInit {
   discountFee = '50,00tl ';
   discountText = 'üzeri siparişlerde ücretsiz servis';
 
+  cardItems: CardItem[];
+
   isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private orderService: OrderService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cardItems = this.orderService.currentCardContent;
+  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);

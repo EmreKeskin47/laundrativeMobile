@@ -73,9 +73,9 @@
   padding: 0;
 }
 .card-container {
-  border-radius: 20px;
+  --border-radius: 20px;
   height: 19rem;
-  background-color: whitesmoke;
+  --background: whitesmoke;
 }
 .card-padding {
   padding-left: 0.5rem;
@@ -116,4 +116,11 @@
 
 .btn-clr {
   color: #e75761;
+}
+.card-item-container {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --padding-top: 0.3rem;
+  --background: whitesmoke;
 }

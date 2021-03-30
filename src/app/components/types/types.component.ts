@@ -13,6 +13,7 @@ export class TypesComponent implements OnInit {
   @Input() cardSize: number;
   selectedType = 1;
   @Output() cancelled = new EventEmitter<boolean>();
+  @Output() type = new EventEmitter<number>();
 
   constructor(public alertController: AlertController) {}
 
@@ -31,6 +32,7 @@ export class TypesComponent implements OnInit {
   selectType(selectedTypeId: number) {
     this.selectedType = selectedTypeId;
     this.totalCost = this.totalCost + 5 * (this.selectedType - 1);
+    this.type.emit(this.selectedType);
   }
 
   removeFromCard = async () => {
@@ -44,7 +46,6 @@ export class TypesComponent implements OnInit {
           text: 'Agree',
           handler: () => {
             this.cancelled.emit(true);
-            console.log('make select from parent false');
           },
         },
       ],

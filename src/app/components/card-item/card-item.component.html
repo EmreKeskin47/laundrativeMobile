@@ -2,7 +2,7 @@
 <div *ngIf="!oldOrder; else oldOrderType" class="card-container-border-radius">
   <div class="card-items-content">
     <div class="flex">
-      <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
+      <ion-icon name="{{ itemIcon }}" class="card-icon text-color"></ion-icon>
       <div style="padding-top: 1.5rem">
         <ion-card-title class="card-text text-color">{{
           itemName
@@ -10,14 +10,14 @@
       </div>
     </div>
     <div>
-      <div class="cost">{{ itemCost }}</div>
+      <div class="cost">{{ itemCost }},00tl</div>
     </div>
   </div>
   <div>
     <ion-card-subtitle class="card-text text-color toLowerCase">
       <div style="display: flex">
-        <div class="type-color">{{ type }} &nbsp;</div>
-        <div>{{ deliveryDate }} a kadar teslim edilir</div>
+        <div class="type-color">{{ typeName }}</div>
+        <div>teslimat {{ deliveryDate }} a kadar teslim edilir</div>
       </div>
     </ion-card-subtitle>
   </div>

@@ -10,6 +10,9 @@ export class CardItemComponent implements OnInit {
   @Input() public deliveryDate;
   @Input() public itemName;
   @Input() public type;
+  @Input() public itemIcon;
+
+  typeName: string;
   public oldOrder;
 
   constructor() {}
@@ -18,5 +21,14 @@ export class CardItemComponent implements OnInit {
     if (this.deliveryDate) {
       this.oldOrder = false;
     } else this.oldOrder = true;
+    if (this.type == 1) {
+      this.typeName = 'standart ';
+    }
+    if (this.type == 2) {
+      this.typeName = 'premium ';
+    }
+    if (this.type == 3) {
+      this.typeName = 'express ';
+    }
   }
 }

@@ -1,3 +1,5 @@
+import { Institution } from './../../models/Institution';
+import { InstitutionService } from './../../services/institution.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,9 +17,10 @@ interface Address {
 export class CreateOrderPage {
   title = 'mağaza arayın';
   userAddress: Address;
+  insList: Institution[];
 
   //Find a better way
-  selectedServices: Number[] = [];
+  selectedServices: number[] = [];
   isSelected1 = false;
   isSelected2 = false;
   isSelected3 = false;
@@ -28,9 +31,15 @@ export class CreateOrderPage {
   image =
     'https://media.istockphoto.com/photos/colorful-clothes-in-laundry-basket-blue-indigo-purple-picture-id119623848?k=6&m=119623848&s=612x612&w=0&h=g8_MG32-0cSlkH4RjBHzMiyH_gGPPg9rObdK-i-FUNk=';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public insService: InstitutionService) {}
 
   navigateToStoreList() {
+    this.insService
+      .getInstitutionsInNeighborhood(5432, this.selectedServices)
+      .subscribe((ins) => {
+        console.log(ins, '------');
+        this.insList = ins;
+      });
     this.router.navigate(['/create-order/available-stores-list']);
   }
   navigateToDetailedSearch() {
