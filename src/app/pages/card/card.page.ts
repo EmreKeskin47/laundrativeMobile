@@ -1,4 +1,4 @@
-import { CardItem } from './../../models/ui/CardItem';
+import { KindPriceItem } from './../../models/KindPriceItem';
 import { OrderService } from './../../services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +19,7 @@ export class CardPage implements OnInit {
   discountFee = '50,00tl ';
   discountText = 'üzeri siparişlerde ücretsiz servis';
 
-  cardItems: CardItem[];
+  cardItems: KindPriceItem[];
 
   isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
 

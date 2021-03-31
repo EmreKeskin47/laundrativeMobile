@@ -24,9 +24,9 @@
       </div>
 
       <div class="min-fee text-color">
-        min sipariş tutarı {{ minFee }}
+        min sipariş tutarı {{ minFee }},00tl
         <br />
-        {{discountFee + discountText}}
+        {{discountFee + ",00tl ve üzeri siparişlerde ücretsiz servis"}}
       </div>
     </div>
   </div>
@@ -54,25 +54,29 @@
     <ion-label class="gray-text">ürün ara </ion-label>
     <ionic-selectable
       [(ngModel)]="selected"
-      [items]="tempStoreItemList"
-      itemValueField="id"
-      itemTextField="itemName"
+      [items]="storeItemList"
+      itemValueField="kindId"
+      itemTextField="kindName"
       [canSearch]="true"
       (onChange)="selectFromSearch($event)"
     >
     </ionic-selectable>
   </ion-item>
 
-  <div *ngIf="select else onlyItemList">
+  <div *ngIf="select else onlyItemList ">
     <!-- card item -->
     <div class="card-padding">
       <div class="card-container">
         <div class="card-items-content">
           <div class="flex">
-            <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
+            <img
+              [src]="selectedItemImage"
+              alt="Image Source"
+              class="card-icon text-color"
+            />
             <div style="padding-top: 0.5rem">
               <ion-card-title class="card-text text-color"
-                >{{selected.itemName}}
+                >{{selected.kindName}}
               </ion-card-title>
             </div>
           </div>
@@ -85,8 +89,8 @@
     </div>
 
     <app-types
-      [itemCost]="selected.itemCost"
-      [totalCost]="selected.itemCost"
+      [itemCost]="selected.price"
+      [totalCost]="selected.price"
       [cardSize]="1"
       (cancelled)="cancelSelected(false)"
       (type)="changeTypeOfSelected($event)"
@@ -99,8 +103,9 @@
       >
     </div>
 
+    <!-- -->
     <div class="store-items-container">
-      <div *ngFor="let item of tempStoreItemList">
+      <div *ngFor="let item of storeItemList;index as i">
         <ion-item
           button
           lines="none"
@@ -110,8 +115,9 @@
           (click)="selectItem(item)"
         >
           <app-store-item
-            itemName="{{item.itemName}}"
-            itemCost="{{item.itemCost}}"
+            itemName="{{item.kindName}}"
+            itemCost="{{item.price}}"
+            itemImage="{{item.kindImage}}"
             style="width: 100%"
           ></app-store-item>
         </ion-item>
@@ -121,7 +127,7 @@
 
   <!--Rest of store-->
   <ng-template #onlyItemList class="store-items-container">
-    <div *ngFor="let item of tempStoreItemList">
+    <div *ngFor="let item of storeItemList; index as i">
       <ion-item
         button
         lines="none"
@@ -131,8 +137,9 @@
         (click)="selectItem(item)"
       >
         <app-store-item
-          itemName="{{item.itemName}}"
-          itemCost="{{item.itemCost}}"
+          itemName="{{item.kindName}}"
+          itemCost="{{item.price}}"
+          itemImage="{{item.kindImage}}"
           style="width: 100%"
         ></app-store-item>
       </ion-item>

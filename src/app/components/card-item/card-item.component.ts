@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-item',
@@ -15,7 +16,7 @@ export class CardItemComponent implements OnInit {
   typeName: string;
   public oldOrder;
 
-  constructor() {}
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     if (this.deliveryDate) {
@@ -30,5 +31,10 @@ export class CardItemComponent implements OnInit {
     if (this.type == 3) {
       this.typeName = 'express ';
     }
+
+    let image = this.itemIcon;
+    this.itemIcon = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `data:image/png;base64, ${image}`
+    );
   }
 }

@@ -30,7 +30,16 @@ export class AvailableStoresListPage implements OnInit {
       .subscribe((ins) => (this.institutionList = ins));
   }
 
-  navigateToStore() {
-    this.router.navigate(['create-order/store-menu']);
+  navigateToStore(kurum: Institution) {
+    this.router.navigate([
+      'create-order/store-menu',
+      {
+        storeName: kurum.institutionName,
+        storeLocation: kurum.neighborhoodName,
+        minFee: kurum.minimumOrderPrice,
+        freeDeliver: kurum.maximumServicePrice,
+        id: kurum.institutionId,
+      },
+    ]);
   }
 }

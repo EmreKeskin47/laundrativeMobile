@@ -1,8 +1,10 @@
-import { CardItem } from './../../models/ui/CardItem';
+import { KindPriceItem } from './../../models/KindPriceItem';
+import { InstitutionService } from './../../services/institution.service';
 import { OrderService } from './../../services/order.service';
 import { IonicSelectableComponent } from 'ionic-selectable';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-store-menu',
@@ -12,97 +14,44 @@ import { Component, OnInit } from '@angular/core';
 export class StoreMenuPage implements OnInit {
   pageTitle = 'mağaza detayları';
 
-  storeName = 'Bil wash laundry ';
-  location = 'ümitköy mah. çankaya';
-  timeInterval = '09:30-17:00';
-  day = 'Hemen teslim alabilir';
-  minFee = '40,00tl';
-
-  discountFee = '50,00tl ';
-  discountText = 'üzeri siparişlerde ücretsiz servis';
-
-  selected: CardItem;
+  storeName: string = '';
+  location: string = '';
+  minFee: string = '';
+  discountFee: string = '';
+  storeID: string = '';
+  selected: KindPriceItem;
   select: boolean = false;
 
-  tempStoreItemList: CardItem[] = [
-    {
-      id: 1,
-      itemName: 'Nevresim Takımı Tek Kişilik ',
-      itemCost: 20,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 2,
-      itemName: 'Elyaf Yastık  ',
-      itemCost: 15,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 3,
-      itemName: 'Battaniye Tek Kişilik ',
-      itemCost: 15,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 4,
-      itemName: '1 makina çamaşır yıkama ',
-      itemCost: 25,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 5,
-      itemName: 'Nevresim Takımı Tek Kişilik ',
-      itemCost: 20,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 6,
-      itemName: 'Elyaf Yastık  ',
-      itemCost: 15,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 7,
-      itemName: 'Battaniye Tek Kişilik ',
-      itemCost: 15,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-    {
-      id: 8,
-      itemName: '1 makina çamaşır yıkama ',
-      itemCost: 25,
-      type: 1,
-      deliveryDate: '12.02.2020',
-      itemIcon: 'bed-outline',
-    },
-  ];
+  storeItemList = [];
+  selectedItemImage = null;
 
-  constructor(private router: Router, private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    private institutionService: InstitutionService,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storeName = this.route.snapshot.paramMap.get('storeName');
+    this.location = this.route.snapshot.paramMap.get('storeLocation');
+    this.minFee = this.route.snapshot.paramMap.get('minFee');
+    this.discountFee = this.route.snapshot.paramMap.get('freeDeliver');
+    this.storeID = this.route.snapshot.paramMap.get('id');
+    this.institutionService
+      .getItemsInInstitution(this.storeID)
+      .subscribe(async (item) => {
+        this.storeItemList = item[0].kindPriceList;
+      });
+  }
 
   addToCard() {
     this.orderService.addToCard(
-      this.selected.id,
-      this.selected.itemName,
-      this.selected.itemCost,
+      this.selected.kindId,
+      this.selected.kindName,
+      this.selected.kindImage,
       this.selected.type,
-      this.selected.deliveryDate,
-      this.selected.itemIcon
+      this.selected.price
     );
     this.select = false;
     this.selected = null;
@@ -111,19 +60,29 @@ export class StoreMenuPage implements OnInit {
   selectItem(event: any) {
     this.selected = event;
     this.select = true;
+    this.setSelectedImage();
   }
 
   selectFromSearch(event: { component: IonicSelectableComponent; value: any }) {
     this.selected = event.value;
     this.select = true;
+    this.setSelectedImage();
   }
 
   cancelSelected(cancelled: boolean) {
     this.select = cancelled;
     this.selected = null;
+    this.selectedItemImage = null;
   }
 
   changeTypeOfSelected(event: any) {
     this.selected.type = event;
+  }
+
+  setSelectedImage() {
+    let image = this.selected.kindImage;
+    this.selectedItemImage = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `data:image/png;base64, ${image}`
+    );
   }
 }

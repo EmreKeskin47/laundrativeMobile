@@ -2,7 +2,7 @@
 <div *ngIf="!oldOrder; else oldOrderType" class="card-container-border-radius">
   <div class="card-items-content">
     <div class="flex">
-      <ion-icon name="{{ itemIcon }}" class="card-icon text-color"></ion-icon>
+      <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
       <div style="padding-top: 1.5rem">
         <ion-card-title class="card-text text-color">{{
           itemName

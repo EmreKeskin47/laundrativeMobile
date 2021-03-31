@@ -2,7 +2,11 @@
   <div class="card-container container">
     <div class="card-items-content">
       <div class="flex">
-        <ion-icon name="bed-outline" class="card-icon text-color"></ion-icon>
+        <img
+          [src]="itemImage"
+          alt="Image Source"
+          class="card-icon text-color"
+        />
         <div style="padding-top: 10px">
           <ion-card-title class="card-text text-color"
             >{{ itemName }}

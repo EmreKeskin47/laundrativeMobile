@@ -18,7 +18,7 @@ export class StoreCardComponent implements OnInit {
   ngOnInit() {
     let date = new Date();
     let availableHour = this.timeInterval.startingTime.slice(0, 2);
-    if (date.getHours() < availableHour) {
+    if (date.getHours() > availableHour) {
       this.now = false;
     } else {
       this.now = true;

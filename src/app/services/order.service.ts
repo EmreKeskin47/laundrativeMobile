@@ -1,30 +1,22 @@
-import { CardItem } from './../models/ui/CardItem';
+import { KindPriceItem } from './../models/KindPriceItem';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  currentCardContent: CardItem[] = [];
+  currentCardContent: KindPriceItem[] = [];
 
   constructor() {}
 
   addToCard(
-    id: number,
-    itemName: string,
-    itemCost: number,
+    kindId: number,
+    kindName: string,
+    kindImage: string,
     type: number,
-    deliveryDate: string,
-    itemIcon: string
+    price: number
   ) {
-    const newItem = new CardItem(
-      id,
-      itemName,
-      itemCost,
-      type,
-      deliveryDate,
-      itemIcon
-    );
+    const newItem = new KindPriceItem(kindId, kindName, kindImage, type, price);
     this.currentCardContent.push(newItem);
   }
 }
