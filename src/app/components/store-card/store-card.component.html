@@ -11,17 +11,35 @@
     </div>
 
     <div class="absolute child">
-      <ion-card color="tertiary" class="card-border-radius">
+      <ion-card
+        *ngIf="now; else secondary"
+        color="tertiary"
+        class="card-border-radius"
+      >
         <div style="padding: 10px">
-          <ion-card-title class="child-card-title">{{
-            timeInterval
-          }}</ion-card-title>
+          <ion-card-title class="child-card-title"
+            >{{ timeInterval.startingTime | slice: 0:-3 }} -
+            {{ timeInterval.endingTime | slice: 0:-3 }}</ion-card-title
+          >
           <ion-card-subtitle class="child-card-subtitle toLowerCase">{{
             day
           }}</ion-card-subtitle>
         </div>
       </ion-card>
-      <div class="min-fee text-color">min sipariş tutarı {{ minFee }}</div>
+      <ng-template #secondary>
+        <ion-card color="secondary" class="card-border-radius">
+          <div style="padding: 10px">
+            <ion-card-title class="child-card-title"
+              >{{ timeInterval.startingTime | slice: 0:-3 }} -
+              {{ timeInterval.endingTime | slice: 0:-3 }}</ion-card-title
+            >
+            <ion-card-subtitle class="child-card-subtitle toLowerCase">{{
+              day
+            }}</ion-card-subtitle>
+          </div>
+        </ion-card>
+      </ng-template>
+      <div class="min-fee text-color">min sipariş tutarı {{ minFee }},00tl</div>
     </div>
   </div>
 </div>

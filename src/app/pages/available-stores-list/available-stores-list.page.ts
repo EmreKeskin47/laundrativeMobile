@@ -1,6 +1,6 @@
 import { Institution } from '../../models/Institution';
 import { InstitutionService } from './../../services/institution.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,18 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvailableStoresListPage implements OnInit {
   title = 'mağazalar';
+  categoryList: string[];
+  neighborhoodId: number;
   institutionList: Institution[];
 
   constructor(
     private router: Router,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.institutionService.getAllInstitutions().subscribe((kurum) => {
-      this.institutionList = kurum;
-    });
-    console.log(this.institutionList);
+    this.route.snapshot.paramMap.get('neighborhoodId');
+    this.route.queryParamMap.subscribe(
+      (params) => (this.categoryList = params.getAll('categories'))
+    );
+    this.institutionService
+      .getInstitutionsInNeighborhood(this.neighborhoodId, this.categoryList)
+      .subscribe((ins) => (this.institutionList = ins));
   }
 
   navigateToStore() {

@@ -1,24 +1,39 @@
 export class Institution {
-  id: bigint;
+  neighborhoodId: number;
+  neighborhoodName: string;
+  workingHours: {
+    startingTime: string;
+    endingTime: string;
+  };
   institutionName: string;
-  adres: string;
-  telefon: string;
-  administratorName: string;
-  administratorEmail: string;
+  institutionId: number;
+  minimumOrderPrice: number;
+  maximumServicePrice: number;
+  freeServicePrice: number;
+  isFavorite: boolean;
 
   constructor(
-    id: bigint,
+    neighborhoodId: number,
+    neighborhoodName: string,
+    workingHours: {
+      startingTime: string;
+      endingTime: string;
+    },
     institutionName: string,
-    adres: string,
-    telefon: string,
-    administratorName: string,
-    administratorEmail: string
+    institutionId: number,
+    minimumOrderPrice: number,
+    maximumServicePrice: number,
+    freeServicePrice: number,
+    isFavorite: boolean
   ) {
-    this.id = id;
+    this.neighborhoodId = neighborhoodId;
+    this.neighborhoodName = neighborhoodName;
+    this.workingHours = workingHours;
     this.institutionName = institutionName;
-    this.adres = adres;
-    this.telefon = telefon;
-    this.administratorName = administratorName;
-    this.administratorEmail = administratorEmail;
+    this.institutionId = institutionId;
+    this.minimumOrderPrice = minimumOrderPrice;
+    this.maximumServicePrice = maximumServicePrice;
+    this.freeServicePrice = freeServicePrice;
+    this.isFavorite = isFavorite;
   }
 }

@@ -8,13 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StoreCardComponent implements OnInit {
   @Input() public storeName;
   @Input() public location;
-  //storeName = 'Bil wash laundry ';
-  //location = 'ümitköy mah. çankaya';
-  timeInterval = '09:30-17:00';
-  day = 'Hemen teslim alabilir';
-  minFee = '40tl';
+  @Input() public timeInterval;
+  @Input() public minFee;
+  now: boolean;
+  day: string;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let date = new Date();
+    let availableHour = this.timeInterval.startingTime.slice(0, 2);
+    if (date.getHours() < availableHour) {
+      this.now = false;
+    } else {
+      this.now = true;
+    }
+    this.day = this.now ? 'hemen teslim alabilir' : 'yarın teslim alabilir';
+  }
 }
