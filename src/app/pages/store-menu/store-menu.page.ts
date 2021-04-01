@@ -17,16 +17,27 @@ export class StoreMenuPage implements OnInit {
 
   selectedIns: StoreCardInfo;
   selected: KindPriceItem;
-  select: boolean = false;
+  select: boolean;
+
   storeItemList = [];
   selectedItemImage = null;
+  amount: number = 0;
 
   constructor(
     private orderService: OrderService,
     private institutionService: InstitutionService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer
-  ) {}
+  ) {
+    route.params.subscribe(() => {
+      if (this.orderService.selectedItem.kindId > 0) {
+        this.select = true;
+        this.selected = this.orderService.selectedItem;
+        this.selectedItemImage = this.orderService.selectedItem.kindImage;
+        this.setSelectedImage();
+      }
+    });
+  }
 
   ngOnInit() {
     this.selectedIns = this.institutionService.selectedInstitution;
@@ -43,10 +54,15 @@ export class StoreMenuPage implements OnInit {
       this.selected.kindName,
       this.selected.kindImage,
       this.selected.type,
-      this.selected.price
+      this.selected.price,
+      this.amount
     );
     this.select = false;
     this.selected = null;
+  }
+
+  removeFromCard() {
+    this.orderService.removeFromCard(this.selected.kindId, this.selected.price);
   }
 
   selectItem(event: any) {
@@ -62,6 +78,7 @@ export class StoreMenuPage implements OnInit {
   }
 
   cancelSelected(cancelled: boolean) {
+    this.removeFromCard();
     this.select = cancelled;
     this.selected = null;
     this.selectedItemImage = null;
@@ -69,6 +86,9 @@ export class StoreMenuPage implements OnInit {
 
   changeTypeOfSelected(event: any) {
     this.selected.type = event;
+  }
+  changeAmountOfSelected(event: any) {
+    this.amount = event;
   }
 
   setSelectedImage() {

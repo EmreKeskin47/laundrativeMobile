@@ -52,5 +52,8 @@ export class CardPage implements OnInit {
     return Number(input);
   }
 
-  navigateToStoreMenu(item: KindPriceItem) {}
+  navigateToStoreMenu(item: KindPriceItem) {
+    this.orderService.setSelectedKindItem(item);
+    this.router.navigate(['create-order/store-menu', {}]);
+  }
 }

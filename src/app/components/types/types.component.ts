@@ -14,6 +14,7 @@ export class TypesComponent implements OnInit {
   selectedType = 1;
   @Output() cancelled = new EventEmitter<boolean>();
   @Output() type = new EventEmitter<number>();
+  @Output() amount = new EventEmitter<number>();
 
   constructor(public alertController: AlertController) {}
   ngOnInit() {}
@@ -21,11 +22,13 @@ export class TypesComponent implements OnInit {
   plus() {
     this.cardSize = this.cardSize + 1;
     this.totalCost = this.totalCost + this.itemCost;
+    this.amount.emit(this.cardSize);
   }
 
   minus() {
     this.cardSize--;
     this.totalCost = this.totalCost - this.itemCost;
+    this.amount.emit(this.cardSize);
   }
 
   selectType(selectedTypeId: number) {
@@ -36,13 +39,11 @@ export class TypesComponent implements OnInit {
 
   removeFromCard = async () => {
     const alert = await this.alertController.create({
-      header: 'Emin misin?',
-      message:
-        'Do you agree to use this lightsaber to do good across the galaxy?',
+      header: 'Sepetten çıkarmak istediğinize emin misiniz?',
       buttons: [
-        'Disagree',
+        'Hayır',
         {
-          text: 'Agree',
+          text: 'Evet',
           handler: () => {
             this.cancelled.emit(true);
           },
