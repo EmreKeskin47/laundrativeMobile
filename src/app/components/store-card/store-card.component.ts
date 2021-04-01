@@ -17,11 +17,12 @@ export class StoreCardComponent implements OnInit {
 
   ngOnInit() {
     let date = new Date();
-    let availableHour = this.timeInterval.startingTime.slice(0, 2);
-    if (date.getHours() > availableHour) {
-      this.now = false;
-    } else {
+    let start = this.timeInterval.startingTime.slice(0, 2);
+    let end = this.timeInterval.endingTime.slice(0, 2);
+    if (end > date.getHours() && date.getHours() > start) {
       this.now = true;
+    } else {
+      this.now = false;
     }
     this.day = this.now ? 'hemen teslim alabilir' : 'yarın teslim alabilir';
   }
