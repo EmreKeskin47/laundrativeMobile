@@ -27,7 +27,7 @@ export class OrderService {
       newName,
       kindImage,
       type,
-      (price + (type - 1) * 5) * amount
+      type > 1 ? (price + (type - 1) * 5) * amount : price * amount
     );
     this.currentCardContent.push(newItem);
     this.currentCardCostContent.total =
@@ -48,6 +48,8 @@ export class OrderService {
     this.currentCardContent = this.currentCardContent.filter((item) => {
       item.kindId !== id;
     });
+    this.selectedItem = null;
+    console.log(this.currentCardContent);
     this.currentCardCostContent.total =
       this.currentCardCostContent.total - price;
     this.currentCardCostContent.totalTax =

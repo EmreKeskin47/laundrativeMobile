@@ -21,20 +21,25 @@ export class TypesComponent implements OnInit {
 
   plus() {
     this.cardSize = this.cardSize + 1;
-    this.totalCost = this.totalCost + this.itemCost;
+    this.calculateTotalCost();
     this.amount.emit(this.cardSize);
   }
 
   minus() {
     this.cardSize--;
-    this.totalCost = this.totalCost - this.itemCost;
+    this.calculateTotalCost();
     this.amount.emit(this.cardSize);
   }
 
   selectType(selectedTypeId: number) {
     this.selectedType = selectedTypeId;
     this.type.emit(this.selectedType);
-    this.totalCost = this.totalCost + 5 * (this.selectedType - 1);
+    this.calculateTotalCost();
+  }
+
+  calculateTotalCost() {
+    this.totalCost =
+      this.cardSize * (this.itemCost + 5 * (this.selectedType - 1));
   }
 
   removeFromCard = async () => {
