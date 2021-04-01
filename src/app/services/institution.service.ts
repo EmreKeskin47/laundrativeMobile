@@ -46,6 +46,7 @@ export class InstitutionService {
       console.log('Error in GET store content by id', err);
     }
   }
+
   setSelectedInstituion(
     storeName: string,
     location: string,

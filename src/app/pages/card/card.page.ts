@@ -13,13 +13,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardPage implements OnInit {
   title = 'sepet';
+
   selectedIns: StoreCardInfo;
-
-  day = 'Hemen teslim alabilir';
-  discountText = 'üzeri siparişlerde ücretsiz servis';
-
   cardItems: KindPriceItem[];
   currentCardCostContent: CardCostContent;
+
   isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
 
   constructor(
@@ -53,4 +51,6 @@ export class CardPage implements OnInit {
     }
     return Number(input);
   }
+
+  navigateToStoreMenu(item: KindPriceItem) {}
 }

@@ -31,15 +31,13 @@ export class AvailableStoresListPage implements OnInit {
   }
 
   navigateToStore(kurum: Institution) {
-    this.router.navigate([
-      'create-order/store-menu',
-      {
-        storeName: kurum.institutionName,
-        storeLocation: kurum.neighborhoodName,
-        minFee: kurum.minimumOrderPrice,
-        freeDeliver: kurum.maximumServicePrice,
-        id: kurum.institutionId,
-      },
-    ]);
+    this.institutionService.setSelectedInstituion(
+      kurum.institutionName,
+      kurum.neighborhoodName,
+      kurum.minimumOrderPrice.toString(),
+      kurum.maximumServicePrice.toString(),
+      kurum.institutionId.toString()
+    );
+    this.router.navigate(['create-order/store-menu']);
   }
 }

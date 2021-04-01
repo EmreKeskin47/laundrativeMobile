@@ -15,18 +15,18 @@
         <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
         <div style="padding-top: 15px">
           <ion-card-subtitle class="card-title text-color"
-            >{{ storeName }}</ion-card-subtitle
+            >{{ selectedIns.storeName }}</ion-card-subtitle
           >
           <ion-card-title class="card-subtitle text-color">
-            {{ location }}
+            {{ selectedIns.location }}
           </ion-card-title>
         </div>
       </div>
 
       <div class="min-fee text-color">
-        min sipariş tutarı {{ minFee }},00tl
+        min sipariş tutarı {{ selectedIns.minFee }},00tl
         <br />
-        {{discountFee + ",00tl ve üzeri siparişlerde ücretsiz servis"}}
+        {{selectedIns.discountFee}},00tl ve üzeri siparişlerde ücretsiz servis
       </div>
     </div>
   </div>

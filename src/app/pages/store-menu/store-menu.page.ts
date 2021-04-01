@@ -1,3 +1,4 @@
+import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
 import { KindPriceItem } from './../../models/KindPriceItem';
 import { InstitutionService } from './../../services/institution.service';
 import { OrderService } from './../../services/order.service';
@@ -14,14 +15,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class StoreMenuPage implements OnInit {
   pageTitle = 'mağaza detayları';
 
-  storeName: string = '';
-  location: string = '';
-  minFee: string = '';
-  discountFee: string = '';
-  storeID: string = '';
+  selectedIns: StoreCardInfo;
   selected: KindPriceItem;
   select: boolean = false;
-
   storeItemList = [];
   selectedItemImage = null;
 
@@ -33,13 +29,9 @@ export class StoreMenuPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.storeName = this.route.snapshot.paramMap.get('storeName');
-    this.location = this.route.snapshot.paramMap.get('storeLocation');
-    this.minFee = this.route.snapshot.paramMap.get('minFee');
-    this.discountFee = this.route.snapshot.paramMap.get('freeDeliver');
-    this.storeID = this.route.snapshot.paramMap.get('id');
+    this.selectedIns = this.institutionService.selectedInstitution;
     this.institutionService
-      .getItemsInInstitution(this.storeID)
+      .getItemsInInstitution(this.selectedIns.storeID)
       .subscribe(async (item) => {
         this.storeItemList = item[0].kindPriceList;
       });
@@ -55,13 +47,6 @@ export class StoreMenuPage implements OnInit {
     );
     this.select = false;
     this.selected = null;
-    this.institutionService.setSelectedInstituion(
-      this.storeName,
-      this.location,
-      this.minFee,
-      this.discountFee,
-      this.storeID
-    );
   }
 
   selectItem(event: any) {
