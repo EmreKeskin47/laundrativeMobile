@@ -30,8 +30,8 @@ export class TypesComponent implements OnInit {
 
   selectType(selectedTypeId: number) {
     this.selectedType = selectedTypeId;
-    this.totalCost = this.totalCost + 5 * (this.selectedType - 1);
     this.type.emit(this.selectedType);
+    this.totalCost = this.totalCost + 5 * (this.selectedType - 1);
   }
 
   removeFromCard = async () => {

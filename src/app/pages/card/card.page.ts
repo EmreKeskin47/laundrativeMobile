@@ -31,6 +31,7 @@ export class CardPage implements OnInit {
 
   ngOnInit() {
     this.cardItems = this.orderService.currentCardContent;
+    console.log(this.cardItems);
   }
 
   navigateToLogin() {

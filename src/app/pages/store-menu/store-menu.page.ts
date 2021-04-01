@@ -46,6 +46,7 @@ export class StoreMenuPage implements OnInit {
   }
 
   addToCard() {
+    console.log(this.selected);
     this.orderService.addToCard(
       this.selected.kindId,
       this.selected.kindName,
@@ -76,6 +77,7 @@ export class StoreMenuPage implements OnInit {
   }
 
   changeTypeOfSelected(event: any) {
+    console.log(event, 'CHange type ');
     this.selected.type = event;
   }
 

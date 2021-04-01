@@ -16,6 +16,7 @@ export class OrderService {
     type: number,
     price: number
   ) {
+    console.log(type);
     const newItem = new KindPriceItem(kindId, kindName, kindImage, type, price);
     this.currentCardContent.push(newItem);
   }
