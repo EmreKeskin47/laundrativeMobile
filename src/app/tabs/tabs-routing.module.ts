@@ -131,7 +131,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/create-order/store-menu',
+        redirectTo: '/create-order',
         pathMatch: 'full',
       },
     ],

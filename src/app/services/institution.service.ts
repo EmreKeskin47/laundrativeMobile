@@ -1,3 +1,4 @@
+import { StoreCardInfo } from './../models/ui/StoreCardInfo';
 import { Institution } from '../models/Institution';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
@@ -11,6 +12,7 @@ import { StoreItem } from '../models/StoreItem';
 export class InstitutionService {
   url: string = `${BASE_URL}/institution`;
   currentInstitutionList: Institution[] = [];
+  selectedInstitution: StoreCardInfo = new StoreCardInfo('', '', '', '', '');
   constructor(private http: HttpClient) {}
 
   //Get institutions
@@ -43,5 +45,18 @@ export class InstitutionService {
     } catch (err) {
       console.log('Error in GET store content by id', err);
     }
+  }
+  setSelectedInstituion(
+    storeName: string,
+    location: string,
+    minFee: string,
+    discountFee: string,
+    storeID: string
+  ) {
+    this.selectedInstitution.storeName = storeName;
+    this.selectedInstitution.location = location;
+    this.selectedInstitution.minFee = minFee;
+    this.selectedInstitution.discountFee = discountFee;
+    this.selectedInstitution.storeID = storeID;
   }
 }

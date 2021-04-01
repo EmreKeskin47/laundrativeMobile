@@ -1,3 +1,6 @@
+import { CardCostContent } from './../../models/ui/CardCostContent';
+import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
+import { InstitutionService } from './../../services/institution.service';
 import { KindPriceItem } from './../../models/KindPriceItem';
 import { OrderService } from './../../services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,28 +13,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardPage implements OnInit {
   title = 'sepet';
-  storeName = 'Bil wash laundry ';
-  location = 'ümitköy mah. çankaya';
-  timeInterval = '09:30-17:00';
-  day = 'Hemen teslim alabilir';
-  minFee = '40,00tl';
+  selectedIns: StoreCardInfo;
 
-  discountFee = '50,00tl ';
+  day = 'Hemen teslim alabilir';
   discountText = 'üzeri siparişlerde ücretsiz servis';
 
   cardItems: KindPriceItem[];
-
+  currentCardCostContent: CardCostContent;
   isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private institutionService: InstitutionService
   ) {}
 
   ngOnInit() {
     this.cardItems = this.orderService.currentCardContent;
-    console.log(this.cardItems);
+    this.selectedIns = this.institutionService.selectedInstitution;
+    this.currentCardCostContent = this.orderService.currentCardCostContent;
   }
 
   navigateToLogin() {
@@ -44,5 +45,12 @@ export class CardPage implements OnInit {
 
   navigateToPayment() {
     this.router.navigate(['card/payment']);
+  }
+
+  ConvertStringToNumber(input: string) {
+    if (input.trim().length == 0) {
+      return NaN;
+    }
+    return Number(input);
   }
 }

@@ -1,3 +1,4 @@
+import { CardCostContent } from './../models/ui/CardCostContent';
 import { KindPriceItem } from './../models/KindPriceItem';
 import { Injectable } from '@angular/core';
 
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
   currentCardContent: KindPriceItem[] = [];
-
+  currentCardCostContent: CardCostContent = new CardCostContent(0, 0);
   constructor() {}
 
   addToCard(
@@ -16,8 +17,17 @@ export class OrderService {
     type: number,
     price: number
   ) {
-    console.log(type);
-    const newItem = new KindPriceItem(kindId, kindName, kindImage, type, price);
+    const newItem = new KindPriceItem(
+      kindId,
+      kindName,
+      kindImage,
+      type,
+      price + (type - 1) * 5
+    );
     this.currentCardContent.push(newItem);
+    this.currentCardCostContent.total =
+      this.currentCardCostContent.total + newItem.price;
+    this.currentCardCostContent.totalTax =
+      (this.currentCardCostContent.total * 8) / 100;
   }
 }
