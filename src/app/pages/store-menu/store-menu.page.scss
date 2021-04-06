@@ -48,6 +48,11 @@
   padding-right: 0.5rem;
 }
 
+.searchbar {
+  --border-radius: 20px;
+  --background: whitesmoke;
+}
+
 //card item
 .card-container {
   border-radius: 20px;
@@ -109,10 +114,6 @@
 
 .gray-text {
   color: gray;
-}
-.item-container {
-  --border-radius: 20px;
-  padding: 0.5rem;
 }
 
 .card-icon {

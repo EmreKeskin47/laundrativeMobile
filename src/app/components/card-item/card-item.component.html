@@ -5,7 +5,7 @@
       <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
       <div style="padding-top: 1.5rem">
         <ion-card-title class="card-text text-color">{{
-          itemName
+          amount + " adet " + itemName
         }}</ion-card-title>
       </div>
     </div>
@@ -16,8 +16,11 @@
   <div>
     <ion-card-subtitle class="card-text text-color toLowerCase">
       <div style="display: flex">
-        <div class="type-color">{{ typeName }}</div>
-        <div>teslimat {{ deliveryDate }} a kadar teslim edilir</div>
+        <div class="type-color">{{ typeNames[type] }} &nbsp;</div>
+        <div>
+          teslimat {{ deliveryDate | date: "d.M.yy EEEE HH:mm" }} a kadar teslim
+          edilir
+        </div>
       </div>
     </ion-card-subtitle>
   </div>
@@ -35,7 +38,6 @@
       </div>
     </div>
     <div class="old-order-type">{{ type }} &nbsp;</div>
-
     <div class="cost">{{ itemCost }}</div>
   </div>
 </ng-template>

@@ -7,53 +7,61 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
   currentCardContent: KindPriceItem[] = [];
-  currentCardCostContent: CardCostContent = new CardCostContent(0, 0);
-  selectedItem: KindPriceItem = new KindPriceItem(0, '', '', 0, 0);
+  currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
+  selectedItem: KindPriceItem = new KindPriceItem(0, '', '', 0, 0, null, 0);
   constructor() {}
 
-  addToCard(
-    kindId: number,
-    kindName: string,
-    kindImage: string,
-    type: number,
-    price: number,
-    amount: number
-  ) {
-    let name = [...kindName];
-    name[0] = amount.toString();
-    let newName = name.join('');
-    const newItem = new KindPriceItem(
-      kindId,
-      newName,
-      kindImage,
-      type,
-      type > 1 ? (price + (type - 1) * 5) * amount : price * amount
-    );
-    this.currentCardContent.push(newItem);
-    this.currentCardCostContent.total =
-      this.currentCardCostContent.total + newItem.price;
-    this.currentCardCostContent.totalTax =
-      (this.currentCardCostContent.total * 8) / 100;
+  addToCard(item: KindPriceItem) {
+    this.currentCardContent.push(item);
+    this.setSelectedKindItem(item);
+    this.calculateTotal();
   }
 
   setSelectedKindItem(item: KindPriceItem) {
-    this.selectedItem.kindId = item.kindId;
-    this.selectedItem.kindImage = item.kindImage;
-    this.selectedItem.kindName = item.kindName;
-    this.selectedItem.price = item.price;
-    this.selectedItem.type = item.type;
+    this.selectedItem = item;
   }
 
-  removeFromCard(id: number, price: number) {
+  removeFromCard() {
     this.currentCardContent = this.currentCardContent.filter((item) => {
-      item.kindId !== id;
+      item.kindId != this.selectedItem.kindId;
     });
     this.selectedItem = null;
-    console.log(this.currentCardContent);
-    this.currentCardCostContent.total =
-      this.currentCardCostContent.total - price;
-    this.currentCardCostContent.totalTax =
-      (this.currentCardCostContent.total * 8) / 100;
-    console.log(this.currentCardContent);
+    if (this.currentCardContent.length > 0) {
+      this.calculateTotal();
+    }
+  }
+
+  updateCard(newAmount: number, newType: number) {
+    const index = this.currentCardContent.indexOf(this.selectedItem);
+
+    if (index >= 0) {
+      this.currentCardContent[index].amount = newAmount;
+      this.currentCardContent[index].type = newType;
+      this.calculateTotal();
+    }
+  }
+
+  calculatePriceWithType(amount: number, type: number, price: number): number {
+    return amount * (type > 1 ? price + (type - 1) * 5 : price);
+  }
+
+  calculateTotal() {
+    let total = 0;
+    let deliveryFee = 0;
+    this.currentCardContent.forEach((item) => {
+      let withType = this.calculatePriceWithType(
+        item.amount,
+        item.type,
+        item.price
+      );
+      total += withType;
+      let delivery = withType - item.amount * item.price;
+      deliveryFee += delivery;
+    });
+    this.currentCardCostContent = {
+      total: total,
+      totalTax: (total * 8) / 100,
+      totalDeliveryFee: deliveryFee,
+    };
   }
 }

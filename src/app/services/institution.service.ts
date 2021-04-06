@@ -1,3 +1,4 @@
+import { WorkingHours } from './../models/WorkingHours';
 import { StoreCardInfo } from './../models/ui/StoreCardInfo';
 import { Institution } from '../models/Institution';
 import { BASE_URL } from './../api/baseUrl';
@@ -44,6 +45,14 @@ export class InstitutionService {
       return this.http.get<StoreItem[]>(`${this.url}/${storeID}`);
     } catch (err) {
       console.log('Error in GET store content by id', err);
+    }
+  }
+
+  getWorkingHours(storeID: string): Observable<WorkingHours[]> {
+    try {
+      return this.http.get<WorkingHours[]>(`${this.url}/hours/${storeID}`);
+    } catch (err) {
+      console.log('Error GET store working hours', err);
     }
   }
 

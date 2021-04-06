@@ -63,9 +63,9 @@
       </div>
 
       <div class="card-date text-color">
-        29.12.20
+        {{ standard | date: "dd.MM.yy" }}
         <br />
-        Pazartesi 16:30
+        {{ standard | date: "EEEE" }} {{ standard | date: "HH:mm" }}
       </div>
     </div>
   </ion-col>
@@ -93,9 +93,9 @@
       </div>
 
       <div class="card-date text-color">
-        29.12.20
+        {{ express | date: "dd.MM.yy" }}
         <br />
-        Pazartesi 16:30
+        {{ express | date: "EEEE" }} {{ express | date: "HH:mm" }}
       </div>
     </div>
   </ion-col>
@@ -123,9 +123,9 @@
       </div>
 
       <div class="card-date text-color">
-        29.12.20
+        {{ premium | date: "dd.MM.yy" }}
         <br />
-        Pazar 13:30
+        {{ premium | date: "EEEE" }} {{ premium | date: "HH:mm" }}
       </div>
     </div>
   </ion-col>

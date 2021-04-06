@@ -49,101 +49,119 @@
     </ion-button>
   </div>
 
-  <!-- Searchbar with cancel button never shown -->
-  <ion-item lines="none" class="item-container">
-    <ion-label class="gray-text">ürün ara </ion-label>
-    <ionic-selectable
-      [(ngModel)]="selected"
-      [items]="storeItemList"
-      itemValueField="kindId"
-      itemTextField="kindName"
-      [canSearch]="true"
-      (onChange)="selectFromSearch($event)"
-    >
-    </ionic-selectable>
-  </ion-item>
+  <!-- Store list -->
+  <div class="store-items-container">
+    <ion-searchbar
+      (ionChange)="onInput($event)"
+      (ionClear)="onCancel()"
+      placeholder="ürün ara"
+      class="searchbar"
+    ></ion-searchbar>
 
-  <div *ngIf="select else onlyItemList ">
-    <!-- card item -->
-    <div class="card-padding">
-      <div class="card-container">
-        <div class="card-items-content">
-          <div class="flex">
-            <img
-              [src]="selectedItemImage"
-              alt="Image Source"
-              class="card-icon text-color"
-            />
-            <div style="padding-top: 0.5rem">
-              <ion-card-title class="card-text text-color"
-                >{{selected.kindName}}
-              </ion-card-title>
-            </div>
-          </div>
-          <div class="card-item-date text-color">
-            express teslimat<br />
-            29.12.20 Pazartesi 16:30’a kadar teslim edilir
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <app-types
-      [itemCost]="selected.price"
-      [totalCost]="selected.price"
-      [cardSize]="1"
-      (cancelled)="cancelSelected(false)"
-      (type)="changeTypeOfSelected($event)"
-      (amount)="changeAmountOfSelected($event)"
-    ></app-types>
-
-    <!--Button to add to card-->
-    <div class="btn-padding">
-      <ion-button shape="round" expand="block" (click)="addToCard()"
-        >sepete ekle</ion-button
-      >
-    </div>
-
-    <!-- -->
-    <div class="store-items-container">
-      <div *ngFor="let item of storeItemList;index as i">
-        <ion-item
-          button
-          lines="none"
-          detail="false"
-          color="medium"
-          class="store-menu-container"
-          (click)="selectItem(item)"
-        >
-          <app-store-item
-            itemName="{{item.kindName}}"
-            itemCost="{{item.price}}"
-            itemImage="{{item.kindImage}}"
-            style="width: 100%"
-          ></app-store-item>
-        </ion-item>
-      </div>
-    </div>
-  </div>
-
-  <!--Rest of store-->
-  <ng-template #onlyItemList class="store-items-container">
-    <div *ngFor="let item of storeItemList; index as i">
+    <div *ngIf="alreadyAddedToCard else default" class="card-padding">
       <ion-item
         button
         lines="none"
         detail="false"
         color="medium"
         class="store-menu-container"
-        (click)="selectItem(item)"
       >
         <app-store-item
-          itemName="{{item.kindName}}"
-          itemCost="{{item.price}}"
-          itemImage="{{item.kindImage}}"
+          itemName="{{alreadyAddedToCard.kindName}}"
+          [itemType]="alreadyAddedToCard.type"
+          itemImage="{{alreadyAddedToCard.kindImage}}"
+          [itemDeliveryDate]="alreadyAddedToCard.deliveryDate"
           style="width: 100%"
         ></app-store-item>
       </ion-item>
+      <div>
+        <app-types
+          [itemCost]="alreadyAddedToCard.price"
+          [totalCost]="alreadyAddedToCard.price"
+          [cardSize]="alreadyAddedToCard.amount"
+          [initialtype]="alreadyAddedToCard.type"
+          [standard]="standardDelivery"
+          [premium]="premiumDelivery"
+          [express]="expressDelivery"
+          (cancelled)="cancelSelected(false)"
+          (type)="changeTypeOfSelected($event)"
+          (amount)="changeAmountOfSelected($event)"
+        ></app-types>
+
+        <!--Button to add to card-->
+        <div class="btn-padding">
+          <ion-button shape="round" expand="block" (click)="updateCard()"
+            >sepeti güncelle</ion-button
+          >
+        </div>
+      </div>
     </div>
-  </ng-template>
+
+    <ng-template #default>
+      <div *ngFor="let item of storeItemList">
+        <!-- selected card item displayed below item-->
+        <div
+          *ngIf="select === true && selected ===item && !alreadyAddedToCard else onlyList"
+          class="card-padding"
+        >
+          <ion-item
+            button
+            lines="none"
+            detail="false"
+            color="medium"
+            class="store-menu-container"
+            (click)="selectItem(item)"
+          >
+            <app-store-item
+              itemName="{{item.kindName}}"
+              [itemType]="selected.type"
+              itemImage="{{item.kindImage}}"
+              [itemDeliveryDate]="item.deliveryDate"
+              style="width: 100%"
+            ></app-store-item>
+          </ion-item>
+          <div>
+            <app-types
+              [itemCost]="selected.price"
+              [totalCost]="selected.price"
+              [cardSize]="1"
+              [standard]="standardDelivery"
+              [premium]="premiumDelivery"
+              [express]="expressDelivery"
+              (cancelled)="cancelSelected(false)"
+              (type)="changeTypeOfSelected($event)"
+              (amount)="changeAmountOfSelected($event)"
+            ></app-types>
+
+            <!--Button to add to card-->
+            <div class="btn-padding">
+              <ion-button shape="round" expand="block" (click)="addToCard()"
+                >sepete ekle</ion-button
+              >
+            </div>
+          </div>
+        </div>
+
+        <ng-template #onlyList>
+          <div *ngIf="item.kindName.toLowerCase().includes(searchName)">
+            <ion-item
+              button
+              lines="none"
+              detail="false"
+              color="medium"
+              class="store-menu-container"
+              (click)="selectItem(item)"
+            >
+              <app-store-item
+                itemName="{{item.kindName}}"
+                itemCost="{{item.price}}"
+                itemImage="{{item.kindImage}}"
+                style="width: 100%"
+              ></app-store-item>
+            </ion-item>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+  </div>
 </ion-content>

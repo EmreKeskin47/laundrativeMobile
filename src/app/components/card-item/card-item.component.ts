@@ -12,9 +12,13 @@ export class CardItemComponent implements OnInit {
   @Input() public itemName;
   @Input() public type;
   @Input() public itemIcon;
+  @Input() public amount;
 
   typeName: string;
+  typeNames = { 3: 'premium', 2: 'express', 1: 'standard', 0: 'standard' };
+
   public oldOrder;
+  priceWithType = 0;
 
   constructor(private sanitizer: DomSanitizer) {}
 
@@ -22,17 +26,19 @@ export class CardItemComponent implements OnInit {
     if (this.deliveryDate) {
       this.oldOrder = false;
     } else this.oldOrder = true;
-    if (this.type == 2) {
-      this.typeName = 'express ';
-    } else if (this.type == 3) {
-      this.typeName = 'premium ';
-    } else {
-      this.typeName = 'standard ';
-    }
 
     let image = this.itemIcon;
     this.itemIcon = this.sanitizer.bypassSecurityTrustResourceUrl(
       `data:image/png;base64, ${image}`
     );
+    this.calculatePriceWithType();
   }
+
+  calculatePriceWithType() {
+    this.priceWithType =
+      parseInt(this.amount) *
+      (this.type > 1 ? this.itemCost + this.type - 1 * 5 : this.itemCost);
+  }
+
+  ionViewDidEnter() {}
 }

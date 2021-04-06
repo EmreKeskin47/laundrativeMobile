@@ -25,11 +25,7 @@ export class CardPage implements OnInit {
     private route: ActivatedRoute,
     private orderService: OrderService,
     private institutionService: InstitutionService
-  ) {
-    route.params.subscribe(() => {
-      this.currentCardCostContent = this.orderService.currentCardCostContent;
-    });
-  }
+  ) {}
 
   ngOnInit() {
     this.cardItems = this.orderService.currentCardContent;
@@ -59,5 +55,10 @@ export class CardPage implements OnInit {
   navigateToStoreMenu(item: KindPriceItem) {
     this.orderService.setSelectedKindItem(item);
     this.router.navigate(['create-order/store-menu', {}]);
+  }
+  ionViewDidEnter() {
+    this.cardItems = this.orderService.currentCardContent;
+    this.selectedIns = this.institutionService.selectedInstitution;
+    this.currentCardCostContent = this.orderService.currentCardCostContent;
   }
 }

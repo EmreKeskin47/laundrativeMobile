@@ -58,7 +58,6 @@ export class CreateAddressPage implements OnInit {
     value: any;
   }) {
     this.selectedNeighborhood = event.value;
-    console.log(this.selectedNeighborhood);
   }
 
   onChange() {

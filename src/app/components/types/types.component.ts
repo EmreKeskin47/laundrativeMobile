@@ -9,15 +9,26 @@ import { Output, EventEmitter } from '@angular/core';
 export class TypesComponent implements OnInit {
   @Input() public itemCost;
   @Input() public totalCost;
-  @Input() public cardSize: number;
+  @Input() public initialtype;
+  @Input() public cardSize;
+  @Input() public standard;
+  @Input() public premium;
+  @Input() public express;
 
-  selectedType = 1;
+  selectedType: number;
   @Output() cancelled = new EventEmitter<boolean>();
   @Output() type = new EventEmitter<number>();
   @Output() amount = new EventEmitter<number>();
 
   constructor(public alertController: AlertController) {}
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.initialtype) {
+      this.selectedType = this.initialtype;
+    } else {
+      this.selectedType = 1;
+    }
+    this.calculateTotalCost();
+  }
 
   plus() {
     this.cardSize = this.cardSize + 1;
