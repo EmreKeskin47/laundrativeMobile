@@ -1,5 +1,3 @@
-import { Neighborhood } from './../../../models/address/Neighborhood';
-import { County } from './../../../models/address/County';
 import { District } from './../../../models/address/District';
 import { AddressService } from './../../../services/address.service';
 import { Province } from './../../../models/address/province';
@@ -17,10 +15,6 @@ export class CreateAddressPage implements OnInit {
   selectedProvince: Province;
   districtList: District[];
   selectedDistrict: District;
-  countyList: County[];
-  selectedCounty: County;
-  neighborhoodList: Neighborhood[];
-  selectedNeighborhood: Neighborhood;
 
   anotherUser = false;
 
@@ -28,36 +22,23 @@ export class CreateAddressPage implements OnInit {
 
   provinceChange(event: { component: IonicSelectableComponent; value: any }) {
     this.selectedProvince = event.value;
+    if (this.selectedDistrict) {
+      this.selectedDistrict = null;
+    }
     this.addressService
-      .getDistrict(this.selectedProvince.id)
+      .getDistrict(this.selectedProvince.provinceId)
       .subscribe((dist) => {
-        this.districtList = dist;
+        this.districtList = dist.content;
+        this.districtList.forEach((dist) => {
+          dist.listName =
+            dist.districtName + '( ' + dist.neighborhoodName + ' )';
+        });
       });
   }
 
   districtChange(event: { component: IonicSelectableComponent; value: any }) {
     this.selectedDistrict = event.value;
-    this.addressService
-      .getCounty(this.selectedDistrict.id)
-      .subscribe((coun) => {
-        this.countyList = coun;
-      });
-  }
-
-  countyChange(event: { component: IonicSelectableComponent; value: any }) {
-    this.selectedCounty = event.value;
-    this.addressService
-      .getNeighborhood(this.selectedCounty.id)
-      .subscribe((neig) => {
-        this.neighborhoodList = neig;
-      });
-  }
-
-  neighborhoodChange(event: {
-    component: IonicSelectableComponent;
-    value: any;
-  }) {
-    this.selectedNeighborhood = event.value;
+    console.log(event.value);
   }
 
   onChange() {
@@ -68,9 +49,19 @@ export class CreateAddressPage implements OnInit {
     this.router.navigate(['/profile/add-address-result']);
   }
 
+  getGroupText(district: District, index: number, districts: District[]): any {
+    if (
+      index === 0 ||
+      district.neighborhoodId !== districts[index - 1].neighborhoodId
+    ) {
+      return district.districtName;
+    }
+    return null;
+  }
+
   ngOnInit(): void {
     this.addressService.getAllProvinces().subscribe((pro) => {
-      this.provinceList = pro;
+      this.provinceList = pro.content;
     });
   }
 }

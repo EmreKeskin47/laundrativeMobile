@@ -1,11 +1,18 @@
 export class District {
-  id: number;
-  provinceId: number;
   districtName: string;
+  neighborhoodId: number;
+  neighborhoodName: string;
+  listName: string;
 
-  constructor(id: number, provinceId: number, districtName: string) {
-    this.id = id;
-    this.provinceId = provinceId;
+  constructor(
+    districtName: string,
+    neighborhoodId: number,
+    neighborhoodName: string,
+    listName: string
+  ) {
     this.districtName = districtName;
+    this.neighborhoodId = neighborhoodId;
+    this.neighborhoodName = neighborhoodName;
+    this.listName = listName;
   }
 }

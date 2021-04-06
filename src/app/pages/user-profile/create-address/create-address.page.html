@@ -15,7 +15,7 @@
         <ionic-selectable
           [(ngModel)]="selectedProvince"
           [items]="provinceList"
-          itemValueField="id"
+          itemValueField="provinceId"
           itemTextField="provinceName"
           [canSearch]="true"
           (onChange)="provinceChange($event)"
@@ -28,36 +28,11 @@
         <ionic-selectable
           [(ngModel)]="selectedDistrict"
           [items]="districtList"
-          itemValueField="id"
-          itemTextField="districtName"
+          itemValueField="neighborhoodId"
+          itemTextField="listName"
           [canSearch]="true"
+          [hasVirtualScroll]="true"
           (onChange)="districtChange($event)"
-        >
-        </ionic-selectable>
-      </ion-item>
-
-      <ion-item lines="none" class="item-container">
-        <ion-label class="gray-text">semt</ion-label>
-        <ionic-selectable
-          [(ngModel)]="selectedCounty"
-          [items]="countyList"
-          itemValueField="id"
-          itemTextField="countyName"
-          [canSearch]="true"
-          (onChange)="countyChange($event)"
-        >
-        </ionic-selectable>
-      </ion-item>
-
-      <ion-item lines="none" class="item-container">
-        <ion-label class="gray-text">mahalle</ion-label>
-        <ionic-selectable
-          [(ngModel)]="selectedNeighborhood"
-          [items]="neighborhoodList"
-          itemValueField="id"
-          itemTextField="neighborhoodName"
-          [canSearch]="true"
-          (onChange)="neighborhoodChange($event)"
         >
         </ionic-selectable>
       </ion-item>

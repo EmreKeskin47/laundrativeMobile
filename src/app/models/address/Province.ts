@@ -1,9 +1,9 @@
 export class Province {
-  id: number;
+  provinceId: number;
   provinceName: string;
 
-  constructor(id: number, provinceName: string) {
-    this.id = id;
+  constructor(provinceId: number, provinceName: string) {
+    this.provinceId = provinceId;
     this.provinceName = provinceName;
   }
 }

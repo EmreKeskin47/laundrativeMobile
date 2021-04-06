@@ -1,23 +1,22 @@
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { AddressService } from './../../services/address.service';
+import { District } from './../../models/address/District';
+import { Province } from './../../models/address/Province';
 import { Institution } from './../../models/Institution';
-import { InstitutionService } from './../../services/institution.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
-interface Address {
-  id: number;
-  first: string;
-  neighborhoodId: number;
-}
-
 @Component({
   selector: 'app-create-order',
   templateUrl: './create-order.page.html',
   styleUrls: ['./create-order.page.scss'],
 })
-export class CreateOrderPage {
+export class CreateOrderPage implements OnInit {
   title = 'mağaza arayın';
-  userAddress: Address;
   insList: Institution[];
+  provinceList: Province[];
+  selectedProvince: Province;
+  districtList: District[];
+  selectedDistrict: District;
 
   //Find a better way
   selectedServices: number[] = [];
@@ -31,12 +30,41 @@ export class CreateOrderPage {
   image =
     'https://media.istockphoto.com/photos/colorful-clothes-in-laundry-basket-blue-indigo-purple-picture-id119623848?k=6&m=119623848&s=612x612&w=0&h=g8_MG32-0cSlkH4RjBHzMiyH_gGPPg9rObdK-i-FUNk=';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private addressService: AddressService) {}
+
+  ngOnInit(): void {
+    this.addressService.getAllProvinces().subscribe((pro) => {
+      this.provinceList = pro.content;
+    });
+  }
+
+  provinceChange(event: { component: IonicSelectableComponent; value: any }) {
+    this.selectedProvince = event.value;
+    if (this.selectedDistrict) {
+      this.selectedDistrict = null;
+    }
+    this.addressService
+      .getDistrict(this.selectedProvince.provinceId)
+      .subscribe((dist) => {
+        this.districtList = dist.content;
+        this.districtList.forEach((dist) => {
+          dist.listName =
+            dist.districtName + '( ' + dist.neighborhoodName + ' )';
+        });
+      });
+  }
+
+  districtChange(event: { component: IonicSelectableComponent; value: any }) {
+    this.selectedDistrict = event.value;
+  }
 
   navigateToStoreList() {
     this.router.navigate([
       '/create-order/available-stores-list',
-      { neighborhoodId: 5432, categories: this.selectedServices },
+      {
+        neighborhoodId: this.selectedDistrict.neighborhoodId,
+        categories: this.selectedServices,
+      },
     ]);
   }
   navigateToDetailedSearch() {
