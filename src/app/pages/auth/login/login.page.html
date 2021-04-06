@@ -14,74 +14,113 @@
         <h1 class="title">hoş geldiniz</h1>
       </ion-text>
     </div>
-    <div class="full-width">
-      <div class="input-container">
-        <ion-list class="list">
-          <ion-item lines="none">
-            <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
-            <ion-label class="text-1rem"> e-mail</ion-label>
-            <ion-input></ion-input>
+    <form
+      [formGroup]="validations_form"
+      (ngSubmit)="onSubmit(validations_form.value)"
+    >
+      <div class="full-width">
+        <div class="input-container">
+          <ion-list class="list">
+            <ion-item lines="none">
+              <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
+              <ion-label class="text-1rem"> </ion-label>
+              <ion-input
+                type="text"
+                formControlName="email"
+                placeholder="e-mail"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div
+                class="error-message"
+                *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
+              >
+                <ion-icon name="information-circle-outline"></ion-icon> {{
+                validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <ion-list class="list">
+            <ion-item lines="none">
+              <ion-icon name="lock-closed" class="icon icon-color"></ion-icon>
+              <ion-label class="text-1rem"> </ion-label>
+              <ion-input
+                type="text"
+                formControlName="password"
+                placeholder="parola"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="validation-errors">
+            <ng-container
+              *ngFor="let validation of validation_messages.password"
+            >
+              <div
+                class="error-message"
+                *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
+              >
+                <ion-icon name="information-circle-outline"></ion-icon> {{
+                validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="first-button-container">
+          <ion-item lines="none" color="medium">
+            <ion-label class="text-1rem">beni hatırla</ion-label>
+            <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
           </ion-item>
-        </ion-list>
-      </div>
 
-      <div class="input-container">
-        <ion-list class="list">
-          <ion-item lines="none">
-            <ion-icon name="lock-closed" class="icon icon-color"></ion-icon>
-            <ion-label class="text-1rem"> parola</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-        </ion-list>
+          <ion-button
+            fill="clear"
+            expand="block"
+            style="font-size: 0.8rem"
+            class="toLowerCase"
+            >parolamı hatırlamıyorum</ion-button
+          >
+        </div>
       </div>
-
-      <div class="first-button-container">
-        <ion-item lines="none" color="medium">
-          <ion-label class="text-1rem">beni hatırla</ion-label>
-          <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
-        </ion-item>
-
-        <ion-button
-          fill="clear"
-          expand="block"
-          style="font-size: 0.8rem"
-          class="toLowerCase"
-          >parolamı hatırlamıyorum</ion-button
-        >
+      <div class="full-width">
+        <div class="button-padding">
+          <ion-button
+            (click)="navigateToAccount()"
+            expand="block"
+            class="toLowerCase"
+            type="submit"
+            [disabled]="!validations_form.valid"
+            >giriş yap</ion-button
+          >
+        </div>
+        <div class="sign-in-buttons-container">
+          <ion-button class="sign-btn" color="light"
+            ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
+            <p class="sign-options toLowerCase">sign in with google</p>
+          </ion-button>
+          <ion-button class="sign-btn" color="light"
+            ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
+            <p class="sign-options toLowerCase">sign in with facebook</p>
+          </ion-button>
+        </div>
       </div>
-    </div>
-    <div class="full-width">
-      <div class="button-padding">
-        <ion-button
-          (click)="navigateToAccount()"
-          expand="block"
-          class="toLowerCase"
-          >giriş yap</ion-button
-        >
+      <div class="full-width">
+        <div class="button-padding btn-color">
+          <ion-button
+            (click)="navigateToSignup()"
+            fill="outline"
+            expand="block"
+            color="primary"
+            class="toLowerCase"
+          >
+            yeni hesap oluştur</ion-button
+          >
+        </div>
       </div>
-      <div class="sign-in-buttons-container">
-        <ion-button class="sign-btn" color="light"
-          ><ion-icon name="logo-google" class="btn-color"> </ion-icon>
-          <p class="sign-options toLowerCase">sign in with google</p>
-        </ion-button>
-        <ion-button class="sign-btn" color="light"
-          ><ion-icon name="logo-facebook" class="btn-color"> </ion-icon>
-          <p class="sign-options toLowerCase">sign in with facebook</p>
-        </ion-button>
-      </div>
-    </div>
-    <div class="full-width">
-      <div class="button-padding btn-color">
-        <ion-button
-          (click)="navigateToSignup()"
-          fill="outline"
-          expand="block"
-          color="primary"
-          class="toLowerCase"
-        >
-          yeni hesap oluştur</ion-button
-        >
-      </div>
-    </div>
+    </form>
   </div>
 </ion-content>
