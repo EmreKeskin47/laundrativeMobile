@@ -87,3 +87,10 @@
 .toLowerCase {
   text-transform: lowercase;
 }
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  margin-top: 10px;
+}

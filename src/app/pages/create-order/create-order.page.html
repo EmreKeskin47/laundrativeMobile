@@ -214,7 +214,11 @@
 
   <!-- Search Buttons-->
   <div class="select-shop-container">
-    <ion-button class="lowerCase" (click)="navigateToStoreList()" expand="block"
+    <ion-button
+      class="lowerCase"
+      (click)="navigateToStoreList()"
+      (disabled)="!selectedDistrict"
+      expand="block"
       >teslim alma için uygun mağazaları göster</ion-button
     >
   </div>

@@ -17,8 +17,9 @@
     <form
       [formGroup]="validations_form"
       (ngSubmit)="onSubmit(validations_form.value)"
+      class="full-width"
     >
-      <div class="full-width">
+      <div>
         <div class="input-container">
           <ion-list class="list">
             <ion-item lines="none">
@@ -58,11 +59,11 @@
           </ion-list>
           <div class="validation-errors">
             <ng-container
-              *ngFor="let validation of validation_messages.password"
+              *ngFor="let validation of validation_messages.password "
             >
               <div
                 class="error-message"
-                *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
+                *ngIf="validations_form.get('password').hasError(validation.type)&& (validations_form.get('password').dirty || validations_form.get('password').touched) "
               >
                 <ion-icon name="information-circle-outline"></ion-icon> {{
                 validation.message }}
