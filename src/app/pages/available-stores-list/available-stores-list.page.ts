@@ -21,13 +21,17 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.snapshot.paramMap.get('neighborhoodId');
-    this.route.queryParamMap.subscribe(
-      (params) => (this.categoryList = params.getAll('categories'))
+    this.neighborhoodId = parseInt(
+      this.route.snapshot.paramMap.get('neighborhoodId')
     );
+    this.route.queryParamMap.subscribe((params) => {
+      this.categoryList = params.getAll('categories');
+    });
     this.institutionService
       .getInstitutionsInNeighborhood(this.neighborhoodId, this.categoryList)
-      .subscribe((ins) => (this.institutionList = ins));
+      .subscribe((ins) => {
+        console.log(ins, 'avaşlable store list - onInıt');
+      });
   }
 
   navigateToStore(kurum: Institution) {

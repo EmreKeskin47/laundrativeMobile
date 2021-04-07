@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -15,7 +16,11 @@ export class LoginPage implements OnInit {
   public pageTitle = 'kullanıcı girişi';
   validations_form: FormGroup;
 
-  constructor(private router: Router, public formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    public formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.validations_form = this.formBuilder.group({
@@ -28,11 +33,7 @@ export class LoginPage implements OnInit {
       ),
       password: new FormControl(
         '',
-        Validators.compose([
-          Validators.minLength(5),
-          Validators.required,
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-        ])
+        Validators.compose([Validators.minLength(5), Validators.required])
       ),
     });
   }
@@ -48,23 +49,19 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/account-create-result']);
   }
 
+  //Error messages
   validation_messages = {
     email: [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' },
+      { type: 'required', message: 'email alanı boş bırakılamaz' },
+      { type: 'pattern', message: 'lütfen geçerli bir mail adresi giriniz' },
     ],
     password: [
-      { type: 'required', message: 'Password is required.' },
+      { type: 'required', message: 'parola alanı boş bırakılamaz' },
       {
         type: 'minlength',
-        message: 'Password must be at least 5 characters long.',
-      },
-      {
-        type: 'pattern',
-        message:
-          'Your password must contain at least one uppercase, one lowercase, and one number.',
+        message: 'parolanız en az 6 karakter uzunluğunda olmalı ',
       },
     ],
-    matching_passwords: [{ type: 'areEqual', message: 'Password mismatch.' }],
+    matching_passwords: [{ type: 'areEqual', message: 'parola uyuşma hatası' }],
   };
 }

@@ -12,6 +12,7 @@
     [formGroup]="validations_form"
     (ngSubmit)="onSubmit(validations_form.value)"
   >
+    <!-- Email -->
     <div style="padding-top: 5rem">
       <div class="input-container">
         <ion-list class="list">
@@ -31,8 +32,57 @@
               class="error-message"
               *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
             >
-              <ion-icon name="information-circle-outline"></ion-icon> {{
-              validation.message }}
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--NAME-->
+      <div class="input-container">
+        <ion-list class="list">
+          <ion-item lines="none">
+            <ion-icon name="person" class="icon icon-color"></ion-icon>
+            <ion-label class="text-1rem"> </ion-label>
+            <ion-input
+              type="text"
+              placeholder="isim soyisim"
+              formControlName="name"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.name">
+            <div
+              class="error-message"
+              *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)"
+            >
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--PHONE NUMBER-->
+      <div class="input-container">
+        <ion-list class="list">
+          <ion-item lines="none">
+            <ion-icon name="call" class="icon icon-color"></ion-icon>
+            <ion-label class="text-1rem"> </ion-label>
+            <ion-input
+              type="text"
+              placeholder="telefon"
+              formControlName="phone"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.phone">
+            <div
+              class="error-message"
+              *ngIf="validations_form.get('phone').hasError(validation.type)&&(validations_form.get('phone').dirty || validations_form.get('phone').touched)"
+            >
+              {{ validation.message }}
             </div>
           </ng-container>
         </div>
@@ -59,8 +109,7 @@
                 class="error-message"
                 *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
               >
-                <ion-icon name="information-circle-outline"></ion-icon> {{
-                validation.message }}
+                {{ validation.message }}
               </div>
             </ng-container>
           </div>
@@ -86,8 +135,7 @@
                 class="error-message"
                 *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
               >
-                <ion-icon name="information-circle-outline"></ion-icon> {{
-                validation.message }}
+                {{ validation.message }}
               </div>
             </ng-container>
           </div>
@@ -97,7 +145,6 @@
     <div style="padding-top: 2rem">
       <div class="button-padding">
         <ion-button
-          (click)="navigateToAccount()"
           expand="block"
           class="toLowerCase"
           type="submit"

@@ -13,8 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   registerUser(user: User): Observable<any> {
-    const test = new User('name', 'password', 'testphone', 'test', 'test');
-    const body = JSON.stringify(test);
-    return this.http.post(this.url, test, { headers: this.headers });
+    const body = JSON.stringify(user);
+    return this.http.post(this.url, body, { headers: this.headers });
+  }
+
+  login(email: string, password: string) {
+    const body = JSON.stringify({ email: email, password: password });
+    return this.http.post(`${BASE_URL}/login`, body);
   }
 }

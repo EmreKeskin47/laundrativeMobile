@@ -11,7 +11,9 @@ import { StoreItem } from '../models/StoreItem';
   providedIn: 'root',
 })
 export class InstitutionService {
-  url: string = `${BASE_URL}/institution`;
+  url: string = `${BASE_URL}/na/institution`;
+  headers = { 'content-type': 'application/json' };
+
   currentInstitutionList: Institution[] = [];
   selectedInstitution: StoreCardInfo = new StoreCardInfo('', '', '', '', '');
   constructor(private http: HttpClient) {}
@@ -25,16 +27,21 @@ export class InstitutionService {
     }
   }
 
-  //Make dynamic
   getInstitutionsInNeighborhood(
     neighborhoodId: number,
     categories: string[]
-  ): Observable<Institution[]> {
+  ): Observable<any> {
     try {
+      neighborhoodId = 6;
       const date = new Date();
-      return this.http.get<Institution[]>(
-        `${this.url}/?neighborhoodId=3&categories=7&date=2021-03-29T17:45:00`
-      );
+      categories = ['2'];
+      var body = { neighborhoodId, categories, date };
+      JSON.stringify(body);
+      console.log(body);
+
+      return this.http.post<any>(`${this.url}/list`, body, {
+        headers: this.headers,
+      });
     } catch (err) {
       console.log('GET ins by neighborhood id ', err);
     }

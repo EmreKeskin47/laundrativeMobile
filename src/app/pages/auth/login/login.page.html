@@ -14,6 +14,7 @@
         <h1 class="title">hoş geldiniz</h1>
       </ion-text>
     </div>
+
     <form
       [formGroup]="validations_form"
       (ngSubmit)="onSubmit(validations_form.value)"
@@ -38,8 +39,7 @@
                 class="error-message"
                 *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
               >
-                <ion-icon name="information-circle-outline"></ion-icon> {{
-                validation.message }}
+                {{ validation.message }}
               </div>
             </ng-container>
           </div>
@@ -65,8 +65,7 @@
                 class="error-message"
                 *ngIf="validations_form.get('password').hasError(validation.type)&& (validations_form.get('password').dirty || validations_form.get('password').touched) "
               >
-                <ion-icon name="information-circle-outline"></ion-icon> {{
-                validation.message }}
+                {{ validation.message }}
               </div>
             </ng-container>
           </div>
@@ -90,7 +89,6 @@
       <div class="full-width">
         <div class="button-padding">
           <ion-button
-            (click)="navigateToAccount()"
             expand="block"
             class="toLowerCase"
             type="submit"
