@@ -30,7 +30,11 @@
       </ionic-selectable>
     </ion-item>
 
-    <app-date-field calenderTitle="ne zaman alalım"></app-date-field>
+    <app-date-field
+      calenderTitle="ne zaman alalım"
+      (selectedDate)="dateChange($event)"
+      (selectedTime)="timeChange($event)"
+    ></app-date-field>
   </div>
 
   <!-- Discount Component-->

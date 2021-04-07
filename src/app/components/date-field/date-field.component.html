@@ -1,22 +1,37 @@
 <!-- DatePicker Component-->
 <div class="date-container">
   <ion-label class="text-1rem"> {{ calenderTitle }}</ion-label>
-  <ion-item-group>
-    <div class="date-content">
-      <ion-icon name="calendar" class="date-icon primary-color"></ion-icon>
-      <div style="width: 80%">
-        <ion-item class="border-radius">
-          <ion-label class="text-1rem">Gün</ion-label>
-          <ion-datetime displayFormat="MMMM DD"></ion-datetime>
-        </ion-item>
-        <ion-item class="border-radius">
-          <ion-label class="text-1rem">Saat</ion-label>
-          <ion-datetime
-            displayFormat="hh:mm A"
-            minuteValues="0,15,30,45"
-          ></ion-datetime>
-        </ion-item>
+  <ion-item-group class="item-group">
+    <ion-item lines="none" class="border-radius date-item">
+      <ion-icon name="calendar" class="primary-color"></ion-icon>
+      <div>
+        <ion-label class="text-1rem">tarih seçin</ion-label>
+        <ion-datetime
+          (ionChange)="dateChange($event)"
+          monthValues="{{ months }}"
+          displayFormat="MMMM DD"
+          month-names="ocak, şubat, mart, nisan, mayıs, haziran, temmuz, ağustos, ,eylül, ekim, kasım, aralık"
+          cancelText="iptal"
+          doneText="onayla"
+          style="padding: 0"
+        ></ion-datetime>
       </div>
-    </div>
+    </ion-item>
+
+    <ion-item lines="none" class="border-radius time-item">
+      <ion-icon class="primary-color" name="time"></ion-icon>
+      <div>
+        <ion-label class="text-1rem">saat seçin</ion-label>
+        <ion-datetime
+          (ionChange)="timeChange($event)"
+          displayFormat="HH:mm"
+          minuteValues="0,15,30,45"
+          hour-values=" 9, 10,11,12,13,14,15,16,17,18,19,20,21,22,23 "
+          cancelText="iptal"
+          doneText="onayla"
+          style="padding: 0"
+        ></ion-datetime>
+      </div>
+    </ion-item>
   </ion-item-group>
 </div>

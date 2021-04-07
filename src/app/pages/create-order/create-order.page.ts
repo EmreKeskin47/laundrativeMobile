@@ -18,6 +18,9 @@ export class CreateOrderPage implements OnInit {
   districtList: District[];
   selectedDistrict: District;
 
+  selectedDate: Date;
+  selectedTime: Date;
+
   //Find a better way
   selectedServices: string[] = [];
   isSelected1 = false;
@@ -129,5 +132,13 @@ export class CreateOrderPage implements OnInit {
         this.selectedServices.splice(i, 1);
       }
     }
+  }
+
+  timeChange(event: any) {
+    this.selectedTime = new Date(event);
+  }
+
+  dateChange(event: any) {
+    this.selectedDate = new Date(event);
   }
 }

@@ -1,22 +1,28 @@
 .primary-color {
   color: #e75761;
+  padding-right: 0.2rem;
 }
 .text-1rem {
   font-size: 0.8rem;
-  color: black;
+  color: gray;
+}
+.item-group {
+  display: flex;
+  justify-content: space-between;
 }
 .date-container {
-  padding-left: 1rem;
+  padding: 0rem 1rem 0rem 1rem;
 }
-.date-content {
-  display: flex;
-  justify-content: space-around;
-}
-.date-icon {
-  font-size: 2rem;
-  padding-top: 1.5rem;
+.border-radius {
+  border-radius: 10px;
 }
 
-.border-radius {
-  border-radius: 20px;
+.date-item {
+  --padding-start: 0;
+  width: 11rem;
+}
+
+.time-item {
+  --padding-start: 0;
+  width: 7rem;
 }
