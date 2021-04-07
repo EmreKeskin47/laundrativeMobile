@@ -12,32 +12,7 @@
     [formGroup]="validations_form"
     (ngSubmit)="onSubmit(validations_form.value)"
   >
-    <!-- Email -->
     <div style="padding-top: 5rem">
-      <div class="input-container">
-        <ion-list class="list">
-          <ion-item lines="none">
-            <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
-            <ion-label class="text-1rem"> </ion-label>
-            <ion-input
-              type="text"
-              formControlName="email"
-              placeholder="e-mail"
-            ></ion-input>
-          </ion-item>
-        </ion-list>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validation_messages.email">
-            <div
-              class="error-message"
-              *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
-            >
-              {{ validation.message }}
-            </div>
-          </ng-container>
-        </div>
-      </div>
-
       <!--NAME-->
       <div class="input-container">
         <ion-list class="list">
@@ -71,7 +46,7 @@
             <ion-label class="text-1rem"> </ion-label>
             <ion-input
               type="text"
-              placeholder="telefon"
+              placeholder="cep telefonu"
               formControlName="phone"
             ></ion-input>
           </ion-item>
@@ -81,6 +56,31 @@
             <div
               class="error-message"
               *ngIf="validations_form.get('phone').hasError(validation.type)&&(validations_form.get('phone').dirty || validations_form.get('phone').touched)"
+            >
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-container">
+        <ion-list class="list">
+          <ion-item lines="none">
+            <ion-icon name="mail-sharp" class="icon icon-color"></ion-icon>
+            <ion-label class="text-1rem"> </ion-label>
+            <ion-input
+              type="text"
+              formControlName="email"
+              placeholder="e-mail"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div
+              class="error-message"
+              *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
             >
               {{ validation.message }}
             </div>
