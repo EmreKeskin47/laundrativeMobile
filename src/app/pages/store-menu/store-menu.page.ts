@@ -1,9 +1,9 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { WorkingHours } from './../../models/WorkingHours';
+import { WorkingHours } from '../../models/eski/WorkingHours';
 import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
-import { KindPriceItem } from './../../models/KindPriceItem';
+import { KindPriceItem } from '../../models/eski/KindPriceItem';
 import { InstitutionService } from './../../services/institution.service';
 import { OrderService } from './../../services/order.service';
 @Component({

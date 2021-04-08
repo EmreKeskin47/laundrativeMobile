@@ -1,4 +1,4 @@
-import { Institution } from '../../models/Institution';
+import { Institution } from '../../models/eski/Institution';
 import { InstitutionService } from './../../services/institution.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

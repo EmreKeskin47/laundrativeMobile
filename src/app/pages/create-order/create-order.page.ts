@@ -1,9 +1,9 @@
 import { InstitutionService } from './../../services/institution.service';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { AddressService } from './../../services/address.service';
-import { District } from './../../models/address/District';
-import { Province } from './../../models/address/Province';
-import { Institution } from './../../models/Institution';
+import { District } from '../../models/eski/District';
+import { AdresIl } from '../../models/AdresIl';
+import { Institution } from '../../models/eski/Institution';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -14,8 +14,8 @@ import { Component, OnInit } from '@angular/core';
 export class CreateOrderPage implements OnInit {
   title = 'mağaza arayın';
   insList: Institution[];
-  provinceList: Province[];
-  selectedProvince: Province;
+  provinceList: AdresIl[];
+  selectedProvince: AdresIl;
   districtList: District[];
   selectedDistrict: District;
 
@@ -42,6 +42,7 @@ export class CreateOrderPage implements OnInit {
 
   ngOnInit(): void {
     this.addressService.getAllProvinces().subscribe((pro) => {
+      console.log(pro);
       this.provinceList = pro.content;
     });
   }
@@ -52,7 +53,7 @@ export class CreateOrderPage implements OnInit {
       this.selectedDistrict = null;
     }
     this.addressService
-      .getDistrict(this.selectedProvince.provinceId)
+      .getDistrict(this.selectedProvince.id)
       .subscribe((dist) => {
         this.districtList = dist.content;
         this.districtList.forEach((dist) => {

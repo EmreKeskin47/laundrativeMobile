@@ -1,6 +1,6 @@
-import { District } from './../../../models/address/District';
+import { District } from '../../../models/eski/District';
 import { AddressService } from './../../../services/address.service';
-import { Province } from './../../../models/address/province';
+import { AdresIl } from '../../../models/AdresIl';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';
@@ -11,8 +11,8 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 })
 export class CreateAddressPage implements OnInit {
   pageTitle = 'yeni adres oluştur';
-  provinceList: Province[];
-  selectedProvince: Province;
+  provinceList: AdresIl[];
+  selectedProvince: AdresIl;
   districtList: District[];
   selectedDistrict: District;
 
@@ -26,7 +26,7 @@ export class CreateAddressPage implements OnInit {
       this.selectedDistrict = null;
     }
     this.addressService
-      .getDistrict(this.selectedProvince.provinceId)
+      .getDistrict(this.selectedProvince.id)
       .subscribe((dist) => {
         this.districtList = dist.content;
         this.districtList.forEach((dist) => {

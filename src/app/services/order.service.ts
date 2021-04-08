@@ -1,5 +1,5 @@
 import { CardCostContent } from './../models/ui/CardCostContent';
-import { KindPriceItem } from './../models/KindPriceItem';
+import { KindPriceItem } from '../models/eski/KindPriceItem';
 import { Injectable } from '@angular/core';
 
 @Injectable({

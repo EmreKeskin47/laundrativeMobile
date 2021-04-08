@@ -1,7 +1,7 @@
 import { CardCostContent } from './../../models/ui/CardCostContent';
 import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
 import { InstitutionService } from './../../services/institution.service';
-import { KindPriceItem } from './../../models/KindPriceItem';
+import { KindPriceItem } from '../../models/eski/KindPriceItem';
 import { OrderService } from './../../services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

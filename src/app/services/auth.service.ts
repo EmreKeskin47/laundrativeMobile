@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './../models/User';
+import { Musteri } from '../models/Musteri';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
 
@@ -8,13 +8,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  url: string = `${BASE_URL}/na/customer/register`;
-  headers = { 'content-type': 'application/json' };
+  url: string = `${BASE_URL}/musteri`;
   constructor(private http: HttpClient) {}
 
-  registerUser(user: User): Observable<any> {
-    const body = JSON.stringify(user);
-    return this.http.post(this.url, body, { headers: this.headers });
+  registerUser(user: Musteri): Observable<any> {
+    try {
+      return this.http.post<any>(
+        `${this.url}/olustur?adi=${user.adi}&telefon=${user.telefon}&email=${user.email}&sifre=${user.sifre}`,
+        ''
+      );
+    } catch (err) {
+      console.log('Register user err ', err);
+    }
   }
 
   login(email: string, password: string) {

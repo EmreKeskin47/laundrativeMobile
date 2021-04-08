@@ -1,4 +1,4 @@
-import { Category } from '../../models/Category';
+import { Category } from '../../models/eski/Category';
 import { Injectable } from '@angular/core';
 import { BASE_URL } from '../../api/baseUrl';
 import { HttpClient } from '@angular/common/http';

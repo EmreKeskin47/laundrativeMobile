@@ -1,11 +1,11 @@
-import { WorkingHours } from './../models/WorkingHours';
+import { WorkingHours } from '../models/eski/WorkingHours';
 import { StoreCardInfo } from './../models/ui/StoreCardInfo';
-import { Institution } from '../models/Institution';
+import { Institution } from '../models/eski/Institution';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StoreItem } from '../models/StoreItem';
+import { StoreItem } from '../models/eski/StoreItem';
 
 @Injectable({
   providedIn: 'root',

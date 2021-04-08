@@ -11,7 +11,12 @@ export class ProfilePage implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let date = new Date();
+    let time = new Date();
+    console.log(JSON.stringify(date.toLocaleDateString()));
+    console.log(JSON.stringify(time));
+  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);

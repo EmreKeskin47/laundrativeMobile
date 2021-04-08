@@ -1,4 +1,4 @@
-import { User } from './../../../models/User';
+import { Musteri } from '../../../models/Musteri';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -54,12 +54,11 @@ export class SigninPage implements OnInit {
   }
 
   onSubmit(values) {
-    var user = new User(
+    var user = new Musteri(
       values.name,
-      values.matching_passwords.password,
       values.phone,
       values.email,
-      ''
+      values.matching_passwords.password
     );
     console.log(user);
   }

@@ -8,8 +8,8 @@
       <ionic-selectable
         [(ngModel)]="selectedProvince"
         [items]="provinceList"
-        itemValueField="provinceId"
-        itemTextField="provinceName"
+        itemValueField="id"
+        itemTextField="adi"
         [canSearch]="true"
         (onChange)="provinceChange($event)"
       >
