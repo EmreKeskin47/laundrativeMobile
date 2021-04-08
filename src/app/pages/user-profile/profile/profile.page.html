@@ -2,36 +2,25 @@
 <ion-content color="medium">
   <div class="root">
     <div>
-      <ion-chip disabled="false" class="container">
+      <ion-chip class="container" (click)="navigateToAccountInfo()">
         <div style="display: flex">
           <ion-icon class="icon text-color" name="person-sharp"></ion-icon>
           <ion-label class="label text-color bold-text"
             >hesap bilgilerim</ion-label
           >
         </div>
-
-        <ion-button (click)="navigateToAccountInfo()" class="navigate-btn">
-          <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-        </ion-button>
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
       </ion-chip>
 
-      <div>
-        <ion-chip class="container">
-          <div style="display: flex">
-            <ion-icon class="icon text-color" name="home-sharp"></ion-icon>
-            <ion-label class="label text-color bold-text">adreslerim</ion-label>
-          </div>
+      <ion-chip class="container" (click)="navigateToAddressList()">
+        <div style="display: flex">
+          <ion-icon class="icon text-color" name="home-sharp"></ion-icon>
+          <ion-label class="label text-color bold-text">adreslerim</ion-label>
+        </div>
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
+      </ion-chip>
 
-          <ion-button (click)="navigateToAddressList()" class="navigate-btn">
-            <ion-icon
-              class="text-color"
-              name="chevron-forward-sharp"
-            ></ion-icon>
-          </ion-button>
-        </ion-chip>
-      </div>
-
-      <ion-chip disabled="false" class="container">
+      <ion-chip class="container" (click)="navigateToNotifications()">
         <div style="display: flex">
           <ion-icon
             class="icon text-color"
@@ -41,31 +30,23 @@
             >bildirim ayarları</ion-label
           >
         </div>
-
-        <ion-button (click)="navigateToNotifications()" class="navigate-btn">
-          <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-        </ion-button>
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
       </ion-chip>
 
-      <ion-chip disabled="false" class="container">
+      <ion-chip class="container" (click)="navigateToDiscountList()">
         <div style="display: flex">
           <ion-icon class="icon text-color" name="gift-sharp"></ion-icon>
           <ion-label class="label text-color bold-text">kampanyalar</ion-label>
         </div>
-        <ion-button (click)="navigateToDiscountList()" class="navigate-btn">
-          <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-        </ion-button>
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
       </ion-chip>
 
-      <ion-chip disabled="false" class="container">
+      <ion-chip (click)="navigateToContact()" class="container">
         <div style="display: flex">
           <ion-icon class="icon text-color" name="call-sharp"></ion-icon>
           <ion-label class="label text-color bold-text">bize ulaşın</ion-label>
         </div>
-
-        <ion-button (click)="navigateToContact()" class="navigate-btn">
-          <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-        </ion-button>
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
       </ion-chip>
     </div>
     <div class="bottom-container">

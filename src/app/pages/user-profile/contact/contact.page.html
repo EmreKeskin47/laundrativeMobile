@@ -9,43 +9,41 @@
 
 <ion-content color="medium">
   <div>
-    <ion-chip disabled="false" class="container">
+    <ion-chip class="container">
       <div style="display: flex">
         <ion-icon color="danger" class="icon" name="cog-sharp"></ion-icon>
         <ion-label class="label text-color bold-text"
           >nasıl çalışıyoruz ?</ion-label
         >
       </div>
-
-      <ion-button class="navigate-btn">
+      <div>
         <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </ion-button>
+      </div>
     </ion-chip>
 
-    <div>
-      <ion-chip class="container">
-        <div style="display: flex">
-          <ion-icon color="danger" class="icon" name="help-sharp"></ion-icon>
-          <ion-label class="label text-color bold-text"
-            >laundrative nasıl kullanılır ?</ion-label
-          >
-        </div>
+    <ion-chip class="container">
+      <div style="display: flex">
+        <ion-icon color="danger" class="icon" name="help-sharp"></ion-icon>
+        <ion-label class="label text-color bold-text"
+          >laundrative nasıl kullanılır ?</ion-label
+        >
+      </div>
+      <div>
+        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
+      </div>
+    </ion-chip>
 
-        <ion-button class="navigate-btn">
-          <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-        </ion-button>
-      </ion-chip>
-    </div>
-
-    <ion-chip disabled="false" class="container">
+    <ion-chip class="container" (click)="messagePressed()">
       <div style="display: flex">
         <ion-icon color="danger" class="icon" name="mail-sharp"></ion-icon>
         <ion-label class="label text-color bold-text">mesaj gönderin</ion-label>
       </div>
-
-      <ion-button (click)="messagePressed()" class="navigate-btn">
+      <div *ngIf="!showMessage else downArrow">
         <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </ion-button>
+      </div>
+      <ng-template #downArrow>
+        <ion-icon name="chevron-down-sharp"></ion-icon>
+      </ng-template>
     </ion-chip>
 
     <!--Message container-->
@@ -77,15 +75,14 @@
       </div>
     </div>
 
-    <ion-chip disabled="false" class="container">
+    <ion-chip class="container">
       <div style="display: flex">
         <ion-icon color="danger" class="icon" name="call-sharp"></ion-icon>
         <ion-label class="label text-color bold-text">sizi arayalım</ion-label>
       </div>
-
-      <ion-button class="navigate-btn">
+      <div>
         <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </ion-button>
+      </div>
     </ion-chip>
   </div>
 </ion-content>

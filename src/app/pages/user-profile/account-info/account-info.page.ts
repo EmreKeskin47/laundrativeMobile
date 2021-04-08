@@ -13,6 +13,7 @@ export class AccountInfoPage implements OnInit {
   email = 'revsandenizyildirimcobanoglu@gmail.com';
   password = '*******';
   phone = '(00 90) 535 867 18 97';
+  disableEdit = true;
   constructor(private router: Router) {}
 
   ngOnInit() {}
@@ -23,5 +24,12 @@ export class AccountInfoPage implements OnInit {
 
   navigateToDeleteAccount() {
     this.router.navigate(['/profile/delete-account']);
+  }
+  editClicked() {
+    this.disableEdit = !this.disableEdit;
+  }
+
+  saveClicked() {
+    console.log('save');
   }
 }

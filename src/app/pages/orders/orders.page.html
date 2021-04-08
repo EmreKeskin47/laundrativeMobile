@@ -16,11 +16,11 @@
         ></app-order-card>
         <!--edit save buttons-->
         <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
-          <ion-chip class="ter-bcg">
+          <ion-chip class="ter-bcg" (click)="editClicked()">
             <ion-icon class="white-text" name="pencil"></ion-icon>
             <ion-label class="white-text">düzenle</ion-label>
           </ion-chip>
-          <ion-chip class="sec-bcg">
+          <ion-chip class="sec-bcg" (click)="deleteClicked() ">
             <ion-icon class="white-text" name="close"></ion-icon>
             <ion-label class="white-text">sil</ion-label>
           </ion-chip>

@@ -12,4 +12,11 @@ export class AddressCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  editClicked() {
+    console.log('edit');
+  }
+
+  deleteClicked() {
+    console.log('delete');
+  }
 }

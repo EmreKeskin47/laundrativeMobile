@@ -25,5 +25,6 @@ export class AddressListPage implements OnInit {
   navigateToCreateAddress() {
     this.router.navigate(['profile/create-address']);
   }
+
   ngOnInit() {}
 }

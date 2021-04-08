@@ -29,6 +29,8 @@ export class StoreMenuPage implements OnInit {
 
   searchName: string = '';
 
+  showStoreServiceOptions = false;
+
   constructor(
     private orderService: OrderService,
     private institutionService: InstitutionService,
@@ -220,5 +222,9 @@ export class StoreMenuPage implements OnInit {
     this.orderService.selectedItem = null;
     this.alreadyAddedToCard = null;
     this.select = false;
+  }
+
+  expandServiceOptions() {
+    this.showStoreServiceOptions = !this.showStoreServiceOptions;
   }
 }

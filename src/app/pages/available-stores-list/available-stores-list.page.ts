@@ -21,27 +21,17 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.neighborhoodId = parseInt(
-      this.route.snapshot.paramMap.get('neighborhoodId')
-    );
-    this.route.queryParamMap.subscribe((params) => {
-      this.categoryList = params.getAll('categories');
-    });
-    this.institutionService
-      .getInstitutionsInNeighborhood(this.neighborhoodId, this.categoryList)
-      .subscribe((ins) => {
-        console.log(ins, 'avaşlable store list - onInıt');
-      });
+    console.log('on init');
+    this.institutionList = this.institutionService.currentInstitutionList;
   }
 
   navigateToStore(kurum: Institution) {
-    this.institutionService.setSelectedInstituion(
-      kurum.institutionName,
-      kurum.neighborhoodName,
-      kurum.minimumOrderPrice.toString(),
-      kurum.maximumServicePrice.toString(),
-      kurum.institutionId.toString()
-    );
+    this.institutionService.setSelectedInstituionCard(kurum);
     this.router.navigate(['create-order/store-menu']);
+  }
+
+  ionViewDidEnter() {
+    console.log('did enter');
+    this.institutionList = this.institutionService.currentInstitutionList;
   }
 }

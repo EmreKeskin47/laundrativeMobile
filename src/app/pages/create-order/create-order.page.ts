@@ -1,3 +1,4 @@
+import { InstitutionService } from './../../services/institution.service';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { AddressService } from './../../services/address.service';
 import { District } from './../../models/address/District';
@@ -33,7 +34,11 @@ export class CreateOrderPage implements OnInit {
   image =
     'https://media.istockphoto.com/photos/colorful-clothes-in-laundry-basket-blue-indigo-purple-picture-id119623848?k=6&m=119623848&s=612x612&w=0&h=g8_MG32-0cSlkH4RjBHzMiyH_gGPPg9rObdK-i-FUNk=';
 
-  constructor(private router: Router, private addressService: AddressService) {}
+  constructor(
+    private router: Router,
+    private addressService: AddressService,
+    private institutionService: InstitutionService
+  ) {}
 
   ngOnInit(): void {
     this.addressService.getAllProvinces().subscribe((pro) => {
@@ -62,13 +67,15 @@ export class CreateOrderPage implements OnInit {
   }
 
   navigateToStoreList() {
-    this.router.navigate([
-      '/create-order/available-stores-list',
-      {
-        neighborhoodId: this.selectedDistrict.neighborhoodId,
-        categories: this.selectedServices,
-      },
-    ]);
+    this.institutionService
+      .getInstitutionsInNeighborhood(
+        this.selectedDistrict.neighborhoodId,
+        this.selectedServices
+      )
+      .subscribe(
+        (inst) => (this.institutionService.currentInstitutionList = inst)
+      );
+    this.router.navigate(['/create-order/available-stores-list']);
   }
   navigateToDetailedSearch() {
     this.router.navigate(['/create-order/detailed-search']);

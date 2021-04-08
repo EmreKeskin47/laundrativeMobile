@@ -10,15 +10,22 @@ export class OrderService {
   currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
   selectedItem: KindPriceItem = new KindPriceItem(0, '', '', 0, 0, null, 0);
   constructor() {}
-
-  addToCard(item: KindPriceItem) {
-    this.currentCardContent.push(item);
-    this.setSelectedKindItem(item);
-    this.calculateTotal();
-  }
-
   setSelectedKindItem(item: KindPriceItem) {
     this.selectedItem = item;
+  }
+
+  addToCard(item: KindPriceItem) {
+    //if new item already exists in card
+    if (
+      this.currentCardContent.findIndex((card) => card.kindId === item.kindId) >
+      -1
+    ) {
+      this.updateCard(item.amount, item.type);
+    } else {
+      this.currentCardContent.push(item);
+      this.setSelectedKindItem(item);
+      this.calculateTotal();
+    }
   }
 
   removeFromCard() {
@@ -33,7 +40,6 @@ export class OrderService {
 
   updateCard(newAmount: number, newType: number) {
     const index = this.currentCardContent.indexOf(this.selectedItem);
-
     if (index >= 0) {
       this.currentCardContent[index].amount = newAmount;
       this.currentCardContent[index].type = newType;

@@ -31,3 +31,15 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+
+.inner-item {
+  border-radius: 15px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.text-area {
+  --border-radius: 20px;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem 0rem 4.5rem;
+}

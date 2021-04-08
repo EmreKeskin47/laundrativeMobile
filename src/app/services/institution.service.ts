@@ -18,15 +18,6 @@ export class InstitutionService {
   selectedInstitution: StoreCardInfo = new StoreCardInfo('', '', '', '', '');
   constructor(private http: HttpClient) {}
 
-  //Get institutions
-  getAllInstitutions(): Observable<Institution[]> {
-    try {
-      return this.http.get<Institution[]>(this.url);
-    } catch (err) {
-      console.log('GET institution err ', err);
-    }
-  }
-
   getInstitutionsInNeighborhood(
     neighborhoodId: number,
     categories: string[]
@@ -63,17 +54,13 @@ export class InstitutionService {
     }
   }
 
-  setSelectedInstituion(
-    storeName: string,
-    location: string,
-    minFee: string,
-    discountFee: string,
-    storeID: string
-  ) {
-    this.selectedInstitution.storeName = storeName;
-    this.selectedInstitution.location = location;
-    this.selectedInstitution.minFee = minFee;
-    this.selectedInstitution.discountFee = discountFee;
-    this.selectedInstitution.storeID = storeID;
+  setSelectedInstituionCard(store: Institution) {
+    this.selectedInstitution = new StoreCardInfo(
+      store.institutionName,
+      store.neighborhoodName,
+      store.minimumOrderPrice.toString(),
+      store.maximumServicePrice.toString(),
+      store.institutionId.toString()
+    );
   }
 }

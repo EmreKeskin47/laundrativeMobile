@@ -24,5 +24,13 @@ export class OrdersPage implements OnInit {
     this.router.navigate(['/create-order']);
   }
 
+  editClicked() {
+    console.log('edit');
+  }
+
+  deleteClicked() {
+    console.log('delete');
+  }
+
   ngOnInit() {}
 }

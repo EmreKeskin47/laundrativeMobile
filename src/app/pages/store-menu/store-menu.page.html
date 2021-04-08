@@ -33,11 +33,28 @@
 
   <!--service and discount button-->
   <div class="button-container">
-    <ion-button class="toLowerCase service-select-btn" color="secondary ">
-      <ion-icon slot="start" name="ellipse-outline"></ion-icon>
-      <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
-      çamaşır yıkama
-    </ion-button>
+    <div>
+      <ion-button
+        class="toLowerCase service-select-btn"
+        color="secondary"
+        (click)="expandServiceOptions()"
+      >
+        <ion-icon slot="start" name="ellipse-outline"></ion-icon>
+        <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
+        çamaşır yıkama
+      </ion-button>
+      <div *ngIf="showStoreServiceOptions">
+        <ion-button
+          class="toLowerCase service-select-btn"
+          color="secondary"
+          (click)="expandServiceOptions()"
+        >
+          <ion-icon slot="start" name="ellipse-outline"></ion-icon>
+          <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
+          çamaşır yıkama
+        </ion-button>
+      </div>
+    </div>
 
     <ion-button class="text-color" color="medium" style="font-size: 0.7rem">
       <ion-icon
