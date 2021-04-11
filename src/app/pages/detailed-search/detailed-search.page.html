@@ -12,9 +12,42 @@
   <div class="date-adress-label text-color">
     <ion-label>adres ve tarih seçin</ion-label>
   </div>
-  <app-adress-field></app-adress-field>
-  <app-date-field calenderTitle="ne zaman teslim alınsın"></app-date-field>
-  <app-date-field calenderTitle="ne zaman teslim edilsin"></app-date-field>
+  <ion-item lines="none" class="item-container">
+    <ion-label class="gray-text">il</ion-label>
+    <ionic-selectable
+      [(ngModel)]="selectedProvince"
+      [items]="provinceList"
+      itemValueField="id"
+      itemTextField="adi"
+      [canSearch]="true"
+      (onChange)="provinceChange($event)"
+    >
+    </ionic-selectable>
+  </ion-item>
+
+  <ion-item lines="none" class="item-container">
+    <ion-label class="gray-text">ilçe</ion-label>
+    <ionic-selectable
+      [(ngModel)]="selectedDistrict"
+      [items]="districtList"
+      itemValueField="neighborhoodId"
+      itemTextField="listName"
+      [canSearch]="true"
+      [hasVirtualScroll]="true"
+      (onChange)="districtChange($event)"
+    >
+    </ionic-selectable>
+  </ion-item>
+  <app-date-field
+    calenderTitle="ne zaman teslim alınsın"
+    (selectedDate)="dateChange($event)"
+    (selectedTime)="timeChange($event)"
+  ></app-date-field>
+  <app-date-field
+    calenderTitle="ne zaman teslim edilsin"
+    (selectedDate)="deliveryDateChange($event)"
+    (selectedTime)="deliveryTimeChange($event)"
+  ></app-date-field>
 
   <!--Search Service-->
   <div class="date-adress-label text-color">
@@ -55,11 +88,25 @@
     <ion-label>aramaya eklenen ürünler</ion-label>
   </div>
 
-  <ion-item lines="none" color="medium" style="height: 1.9rem">
+  <ion-item
+    button
+    (click)="freeDelivery()"
+    details="false"
+    lines="none"
+    color="medium"
+    style="height: 1.9rem"
+  >
     <ion-label class="text-color checkbox-text">ücretsiz teslimat</ion-label>
     <ion-checkbox class="checkbox" color="primary" slot="start"></ion-checkbox>
   </ion-item>
-  <ion-item lines="none" color="medium" style="height: 1.9rem">
+  <ion-item
+    button
+    (click)="promosyon()"
+    details="false"
+    lines="none"
+    color="medium"
+    style="height: 1.9rem"
+  >
     <ion-label class="text-color checkbox-text"
       >sadece promosyon olanları göster</ion-label
     >

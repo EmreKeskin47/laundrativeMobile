@@ -54,6 +54,33 @@ export class InstitutionService {
     }
   }
 
+  detailedSearch(
+    neighborhoodId: number,
+    date: Date,
+    hour: Date,
+    deliveryDate: Date,
+    deliveryHour: Date,
+    customerId: number,
+    freeDelivery: boolean
+  ): Observable<any> {
+    try {
+      // return this.http.get<any>(
+      //     `${
+      //       this.url
+      //     }/detaylıArama?mahalleId=${neighborhoodId}&teslimAlmaZaman=${date.toLocaleDateString()}%20${hour.toLocaleTimeString(
+      //       'en-GB'
+      //     )}&teslimEtmeZaman=${deliveryDate.toLocaleDateString()}%20${deliveryHour.toLocaleTimeString(
+      //       'en-GB'
+      //     )}&kategoriCinslerParam=3:4,5:6&musteriId=${customerId}&ucretsizTeslimat=${freeDelivery}`
+      //   );
+      return this.http.get<any>(
+        `${this.url}/detayliArama?mahalleId=${neighborhoodId}&teslimAlmaZaman=1/1/2010 13:00&teslimEtmeZaman=1/1/2011 14:00&kategoriCinslerParam=3:4,5:6&musteriId=${customerId}&ucretsizTeslimat=${freeDelivery}`
+      );
+    } catch (err) {
+      console.log('Error in GET detailed store search', err);
+    }
+  }
+
   setSelectedInstituionCard(store: Institution) {
     this.selectedInstitution = new StoreCardInfo(
       store.institutionName,

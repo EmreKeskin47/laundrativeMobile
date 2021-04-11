@@ -2,11 +2,14 @@
   <div class="card-container container">
     <div class="card-items-content">
       <div class="flex">
-        <img
-          [src]="itemImage"
-          alt="Image Source"
-          class="card-icon text-color"
-        />
+        <div *ngIf="itemImage">
+          <img
+            [src]="itemImage"
+            alt="Image Source"
+            class="card-icon text-color"
+          />
+        </div>
+
         <div>
           <div style="padding-top: 0.2rem">
             <ion-card-title class="card-text text-color"
@@ -16,7 +19,7 @@
               <div class="text-color delivery-date">
                 <ion-text class="color">{{ typeNames[itemType] }} </ion-text>
                 <ion-text> teslimat </ion-text>
-                <div>
+                <div *ngIf="itemDeliveryDate">
                   <ion-text>
                     {{ itemDeliveryDate | date: "d.M.yy EEEE HH:mm" }}'a kadar
                     teslim edilir
