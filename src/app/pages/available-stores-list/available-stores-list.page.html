@@ -17,10 +17,11 @@
       detail="false"
     >
       <app-store-card
-        [storeName]="kurum.isletme_adi"
-        [location]="kurum.hizmetler.mahalle_adi"
-        [timeInterval]="kurum.calisma_saatleri"
-        [minFee]="kurum.hizmetler.min_siparis_tutari"
+        [storeName]="kurum.kurum_adi"
+        [location]="mahalleAdi"
+        [start]="kurum.calisma_saatleri[currentDay].baslangic_saati"
+        [end]="kurum.calisma_saatleri[currentDay].bitis_saati"
+        [minFee]="kurum.min_siparis_tutari"
       >
       </app-store-card>
     </ion-item>

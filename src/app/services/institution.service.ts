@@ -83,10 +83,10 @@ export class InstitutionService {
 
   setSelectedInstituionCard(store: Isletme) {
     this.selectedInstitution = new StoreCardInfo(
-      store.isletme_adi,
-      store.hizmetler.mahalle_adi,
-      store.hizmetler.min_siparis_tutari.toString(),
-      store.hizmetler.min_servis_tutari.toString(),
+      store.kurum_adi,
+      'store.mahalle_adi',
+      store.min_siparis_tutari.toString(),
+      store.min_servis_tutari.toString(),
       store.isletme_id.toString()
     );
   }

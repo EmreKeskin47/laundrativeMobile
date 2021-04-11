@@ -1,6 +1,6 @@
 import { Isletme } from './../../models/İsletme';
 import { InstitutionService } from './../../services/institution.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-available-stores-list',
@@ -14,12 +14,18 @@ export class AvailableStoresListPage implements OnInit {
   institutionList: Isletme[] = [];
   inslist: boolean = false;
 
+  mahalleAdi: string = '';
+  currentDay = new Date().getDay() + 1;
+
   constructor(
     private router: Router,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.mahalleAdi = this.route.snapshot.paramMap.get('mahalleAdi');
+  }
 
   navigateToStore(kurum: Isletme) {
     this.institutionService.setSelectedInstituionCard(kurum);

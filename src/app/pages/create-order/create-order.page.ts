@@ -1,3 +1,4 @@
+import { Isletme } from './../../models/İsletme';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
 import { InstitutionService } from './../../services/institution.service';
@@ -14,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateOrderPage implements OnInit {
   title = 'mağaza arayın';
-  insList: Institution[];
+  insList: Isletme[];
   provinceList: AdresIl[] = [];
   selectedProvince: AdresIl;
   districtList: Semt[] = [];
@@ -86,8 +87,14 @@ export class CreateOrderPage implements OnInit {
         this.selectedTime,
         this.customerId
       )
-      .subscribe((inst) => console.log(inst));
-    this.router.navigate(['/create-order/available-stores-list']);
+      .subscribe((inst) => {
+        this.insList = inst;
+        this.institutionService.currentInstitutionList = inst;
+      });
+    this.router.navigate([
+      '/create-order/available-stores-list',
+      { mahalleAdi: this.selectedDistrict.listeAdi },
+    ]);
   }
   navigateToDetailedSearch() {
     this.router.navigate(['/create-order/detailed-search']);

@@ -18,8 +18,7 @@
       >
         <div style="padding: 10px">
           <ion-card-title class="child-card-title"
-            >{{ timeInterval.startingTime | slice: 0:-3 }} -
-            {{ timeInterval.endingTime | slice: 0:-3 }}</ion-card-title
+            >{{ start | slice: 0:-3 }} - {{ end | slice: 0:-3 }}</ion-card-title
           >
           <ion-card-subtitle class="child-card-subtitle toLowerCase">{{
             day
@@ -30,8 +29,8 @@
         <ion-card color="secondary" class="card-border-radius">
           <div style="padding: 10px">
             <ion-card-title class="child-card-title"
-              >{{ timeInterval.startingTime | slice: 0:-3 }} -
-              {{ timeInterval.endingTime | slice: 0:-3 }}</ion-card-title
+              >{{ start | slice: 0:-3 }} -
+              {{ end | slice: 0:-3 }}</ion-card-title
             >
             <ion-card-subtitle class="child-card-subtitle toLowerCase">{{
               day

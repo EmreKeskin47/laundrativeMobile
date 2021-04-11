@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StoreCardComponent implements OnInit {
   @Input() public storeName;
   @Input() public location;
-  @Input() public timeInterval;
+  @Input() public start;
+  @Input() public end;
   @Input() public minFee;
   now: boolean;
   day: string;
@@ -17,14 +18,12 @@ export class StoreCardComponent implements OnInit {
 
   ngOnInit() {
     let date = new Date();
-    let start = this.timeInterval.startingTime.slice(0, 2);
-    let end = this.timeInterval.endingTime.slice(0, 2);
-    if (end > date.getHours() && date.getHours() > start) {
+
+    if (this.end > date.getHours() && date.getHours() > this.start) {
       this.now = true;
     } else {
       this.now = false;
     }
     this.day = this.now ? 'hemen teslim alabilir' : 'yarın teslim alabilir';
-    console.log(this.storeName);
   }
 }
