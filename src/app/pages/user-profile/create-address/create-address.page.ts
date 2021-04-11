@@ -48,7 +48,6 @@ export class CreateAddressPage implements OnInit {
 
   districtChange(event: { component: IonicSelectableComponent; value: any }) {
     this.selectedDistrict = event.value;
-    console.log(event.value);
   }
 
   onChange() {

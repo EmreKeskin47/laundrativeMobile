@@ -9,8 +9,6 @@
 <ion-content color="medium">
   <div class="root">
     <div class="address-card-container">
-      <app-address-card [address]="tempAddress"></app-address-card>
-      <app-address-card [address]="tempAddress"></app-address-card>
       <div *ngFor="let address of adresList">
         <app-address-card [addres]="address"></app-address-card>
       </div>

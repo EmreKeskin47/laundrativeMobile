@@ -3,43 +3,34 @@
     <ion-icon class="address-icon" name="home"></ion-icon>
     <div>
       <div>
-        <div *ngIf="address; else new">
-          <ion-label class="text gray-text">{{
-            address.addressTitle
-          }}</ion-label>
-        </div>
-        <ng-template #new>
-          <ion-label class="text gray-text">{{
-            addres.adresBasligi + "a"
-          }}</ion-label>
-        </ng-template>
+        <ion-label class="text gray-text">{{
+          adresToDisplay.adresBasligi
+        }}</ion-label>
       </div>
       <ion-label class="title-label black-text">
-        {{ address.addressLocation }}
+        {{ adresToDisplay.mahalleAdi }}
       </ion-label>
     </div>
   </div>
   <hr class="rounded" />
 
   <div style="padding-left: 3rem">
-    <div *ngIf="address; else new">
-      <ion-label class="text gray-text"> {{ address.name }} </ion-label>
-    </div>
-    <ng-template #new>
-      <ion-label class="text gray-text">{{ addres.mahalleId }}</ion-label>
-    </ng-template>
     <div>
-      <ion-label class="text gray-text"> {{ address.phone1 }} </ion-label>
-      <ion-label class="text gray-text"> {{ address.phone2 }} </ion-label>
-    </div>
-    <div *ngIf="address; else new">
       <ion-label class="text gray-text">
-        {{ address.addressDescription }}
+        {{ adresToDisplay.teslimAlanAdi }}
       </ion-label>
     </div>
-    <ng-template #new>
-      <ion-label class="text gray-text">{{ addres.adresBasligi }}</ion-label>
-    </ng-template>
+    <div>
+      <ion-label class="text gray-text">
+        {{ adresToDisplay.teslimAlanTel }}
+      </ion-label>
+      <ion-label class="text gray-text">
+        {{ adresToDisplay.teslimAlanTel }}
+      </ion-label>
+    </div>
+    <ion-label class="text gray-text">
+      {{ adresToDisplay.adres }}
+    </ion-label>
   </div>
 
   <div style="display: flex">
@@ -48,7 +39,7 @@
       <div>
         <ion-label class="title-label black-text">paylaşılan konum</ion-label>
       </div>
-      <ion-label class="text gray-text">{{ address.locationLink }}</ion-label>
+      <ion-label class="text gray-text">{{ "null" }}</ion-label>
     </div>
   </div>
 </ion-card>

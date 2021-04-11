@@ -82,8 +82,6 @@ export class DetailedSearchPage implements OnInit {
         this.freeDeliver
       )
       .subscribe((ins) => {
-        console.log(ins);
-
         this.instList = ins;
         this.institutionService.currentInstitutionList = ins;
       });

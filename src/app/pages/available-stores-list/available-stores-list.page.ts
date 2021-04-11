@@ -30,6 +30,5 @@ export class AvailableStoresListPage implements OnInit {
     if (this.institutionService.currentInstitutionList) {
       this.institutionList = this.institutionService.currentInstitutionList;
     }
-    console.log('inst page did enter init', this.institutionList);
   }
 }
