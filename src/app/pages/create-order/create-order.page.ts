@@ -1,7 +1,8 @@
+import { SemtListe } from './../../models/ui/SemtListe';
+import { Semt } from './../../models/Semt';
 import { InstitutionService } from './../../services/institution.service';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { AddressService } from './../../services/address.service';
-import { District } from '../../models/eski/District';
 import { AdresIl } from '../../models/AdresIl';
 import { Institution } from '../../models/eski/Institution';
 import { Router } from '@angular/router';
@@ -14,10 +15,11 @@ import { Component, OnInit } from '@angular/core';
 export class CreateOrderPage implements OnInit {
   title = 'mağaza arayın';
   insList: Institution[];
-  provinceList: AdresIl[];
+  provinceList: AdresIl[] = [];
   selectedProvince: AdresIl;
-  districtList: District[];
-  selectedDistrict: District;
+  districtList: Semt[] = [];
+  searchableDistrictList: SemtListe[] = [];
+  selectedDistrict: SemtListe;
 
   selectedDate: Date;
   selectedTime: Date;
@@ -53,14 +55,21 @@ export class CreateOrderPage implements OnInit {
     if (this.selectedDistrict) {
       this.selectedDistrict = null;
     }
+    this.searchableDistrictList = [];
     this.addressService
       .getDistrict(this.selectedProvince.id)
       .subscribe((dist) => {
-        this.districtList = dist.content;
-        this.districtList.forEach((dist) => {
-          dist.listName =
-            dist.districtName + '( ' + dist.neighborhoodName + ' )';
-        });
+        this.districtList = dist;
+        for (let i = 0; i < this.districtList.length; i++) {
+          for (let j = 0; j < this.districtList[i].mahalleler.length; j++) {
+            let item = new SemtListe(
+              this.districtList[i].mahalleler[j].adi,
+              this.districtList[i].mahalleler[j].id,
+              this.districtList[i].ilceAdi
+            );
+            this.searchableDistrictList.push(item);
+          }
+        }
       });
   }
 
@@ -71,7 +80,7 @@ export class CreateOrderPage implements OnInit {
   navigateToStoreList() {
     this.institutionService
       .getInstitutionsInNeighborhood(
-        13,
+        3,
         this.selectedServices,
         this.selectedDate,
         this.selectedTime,

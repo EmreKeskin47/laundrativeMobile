@@ -1,3 +1,5 @@
+import { SemtListe } from './../../../models/ui/SemtListe';
+import { Semt } from './../../../models/Semt';
 import { District } from '../../../models/eski/District';
 import { AddressService } from './../../../services/address.service';
 import { AdresIl } from '../../../models/AdresIl';
@@ -13,8 +15,9 @@ export class CreateAddressPage implements OnInit {
   pageTitle = 'yeni adres oluştur';
   provinceList: AdresIl[];
   selectedProvince: AdresIl;
-  districtList: District[];
-  selectedDistrict: District;
+  districtList: Semt[];
+  selectedDistrict: SemtListe;
+  searchableDistrictList: SemtListe[] = [];
 
   anotherUser = false;
 
@@ -25,15 +28,21 @@ export class CreateAddressPage implements OnInit {
     if (this.selectedDistrict) {
       this.selectedDistrict = null;
     }
+    this.searchableDistrictList = [];
     this.addressService
       .getDistrict(this.selectedProvince.id)
       .subscribe((dist) => {
-        console.log(dist, 'create address içi semt arama ');
-        this.districtList = dist.content;
-        this.districtList.forEach((dist) => {
-          dist.listName =
-            dist.districtName + '( ' + dist.neighborhoodName + ' )';
-        });
+        this.districtList = dist;
+        for (let i = 0; i < this.districtList.length; i++) {
+          for (let j = 0; j < this.districtList[i].mahalleler.length; j++) {
+            let item = new SemtListe(
+              this.districtList[i].mahalleler[j].adi,
+              this.districtList[i].mahalleler[j].id,
+              this.districtList[i].ilceAdi
+            );
+            this.searchableDistrictList.push(item);
+          }
+        }
       });
   }
 

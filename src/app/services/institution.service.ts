@@ -1,7 +1,6 @@
 import { Isletme } from './../models/İsletme';
 import { WorkingHours } from '../models/eski/WorkingHours';
 import { StoreCardInfo } from './../models/ui/StoreCardInfo';
-import { Institution } from '../models/eski/Institution';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -14,8 +13,9 @@ import { StoreItem } from '../models/eski/StoreItem';
 export class InstitutionService {
   url: string = `${BASE_URL}/kurum`;
 
-  currentInstitutionList: Institution[] = [];
+  currentInstitutionList: Isletme[];
   selectedInstitution: StoreCardInfo = new StoreCardInfo('', '', '', '', '');
+
   constructor(private http: HttpClient) {}
 
   getInstitutionsInNeighborhood(
@@ -24,9 +24,9 @@ export class InstitutionService {
     date: Date,
     hour: Date,
     customerId: number
-  ): Observable<Isletme> {
+  ): Observable<Isletme[]> {
     try {
-      return this.http.get<Isletme>(
+      return this.http.get<Isletme[]>(
         `${
           this.url
         }/liste?musteriId=${customerId}&mahalleId=${neighborhoodId}&tarih=${date.toLocaleDateString()}%20${hour.toLocaleTimeString(
@@ -62,7 +62,7 @@ export class InstitutionService {
     deliveryHour: Date,
     customerId: number,
     freeDelivery: boolean
-  ): Observable<any> {
+  ): Observable<Isletme[]> {
     try {
       // return this.http.get<any>(
       //     `${
@@ -73,21 +73,21 @@ export class InstitutionService {
       //       'en-GB'
       //     )}&kategoriCinslerParam=3:4,5:6&musteriId=${customerId}&ucretsizTeslimat=${freeDelivery}`
       //   );
-      return this.http.get<any>(
-        `${this.url}/detayliArama?mahalleId=${neighborhoodId}&teslimAlmaZaman=1/1/2010 13:00&teslimEtmeZaman=1/1/2011 14:00&kategoriCinslerParam=3:4,5:6&musteriId=${customerId}&ucretsizTeslimat=${freeDelivery}`
+      return this.http.get<Isletme[]>(
+        `${this.url}/detayliArama?mahalleId=3&teslimAlmaZaman=1/1/2010%2013:00&teslimEtmeZaman=1/1/2011%2014:00&kategoriCinslerParam=3:4,5:6&musteriId=1&ucretsizTeslimat=true`
       );
     } catch (err) {
       console.log('Error in GET detailed store search', err);
     }
   }
 
-  setSelectedInstituionCard(store: Institution) {
+  setSelectedInstituionCard(store: Isletme) {
     this.selectedInstitution = new StoreCardInfo(
-      store.institutionName,
-      store.neighborhoodName,
-      store.minimumOrderPrice.toString(),
-      store.maximumServicePrice.toString(),
-      store.institutionId.toString()
+      store.isletme_adi,
+      store.hizmetler.mahalle_adi,
+      store.hizmetler.min_siparis_tutari.toString(),
+      store.hizmetler.min_servis_tutari.toString(),
+      store.isletme_id.toString()
     );
   }
 }

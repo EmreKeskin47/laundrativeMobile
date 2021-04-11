@@ -25,5 +25,6 @@ export class StoreCardComponent implements OnInit {
       this.now = false;
     }
     this.day = this.now ? 'hemen teslim alabilir' : 'yarın teslim alabilir';
+    console.log(this.storeName);
   }
 }

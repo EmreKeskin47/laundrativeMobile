@@ -1,6 +1,8 @@
+import { SemtListe } from './../../models/ui/SemtListe';
+import { Semt } from './../../models/Semt';
+import { Isletme } from './../../models/İsletme';
 import { InstitutionService } from './../../services/institution.service';
 import { AddressService } from './../../services/address.service';
-import { District } from './../../models/eski/District';
 import { AdresIl } from './../../models/AdresIl';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -23,8 +25,11 @@ export class DetailedSearchPage implements OnInit {
 
   provinceList: AdresIl[];
   selectedProvince: AdresIl;
-  districtList: District[];
-  selectedDistrict: District;
+  districtList: Semt[];
+  selectedDistrict: SemtListe;
+  searchableDistrictList: SemtListe[] = [];
+
+  instList: Isletme[] = [];
 
   constructor(
     private router: Router,
@@ -43,14 +48,21 @@ export class DetailedSearchPage implements OnInit {
     if (this.selectedDistrict) {
       this.selectedDistrict = null;
     }
+    this.searchableDistrictList = [];
     this.addressService
       .getDistrict(this.selectedProvince.id)
       .subscribe((dist) => {
-        this.districtList = dist.content;
-        this.districtList.forEach((dist) => {
-          dist.listName =
-            dist.districtName + '( ' + dist.neighborhoodName + ' )';
-        });
+        this.districtList = dist;
+        for (let i = 0; i < this.districtList.length; i++) {
+          for (let j = 0; j < this.districtList[i].mahalleler.length; j++) {
+            let item = new SemtListe(
+              this.districtList[i].mahalleler[j].adi,
+              this.districtList[i].mahalleler[j].id,
+              this.districtList[i].ilceAdi
+            );
+            this.searchableDistrictList.push(item);
+          }
+        }
       });
   }
 
@@ -71,7 +83,11 @@ export class DetailedSearchPage implements OnInit {
       )
       .subscribe((ins) => {
         console.log(ins);
+
+        this.instList = ins;
+        this.institutionService.currentInstitutionList = ins;
       });
+
     this.router.navigate(['/create-order/available-stores-list']);
   }
   timeChange(event: any) {

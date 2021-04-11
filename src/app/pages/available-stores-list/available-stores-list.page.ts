@@ -1,8 +1,7 @@
-import { Institution } from '../../models/eski/Institution';
+import { Isletme } from './../../models/İsletme';
 import { InstitutionService } from './../../services/institution.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-available-stores-list',
   templateUrl: './available-stores-list.page.html',
@@ -12,24 +11,25 @@ export class AvailableStoresListPage implements OnInit {
   title = 'mağazalar';
   categoryList: string[];
   neighborhoodId: number;
-  institutionList: Institution[];
+  institutionList: Isletme[] = [];
+  inslist: boolean = false;
 
   constructor(
     private router: Router,
-    private institutionService: InstitutionService,
-    private route: ActivatedRoute
+    private institutionService: InstitutionService
   ) {}
 
-  ngOnInit(): void {
-    this.institutionList = this.institutionService.currentInstitutionList;
-  }
+  ngOnInit(): void {}
 
-  navigateToStore(kurum: Institution) {
+  navigateToStore(kurum: Isletme) {
     this.institutionService.setSelectedInstituionCard(kurum);
     this.router.navigate(['create-order/store-menu']);
   }
 
   ionViewDidEnter() {
-    this.institutionList = this.institutionService.currentInstitutionList;
+    if (this.institutionService.currentInstitutionList) {
+      this.institutionList = this.institutionService.currentInstitutionList;
+    }
+    console.log('inst page did enter init', this.institutionList);
   }
 }

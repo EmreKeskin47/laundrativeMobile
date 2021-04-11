@@ -29,9 +29,9 @@
     <ion-label class="gray-text">ilçe</ion-label>
     <ionic-selectable
       [(ngModel)]="selectedDistrict"
-      [items]="districtList"
-      itemValueField="neighborhoodId"
-      itemTextField="listName"
+      [items]="searchableDistrictList"
+      itemValueField="mahalleId"
+      itemTextField="listeAdi"
       [canSearch]="true"
       [hasVirtualScroll]="true"
       (onChange)="districtChange($event)"

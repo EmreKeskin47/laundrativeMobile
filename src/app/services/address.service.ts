@@ -1,3 +1,4 @@
+import { Semt } from './../models/Semt';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from './../api/baseUrl';
@@ -21,9 +22,9 @@ export class AddressService {
     }
   }
 
-  getDistrict(id: number): Observable<any> {
+  getDistrict(id: number): Observable<Semt[]> {
     try {
-      return this.http.get<any>(`${this.url}/mahalle?ilId=${id}`);
+      return this.http.get<Semt[]>(`${this.url}/mahalle?ilId=${id}`);
     } catch (err) {
       console.log('GET district err ', err);
     }
