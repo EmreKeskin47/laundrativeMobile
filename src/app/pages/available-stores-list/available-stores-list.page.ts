@@ -21,7 +21,6 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('on init');
     this.institutionList = this.institutionService.currentInstitutionList;
   }
 
@@ -31,7 +30,6 @@ export class AvailableStoresListPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    console.log('did enter');
     this.institutionList = this.institutionService.currentInstitutionList;
   }
 }

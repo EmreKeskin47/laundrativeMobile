@@ -28,6 +28,7 @@ export class CreateAddressPage implements OnInit {
     this.addressService
       .getDistrict(this.selectedProvince.id)
       .subscribe((dist) => {
+        console.log(dist, 'create address içi semt arama ');
         this.districtList = dist.content;
         this.districtList.forEach((dist) => {
           dist.listName =
@@ -61,7 +62,7 @@ export class CreateAddressPage implements OnInit {
 
   ngOnInit(): void {
     this.addressService.getAllProvinces().subscribe((pro) => {
-      this.provinceList = pro.content;
+      this.provinceList = pro;
     });
   }
 }

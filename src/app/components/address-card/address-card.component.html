@@ -3,7 +3,16 @@
     <ion-icon class="address-icon" name="home"></ion-icon>
     <div>
       <div>
-        <ion-label class="text gray-text">{{ address.addressTitle }}</ion-label>
+        <div *ngIf="address; else new">
+          <ion-label class="text gray-text">{{
+            address.addressTitle
+          }}</ion-label>
+        </div>
+        <ng-template #new>
+          <ion-label class="text gray-text">{{
+            addres.adresBasligi + "a"
+          }}</ion-label>
+        </ng-template>
       </div>
       <ion-label class="title-label black-text">
         {{ address.addressLocation }}
@@ -13,16 +22,24 @@
   <hr class="rounded" />
 
   <div style="padding-left: 3rem">
-    <div>
+    <div *ngIf="address; else new">
       <ion-label class="text gray-text"> {{ address.name }} </ion-label>
     </div>
+    <ng-template #new>
+      <ion-label class="text gray-text">{{ addres.mahalleId }}</ion-label>
+    </ng-template>
     <div>
       <ion-label class="text gray-text"> {{ address.phone1 }} </ion-label>
       <ion-label class="text gray-text"> {{ address.phone2 }} </ion-label>
     </div>
-    <ion-label class="text gray-text">
-      {{ address.addressDescription }}
-    </ion-label>
+    <div *ngIf="address; else new">
+      <ion-label class="text gray-text">
+        {{ address.addressDescription }}
+      </ion-label>
+    </div>
+    <ng-template #new>
+      <ion-label class="text gray-text">{{ addres.adresBasligi }}</ion-label>
+    </ng-template>
   </div>
 
   <div style="display: flex">

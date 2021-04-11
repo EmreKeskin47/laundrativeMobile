@@ -1,3 +1,5 @@
+import { MusteriAdres } from './../../../models/MusteriAdres';
+import { AddressService } from './../../../services/address.service';
 import { Router } from '@angular/router';
 import { Address } from '../../../models/ui/Address';
 import { Component, OnInit } from '@angular/core';
@@ -20,11 +22,20 @@ export class AddressListPage implements OnInit {
     'https://goo.gl/maps/R8PMLM7z4FWGFHRB7'
   );
 
-  constructor(private router: Router) {}
+  userId = 16865;
+  adresList: MusteriAdres[] = [];
+
+  constructor(private router: Router, private addressService: AddressService) {}
 
   navigateToCreateAddress() {
     this.router.navigate(['profile/create-address']);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addressService
+      .getAddressOfCustomer(this.userId)
+      .subscribe((address) => {
+        this.adresList = address;
+      });
+  }
 }

@@ -60,7 +60,11 @@ export class SigninPage implements OnInit {
       values.email,
       values.matching_passwords.password
     );
-    console.log(user);
+    this.authService.registerUser(user).subscribe((res) => {
+      if (res.result === 'ok') {
+        this.navigateToAccountResult();
+      }
+    });
   }
 
   navigateToAccountResult() {

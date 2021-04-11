@@ -23,7 +23,7 @@ export class AddressService {
 
   getDistrict(id: number): Observable<any> {
     try {
-      return this.http.get<any>(`${this.url}/${id}`);
+      return this.http.get<any>(`${this.url}/mahalle?ilId=${id}`);
     } catch (err) {
       console.log('GET district err ', err);
     }
@@ -31,7 +31,7 @@ export class AddressService {
 
   getAddressOfCustomer(id: number): Observable<MusteriAdres[]> {
     try {
-      return this.http.get<MusteriAdres[]>(`${this.url}/?id=${id}`);
+      return this.http.get<MusteriAdres[]>(`${this.customerUrl}?id=${id}`);
     } catch (err) {
       console.log('GET address of customer err ', err);
     }

@@ -1,3 +1,4 @@
+import { MusteriAdres } from './../../models/MusteriAdres';
 import { Address } from '../../models/ui/Address';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -8,10 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AddressCardComponent implements OnInit {
   @Input() public address: Address;
+  @Input() public addres: MusteriAdres;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.addres);
+  }
   editClicked() {
     console.log('edit');
   }

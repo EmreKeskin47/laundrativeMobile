@@ -1,3 +1,4 @@
+import { Isletme } from './../models/İsletme';
 import { WorkingHours } from '../models/eski/WorkingHours';
 import { StoreCardInfo } from './../models/ui/StoreCardInfo';
 import { Institution } from '../models/eski/Institution';
@@ -11,8 +12,7 @@ import { StoreItem } from '../models/eski/StoreItem';
   providedIn: 'root',
 })
 export class InstitutionService {
-  url: string = `${BASE_URL}/na/institution`;
-  headers = { 'content-type': 'application/json' };
+  url: string = `${BASE_URL}/kurum`;
 
   currentInstitutionList: Institution[] = [];
   selectedInstitution: StoreCardInfo = new StoreCardInfo('', '', '', '', '');
@@ -20,19 +20,19 @@ export class InstitutionService {
 
   getInstitutionsInNeighborhood(
     neighborhoodId: number,
-    categories: string[]
-  ): Observable<any> {
+    categories: number[],
+    date: Date,
+    hour: Date,
+    customerId: number
+  ): Observable<Isletme> {
     try {
-      neighborhoodId = 6;
-      const date = new Date();
-      categories = ['2'];
-      var body = { neighborhoodId, categories, date };
-      JSON.stringify(body);
-      console.log(body);
-
-      return this.http.post<any>(`${this.url}/list`, body, {
-        headers: this.headers,
-      });
+      return this.http.get<Isletme>(
+        `${
+          this.url
+        }/liste?musteriId=${customerId}&mahalleId=${neighborhoodId}&tarih=${date.toLocaleDateString()}%20${hour.toLocaleTimeString(
+          'en-GB'
+        )}&kategoriler=${categories}`
+      );
     } catch (err) {
       console.log('GET ins by neighborhood id ', err);
     }

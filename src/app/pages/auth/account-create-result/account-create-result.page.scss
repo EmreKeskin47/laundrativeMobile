@@ -55,3 +55,13 @@
   justify-content: space-between;
   padding: 1rem;
 }
+.root {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+
+.full-width {
+  width: 100%;
+}
