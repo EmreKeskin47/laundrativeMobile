@@ -14,7 +14,7 @@ export class AvailableStoresListPage implements OnInit {
   institutionList: Isletme[] = [];
   inslist: boolean = false;
 
-  mahalleAdi: string = '';
+  location: string = '';
   currentDay = new Date().getDay() + 1;
 
   constructor(
@@ -24,11 +24,13 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.mahalleAdi = this.route.snapshot.paramMap.get('mahalleAdi');
+    this.location = this.route.snapshot.paramMap.get('mahalleAdi');
   }
 
   navigateToStore(kurum: Isletme) {
-    this.institutionService.setSelectedInstituionCard(kurum);
+    console.log(kurum, 'navigate to Store');
+
+    this.institutionService.setSelectedInstituionCard(kurum, this.location);
     this.router.navigate(['create-order/store-menu']);
   }
 
