@@ -1,6 +1,5 @@
 import { SemtListe } from './../../../models/ui/SemtListe';
 import { Semt } from './../../../models/Semt';
-import { District } from '../../../models/eski/District';
 import { AddressService } from './../../../services/address.service';
 import { AdresIl } from '../../../models/AdresIl';
 import { Router } from '@angular/router';
@@ -56,16 +55,6 @@ export class CreateAddressPage implements OnInit {
 
   navigateToAddressList() {
     this.router.navigate(['/profile/add-address-result']);
-  }
-
-  getGroupText(district: District, index: number, districts: District[]): any {
-    if (
-      index === 0 ||
-      district.neighborhoodId !== districts[index - 1].neighborhoodId
-    ) {
-      return district.districtName;
-    }
-    return null;
   }
 
   ngOnInit(): void {

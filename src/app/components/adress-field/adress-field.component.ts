@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface Address {
   id: number;
@@ -12,7 +12,6 @@ interface Address {
 })
 export class AdressFieldComponent implements OnInit {
   selectedAddress: Address;
-
   addressList: Address[] = [
     {
       id: 1,

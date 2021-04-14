@@ -1,4 +1,3 @@
-import { StoreItem } from './../models/eski/StoreItem';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Musteri } from '../models/Musteri';

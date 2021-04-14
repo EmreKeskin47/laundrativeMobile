@@ -1,9 +1,7 @@
 import { Cins } from './../../models/ui/Cins';
 import { Isletme } from './../../models/İsletme';
 import { CardCostContent } from './../../models/ui/CardCostContent';
-import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
 import { InstitutionService } from './../../services/institution.service';
-import { KindPriceItem } from '../../models/eski/KindPriceItem';
 import { OrderService } from './../../services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -47,13 +45,6 @@ export class CardPage implements OnInit {
 
   navigateToPayment() {
     this.router.navigate(['card/payment']);
-  }
-
-  ConvertStringToNumber(input: string) {
-    if (input.trim().length == 0) {
-      return NaN;
-    }
-    return Number(input);
   }
 
   navigateToStoreMenu(item: Cins) {

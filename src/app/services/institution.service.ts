@@ -1,6 +1,5 @@
 import { KategoriCins } from './../models/KategoriCins';
 import { Isletme } from './../models/İsletme';
-import { WorkingHours } from '../models/eski/WorkingHours';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -50,14 +49,6 @@ export class InstitutionService {
       );
     } catch (err) {
       console.log('Error in GET store content by id', err);
-    }
-  }
-
-  getWorkingHours(storeID: string): Observable<WorkingHours[]> {
-    try {
-      return this.http.get<WorkingHours[]>(`${this.url}/hours/${storeID}`);
-    } catch (err) {
-      console.log('Error GET store working hours', err);
     }
   }
 

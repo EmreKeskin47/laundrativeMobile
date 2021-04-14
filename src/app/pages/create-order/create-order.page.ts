@@ -5,7 +5,6 @@ import { InstitutionService } from './../../services/institution.service';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { AddressService } from './../../services/address.service';
 import { AdresIl } from '../../models/AdresIl';
-import { Institution } from '../../models/eski/Institution';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 @Component({

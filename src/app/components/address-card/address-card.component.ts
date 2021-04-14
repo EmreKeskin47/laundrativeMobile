@@ -1,5 +1,4 @@
 import { MusteriAdres } from './../../models/MusteriAdres';
-import { Address } from '../../models/ui/Address';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
