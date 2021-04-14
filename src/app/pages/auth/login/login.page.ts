@@ -33,12 +33,25 @@ export class LoginPage implements OnInit {
       ),
       password: new FormControl(
         '',
-        Validators.compose([Validators.minLength(5), Validators.required])
+        Validators.compose([Validators.minLength(2), Validators.required])
       ),
     });
   }
   onSubmit(values) {
-    console.log(values);
+    this.authService.login(values.email, values.password).subscribe((res) => {
+      if (res.token) {
+        console.log('success');
+
+        this.authService.setCredentials(
+          values.email,
+          values.password,
+          res.token
+        );
+      } else {
+        console.log('Login Failed');
+      }
+    });
+    this.navigateToAccount();
   }
 
   navigateToSignup() {

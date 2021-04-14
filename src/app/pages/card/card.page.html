@@ -14,18 +14,18 @@
           <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
           <div style="padding-top: 15px">
             <ion-card-subtitle class="card-title text-color"
-              >{{ selectedIns.storeName }}</ion-card-subtitle
+              >{{ selectedIns.kurum_adi }}</ion-card-subtitle
             >
             <ion-card-title class="card-subtitle text-color">
-              {{ selectedIns.location }}
+              {{ insLocation }}
             </ion-card-title>
           </div>
         </div>
 
         <div class="min-fee text-color">
-          min sipariş tutarı {{ selectedIns.minFee }},00tl
+          min sipariş tutarı {{ selectedIns.min_siparis_tutari }},00tl
           <br />
-          {{selectedIns.discountFee}} ,00tl ve üzeri siparişlerde ücretsiz
+          {{selectedIns.min_servis_tutari}} ,00tl ve üzeri siparişlerde ücretsiz
           servis
         </div>
       </div>
@@ -43,12 +43,12 @@
             (click)="navigateToStoreMenu(item)"
           >
             <app-card-item
-              itemName="{{item.kindName}}"
-              itemCost="{{item.price}}"
-              type="{{item.type}}"
-              deliveryDate="{{item.deliveryDate}} "
-              amount="{{item.amount}}"
-              itemIcon="{{item.kindImage}}"
+              itemName="{{item.cins_adi}}"
+              itemCost="{{item.fiyatlar[item.secilenTip - 1].fiyat}}"
+              type="{{item.secilenTip}}"
+              deliveryDate="{{item.teslimatTarihi}} "
+              amount="{{item.adet}}"
+              itemIcon="{{item.cins_resmi}}"
               style="width: 100%"
             >
             </app-card-item>
@@ -92,13 +92,11 @@
 
     <!-- Footnote for order-->
     <div
-      *ngIf="currentCardCostContent.total< ConvertStringToNumber(selectedIns.discountFee)"
+      *ngIf="currentCardCostContent.total< selectedIns.min_servis_tutari"
       class="footnote-order text-color"
     >
       sepetinize
-      <b
-        >{{ConvertStringToNumber(selectedIns.discountFee) -
-        currentCardCostContent.total}}tl</b
+      <b>{{selectedIns.min_servis_tutari - currentCardCostContent.total}}tl</b
       >’lik ürün daha ekleyerek <b> ücretsiz servis </b>
       <br />
       hizmetinden faydalanabilirsiniz

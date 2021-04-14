@@ -1,3 +1,5 @@
+import { Cins } from './../../models/ui/Cins';
+import { Isletme } from './../../models/İsletme';
 import { CardCostContent } from './../../models/ui/CardCostContent';
 import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
 import { InstitutionService } from './../../services/institution.service';
@@ -14,9 +16,10 @@ import { Component, OnInit } from '@angular/core';
 export class CardPage implements OnInit {
   title = 'sepet';
 
-  selectedIns: StoreCardInfo;
-  cardItems: KindPriceItem[];
+  selectedIns: Isletme;
+  cardItems: Cins[];
   currentCardCostContent: CardCostContent;
+  insLocation: string;
 
   isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
 
@@ -30,6 +33,7 @@ export class CardPage implements OnInit {
   ngOnInit() {
     this.cardItems = this.orderService.currentCardContent;
     this.selectedIns = this.institutionService.selectedInstitution;
+    this.insLocation = this.institutionService.locationOfSelected;
     this.currentCardCostContent = this.orderService.currentCardCostContent;
   }
 
@@ -52,7 +56,7 @@ export class CardPage implements OnInit {
     return Number(input);
   }
 
-  navigateToStoreMenu(item: KindPriceItem) {
+  navigateToStoreMenu(item: Cins) {
     this.orderService.setSelectedKindItem(item);
     this.router.navigate(['create-order/store-menu', {}]);
   }

@@ -1,11 +1,10 @@
+import { KategoriCins } from './../models/KategoriCins';
 import { Isletme } from './../models/İsletme';
 import { WorkingHours } from '../models/eski/WorkingHours';
-import { StoreCardInfo } from './../models/ui/StoreCardInfo';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StoreItem } from '../models/eski/StoreItem';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +13,8 @@ export class InstitutionService {
   url: string = `${BASE_URL}/kurum`;
 
   currentInstitutionList: Isletme[];
-  selectedInstitution: StoreCardInfo = new StoreCardInfo('', '', '', '', '');
+  selectedInstitution: Isletme = null;
+  locationOfSelected: string;
 
   constructor(private http: HttpClient) {}
 
@@ -38,9 +38,11 @@ export class InstitutionService {
     }
   }
 
-  getItemsInInstitution(storeID: string): Observable<StoreItem[]> {
+  getItemsInInstitution(storeID: number): Observable<KategoriCins[]> {
     try {
-      return this.http.get<StoreItem[]>(`${this.url}/${storeID}`);
+      return this.http.get<KategoriCins[]>(
+        `${this.url}/sorgu?kurumId=${storeID}`
+      );
     } catch (err) {
       console.log('Error in GET store content by id', err);
     }
@@ -81,13 +83,8 @@ export class InstitutionService {
     }
   }
 
-  setSelectedInstituionCard(store: Isletme) {
-    this.selectedInstitution = new StoreCardInfo(
-      store.kurum_adi,
-      'store.mahalle_adi',
-      store.min_siparis_tutari.toString(),
-      store.min_servis_tutari.toString(),
-      store.isletme_id.toString()
-    );
+  setSelectedInstituionCard(store: Isletme, location: string) {
+    this.selectedInstitution = store;
+    this.locationOfSelected = location;
   }
 }

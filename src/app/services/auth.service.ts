@@ -1,3 +1,4 @@
+import { StoreItem } from './../models/eski/StoreItem';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Musteri } from '../models/Musteri';
@@ -9,6 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   url: string = `${BASE_URL}/musteri`;
+  url2: string = `${BASE_URL}/kullanici`;
   constructor(private http: HttpClient) {}
 
   registerUser(user: Musteri): Observable<any> {
@@ -22,8 +24,26 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string) {
-    const body = JSON.stringify({ email: email, password: password });
-    return this.http.post(`${BASE_URL}/login`, body);
+  login(email: string, password: string): Observable<any> {
+    return this.http.get(`${this.url2}/giris?email=${email}&sifre=${password}`);
+  }
+
+  logout() {
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    localStorage.removeItem('token');
+  }
+
+  setCredentials(mail: string, password: string, token: string) {
+    localStorage.setItem('email', mail);
+    localStorage.setItem('password', password);
+    localStorage.setItem('token', token);
+  }
+
+  getCredentials(): { mail: string; pass: string; token: string } {
+    let mail = localStorage.getItem('email');
+    let pass = localStorage.getItem('password');
+    let token = localStorage.getItem('token');
+    return { mail, pass, token };
   }
 }

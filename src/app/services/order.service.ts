@@ -1,33 +1,35 @@
+import { Cins } from './../models/ui/Cins';
 import { CardCostContent } from './../models/ui/CardCostContent';
-import { KindPriceItem } from '../models/eski/KindPriceItem';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  currentCardContent: KindPriceItem[] = [];
+  currentCardContent: Cins[] = [];
   currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
-  selectedItem: KindPriceItem = new KindPriceItem(0, '', '', 0, 0, null, 0);
+
+  selectedItem: Cins;
   constructor() {}
-  setSelectedKindItem(item: KindPriceItem) {
+  setSelectedKindItem(item: Cins) {
     this.selectedItem = item;
   }
 
-  addToCard(item: KindPriceItem) {
+  addToCard(item: Cins) {
     //if new item already exists in card
-    if (
-      this.currentCardContent.findIndex((card) => card.kindId === item.kindId) >
-      -1
+    /*if (
+      this.currentCardContent.findIndex(
+        (card) => card.cins_id === item.cins_id
+      ) > -1
     ) {
       this.updateCard(item.amount, item.type);
-    } else {
-      this.currentCardContent.push(item);
-      this.setSelectedKindItem(item);
-      this.calculateTotal();
-    }
+    } else { */
+    this.currentCardContent.push(item);
+    this.setSelectedKindItem(item);
+    this.calculateTotal();
   }
 
+  /*
   removeFromCard() {
     this.currentCardContent = this.currentCardContent.filter((item) => {
       item.kindId != this.selectedItem.kindId;
@@ -46,23 +48,15 @@ export class OrderService {
       this.calculateTotal();
     }
   }
-
-  calculatePriceWithType(amount: number, type: number, price: number): number {
-    return amount * (type > 1 ? price + (type - 1) * 5 : price);
-  }
+  */
 
   calculateTotal() {
     let total = 0;
     let deliveryFee = 0;
     this.currentCardContent.forEach((item) => {
-      let withType = this.calculatePriceWithType(
-        item.amount,
-        item.type,
-        item.price
-      );
-      total += withType;
-      let delivery = withType - item.amount * item.price;
-      deliveryFee += delivery;
+      for (let i = 0; i < item.fiyatlar.length; i++) {
+        total += item.fiyatlar[i].fiyat * item.adet;
+      }
     });
     this.currentCardCostContent = {
       total: total,

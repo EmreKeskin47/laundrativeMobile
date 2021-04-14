@@ -1,8 +1,10 @@
+import { Cins } from './../../models/ui/Cins';
+import { KategoriCins } from './../../models/KategoriCins';
+import { Isletme } from './../../models/İsletme';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { WorkingHours } from '../../models/eski/WorkingHours';
-import { StoreCardInfo } from './../../models/ui/StoreCardInfo';
 import { KindPriceItem } from '../../models/eski/KindPriceItem';
 import { InstitutionService } from './../../services/institution.service';
 import { OrderService } from './../../services/order.service';
@@ -14,12 +16,14 @@ import { OrderService } from './../../services/order.service';
 export class StoreMenuPage implements OnInit {
   pageTitle = 'mağaza detayları';
 
-  selectedIns: StoreCardInfo;
-  selected: KindPriceItem;
-  alreadyAddedToCard: KindPriceItem;
+  selectedIns: Isletme;
+  selectedInsLocation: string;
+
+  selected: Cins;
+  alreadyAddedToCard: Cins;
   select: boolean;
 
-  storeItemList = [];
+  storeItemList: KategoriCins[] = [];
   selectedItemImage = null;
 
   workingHoursOfSelectedIns: WorkingHours[] = [];
@@ -41,18 +45,12 @@ export class StoreMenuPage implements OnInit {
 
   ngOnInit() {
     this.selectedIns = this.institutionService.selectedInstitution;
+    this.selectedInsLocation = this.institutionService.locationOfSelected;
     this.institutionService
-      .getItemsInInstitution(this.selectedIns.storeID)
+      .getItemsInInstitution(this.selectedIns.kurum_id)
       .subscribe(async (item) => {
-        this.storeItemList = item[0].kindPriceList;
-      });
-    this.institutionService
-      .getWorkingHours(this.selectedIns.storeID)
-      .subscribe(async (hour) => {
-        for (let i = 0; i < hour.length; i++) {
-          this.workingHoursOfSelectedIns[i + 1] = hour[i];
-        }
-        this.calculateDeliveryTime();
+        this.storeItemList = item;
+        console.log(item, 'store list');
       });
   }
 
@@ -63,27 +61,29 @@ export class StoreMenuPage implements OnInit {
   }
   removeFromCard() {
     if (this.alreadyAddedToCard) {
-      this.orderService.removeFromCard();
+      //this.orderService.removeFromCard();
     } else {
-      this.orderService.removeFromCard();
+      //this.orderService.removeFromCard();
     }
     this.router.navigate(['/card']);
   }
   updateCard() {
+    /*
     this.orderService.updateCard(
       this.alreadyAddedToCard.amount,
       this.alreadyAddedToCard.type
     );
     this.router.navigate(['/card']);
+    */
   }
 
   selectItem(event: any) {
     this.selected = event;
     this.select = true;
     this.setSelectedImage();
-    this.selected.type = 1;
-    this.selected.deliveryDate = this.standardDelivery;
-    this.selected.amount = 1;
+    this.selected.secilenTip = 1;
+    this.selected.teslimatTarihi = this.standardDelivery;
+    this.selected.adet = 1;
   }
 
   cancelSelected(cancelled: boolean) {
@@ -99,35 +99,35 @@ export class StoreMenuPage implements OnInit {
 
   changeTypeOfSelected(event: any) {
     if (this.alreadyAddedToCard) {
-      this.alreadyAddedToCard.type = event;
+      this.alreadyAddedToCard.secilenTip = event;
       if (event == 3) {
-        this.alreadyAddedToCard.deliveryDate = this.premiumDelivery;
+        this.alreadyAddedToCard.teslimatTarihi = this.premiumDelivery;
       } else if (event == 2) {
-        this.alreadyAddedToCard.deliveryDate = this.expressDelivery;
+        this.alreadyAddedToCard.teslimatTarihi = this.expressDelivery;
       } else {
-        this.alreadyAddedToCard.deliveryDate = this.standardDelivery;
+        this.alreadyAddedToCard.teslimatTarihi = this.standardDelivery;
       }
     } else {
-      this.selected.type = event;
+      this.selected.secilenTip = event;
       if (event == 3) {
-        this.selected.deliveryDate = this.premiumDelivery;
+        this.selected.teslimatTarihi = this.premiumDelivery;
       } else if (event == 2) {
-        this.selected.deliveryDate = this.expressDelivery;
+        this.selected.teslimatTarihi = this.expressDelivery;
       } else {
-        this.selected.deliveryDate = this.standardDelivery;
+        this.selected.teslimatTarihi = this.standardDelivery;
       }
     }
   }
   changeAmountOfSelected(event: any) {
     if (this.alreadyAddedToCard) {
-      this.alreadyAddedToCard.amount = event;
+      this.alreadyAddedToCard.adet = event;
     } else {
-      this.selected.amount = event;
+      this.selected.adet = event;
     }
   }
 
   setSelectedImage() {
-    let image = this.selected.kindImage;
+    let image = this.selected.cins_resmi;
     this.selectedItemImage = this.sanitizer.bypassSecurityTrustResourceUrl(
       `data:image/png;base64, ${image}`
     );
@@ -208,11 +208,11 @@ export class StoreMenuPage implements OnInit {
   ionViewDidEnter() {
     if (
       this.orderService.selectedItem &&
-      this.orderService.selectedItem.kindId > 0
+      this.orderService.selectedItem.adet > 0
     ) {
       this.select = true;
       this.alreadyAddedToCard = this.orderService.selectedItem;
-      let image = this.orderService.selectedItem.kindImage;
+      let image = this.orderService.selectedItem.cins_resmi;
       this.selectedItemImage = this.sanitizer.bypassSecurityTrustResourceUrl(
         `data:image/png;base64, ${image}`
       );
