@@ -40,20 +40,20 @@
         color="secondary"
         (click)="expandServiceOptions()"
       >
-        <ion-icon slot="start" name="ellipse-outline"></ion-icon>
         <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
-        çamaşır yıkama
+        kategori seçimi
       </ion-button>
-      <div *ngIf="showStoreServiceOptions">
-        <ion-button
-          class="toLowerCase service-select-btn"
-          color="secondary"
-          (click)="expandServiceOptions()"
-        >
-          <ion-icon slot="start" name="ellipse-outline"></ion-icon>
-          <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
-          çamaşır yıkama
-        </ion-button>
+      <div *ngIf="showStoreCategoryOptions">
+        <div *ngFor="let cat of storeCategories">
+          <ion-button
+            class="toLowerCase service-select-btn"
+            color="secondary"
+            (click)="categorySelect(cat)"
+          >
+            <ion-icon slot="start" name="ellipse-outline"></ion-icon>
+            {{cat}}
+          </ion-button>
+        </div>
       </div>
     </div>
 
@@ -95,9 +95,8 @@
       <div>
         <app-types
           [itemCost]="alreadyAddedToCard.fiyatlar[alreadyAddedToCard.secilenTip - 1].fiyat"
-          [totalCost]="alreadyAddedToCard.fiyatlar[alreadyAddedToCard.secilenTip - 1].fiyat"
-          [cardSize]="alreadyAddedToCard.adet"
-          [initialtype]="alreadyAddedToCard.secilenTip"
+          [totalCost]="alreadyAddedToCard.fiyatlar[alreadyAddedToCard.secilenTip - 1].fiyat * alreadyAddedToCard.adet"
+          [item]="alreadyAddedToCard"
           [standard]="standardDelivery"
           [premium]="premiumDelivery"
           [express]="expressDelivery"
@@ -116,53 +115,53 @@
     </div>
 
     <ng-template #default>
-      <div *ngFor="let item of storeItemList; let i = index">
-        <div *ngFor="let cins of storeItemList[i].cinsler">
-          <!-- selected card item displayed below item-->
-          <div
-            *ngIf="select === true && !alreadyAddedToCard else onlyList"
-            class="card-padding"
+      <div *ngFor="let item of storeMenu">
+        <!-- selected card item displayed below item-->
+        <div
+          *ngIf="select === true && !alreadyAddedToCard else onlyList"
+          class="card-padding"
+        >
+          <ion-item
+            button
+            lines="none"
+            detail="false"
+            color="medium"
+            class="store-menu-container"
+            (click)="selectItem(item)"
           >
-            <ion-item
-              button
-              lines="none"
-              detail="false"
-              color="medium"
-              class="store-menu-container"
-              (click)="selectItem(item)"
-            >
-              <app-store-item
-                itemName="{{cins.cins_adi}}"
-                [itemType]="selected.secilenTip"
-                itemImage="{{cins.cins_resmi}}"
-                [itemDeliveryDate]="selected.teslimatTarihi"
-                style="width: 100%"
-              ></app-store-item>
-            </ion-item>
-            <div>
-              <app-types
-                [itemCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat"
-                [totalCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat"
-                [cardSize]="1"
-                [standard]="standardDelivery"
-                [premium]="premiumDelivery"
-                [express]="expressDelivery"
-                (cancelled)="cancelSelected(false)"
-                (type)="changeTypeOfSelected($event)"
-                (amount)="changeAmountOfSelected($event)"
-              ></app-types>
+            <app-store-item
+              itemName="{{item.cins_adi}}"
+              [itemType]="selected.secilenTip"
+              itemImage="{{item.cins_resmi}}"
+              [itemDeliveryDate]="selected.teslimatTarihi"
+              style="width: 100%"
+            ></app-store-item>
+          </ion-item>
+          <div>
+            <app-types
+              [itemCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat"
+              [totalCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat"
+              [item]="selected"
+              [standard]="standardDelivery"
+              [premium]="premiumDelivery"
+              [express]="expressDelivery"
+              (cancelled)="cancelSelected(false)"
+              (type)="changeTypeOfSelected($event)"
+              (amount)="changeAmountOfSelected($event)"
+            ></app-types>
 
-              <!--Button to add to card-->
-              <div class="btn-padding">
-                <ion-button shape="round" expand="block" (click)="addToCard()"
-                  >sepete ekle</ion-button
-                >
-              </div>
+            <!--Button to add to card-->
+            <div class="btn-padding">
+              <ion-button shape="round" expand="block" (click)="addToCard()"
+                >sepete ekle</ion-button
+              >
             </div>
           </div>
+        </div>
 
-          <ng-template #onlyList>
-            <div *ngIf="cins.cins_adi.toLowerCase().includes(searchName)">
+        <ng-template #onlyList>
+          <div *ngIf="item.cins_adi.toLowerCase().includes(searchName)">
+            <div *ngIf="searchCategory == 0 else catFilter">
               <ion-item
                 button
                 lines="none"
@@ -172,14 +171,34 @@
                 (click)="selectItem(item)"
               >
                 <app-store-item
-                  itemName="{{cins.cins_adi}}"
-                  itemImage="{{cins.cins_resmi}}"
+                  itemName="{{item.cins_adi}}"
+                  itemImage="{{item.cins_resmi}}"
                   style="width: 100%"
                 ></app-store-item>
               </ion-item>
             </div>
-          </ng-template>
-        </div>
+            <ng-template #catFilter>
+              <div
+                *ngIf="item.kategori_id == searchCategory && item.cins_adi.toLowerCase().includes(searchName)"
+              >
+                <ion-item
+                  button
+                  lines="none"
+                  detail="false"
+                  color="medium"
+                  class="store-menu-container"
+                  (click)="selectItem(item)"
+                >
+                  <app-store-item
+                    itemName="{{item.cins_adi}}"
+                    itemImage="{{item.cins_resmi}}"
+                    style="width: 100%"
+                  ></app-store-item>
+                </ion-item>
+              </div>
+            </ng-template>
+          </div>
+        </ng-template>
       </div>
     </ng-template>
   </div>

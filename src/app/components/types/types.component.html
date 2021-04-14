@@ -2,7 +2,7 @@
 <div style="padding: 10px">
   <div class="amount-container">
     <div style="display: flex">
-      <div *ngIf="cardSize > 1; else noMinus">
+      <div *ngIf="item.adet > 1; else noMinus">
         <ion-button
           fill="clear"
           shape="round"
@@ -23,7 +23,7 @@
         </ion-button>
       </ng-template>
 
-      <ion-label class="amount-text text-color">{{ cardSize }} Adet</ion-label>
+      <ion-label class="amount-text text-color">{{ item.adet }} Adet</ion-label>
       <ion-button
         fill="clear"
         shape="round"
@@ -37,14 +37,12 @@
   </div>
 </div>
 
-<!-- Grid of Services-->
-
 <ion-row>
   <ion-col class="col-padding">
     <div class="service-card-container">
       <div class="card-content">
         <div class="text-color fee">
-          {{ itemCost }},00 tl <br /><b> standart </b>
+          {{ item.fiyatlar[0].fiyat }},00 tl <br /><b> standart </b>
         </div>
         <ion-button
           fill="clear"
@@ -74,7 +72,7 @@
     <div class="service-card-container">
       <div class="card-content">
         <div class="text-color fee">
-          {{ itemCost + 5 }},00 tl <br /><b> express </b>
+          {{ expressCost }},00 tl <br /><b> express </b>
         </div>
         <ion-button
           fill="clear"
@@ -104,7 +102,7 @@
     <div class="service-card-container">
       <div class="card-content">
         <div class="text-color fee">
-          {{ itemCost + 10 }},00 tl <br /><b> premium </b>
+          {{ premiumCost }},00 tl <br /><b> premium </b>
         </div>
         <ion-button
           fill="clear"

@@ -1,11 +1,9 @@
 import { Cins } from './../../models/ui/Cins';
 import { KategoriCins } from './../../models/KategoriCins';
 import { Isletme } from './../../models/İsletme';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { WorkingHours } from '../../models/eski/WorkingHours';
-import { KindPriceItem } from '../../models/eski/KindPriceItem';
 import { InstitutionService } from './../../services/institution.service';
 import { OrderService } from './../../services/order.service';
 @Component({
@@ -22,23 +20,22 @@ export class StoreMenuPage implements OnInit {
   selected: Cins;
   alreadyAddedToCard: Cins;
   select: boolean;
-
   storeItemList: KategoriCins[] = [];
+  storeMenu: Cins[] = [];
+  storeCategories: number[] = [];
   selectedItemImage = null;
 
-  workingHoursOfSelectedIns: WorkingHours[] = [];
   standardDelivery;
   expressDelivery;
   premiumDelivery;
 
   searchName: string = '';
-
-  showStoreServiceOptions = false;
+  searchCategory: number = 0;
+  showStoreCategoryOptions = false;
 
   constructor(
     private orderService: OrderService,
     private institutionService: InstitutionService,
-    private route: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer
   ) {}
@@ -46,11 +43,27 @@ export class StoreMenuPage implements OnInit {
   ngOnInit() {
     this.selectedIns = this.institutionService.selectedInstitution;
     this.selectedInsLocation = this.institutionService.locationOfSelected;
+    this.standardDelivery = this.institutionService.standardDelivery;
+    this.expressDelivery = this.institutionService.expressDelivery;
+    this.premiumDelivery = this.institutionService.premiumDelivery;
     this.institutionService
       .getItemsInInstitution(this.selectedIns.kurum_id)
       .subscribe(async (item) => {
         this.storeItemList = item;
-        console.log(item, 'store list');
+        for (let i = 0; i < this.storeItemList.length; i++) {
+          this.storeCategories.push(this.storeItemList[i].kategoriId);
+          for (let j = 0; j < this.storeItemList[i].cinsler.length; j++) {
+            let cins = new Cins(
+              this.storeItemList[i].kategoriId,
+              this.storeItemList[i].cinsler[j].cins_resmi,
+              this.storeItemList[i].cinsler[j].cins_id,
+              this.storeItemList[i].cinsler[j].cins_adi,
+              this.storeItemList[i].cinsler[j].fiyatlar,
+              this.standardDelivery
+            );
+            this.storeMenu.push(cins);
+          }
+        }
       });
   }
 
@@ -59,31 +72,31 @@ export class StoreMenuPage implements OnInit {
     this.select = false;
     this.selected = null;
   }
+
   removeFromCard() {
     if (this.alreadyAddedToCard) {
-      //this.orderService.removeFromCard();
+      this.orderService.removeFromCard();
     } else {
-      //this.orderService.removeFromCard();
+      this.orderService.removeFromCard();
     }
     this.router.navigate(['/card']);
   }
+
   updateCard() {
-    /*
     this.orderService.updateCard(
-      this.alreadyAddedToCard.amount,
-      this.alreadyAddedToCard.type
+      this.alreadyAddedToCard.adet,
+      this.alreadyAddedToCard.secilenTip
     );
     this.router.navigate(['/card']);
-    */
   }
 
   selectItem(event: any) {
     this.selected = event;
     this.select = true;
     this.setSelectedImage();
-    this.selected.secilenTip = 1;
     this.selected.teslimatTarihi = this.standardDelivery;
     this.selected.adet = 1;
+    console.log(this.selected);
   }
 
   cancelSelected(cancelled: boolean) {
@@ -133,71 +146,6 @@ export class StoreMenuPage implements OnInit {
     );
   }
 
-  calculateDeliveryTime() {
-    const openDate = new Date();
-    let open = this.calculateAvailableDayHour(
-      openDate.getDay(),
-      openDate.getHours()
-    );
-    openDate.setHours(openDate.getHours() + open.daysToAdd * 24);
-    openDate.setHours(open.hour);
-    openDate.setMinutes(0);
-
-    //standart type
-    let standard = new Date(openDate.getTime());
-    standard.setHours(openDate.getHours() + 48);
-    let std = this.calculateAvailableDayHour(
-      standard.getDay(),
-      standard.getHours()
-    );
-    standard.setHours(std.hour);
-    this.standardDelivery = standard;
-
-    //express
-    let express = new Date(openDate.getTime());
-    express.setHours(openDate.getHours() + 24);
-    let exp = this.calculateAvailableDayHour(
-      express.getDay(),
-      express.getHours()
-    );
-    express.setHours(exp.hour);
-    this.expressDelivery = express;
-
-    //premium
-    let premium = new Date(openDate.getTime());
-    premium.setHours(openDate.getHours() + 3);
-    let prm = this.calculateAvailableDayHour(
-      premium.getDay(),
-      premium.getHours()
-    );
-    premium.setHours(prm.hour);
-    this.premiumDelivery = premium;
-  }
-
-  calculateAvailableDayHour(
-    day: number,
-    hour: number
-  ): { day: number; hour: number; daysToAdd: number } {
-    //if store is open in selected day
-    for (let i = day; i <= 7; i++) {
-      //if store is open in current
-      if (this.workingHoursOfSelectedIns[i]) {
-        let openTime = parseInt(
-          this.workingHoursOfSelectedIns[i].startingTime.slice(0, 2)
-        );
-        let closeTime = parseInt(
-          this.workingHoursOfSelectedIns[i].endingTime.slice(0, 2)
-        );
-        if (i != day) {
-          return { day: i, hour: openTime, daysToAdd: Math.abs(day - i) };
-        } else if (openTime < hour && closeTime > hour) {
-          return { day: i, hour: hour, daysToAdd: Math.abs(day - i) };
-        }
-      } else if (i == 7) {
-        i = 1;
-      }
-    }
-  }
   onInput(event) {
     this.searchName = event.detail.value;
   }
@@ -225,6 +173,11 @@ export class StoreMenuPage implements OnInit {
   }
 
   expandServiceOptions() {
-    this.showStoreServiceOptions = !this.showStoreServiceOptions;
+    this.showStoreCategoryOptions = !this.showStoreCategoryOptions;
+    this.searchCategory = 0;
+  }
+
+  categorySelect(event: any) {
+    this.searchCategory = event;
   }
 }

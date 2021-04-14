@@ -27,18 +27,11 @@ export class CardItemComponent implements OnInit {
       this.oldOrder = false;
     } else this.oldOrder = true;
 
-    let image = this.itemIcon;
-    this.itemIcon = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `data:image/png;base64, ${image}`
-    );
-    this.calculatePriceWithType();
+    if (this.itemIcon) {
+      let image = this.itemIcon;
+      this.itemIcon = this.sanitizer.bypassSecurityTrustResourceUrl(
+        `data:image/png;base64, ${image}`
+      );
+    }
   }
-
-  calculatePriceWithType() {
-    this.priceWithType =
-      parseInt(this.amount) *
-      (this.type > 1 ? this.itemCost + this.type - 1 * 5 : this.itemCost);
-  }
-
-  ionViewDidEnter() {}
 }

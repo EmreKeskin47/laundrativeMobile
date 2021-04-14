@@ -44,7 +44,7 @@
           >
             <app-card-item
               itemName="{{item.cins_adi}}"
-              itemCost="{{item.fiyatlar[item.secilenTip - 1].fiyat}}"
+              itemCost="{{item.fiyatlar[item.secilenTip - 1].fiyat * item.adet}}"
               type="{{item.secilenTip}}"
               deliveryDate="{{item.teslimatTarihi}} "
               amount="{{item.adet}}"

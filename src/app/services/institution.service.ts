@@ -16,6 +16,11 @@ export class InstitutionService {
   selectedInstitution: Isletme = null;
   locationOfSelected: string;
 
+  workingHoursOfSelectedIns = [];
+  standardDelivery;
+  expressDelivery;
+  premiumDelivery;
+
   constructor(private http: HttpClient) {}
 
   getInstitutionsInNeighborhood(
@@ -86,5 +91,73 @@ export class InstitutionService {
   setSelectedInstituionCard(store: Isletme, location: string) {
     this.selectedInstitution = store;
     this.locationOfSelected = location;
+    this.workingHoursOfSelectedIns = this.selectedInstitution.calisma_saatleri;
+    this.calculateDeliveryTime();
+  }
+
+  calculateDeliveryTime() {
+    const openDate = new Date();
+    let open = this.calculateAvailableDayHour(
+      openDate.getDay(),
+      openDate.getHours()
+    );
+    openDate.setHours(openDate.getHours() + open.daysToAdd * 24);
+    openDate.setHours(open.hour);
+    openDate.setMinutes(0);
+
+    //standart type
+    let standard = new Date(openDate.getTime());
+    standard.setHours(openDate.getHours() + 48);
+    let std = this.calculateAvailableDayHour(
+      standard.getDay(),
+      standard.getHours()
+    );
+    standard.setHours(std.hour);
+    this.standardDelivery = standard;
+
+    //express
+    let express = new Date(openDate.getTime());
+    express.setHours(openDate.getHours() + 24);
+    let exp = this.calculateAvailableDayHour(
+      express.getDay(),
+      express.getHours()
+    );
+    express.setHours(exp.hour);
+    this.expressDelivery = express;
+
+    //premium
+    let premium = new Date(openDate.getTime());
+    premium.setHours(openDate.getHours() + 3);
+    let prm = this.calculateAvailableDayHour(
+      premium.getDay(),
+      premium.getHours()
+    );
+    premium.setHours(prm.hour);
+    this.premiumDelivery = premium;
+  }
+
+  calculateAvailableDayHour(
+    day: number,
+    hour: number
+  ): { day: number; hour: number; daysToAdd: number } {
+    //if store is open in selected day
+    for (let i = day; i <= 7; i++) {
+      //if store is open in current
+      if (this.workingHoursOfSelectedIns[i]) {
+        let openTime = parseInt(
+          this.workingHoursOfSelectedIns[i].baslangic_saati.slice(0, 2)
+        );
+        let closeTime = parseInt(
+          this.workingHoursOfSelectedIns[i].bitis_saati.slice(0, 2)
+        );
+        if (i != day) {
+          return { day: i, hour: openTime, daysToAdd: Math.abs(day - i) };
+        } else if (openTime < hour && closeTime > hour) {
+          return { day: i, hour: hour, daysToAdd: Math.abs(day - i) };
+        }
+      } else if (i == 7) {
+        i = 1;
+      }
+    }
   }
 }

@@ -9,37 +9,40 @@ import { Output, EventEmitter } from '@angular/core';
 export class TypesComponent implements OnInit {
   @Input() public itemCost;
   @Input() public totalCost;
-  @Input() public initialtype;
-  @Input() public cardSize;
+  @Input() public item;
   @Input() public standard;
   @Input() public premium;
   @Input() public express;
 
-  selectedType: number;
   @Output() cancelled = new EventEmitter<boolean>();
   @Output() type = new EventEmitter<number>();
   @Output() amount = new EventEmitter<number>();
 
+  expressCost: number;
+  premiumCost: number;
+  selectedType: number;
+
   constructor(public alertController: AlertController) {}
   ngOnInit() {
-    if (this.initialtype) {
-      this.selectedType = this.initialtype;
-    } else {
-      this.selectedType = 1;
+    console.log(this.item);
+    this.selectedType = this.item.secilenTip;
+    if (this.item.fiyatlar.length >= 2) {
+      this.expressCost = this.item.fiyatlar[1].fiyat;
+      this.premiumCost = this.item.fiyatlar[2].fiyat;
     }
     this.calculateTotalCost();
   }
 
   plus() {
-    this.cardSize = this.cardSize + 1;
+    this.item.adet++;
     this.calculateTotalCost();
-    this.amount.emit(this.cardSize);
+    this.amount.emit(this.item.adet);
   }
 
   minus() {
-    this.cardSize--;
+    this.item.adet--;
     this.calculateTotalCost();
-    this.amount.emit(this.cardSize);
+    this.amount.emit(this.item.adet);
   }
 
   selectType(selectedTypeId: number) {
@@ -50,7 +53,7 @@ export class TypesComponent implements OnInit {
 
   calculateTotalCost() {
     this.totalCost =
-      this.cardSize * (this.itemCost + 5 * (this.selectedType - 1));
+      this.item.adet * this.item.fiyatlar[this.item.secilenTip - 1].fiyat;
   }
 
   removeFromCard = async () => {

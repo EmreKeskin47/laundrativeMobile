@@ -5,7 +5,7 @@ export class KategoriCins {
       cins_resmi: string;
       cins_id: number;
       cins_adi: string;
-      fiyat: [
+      fiyatlar: [
         {
           fiyat: number;
           tip: number;
@@ -20,7 +20,7 @@ export class KategoriCins {
         cins_resmi: string;
         cins_id: number;
         cins_adi: string;
-        fiyat: [
+        fiyatlar: [
           {
             fiyat: number;
             tip: number;

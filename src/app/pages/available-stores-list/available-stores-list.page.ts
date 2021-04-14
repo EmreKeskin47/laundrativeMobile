@@ -28,8 +28,6 @@ export class AvailableStoresListPage implements OnInit {
   }
 
   navigateToStore(kurum: Isletme) {
-    console.log(kurum, 'navigate to Store');
-
     this.institutionService.setSelectedInstituionCard(kurum, this.location);
     this.router.navigate(['create-order/store-menu']);
   }

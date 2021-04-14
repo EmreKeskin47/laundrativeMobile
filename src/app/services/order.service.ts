@@ -17,22 +17,22 @@ export class OrderService {
 
   addToCard(item: Cins) {
     //if new item already exists in card
-    /*if (
+    if (
       this.currentCardContent.findIndex(
         (card) => card.cins_id === item.cins_id
       ) > -1
     ) {
-      this.updateCard(item.amount, item.type);
-    } else { */
-    this.currentCardContent.push(item);
-    this.setSelectedKindItem(item);
-    this.calculateTotal();
+      this.updateCard(item.adet, item.secilenTip);
+    } else {
+      this.currentCardContent.push(item);
+      this.setSelectedKindItem(item);
+      this.calculateTotal();
+    }
   }
 
-  /*
   removeFromCard() {
     this.currentCardContent = this.currentCardContent.filter((item) => {
-      item.kindId != this.selectedItem.kindId;
+      item.cins_id != this.selectedItem.cins_id;
     });
     this.selectedItem = null;
     if (this.currentCardContent.length > 0) {
@@ -43,20 +43,19 @@ export class OrderService {
   updateCard(newAmount: number, newType: number) {
     const index = this.currentCardContent.indexOf(this.selectedItem);
     if (index >= 0) {
-      this.currentCardContent[index].amount = newAmount;
-      this.currentCardContent[index].type = newType;
+      this.currentCardContent[index].adet = newAmount;
+      this.currentCardContent[index].secilenTip = newType;
       this.calculateTotal();
     }
   }
-  */
 
   calculateTotal() {
     let total = 0;
     let deliveryFee = 0;
     this.currentCardContent.forEach((item) => {
-      for (let i = 0; i < item.fiyatlar.length; i++) {
-        total += item.fiyatlar[i].fiyat * item.adet;
-      }
+      let withDelivery = item.fiyatlar[item.secilenTip - 1].fiyat * item.adet;
+      total += withDelivery;
+      deliveryFee += withDelivery - item.fiyatlar[0].fiyat * item.adet;
     });
     this.currentCardCostContent = {
       total: total,
