@@ -1,3 +1,4 @@
+import { DetayliArama } from './../../models/DetayliArama';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
 import { Isletme } from './../../models/İsletme';
@@ -30,6 +31,10 @@ export class DetailedSearchPage implements OnInit {
   searchableDistrictList: SemtListe[] = [];
 
   instList: Isletme[] = [];
+
+  searchResult: DetayliArama[] = [];
+  textInput: string = '';
+  selectedSearchResult = [];
 
   constructor(
     private router: Router,
@@ -111,5 +116,22 @@ export class DetailedSearchPage implements OnInit {
 
   freeDelivery() {
     this.freeDeliver = !this.freeDeliver;
+  }
+
+  searchText(event: any) {
+    this.textInput = event.detail.value;
+    this.institutionService
+      .searchInEveryIns(this.textInput)
+      .subscribe((item) => (this.searchResult = item));
+  }
+
+  setSelected(item) {
+    let duplicate = this.selectedSearchResult.find(
+      (selected) =>
+        selected.isim == item.isim && selected.kategori == item.kategori
+    );
+    if (!duplicate) {
+      this.selectedSearchResult.push(item);
+    }
   }
 }

@@ -11,6 +11,7 @@ export class StoreItemComponent implements OnInit {
   @Input() public itemImage;
   @Input() public itemDeliveryDate = null;
   @Input() public itemType;
+  @Input() public itemCategory;
 
   constructor(private sanitizer: DomSanitizer) {}
   typeNames = { 3: 'premium', 2: 'express', 1: 'standard', 0: 'standard' };

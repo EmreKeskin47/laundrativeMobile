@@ -1,3 +1,4 @@
+import { DetayliArama } from './../models/DetayliArama';
 import { KategoriCins } from './../models/KategoriCins';
 import { Isletme } from './../models/İsletme';
 import { BASE_URL } from './../api/baseUrl';
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class InstitutionService {
   url: string = `${BASE_URL}/kurum`;
+  detailedSearchUrl: string = `${BASE_URL}/cins`;
 
   currentInstitutionList: Isletme[];
   selectedInstitution: Isletme = null;
@@ -73,6 +75,16 @@ export class InstitutionService {
       //   );
       return this.http.get<Isletme[]>(
         `${this.url}/detayliArama?mahalleId=3&teslimAlmaZaman=1/1/2010%2013:00&teslimEtmeZaman=1/1/2011%2014:00&kategoriCinslerParam=3:4,5:6&musteriId=1&ucretsizTeslimat=true`
+      );
+    } catch (err) {
+      console.log('Error in GET detailed store search', err);
+    }
+  }
+
+  searchInEveryIns(name: string): Observable<DetayliArama[]> {
+    try {
+      return this.http.get<DetayliArama[]>(
+        `${this.detailedSearchUrl}/arama?urunAdi=${name}`
       );
     } catch (err) {
       console.log('Error in GET detailed store search', err);
