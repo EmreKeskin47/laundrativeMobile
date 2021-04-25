@@ -1,40 +1,34 @@
+import { AuthService } from './../../services/auth.service';
+import { AddressService } from './../../services/address.service';
+import { MusteriAdres } from './../../models/MusteriAdres';
 import { Component, OnInit } from '@angular/core';
-
-interface Address {
-  id: number;
-  first: string;
-  neighborhoodId: number;
-}
 @Component({
   selector: 'app-adress-field',
   templateUrl: './adress-field.component.html',
   styleUrls: ['./adress-field.component.scss'],
 })
 export class AdressFieldComponent implements OnInit {
-  selectedAddress: Address;
-  addressList: Address[] = [
-    {
-      id: 1,
-      first: 'Address1',
-      neighborhoodId: 5432,
-    },
-    {
-      id: 2,
-      first: 'Address2',
-      neighborhoodId: 5432,
-    },
-    {
-      id: 3,
-      first: 'Address3',
-      neighborhoodId: 5432,
-    },
-  ];
+  selectedAddress: MusteriAdres;
+  addressList: MusteriAdres[] = [];
 
-  constructor() {}
+  constructor(
+    private addressService: AddressService,
+    private authService: AuthService
+  ) {}
 
   addressChange(event: any) {
+    console.log(event, 'address seçimi event');
     this.selectedAddress = event.detail.value;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let user = this.authService.getCredentials();
+    this.addressService
+      .getAddressOfCustomer(user.token)
+      .subscribe((address) => {
+        this.addressList = address;
+        console.log(this.addressList, 'get customer address in address field');
+        console.log(user.token, 'token');
+      });
+  }
 }

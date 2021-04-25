@@ -29,7 +29,7 @@ export class InstitutionService {
     categories: number[],
     date: Date,
     hour: Date,
-    customerId: number
+    customerId: string
   ): Observable<Isletme[]> {
     try {
       return this.http.get<Isletme[]>(
@@ -60,7 +60,7 @@ export class InstitutionService {
     hour: Date,
     deliveryDate: Date,
     deliveryHour: Date,
-    customerId: number,
+    customerId: string,
     freeDelivery: boolean
   ): Observable<Isletme[]> {
     try {
@@ -87,7 +87,7 @@ export class InstitutionService {
         `${this.detailedSearchUrl}/arama?urunAdi=${name}`
       );
     } catch (err) {
-      console.log('Error in GET detailed store search', err);
+      console.log('Error in GET all store items search', err);
     }
   }
 

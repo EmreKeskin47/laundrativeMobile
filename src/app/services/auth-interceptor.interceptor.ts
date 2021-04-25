@@ -9,22 +9,26 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retryWhen, catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { BASE_URL } from '../api/baseUrl';
+import { Platform } from '@ionic/angular';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private loginError = 0;
+  private _currentPlatform;
+
   constructor(
-    @Inject(BASE_URL) private baseUrl: string,
     private authService: AuthService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private platform: Platform
+  ) {
+    this.setCurrentPlatform();
+  }
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let url = this.baseUrl + request.url;
+    let url = request.url;
     if (request.url.startsWith('/assets/')) {
       url = request.url;
     }
@@ -63,8 +67,16 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
   doLogin(): Observable<any> {
-    const username = localStorage.getItem('username');
-    const password = localStorage.getItem('password');
+    var username;
+    var password;
+    if (this._currentPlatform == 'browser') {
+      username = 'levent.guren@gmail.com';
+      password = '123';
+    } else {
+      username = localStorage.getItem('username');
+      password = localStorage.getItem('password');
+    }
+
     return new Observable((observer) => {
       this.authService.login(username, password).subscribe(
         (res) => {
@@ -77,5 +89,29 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       );
     });
+  }
+
+  get currentPlatform() {
+    return this._currentPlatform;
+  }
+
+  isNative() {
+    return this._currentPlatform === 'native';
+  }
+  isBrowser() {
+    return this._currentPlatform === 'browser';
+  }
+
+  private setCurrentPlatform() {
+    // Are we on mobile platform? Yes if platform is ios or android, but not desktop or mobileweb, no otherwise
+    if (
+      this.platform.is('ios') ||
+      (this.platform.is('android') &&
+        !(this.platform.is('desktop') || this.platform.is('mobileweb')))
+    ) {
+      this._currentPlatform = 'mobile';
+    } else {
+      this._currentPlatform = 'browser';
+    }
   }
 }

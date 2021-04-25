@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Isletme } from './../../models/İsletme';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
@@ -24,8 +25,6 @@ export class CreateOrderPage implements OnInit {
   selectedDate: Date;
   selectedTime: Date;
 
-  customerId = 1;
-
   //Find a better way
   selectedServices: number[] = [];
   isSelected1 = false;
@@ -41,7 +40,8 @@ export class CreateOrderPage implements OnInit {
   constructor(
     private router: Router,
     private addressService: AddressService,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -78,13 +78,14 @@ export class CreateOrderPage implements OnInit {
   }
 
   navigateToStoreList() {
+    let user = this.authService.getCredentials();
     this.institutionService
       .getInstitutionsInNeighborhood(
         3,
         this.selectedServices,
         this.selectedDate,
         this.selectedTime,
-        this.customerId
+        user.token
       )
       .subscribe((inst) => {
         this.insList = inst;

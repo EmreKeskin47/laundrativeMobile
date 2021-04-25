@@ -40,6 +40,8 @@ export class LoginPage implements OnInit {
   onSubmit(values) {
     this.authService.login(values.email, values.password).subscribe((res) => {
       if (res.token) {
+        console.log(res);
+
         console.log('success');
 
         this.authService.setCredentials(

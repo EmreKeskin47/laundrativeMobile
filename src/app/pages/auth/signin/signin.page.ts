@@ -61,6 +61,8 @@ export class SigninPage implements OnInit {
       values.matching_passwords.password
     );
     this.authService.registerUser(user).subscribe((res) => {
+      console.log(res);
+
       if (res.result === 'ok') {
         this.navigateToAccountResult();
       }

@@ -1,3 +1,6 @@
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BASE_URL } from './../api/baseUrl';
 import { Cins } from './../models/ui/Cins';
 import { CardCostContent } from './../models/ui/CardCostContent';
 import { Injectable } from '@angular/core';
@@ -6,11 +9,30 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class OrderService {
+  url = `${BASE_URL}/siparis`;
+
   currentCardContent: Cins[] = [];
   currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
-
   selectedItem: Cins;
-  constructor() {}
+
+  constructor(private http: HttpClient) {}
+
+  getOrderList(token: string): Observable<any[]> {
+    try {
+      return this.http.get<any>(`${this.url}/liste?token=${token}`);
+    } catch (err) {
+      console.log('err in GET order list of customer');
+    }
+  }
+
+  deleteOrderWithId(token: string, id: string): Observable<any> {
+    try {
+      return this.http.get<any>(`${this.url}/liste?token=${token}`);
+    } catch (err) {
+      console.log('err in DELETE order of customer');
+    }
+  }
+
   setSelectedKindItem(item: Cins) {
     this.selectedItem = item;
   }

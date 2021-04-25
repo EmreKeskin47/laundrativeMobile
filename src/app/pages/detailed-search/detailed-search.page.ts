@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { DetayliArama } from './../../models/DetayliArama';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
@@ -39,7 +40,8 @@ export class DetailedSearchPage implements OnInit {
   constructor(
     private router: Router,
     private addressService: AddressService,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class DetailedSearchPage implements OnInit {
   }
 
   navigateToStoreList() {
+    let user = this.authService.getCredentials();
     this.institutionService
       .detailedSearch(
         3,
@@ -83,7 +86,7 @@ export class DetailedSearchPage implements OnInit {
         this.selectedTime,
         this.selectedDeliveryDate,
         this.selectedDeliveryTime,
-        1,
+        user.token,
         this.freeDeliver
       )
       .subscribe((ins) => {

@@ -1,6 +1,7 @@
+import { YeniAdres } from './../models/ui/YeniAdres';
 import { Semt } from './../models/Semt';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BASE_URL } from './../api/baseUrl';
 import { Injectable } from '@angular/core';
 import { MusteriAdres } from '../models/MusteriAdres';
@@ -10,7 +11,7 @@ import { MusteriAdres } from '../models/MusteriAdres';
 })
 export class AddressService {
   url: string = `${BASE_URL}/adres`;
-  customerUrl: string = `${BASE_URL}/musteri/adresler`;
+  customerUrl: string = `${BASE_URL}/musteri`;
 
   constructor(private http: HttpClient) {}
 
@@ -30,11 +31,49 @@ export class AddressService {
     }
   }
 
-  getAddressOfCustomer(id: number): Observable<MusteriAdres[]> {
+  getAddressOfCustomer(token: string): Observable<MusteriAdres[]> {
     try {
-      return this.http.get<MusteriAdres[]>(`${this.customerUrl}?id=${id}`);
+      return this.http.get<MusteriAdres[]>(
+        `${this.customerUrl}/adresler?token=${token}`
+      );
     } catch (err) {
       console.log('GET address of customer err ', err);
+    }
+  }
+
+  createAddress(adres: YeniAdres): Observable<any> {
+    let body = JSON.stringify(adres);
+    try {
+      return this.http.post<any[]>(`${this.customerUrl}/adresEkle`, body);
+    } catch (err) {
+      console.log('POST address of customer err ', err);
+    }
+  }
+
+  editAddress(adres: YeniAdres): Observable<any> {
+    let body = JSON.stringify(adres);
+    try {
+      return this.http.post<any[]>(`${this.customerUrl}/adresDuzenle`, body);
+    } catch (err) {
+      console.log('PUT address of customer err ', err);
+    }
+  }
+
+  deleteAdress(token: string, id: number): Observable<any> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id: id,
+        token: token,
+      },
+    };
+
+    try {
+      return this.http.delete<any>(`${this.customerUrl}/adresSil`, options);
+    } catch (err) {
+      console.log('DELETE address of customer', err);
     }
   }
 }

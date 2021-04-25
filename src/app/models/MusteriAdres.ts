@@ -1,4 +1,5 @@
 export class MusteriAdres {
+  adresId: number;
   adres: string;
   adresBasligi: string;
   mahalleAdi: string;
@@ -9,6 +10,7 @@ export class MusteriAdres {
   teslimEtme: number;
 
   constructor(
+    adresId: number,
     adres: string,
     adresBasligi: string,
     mahalleAdi: string,
@@ -18,6 +20,7 @@ export class MusteriAdres {
     teslimAlma: number,
     teslimEtme: number
   ) {
+    this.adresId = adresId;
     this.adres = adres;
     this.adresBasligi = adresBasligi;
     this.mahalleAdi = mahalleAdi;

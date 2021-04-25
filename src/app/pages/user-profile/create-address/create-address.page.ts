@@ -1,3 +1,5 @@
+import { YeniAdres } from './../../../models/ui/YeniAdres';
+import { AuthService } from './../../../services/auth.service';
 import { SemtListe } from './../../../models/ui/SemtListe';
 import { Semt } from './../../../models/Semt';
 import { AddressService } from './../../../services/address.service';
@@ -19,8 +21,17 @@ export class CreateAddressPage implements OnInit {
   searchableDistrictList: SemtListe[] = [];
 
   anotherUser = false;
+  addressName: string = '';
+  addressDesc: string = '';
+  location: string = '';
+  anotherUserName: string = '';
+  anotherUserPhone: string = '';
 
-  constructor(private router: Router, private addressService: AddressService) {}
+  constructor(
+    private router: Router,
+    private addressService: AddressService,
+    private authService: AuthService
+  ) {}
 
   provinceChange(event: { component: IonicSelectableComponent; value: any }) {
     this.selectedProvince = event.value;
@@ -53,7 +64,35 @@ export class CreateAddressPage implements OnInit {
     this.anotherUser = !this.anotherUser;
   }
 
+  addressNameChange(event: any) {
+    this.addressName = event.detail.value;
+  }
+
+  addressDescChange(event: any) {
+    this.addressDesc = event.detail.value;
+  }
+
+  anotherUserNameChange(event: any) {
+    this.anotherUserName = event.detail.value;
+  }
+
+  anotherUserPhoneChange(event: any) {
+    this.anotherUserPhone = event.detail.value;
+  }
+
   navigateToAddressList() {
+    let user = this.authService.getCredentials();
+    let newAddress = new YeniAdres(
+      user.token,
+      this.selectedDistrict.mahalleId,
+      this.addressName,
+      this.addressDesc,
+      this.anotherUserName,
+      this.anotherUserPhone
+    );
+    this.addressService
+      .createAddress(newAddress)
+      .subscribe((item) => console.log(item));
     this.router.navigate(['/profile/add-address-result']);
   }
 

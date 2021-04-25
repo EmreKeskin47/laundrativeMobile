@@ -1,3 +1,5 @@
+import { AddressService } from './../../services/address.service';
+import { AuthService } from './../../services/auth.service';
 import { MusteriAdres } from './../../models/MusteriAdres';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -8,13 +10,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AddressCardComponent implements OnInit {
   @Input() public addres: MusteriAdres;
-
   adresToDisplay: MusteriAdres = null;
+  user;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private addressService: AddressService
+  ) {}
 
   ngOnInit() {
     this.adresToDisplay = new MusteriAdres(
+      this.addres.adresId ? this.addres.adresId : 1,
       this.addres.adres ? this.addres.adres : 'adres - null',
       this.addres.adresBasligi
         ? this.addres.adresBasligi
@@ -29,15 +35,15 @@ export class AddressCardComponent implements OnInit {
       this.addres.teslimEtme
     );
 
-    if (!this.addres.adresBasligi) {
-      this.addres.adresBasligi = 'ev adresim - null';
-    }
+    this.user = this.authService.getCredentials();
+    this.editClicked();
   }
   editClicked() {
     console.log('edit');
   }
 
   deleteClicked() {
-    console.log('delete');
+    console.log('delete clicked');
+    this.addressService.deleteAdress(this.user.token, this.addres.adresId);
   }
 }

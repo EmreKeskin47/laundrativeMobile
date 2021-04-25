@@ -41,7 +41,10 @@
         <ion-icon name="home" slot="start" class="input-icon white"></ion-icon>
         <div>
           <ion-label class="label-size gray-text">adres başlığı *</ion-label>
-          <ion-input class="input-text gray-text"></ion-input>
+          <ion-input
+            class="input-text gray-text"
+            (ionChange)="addressNameChange($event)"
+          ></ion-input>
         </div>
       </ion-item>
 
@@ -58,6 +61,7 @@
           autoGrow="false"
           rows="3"
           class="input-text gray-text"
+          (ionChange)="addressDescChange($event)"
         ></ion-textarea>
       </ion-item>
 
@@ -92,7 +96,10 @@
           ></ion-icon>
           <div>
             <ion-label class="label-size gray-text">isim soyisim</ion-label>
-            <ion-input class="input-text gray-text"></ion-input>
+            <ion-input
+              class="input-text gray-text"
+              (ionChange)="anotherUserNameChange($event)"
+            ></ion-input>
           </div>
         </ion-item>
         <ion-item lines="none" class="item-container">
@@ -105,7 +112,10 @@
             <ion-label class="label-size gray-text"
               >telefon numaranız</ion-label
             >
-            <ion-input class="input-text gray-text"></ion-input>
+            <ion-input
+              class="input-text gray-text"
+              (ionChange)="anotherUserPhoneChange($event)"
+            ></ion-input>
           </div>
         </ion-item>
       </div>
