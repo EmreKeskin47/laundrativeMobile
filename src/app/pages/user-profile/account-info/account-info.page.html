@@ -15,7 +15,11 @@
         <ion-icon name="person-sharp" class="icon text-color"></ion-icon>
         <div class="input-label">
           <ion-label class="text-color"> isim soyisim</ion-label>
-          <ion-input [disabled]="disableEdit" placeholder="{{name}}">
+          <ion-input
+            [disabled]="disableEdit"
+            value="{{name}}"
+            (ionChange)="nameChange($event)"
+          >
           </ion-input>
         </div>
       </ion-item>
@@ -23,7 +27,11 @@
         <ion-icon name="mail-sharp" class="icon text-color"></ion-icon>
         <div class="input-label">
           <ion-label class="text-color"> email adresi</ion-label>
-          <ion-input [disabled]="disableEdit" placeholder="{{email}}">
+          <ion-input
+            [disabled]="disableEdit"
+            value="{{email}}"
+            (ionChange)="emailChange($event)"
+          >
           </ion-input>
         </div>
       </ion-item>
@@ -33,7 +41,8 @@
           <ion-label class="text-color"> parola</ion-label>
           <ion-input
             [disabled]="disableEdit"
-            placeholder="{{password}}"
+            value="{{password}}"
+            (ionChange)="passwordChange($event)"
           ></ion-input>
         </div>
       </ion-item>
@@ -41,7 +50,11 @@
         <ion-icon name="call-sharp" class="icon text-color"></ion-icon>
         <div class="input-label">
           <ion-label class="text-color"> telefon numaranız</ion-label>
-          <ion-input [disabled]="disableEdit" placeholder="{{phone}}">
+          <ion-input
+            [disabled]="disableEdit"
+            value="{{phone}}"
+            (ionChange)="phoneChange($event)"
+          >
           </ion-input>
         </div>
       </ion-item>

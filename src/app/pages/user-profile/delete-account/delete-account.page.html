@@ -19,7 +19,12 @@
       </div>
 
       <div>
-        <ion-item color="medium" lines="none" class="checkbox-label">
+        <ion-item
+          color="medium"
+          lines="none"
+          class="checkbox-label"
+          (click)="selectReason(1)"
+        >
           <ion-checkbox color="primary" slot="start"></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color"
@@ -28,21 +33,36 @@
           </ion-item>
         </ion-item>
 
-        <ion-item color="medium" lines="none" class="checkbox-label">
+        <ion-item
+          color="medium"
+          lines="none"
+          class="checkbox-label"
+          (click)="selectReason(2)"
+        >
           <ion-checkbox color="primary" slot="start"></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color">ihtiyacım yok</ion-label>
           </ion-item>
         </ion-item>
 
-        <ion-item color="medium" lines="none" class="checkbox-label">
+        <ion-item
+          color="medium"
+          lines="none"
+          class="checkbox-label"
+          (click)="selectReason(3)"
+        >
           <ion-checkbox color="primary" slot="start"></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color">sorun yaşadım</ion-label>
           </ion-item>
         </ion-item>
 
-        <ion-item color="medium" lines="none" class="checkbox-label">
+        <ion-item
+          color="medium"
+          lines="none"
+          class="checkbox-label"
+          (click)="selectReason(4)"
+        >
           <ion-checkbox color="primary" slot="start"></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color">diğer</ion-label>
@@ -53,6 +73,7 @@
           <ion-textarea
             rows="4"
             placeholder="ayrılma sebebinizi bize yazarsanız seviniriz..."
+            (ionChange)="editCustomReason($event)"
           ></ion-textarea>
         </ion-item>
       </div>
@@ -65,7 +86,7 @@
         promosyonlarınız silinecektir. her hangi sorun <br />
         yaşıyorsanız bize buradan ulaşabilirsiniz. <br />
       </div>
-      <ion-button (click)="navigateToLogin()" expand="block"
+      <ion-button (click)="deleteButton()" expand="block"
         >hesabımı sil</ion-button
       >
     </div>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Musteri } from '../models/Musteri';
 import { BASE_URL } from './../api/baseUrl';
@@ -18,11 +18,9 @@ export class AuthService {
   }
 
   registerUser(user: Musteri): Observable<any> {
+    let body = JSON.stringify(user);
     try {
-      return this.http.post<any>(
-        `${this.url}/olustur?adi=${user.adi}&telefon=${user.telefon}&email=${user.email}&sifre=${user.sifre}`,
-        ''
-      );
+      return this.http.post<any>(`${this.url}/olustur`, body);
     } catch (err) {
       console.log('Register user err ', err);
     }
@@ -30,6 +28,38 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     return this.http.get(`${this.url2}/giris?email=${email}&sifre=${password}`);
+  }
+
+  updateUserInfo(updatedUser: Musteri): Observable<any> {
+    let user = this.getCredentials();
+    let withToken = Object.assign(updatedUser, { token: user.token });
+    let body = JSON.stringify(withToken);
+    console.log(withToken);
+
+    try {
+      return this.http.put<any>(`${this.url}/guncelle`, body);
+    } catch (err) {
+      console.log('Register user err ', err);
+    }
+  }
+
+  deleteUserAccount(neden: string, sebepAciklamasi: string): Observable<any> {
+    let user = this.getCredentials();
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        neden: neden,
+        sebepAciklamasi: sebepAciklamasi,
+        token: user.token,
+      },
+    };
+    try {
+      return this.http.delete<any>(`${this.url}/sil`, options);
+    } catch (err) {
+      console.log('DELETE user account err ', err);
+    }
   }
 
   logout() {
