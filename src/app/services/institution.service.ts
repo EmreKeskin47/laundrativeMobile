@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { DetayliArama } from './../models/DetayliArama';
 import { KategoriCins } from './../models/KategoriCins';
 import { Isletme } from './../models/İsletme';
@@ -22,20 +23,20 @@ export class InstitutionService {
   expressDelivery;
   premiumDelivery;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getInstitutionsInNeighborhood(
     neighborhoodId: number,
     categories: number[],
     date: Date,
-    hour: Date,
-    customerId: string
+    hour: Date
   ): Observable<Isletme[]> {
+    let user = this.authService.getCredentials();
     try {
       return this.http.get<Isletme[]>(
-        `${
-          this.url
-        }/liste?musteriId=${customerId}&mahalleId=${neighborhoodId}&tarih=${date.toLocaleDateString()}%20${hour.toLocaleTimeString(
+        `${this.url}/liste?token=${
+          user.token
+        }&mahalleId=${neighborhoodId}&tarih=${date.toLocaleDateString()}%20${hour.toLocaleTimeString(
           'en-GB'
         )}&kategoriler=${categories}`
       );
@@ -60,7 +61,6 @@ export class InstitutionService {
     hour: Date,
     deliveryDate: Date,
     deliveryHour: Date,
-    customerId: string,
     freeDelivery: boolean
   ): Observable<Isletme[]> {
     try {

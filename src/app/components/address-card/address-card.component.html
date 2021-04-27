@@ -2,40 +2,51 @@
   <div style="display: flex">
     <ion-icon class="address-icon" name="home"></ion-icon>
     <div>
-      <div>
-        <ion-label class="text gray-text">{{
-          adresToDisplay.adresBasligi
-        }}</ion-label>
-      </div>
-      <ion-label class="title-label black-text">
-        {{ adresToDisplay.mahalleAdi }}
-      </ion-label>
+      <ion-input
+        class="text gray-text input"
+        [disabled]="!editPressed"
+        value="{{ adresToDisplay.adresBasligi }}"
+        (ionChange)="adresBasligi($event)"
+      ></ion-input>
+      <ion-input
+        [disabled]="!editPressed"
+        class="title-label black-text no-padding"
+        value="{{ adresToDisplay.mahalleAdi }}"
+        (ionChange)="mahalleAdi($event)"
+      >
+      </ion-input>
     </div>
   </div>
   <hr class="rounded" />
 
   <div style="padding-left: 3rem">
-    <div>
-      <ion-label class="text gray-text">
-        {{ adresToDisplay.teslimAlanAdi }}
-      </ion-label>
-    </div>
-    <div>
-      <ion-label class="text gray-text">
-        {{ adresToDisplay.teslimAlanTel }}
-      </ion-label>
-      <ion-label class="text gray-text">
-        {{ adresToDisplay.teslimAlanTel }}
-      </ion-label>
-    </div>
-    <ion-label class="text gray-text">
-      {{ adresToDisplay.adres }}
-    </ion-label>
+    <ion-input
+      class="text gray-text no-padding"
+      [disabled]="!editPressed"
+      value="{{ adresToDisplay.teslimAlanAdi }}"
+      (ionChange)="teslimAlanAdi($event)"
+    ></ion-input>
+
+    <ion-input
+      class="text gray-text no-padding"
+      [disabled]="!editPressed"
+      value="{{ adresToDisplay.teslimAlanTel }}"
+      (ionChange)="teslimAlanTel($event)"
+    >
+    </ion-input>
+
+    <ion-input
+      class="text gray-text no-padding"
+      [disabled]="!editPressed"
+      value="{{ adresToDisplay.adres }}"
+      (ionChange)="adres($event)"
+    >
+    </ion-input>
   </div>
 
   <div style="display: flex">
     <ion-icon class="location-icon" name="location"></ion-icon>
-    <div>
+    <div style="padding-top: 0.6rem">
       <div>
         <ion-label class="title-label black-text">paylaşılan konum</ion-label>
       </div>
@@ -48,8 +59,14 @@
     <ion-icon class="white-text" name="pencil"></ion-icon>
     <ion-label class="white-text">düzenle</ion-label>
   </ion-chip>
-  <ion-chip class="sec-bcg" (click)="deleteClicked()">
+
+  <ion-chip *ngIf="!editPressed" class="sec-bcg" (click)="deleteClicked()">
     <ion-icon class="white-text" name="close"></ion-icon>
     <ion-label class="white-text">kaldır</ion-label>
+  </ion-chip>
+
+  <ion-chip *ngIf="editPressed" class="sec-bcg" (click)="updateClicked()">
+    <ion-icon class="white-text" name="checkmark-outline"></ion-icon>
+    <ion-label class="white-text">değişiklikleri kaydet</ion-label>
   </ion-chip>
 </div>

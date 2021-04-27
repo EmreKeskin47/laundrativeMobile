@@ -1,4 +1,3 @@
-import { AuthService } from './../../services/auth.service';
 import { AddressService } from './../../services/address.service';
 import { MusteriAdres } from './../../models/MusteriAdres';
 import { Component, OnInit } from '@angular/core';
@@ -11,10 +10,7 @@ export class AdressFieldComponent implements OnInit {
   selectedAddress: MusteriAdres;
   addressList: MusteriAdres[] = [];
 
-  constructor(
-    private addressService: AddressService,
-    private authService: AuthService
-  ) {}
+  constructor(private addressService: AddressService) {}
 
   addressChange(event: any) {
     console.log(event, 'address seçimi event');
@@ -22,13 +18,8 @@ export class AdressFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    let user = this.authService.getCredentials();
-    this.addressService
-      .getAddressOfCustomer(user.token)
-      .subscribe((address) => {
-        this.addressList = address;
-        console.log(this.addressList, 'get customer address in address field');
-        console.log(user.token, 'token');
-      });
+    this.addressService.getAddressOfCustomer().subscribe((address) => {
+      this.addressList = address;
+    });
   }
 }

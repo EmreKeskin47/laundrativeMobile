@@ -1,4 +1,3 @@
-import { AuthService } from './../../../services/auth.service';
 import { MusteriAdres } from './../../../models/MusteriAdres';
 import { AddressService } from './../../../services/address.service';
 import { Router } from '@angular/router';
@@ -13,22 +12,15 @@ export class AddressListPage implements OnInit {
   pageTitle = 'adreslerim';
   adresList: MusteriAdres[] = [];
 
-  constructor(
-    private router: Router,
-    private addressService: AddressService,
-    private authService: AuthService
-  ) {}
+  constructor(private router: Router, private addressService: AddressService) {}
 
   navigateToCreateAddress() {
     this.router.navigate(['profile/create-address']);
   }
 
   ngOnInit() {
-    let user = this.authService.getCredentials();
-    this.addressService
-      .getAddressOfCustomer(user.token)
-      .subscribe((address) => {
-        this.adresList = address;
-      });
+    this.addressService.getAddressOfCustomer().subscribe((address) => {
+      this.adresList = address;
+    });
   }
 }

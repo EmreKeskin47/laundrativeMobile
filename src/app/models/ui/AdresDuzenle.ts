@@ -1,4 +1,5 @@
-export class YeniAdres {
+export class AdresDuzenle {
+  adresId: number;
   mahalleId: number;
   baslik: string;
   adres: string;
@@ -6,15 +7,17 @@ export class YeniAdres {
   aliciTelefon: string;
 
   constructor(
+    adresId: number,
     mahalleId: number,
-    name: string,
-    address: string,
+    baslik: string,
+    adres: string,
     aliciAdi: string,
     aliciTelefon: string
   ) {
+    this.adresId = adresId;
     this.mahalleId = mahalleId;
-    this.baslik = name;
-    this.adres = address;
+    this.baslik = baslik;
+    this.adres = adres;
     this.aliciAdi = aliciAdi;
     this.aliciTelefon = aliciTelefon;
   }

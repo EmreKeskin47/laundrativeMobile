@@ -24,7 +24,6 @@ export class TypesComponent implements OnInit {
 
   constructor(public alertController: AlertController) {}
   ngOnInit() {
-    console.log(this.item);
     this.selectedType = this.item.secilenTip;
     if (this.item.fiyatlar.length >= 2) {
       this.expressCost = this.item.fiyatlar[1].fiyat;

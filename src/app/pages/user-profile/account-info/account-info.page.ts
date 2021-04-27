@@ -11,14 +11,20 @@ import { Component, OnInit } from '@angular/core';
 export class AccountInfoPage implements OnInit {
   pageTitle = 'hesap bilgileri';
 
-  name = 'Revşan Deniz Yıldırım Çobanoğlu';
-  email = 'revsandenizyildirimcobanoglu@gmail.com';
+  name = '';
+  email = '';
   password = '*******';
-  phone = '(00 90) 535 867 18 97';
+  phone = '';
   disableEdit = true;
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.getUserInfo().subscribe((user) => {
+      this.name = user.adi;
+      this.email = user.email;
+      this.phone = user.telefon;
+    });
+  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);
@@ -27,6 +33,7 @@ export class AccountInfoPage implements OnInit {
   navigateToDeleteAccount() {
     this.router.navigate(['/profile/delete-account']);
   }
+
   editClicked() {
     this.disableEdit = !this.disableEdit;
   }
@@ -39,16 +46,20 @@ export class AccountInfoPage implements OnInit {
     this.email = event.detail.value;
   }
 
-  passwordChange(event: any) {
-    this.password = event.detail.value;
-  }
-
   phoneChange(event: any) {
     this.phone = event.detail.value;
   }
 
   saveClicked() {
     let user = new Musteri(this.name, this.phone, this.email, this.password);
-    this.authService.updateUserInfo(user);
+    this.authService.updateUserInfo(user).subscribe((res) => {
+      res.result == 'ok'
+        ? this.navigateToAccount()
+        : console.log('error updating user info');
+    });
+  }
+
+  navigateToAccount() {
+    this.router.navigate(['/profile']);
   }
 }

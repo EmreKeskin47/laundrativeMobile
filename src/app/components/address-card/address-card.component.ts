@@ -1,5 +1,5 @@
+import { AdresDuzenle } from './../../models/ui/AdresDuzenle';
 import { AddressService } from './../../services/address.service';
-import { AuthService } from './../../services/auth.service';
 import { MusteriAdres } from './../../models/MusteriAdres';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -12,11 +12,9 @@ export class AddressCardComponent implements OnInit {
   @Input() public addres: MusteriAdres;
   adresToDisplay: MusteriAdres = null;
   user;
+  editPressed = false;
 
-  constructor(
-    private authService: AuthService,
-    private addressService: AddressService
-  ) {}
+  constructor(private addressService: AddressService) {}
 
   ngOnInit() {
     this.adresToDisplay = new MusteriAdres(
@@ -34,16 +32,46 @@ export class AddressCardComponent implements OnInit {
       this.addres.teslimAlma,
       this.addres.teslimEtme
     );
-
-    this.user = this.authService.getCredentials();
-    this.editClicked();
   }
+  adresBasligi(event: any) {
+    this.adresToDisplay.adresBasligi = event.detail.value;
+  }
+  adres(event: any) {
+    this.adresToDisplay.adres = event.detail.value;
+  }
+  mahalleAdi(event: any) {
+    this.adresToDisplay.mahalleAdi = event.detail.value;
+  }
+  teslimAlanAdi(event: any) {
+    this.adresToDisplay.teslimAlanAdi = event.detail.value;
+  }
+  teslimAlanTel(event: any) {
+    this.adresToDisplay.teslimAlanTel = event.detail.value;
+  }
+
   editClicked() {
-    console.log('edit');
+    this.editPressed = !this.editPressed;
   }
 
   deleteClicked() {
-    console.log('delete clicked');
-    this.addressService.deleteAdress(this.user.token, this.addres.adresId);
+    this.addressService
+      .deleteAdress(this.addres.adresId)
+      .subscribe((res) => console.log(res, 'delete address res'));
+  }
+
+  updateClicked() {
+    let update = new AdresDuzenle(
+      this.adresToDisplay.adresId,
+      this.adresToDisplay.mahalleId,
+      this.adresToDisplay.adresBasligi,
+      this.adresToDisplay.adres,
+      this.adresToDisplay.teslimAlanAdi,
+      this.adresToDisplay.teslimAlanTel
+    );
+
+    this.addressService
+      .editAddress(update)
+      .subscribe((res) => console.log(res));
+    this.editClicked();
   }
 }

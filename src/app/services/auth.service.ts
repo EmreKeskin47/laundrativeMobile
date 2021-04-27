@@ -34,8 +34,6 @@ export class AuthService {
     let user = this.getCredentials();
     let withToken = Object.assign(updatedUser, { token: user.token });
     let body = JSON.stringify(withToken);
-    console.log(withToken);
-
     try {
       return this.http.put<any>(`${this.url}/guncelle`, body);
     } catch (err) {
@@ -59,6 +57,15 @@ export class AuthService {
       return this.http.delete<any>(`${this.url}/sil`, options);
     } catch (err) {
       console.log('DELETE user account err ', err);
+    }
+  }
+
+  getUserInfo(): Observable<any> {
+    let user = this.getCredentials();
+    try {
+      return this.http.get(`${this.url}/musteriBilgisi?token=${user.token}`);
+    } catch (err) {
+      console.log('GET user account info', err);
     }
   }
 

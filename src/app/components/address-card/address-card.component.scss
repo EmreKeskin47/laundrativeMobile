@@ -17,6 +17,16 @@
   font-size: 1.1rem;
   padding: 1rem 1rem 2.3rem 1rem;
 }
+.input {
+  --padding-bottom: 0;
+  --padding-top: 0.8rem;
+}
+
+.no-padding {
+  --padding-bottom: 0;
+  --padding-top: 0rem;
+}
+
 .rounded {
   border-top: 1px solid rgb(34, 33, 33);
   border-radius: 1px;

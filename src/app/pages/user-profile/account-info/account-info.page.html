@@ -39,11 +39,7 @@
         <ion-icon name="lock-closed-sharp" class="icon text-color"></ion-icon>
         <div class="input-label">
           <ion-label class="text-color"> parola</ion-label>
-          <ion-input
-            [disabled]="disableEdit"
-            value="{{password}}"
-            (ionChange)="passwordChange($event)"
-          ></ion-input>
+          <ion-input disabled> {{password}} </ion-input>
         </div>
       </ion-item>
       <ion-item lines="none" class="input-item">
@@ -62,7 +58,7 @@
         <ion-icon name="cog-sharp" class="icon text-color"></ion-icon>
         <div class="input-label">
           <ion-label class="text-color"> bağlı hesaplar </ion-label>
-          <ion-input>google</ion-input>
+          <ion-input disabled>google</ion-input>
         </div>
       </ion-item>
       <!--edit save buttons-->

@@ -81,9 +81,7 @@ export class CreateAddressPage implements OnInit {
   }
 
   navigateToAddressList() {
-    let user = this.authService.getCredentials();
     let newAddress = new YeniAdres(
-      user.token,
       this.selectedDistrict.mahalleId,
       this.addressName,
       this.addressDesc,

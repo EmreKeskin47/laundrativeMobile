@@ -1,4 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { MusteriSiparis } from './../models/MusteriSiparis';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from './../api/baseUrl';
 import { Cins } from './../models/ui/Cins';
@@ -15,19 +17,30 @@ export class OrderService {
   currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
   selectedItem: Cins;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getOrderList(token: string): Observable<any[]> {
+  getOrderList(): Observable<MusteriSiparis[]> {
+    let user = this.authService.getCredentials();
     try {
-      return this.http.get<any>(`${this.url}/liste?token=${token}`);
+      return this.http.get<any>(`${this.url}/liste?token=${user.token}`);
     } catch (err) {
       console.log('err in GET order list of customer');
     }
   }
 
-  deleteOrderWithId(token: string, id: string): Observable<any> {
+  deleteOrderWithId(id: string): Observable<any> {
+    let user = this.authService.getCredentials();
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id: id,
+        token: user.token,
+      },
+    };
     try {
-      return this.http.get<any>(`${this.url}/liste?token=${token}`);
+      return this.http.delete<any>(`${this.url}/liste`, options);
     } catch (err) {
       console.log('err in DELETE order of customer');
     }

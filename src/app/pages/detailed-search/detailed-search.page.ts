@@ -1,4 +1,3 @@
-import { AuthService } from './../../services/auth.service';
 import { DetayliArama } from './../../models/DetayliArama';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
@@ -37,11 +36,20 @@ export class DetailedSearchPage implements OnInit {
   textInput: string = '';
   selectedSearchResult = [];
 
+  itemCategoryName = {
+    1: 'çamaşır yıkama',
+    2: 'ütüleme',
+    3: 'kuru temizleme',
+    4: 'extra',
+    5: 'halı yıkama',
+    6: 'terzi',
+    7: 'lostra',
+  };
+
   constructor(
     private router: Router,
     private addressService: AddressService,
-    private institutionService: InstitutionService,
-    private authService: AuthService
+    private institutionService: InstitutionService
   ) {}
 
   ngOnInit(): void {
@@ -78,7 +86,6 @@ export class DetailedSearchPage implements OnInit {
   }
 
   navigateToStoreList() {
-    let user = this.authService.getCredentials();
     this.institutionService
       .detailedSearch(
         3,
@@ -86,7 +93,6 @@ export class DetailedSearchPage implements OnInit {
         this.selectedTime,
         this.selectedDeliveryDate,
         this.selectedDeliveryTime,
-        user.token,
         this.freeDeliver
       )
       .subscribe((ins) => {
@@ -99,6 +105,7 @@ export class DetailedSearchPage implements OnInit {
       { mahalleAdi: this.selectedDistrict.listeAdi },
     ]);
   }
+
   timeChange(event: any) {
     this.selectedTime = new Date(event);
   }
@@ -113,6 +120,7 @@ export class DetailedSearchPage implements OnInit {
   deliveryDateChange(event: any) {
     this.selectedDeliveryDate = new Date(event);
   }
+
   promosyon() {
     this.promosyonFilter = !this.promosyonFilter;
   }
