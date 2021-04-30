@@ -9,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationSettingsPage implements OnInit {
   pageTitle = 'bildirim ayarları';
-  mobileSelected: boolean = false;
-  emailSelected: boolean = false;
+  mobileSelected: boolean = true;
+  emailSelected: boolean = true;
+  selectedNotifications: number[] = [0, 1, 2, 3, 4, 5, 6, 7];
 
   constructor(private mesaggeService: MessageService) {}
 
@@ -21,6 +22,15 @@ export class NotificationSettingsPage implements OnInit {
 
   mobileOption(event: any) {
     this.mobileSelected = event.detail.checked;
+  }
+
+  addToSelecedNotifications(value: number) {
+    const index = this.selectedNotifications.indexOf(value);
+    if (index > -1) {
+      this.selectedNotifications.splice(index, 1);
+    } else {
+      this.selectedNotifications.push(value);
+    }
   }
 
   submit() {

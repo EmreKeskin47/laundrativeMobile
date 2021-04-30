@@ -67,6 +67,7 @@ export class InstitutionService {
     freeDelivery: boolean
   ): Observable<Isletme[]> {
     this.selectedDeliveryDate = hour;
+    let user = this.authService.getCredentials();
     try {
       // return this.http.get<any>(
       //     `${
@@ -75,10 +76,10 @@ export class InstitutionService {
       //       'en-GB'
       //     )}&teslimEtmeZaman=${deliveryDate.toLocaleDateString()}%20${deliveryHour.toLocaleTimeString(
       //       'en-GB'
-      //     )}&kategoriCinslerParam=3:4,5:6&musteriId=${customerId}&ucretsizTeslimat=${freeDelivery}`
+      //     )}&kategoriCinslerParam=3:4,5:6&token=${user.token}&ucretsizTeslimat=${freeDelivery}`
       //   );
       return this.http.get<Isletme[]>(
-        `${this.url}/detayliArama?mahalleId=3&teslimAlmaZaman=1/1/2010%2013:00&teslimEtmeZaman=1/1/2011%2014:00&kategoriCinslerParam=3:4,5:6&musteriId=1&ucretsizTeslimat=true`
+        `${this.url}/detayliArama?mahalleId=3&teslimAlmaZaman=1/1/2010%2013:00&teslimEtmeZaman=1/1/2011%2014:00&kategoriCinslerParam=3:4,5:6&token=${user.token}&ucretsizTeslimat=true`
       );
     } catch (err) {
       console.log('Error in GET detailed store search', err);

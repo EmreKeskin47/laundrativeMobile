@@ -18,64 +18,71 @@
         >ödeme alındı, siparişiniz onaylandı</ion-label
       >
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(0)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">teslim alma durumu</ion-label>
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(1)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">sipariş durumu</ion-label>
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(2)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">teslim etme durumu</ion-label>
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(3)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">adresinizdeyiz</ion-label>
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(4)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">genel kampanyalar</ion-label>
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(5)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">size özel promosyonlar</ion-label>
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(6)"
       ></ion-checkbox>
     </ion-item>
     <ion-item lines="none" color="medium" class="item-container">
@@ -87,10 +94,11 @@
       </div>
 
       <ion-checkbox
-        color="primary"
         checked
+        color="primary"
         slot="start"
         class="checkbox"
+        (ionChange)="addToSelecedNotifications(7)"
       ></ion-checkbox>
     </ion-item>
   </div>
@@ -116,6 +124,7 @@
       <ion-toggle
         slot="start"
         name="blueberry"
+        checked
         class="toggle"
         (ionChange)="emailOption($event)"
       ></ion-toggle>

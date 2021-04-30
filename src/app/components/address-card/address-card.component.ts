@@ -68,6 +68,7 @@ export class AddressCardComponent implements OnInit {
       this.adresToDisplay.teslimAlanAdi,
       this.adresToDisplay.teslimAlanTel
     );
+    console.log(update);
 
     this.addressService
       .editAddress(update)
