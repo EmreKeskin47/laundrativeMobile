@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Cins } from './../../models/ui/Cins';
 import { Isletme } from './../../models/İsletme';
 import { CardCostContent } from './../../models/ui/CardCostContent';
@@ -18,14 +19,16 @@ export class CardPage implements OnInit {
   cardItems: Cins[];
   currentCardCostContent: CardCostContent;
   insLocation: string;
+  dateTime: Date;
 
-  isLogged = this.route.snapshot.paramMap.get('isLogged') || false;
+  isLogged = this.authService.getCredentials().token;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -33,6 +36,7 @@ export class CardPage implements OnInit {
     this.selectedIns = this.institutionService.selectedInstitution;
     this.insLocation = this.institutionService.locationOfSelected;
     this.currentCardCostContent = this.orderService.currentCardCostContent;
+    this.dateTime = this.institutionService.selectedDeliveryDate;
   }
 
   navigateToLogin() {
@@ -55,5 +59,7 @@ export class CardPage implements OnInit {
     this.cardItems = this.orderService.currentCardContent;
     this.selectedIns = this.institutionService.selectedInstitution;
     this.currentCardCostContent = this.orderService.currentCardCostContent;
+    this.dateTime = this.institutionService.selectedDeliveryDate;
+    this.insLocation = this.institutionService.locationOfSelected;
   }
 }

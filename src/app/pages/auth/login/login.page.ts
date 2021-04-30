@@ -41,9 +41,7 @@ export class LoginPage implements OnInit {
     this.authService.login(values.email, values.password).subscribe((res) => {
       if (res.token) {
         console.log(res);
-
         console.log('success');
-
         this.authService.setCredentials(
           values.email,
           values.password,

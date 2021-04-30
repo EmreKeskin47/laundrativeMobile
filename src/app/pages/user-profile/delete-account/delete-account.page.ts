@@ -10,21 +10,31 @@ import { Component, OnInit } from '@angular/core';
 export class DeleteAccountPage implements OnInit {
   pageTitle = 'hesap sil';
   deleteReason: string = '';
-  customReason: string;
+  other: string = '';
+  select: boolean = true;
+  otherSelected: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
   deleteButton() {
-    this.authService.deleteUserAccount(this.deleteReason, this.customReason);
+    this.authService.deleteUserAccount(
+      this.otherSelected ? this.other : this.deleteReason
+    );
     this.router.navigate(['/login']);
   }
 
-  selectReason(reason: number) {
-    this.deleteReason.concat(reason.toString());
+  selectReason(reason: any) {
+    this.select = !this.select;
+    this.deleteReason = reason;
   }
 
   editCustomReason(event: any) {
-    this.customReason = event.detail.value;
+    this.other = event.detail.value;
+  }
+
+  customReason() {
+    this.select = !this.select;
+    this.otherSelected = !this.otherSelected;
   }
 }

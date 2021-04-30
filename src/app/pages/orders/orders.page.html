@@ -8,22 +8,27 @@
   </div>
 
   <div *ngIf="onlyDone; else all" style="height: 80%">
-    <div class="root">
-      <div>
-        <app-order-card
-          currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
-          currentOrderAddress="17.06.2021 Salı 16:30"
-        ></app-order-card>
-        <!--edit save buttons-->
-        <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
-          <ion-chip class="ter-bcg" (click)="editClicked()">
-            <ion-icon class="white-text" name="pencil"></ion-icon>
-            <ion-label class="white-text">düzenle</ion-label>
-          </ion-chip>
-          <ion-chip class="sec-bcg" (click)="deleteClicked() ">
-            <ion-icon class="white-text" name="close"></ion-icon>
-            <ion-label class="white-text">sil</ion-label>
-          </ion-chip>
+    <div *ngIf="liveOrders.length == 0; else nonEmpty" class="text-color">
+      planlanan sipariş bulunmamaktadır
+    </div>
+    <ng-template #nonEmpty>
+      <div *ngFor="let item of liveOrders" class="root">
+        <div>
+          <app-order-card
+            currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
+            currentOrderAddress="17.06.2021 Salı 16:30"
+          ></app-order-card>
+          <!--edit save buttons-->
+          <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
+            <ion-chip class="ter-bcg" (click)="editClicked()">
+              <ion-icon class="white-text" name="pencil"></ion-icon>
+              <ion-label class="white-text">düzenle</ion-label>
+            </ion-chip>
+            <ion-chip class="sec-bcg" (click)="deleteClicked() ">
+              <ion-icon class="white-text" name="close"></ion-icon>
+              <ion-label class="white-text">sil</ion-label>
+            </ion-chip>
+          </div>
         </div>
       </div>
 
@@ -32,15 +37,17 @@
           >yeni sipariş oluştur</ion-button
         >
       </div>
-    </div>
+    </ng-template>
   </div>
 
   <ng-template #all>
-    <app-order-card [orderDone]="true"></app-order-card>
-    <app-order-card [orderDone]="true"></app-order-card>
-    <app-order-card [orderDone]="true"></app-order-card>
-    <app-order-card [orderDone]="true"></app-order-card>
-    <app-order-card [orderDone]="true"></app-order-card>
-    <app-order-card [orderDone]="true"></app-order-card>
+    <div *ngIf="orderList.length==0; else orders" class="text-color">
+      eski sipariş bulunmamaktadır
+    </div>
+    <ng-template #orders>
+      <div *ngFor="let item of orderList">
+        <app-order-card [orderDone]="true"></app-order-card>
+      </div>
+    </ng-template>
   </ng-template>
 </ion-content>

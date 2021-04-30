@@ -41,14 +41,13 @@ export class AuthService {
     }
   }
 
-  deleteUserAccount(neden: string, sebepAciklamasi: string): Observable<any> {
+  deleteUserAccount(sebepAciklamasi: string): Observable<any> {
     let user = this.getCredentials();
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
       body: {
-        neden: neden,
         sebepAciklamasi: sebepAciklamasi,
         token: user.token,
       },

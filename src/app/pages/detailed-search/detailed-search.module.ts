@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../components/components.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

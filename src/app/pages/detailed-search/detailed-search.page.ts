@@ -145,4 +145,11 @@ export class DetailedSearchPage implements OnInit {
       this.selectedSearchResult.push(item);
     }
   }
+
+  deleteSelected(item) {
+    const index = this.selectedSearchResult.indexOf(item);
+    if (index > -1) {
+      this.selectedSearchResult.splice(index, 1);
+    }
+  }
 }

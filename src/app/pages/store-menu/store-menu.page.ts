@@ -32,6 +32,15 @@ export class StoreMenuPage implements OnInit {
   searchName: string = '';
   searchCategory: number = 0;
   showStoreCategoryOptions = false;
+  itemCategoryName = {
+    1: 'çamaşır yıkama',
+    2: 'ütüleme',
+    3: 'kuru temizleme',
+    4: 'extra',
+    5: 'halı yıkama',
+    6: 'terzi',
+    7: 'lostra',
+  };
 
   constructor(
     private orderService: OrderService,
@@ -71,6 +80,8 @@ export class StoreMenuPage implements OnInit {
     this.orderService.addToCard(this.selected);
     this.select = false;
     this.selected = null;
+    this.searchCategory = 0;
+    this.searchName = '';
   }
 
   removeFromCard() {
@@ -91,12 +102,16 @@ export class StoreMenuPage implements OnInit {
   }
 
   selectItem(event: any) {
-    this.selected = event;
-    this.select = true;
-    this.setSelectedImage();
-    this.selected.teslimatTarihi = this.standardDelivery;
-    this.selected.adet = 1;
-    console.log(this.selected);
+    if (this.selected == event) {
+      this.select = false;
+      this.selected = null;
+    } else {
+      this.selected = event;
+      this.select = true;
+      this.setSelectedImage();
+      this.selected.teslimatTarihi = this.standardDelivery;
+      this.selected.adet = 1;
+    }
   }
 
   cancelSelected(cancelled: boolean) {
@@ -170,6 +185,8 @@ export class StoreMenuPage implements OnInit {
     this.orderService.selectedItem = null;
     this.alreadyAddedToCard = null;
     this.select = false;
+    this.onCancel();
+    this.showStoreCategoryOptions = false;
   }
 
   expandServiceOptions() {
@@ -178,6 +195,8 @@ export class StoreMenuPage implements OnInit {
   }
 
   categorySelect(event: any) {
+    this.select = false;
+    this.selected = null;
     this.searchCategory = event;
   }
 }

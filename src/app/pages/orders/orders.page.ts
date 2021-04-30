@@ -1,3 +1,5 @@
+import { MusteriSiparis } from './../../models/MusteriSiparis';
+import { OrderService } from './../../services/order.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class OrdersPage implements OnInit {
   pageTitle = 'siparişleriniz';
   onlyDone = false;
+  orderList: MusteriSiparis[] = [];
+  liveOrders: MusteriSiparis[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private orderService: OrderService) {}
 
   currentOrders() {
     this.onlyDone = true;
@@ -32,5 +36,9 @@ export class OrdersPage implements OnInit {
     console.log('delete');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.orderService.getOrderList().subscribe((order) => {
+      this.orderList = order;
+    });
+  }
 }

@@ -1,3 +1,4 @@
+import { MusteriSiparis } from './../../models/MusteriSiparis';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,7 @@ export class OrderCardComponent implements OnInit {
   @Input() public orderDone;
   @Input() public currentOrderDate;
   @Input() public currentOrderAddress;
+  @Input() public order: MusteriSiparis;
 
   constructor() {}
 

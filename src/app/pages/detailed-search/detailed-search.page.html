@@ -95,14 +95,29 @@
       <ion-grid>
         <div
           *ngFor="let item of selectedSearchResult"
-          style="padding-left: 20%"
+          class="added-filter-padding"
         >
           <ion-row>
-            <ion-col style="font-size: 0.6rem; text-align: left">
-              <ion-label>{{item.isim}}</ion-label>
+            <ion-col size="auto" style="padding: 0">
+              <ion-item
+                color="medium"
+                button
+                lines="none"
+                detail="false"
+                class="delete-col"
+                (click)="deleteSelected(item)"
+              >
+                <ion-icon
+                  class="text-color icon"
+                  name="close-circle"
+                ></ion-icon>
+              </ion-item>
             </ion-col>
-            <ion-col>
-              <ion-label style="font-size: 0.6rem">
+            <ion-col style="padding: 0; text-align: left">
+              <ion-label class="text-color item-name">{{item.isim}}</ion-label>
+            </ion-col>
+            <ion-col size="auto" style="padding: 0">
+              <ion-label class="text-color item-category">
                 {{itemCategoryName[item.kategori]}}
               </ion-label>
             </ion-col>

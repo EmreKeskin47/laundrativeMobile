@@ -1,3 +1,5 @@
+import { Mesaj } from './../../../models/Mesaj';
+import { MessageService } from './../../../services/message.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactPage implements OnInit {
   pageTitle = 'bize ulaşın';
-  showMessage = false;
 
-  constructor() {}
+  showMessage = false;
+  subject: string = '';
+  message: string = '';
+  constructor(private messageService: MessageService) {}
 
   messagePressed() {
     this.showMessage = !this.showMessage;
+  }
+  subjectChange(event: any) {
+    this.subject = event.detail.value;
+  }
+  mesaageChange(event: any) {
+    this.message = event.detail.value;
+  }
+  sendMessage() {
+    this.showMessage = false;
+    let mes = new Mesaj(this.subject, this.message);
+    this.messageService.bizeUlasin(mes).subscribe((res) => console.log(res));
   }
 
   ngOnInit() {}

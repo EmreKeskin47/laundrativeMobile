@@ -49,13 +49,20 @@
     <!--Message container-->
     <div *ngIf="showMessage">
       <ion-item lines="none" class="item-container">
-        <ion-input class="input-text gray-text" placeholder="konu"></ion-input>
+        <ion-input
+          class="input-text gray-text"
+          placeholder="konu"
+          value="{{subject}}"
+          (ionChange)="subjectChange($event)"
+        ></ion-input>
       </ion-item>
       <ion-item lines="none" class="item-container">
         <ion-textarea
           rows="4"
           class="input-text gray-text"
           placeholder="mesaj"
+          value="{{message}}"
+          (ionChange)="mesaageChange($event)"
         ></ion-textarea>
       </ion-item>
       <ion-item lines="none" class="item-container">
@@ -71,7 +78,7 @@
         ></ion-input>
       </ion-item>
       <div class="send-btn">
-        <ion-button> gönder</ion-button>
+        <ion-button (click)="sendMessage()"> gönder</ion-button>
       </div>
     </div>
 

@@ -86,7 +86,6 @@ export class CreateOrderPage implements OnInit {
       .subscribe((inst) => {
         this.insList = inst;
         this.institutionService.currentInstitutionList = inst;
-        console.log(inst);
       });
     this.router.navigate([
       '/create-order/available-stores-list',

@@ -129,8 +129,28 @@
 
       <ng-template #logged>
         <div style="padding-top: 1.5rem">
-          <app-adress-field></app-adress-field>
-          <app-date-field calenderTitle="teslim alma zamanı"></app-date-field>
+          <ion-item lines="none" class="input-item">
+            <ion-icon
+              name="location"
+              class="adres-icon primary-color"
+            ></ion-icon>
+            <div class="input-label">
+              <ion-label class="text-color"> adres</ion-label>
+              <div>{{insLocation}}</div>
+            </div>
+          </ion-item>
+
+          <ion-item lines="none" class="input-item">
+            <ion-icon
+              name="calendar"
+              class="adres-icon primary-color"
+            ></ion-icon>
+            <div class="input-label">
+              <ion-label class="text-color"> teslim alma zamanı</ion-label>
+              <div>{{ dateTime | date: "d.M.yy EEEE HH:mm"}}</div>
+            </div>
+          </ion-item>
+
           <div class="pay-btn">
             <ion-button
               (click)="navigateToPayment()"

@@ -51,7 +51,7 @@
             (click)="categorySelect(cat)"
           >
             <ion-icon slot="start" name="ellipse-outline"></ion-icon>
-            {{cat}}
+            {{itemCategoryName[cat]}}
           </ion-button>
         </div>
       </div>
@@ -118,7 +118,7 @@
       <div *ngFor="let item of storeMenu">
         <!-- selected card item displayed below item-->
         <div
-          *ngIf="select === true && !alreadyAddedToCard else onlyList"
+          *ngIf="select === true && !alreadyAddedToCard && searchCategory==0 && searchName.length == 0 else onlyList"
           class="card-padding"
         >
           <ion-item
@@ -131,16 +131,17 @@
           >
             <app-store-item
               itemName="{{item.cins_adi}}"
-              [itemType]="selected.secilenTip"
+              [itemType]="item.secilenTip"
               itemImage="{{item.cins_resmi}}"
-              [itemDeliveryDate]="selected.teslimatTarihi"
+              [itemDeliveryDate]="item.teslimatTarihi"
+              itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
               style="width: 100%"
             ></app-store-item>
           </ion-item>
-          <div>
+          <div *ngIf="selected == item">
             <app-types
-              [itemCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat"
-              [totalCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat"
+              itemCost="{{selected.fiyatlar[selected.secilenTip - 1].fiyat}}"
+              [totalCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat * selected.adet"
               [item]="selected"
               [standard]="standardDelivery"
               [premium]="premiumDelivery"
@@ -173,6 +174,7 @@
                 <app-store-item
                   itemName="{{item.cins_adi}}"
                   itemImage="{{item.cins_resmi}}"
+                  itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
                   style="width: 100%"
                 ></app-store-item>
               </ion-item>
@@ -192,11 +194,32 @@
                   <app-store-item
                     itemName="{{item.cins_adi}}"
                     itemImage="{{item.cins_resmi}}"
+                    itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
                     style="width: 100%"
                   ></app-store-item>
                 </ion-item>
               </div>
             </ng-template>
+            <div *ngIf="selected == item">
+              <app-types
+                itemCost="{{selected.fiyatlar[selected.secilenTip - 1].fiyat}}"
+                [totalCost]="selected.fiyatlar[selected.secilenTip - 1].fiyat * selected.adet"
+                [item]="selected"
+                [standard]="standardDelivery"
+                [premium]="premiumDelivery"
+                [express]="expressDelivery"
+                (cancelled)="cancelSelected(false)"
+                (type)="changeTypeOfSelected($event)"
+                (amount)="changeAmountOfSelected($event)"
+              ></app-types>
+
+              <!--Button to add to card-->
+              <div class="btn-padding">
+                <ion-button shape="round" expand="block" (click)="addToCard()"
+                  >sepete ekle</ion-button
+                >
+              </div>
+            </div>
           </div>
         </ng-template>
       </div>

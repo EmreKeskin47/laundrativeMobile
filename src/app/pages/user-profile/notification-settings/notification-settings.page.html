@@ -107,12 +107,23 @@
         name="blueberry"
         checked
         class="toggle"
+        (ionChange)="mobileOption($event)"
       ></ion-toggle>
     </ion-item>
 
     <ion-item lines="none" color="medium" class="item-container">
       <ion-label class="text-color label">email bildirimler</ion-label>
-      <ion-toggle slot="start" name="blueberry" class="toggle"></ion-toggle>
+      <ion-toggle
+        slot="start"
+        name="blueberry"
+        class="toggle"
+        (ionChange)="emailOption($event)"
+      ></ion-toggle>
     </ion-item>
+    <div style="padding: 1rem 0.5rem 1rem 0.5rem">
+      <ion-button (click)="submit()" expand="block">
+        ayarları kaydet</ion-button
+      >
+    </div>
   </div>
 </ion-content>

@@ -23,6 +23,8 @@ export class InstitutionService {
   expressDelivery;
   premiumDelivery;
 
+  selectedDeliveryDate;
+
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getInstitutionsInNeighborhood(
@@ -31,6 +33,7 @@ export class InstitutionService {
     date: Date,
     hour: Date
   ): Observable<Isletme[]> {
+    this.selectedDeliveryDate = hour;
     let user = this.authService.getCredentials();
     try {
       return this.http.get<Isletme[]>(
@@ -63,6 +66,7 @@ export class InstitutionService {
     deliveryHour: Date,
     freeDelivery: boolean
   ): Observable<Isletme[]> {
+    this.selectedDeliveryDate = hour;
     try {
       // return this.http.get<any>(
       //     `${

@@ -19,13 +19,13 @@
       </div>
 
       <div>
-        <ion-item
-          color="medium"
-          lines="none"
-          class="checkbox-label"
-          (click)="selectReason(1)"
-        >
-          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        <ion-item color="medium" lines="none" class="checkbox-label">
+          <ion-checkbox
+            (click)="selectReason('başka bir platform kullanıyorum')"
+            color="primary"
+            slot="start"
+            [disabled]="!select"
+          ></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color"
               >başka bir platform kullanıyorum</ion-label
@@ -33,37 +33,37 @@
           </ion-item>
         </ion-item>
 
-        <ion-item
-          color="medium"
-          lines="none"
-          class="checkbox-label"
-          (click)="selectReason(2)"
-        >
-          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        <ion-item color="medium" lines="none" class="checkbox-label">
+          <ion-checkbox
+            (click)="selectReason('ihtiyacım yok')"
+            color="primary"
+            slot="start"
+            [disabled]="!select"
+          ></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color">ihtiyacım yok</ion-label>
           </ion-item>
         </ion-item>
 
-        <ion-item
-          color="medium"
-          lines="none"
-          class="checkbox-label"
-          (click)="selectReason(3)"
-        >
-          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        <ion-item color="medium" lines="none" class="checkbox-label">
+          <ion-checkbox
+            (click)="selectReason('sorun yasadim')"
+            color="primary"
+            slot="start"
+            [disabled]="!select"
+          ></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color">sorun yaşadım</ion-label>
           </ion-item>
         </ion-item>
 
-        <ion-item
-          color="medium"
-          lines="none"
-          class="checkbox-label"
-          (click)="selectReason(4)"
-        >
-          <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        <ion-item color="medium" lines="none" class="checkbox-label">
+          <ion-checkbox
+            [disabled]="!select"
+            color="primary"
+            slot="start"
+            (click)="customReason()"
+          ></ion-checkbox>
           <ion-item lines="none" class="inner-item">
             <ion-label class="black-color">diğer</ion-label>
           </ion-item>
@@ -74,6 +74,7 @@
             rows="4"
             placeholder="ayrılma sebebinizi bize yazarsanız seviniriz..."
             (ionChange)="editCustomReason($event)"
+            [disabled]="!otherSelected"
           ></ion-textarea>
         </ion-item>
       </div>

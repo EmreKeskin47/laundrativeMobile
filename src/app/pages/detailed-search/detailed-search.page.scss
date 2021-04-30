@@ -52,3 +52,32 @@
   right: 7rem;
   font-size: 0.5rem;
 }
+
+.added-filter-padding {
+  padding-left: 25%;
+}
+
+.delete-col {
+  width: 2rem;
+  height: 2rem;
+  --padding-start: 0;
+  --padding-end: 0;
+  padding: 0;
+}
+
+.icon {
+  padding-bottom: 1rem;
+}
+
+.item-name {
+  font-size: 0.6rem;
+  padding: 0;
+  margin: 0;
+}
+
+.item-category {
+  font-size: 0.6rem;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+}
