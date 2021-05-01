@@ -7,14 +7,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DateFieldComponent implements OnInit {
   @Input() public calenderTitle;
+  @Input() public initialDate;
   @Output() selectedDate = new EventEmitter<Date>();
   @Output() selectedTime = new EventEmitter<Date>();
   currentDate: Date;
+  futureDate: Date;
   months: number[] = [];
   constructor() {}
 
   ngOnInit() {
     this.currentDate = new Date();
+    this.currentDate.setHours(this.currentDate.getHours() + 1);
+    this.futureDate = new Date();
+    this.futureDate.setHours(this.futureDate.getHours() + 48);
     this.months.push(this.currentDate.getMonth() + 1);
     this.months[1] = this.months[0] + 1;
   }

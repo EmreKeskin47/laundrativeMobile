@@ -39,9 +39,6 @@ export class AddressCardComponent implements OnInit {
   adres(event: any) {
     this.adresToDisplay.adres = event.detail.value;
   }
-  mahalleAdi(event: any) {
-    this.adresToDisplay.mahalleAdi = event.detail.value;
-  }
   teslimAlanAdi(event: any) {
     this.adresToDisplay.teslimAlanAdi = event.detail.value;
   }
@@ -68,8 +65,6 @@ export class AddressCardComponent implements OnInit {
       this.adresToDisplay.teslimAlanAdi,
       this.adresToDisplay.teslimAlanTel
     );
-    console.log(update);
-
     this.addressService
       .editAddress(update)
       .subscribe((res) => console.log(res));

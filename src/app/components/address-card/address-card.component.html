@@ -9,10 +9,9 @@
         (ionChange)="adresBasligi($event)"
       ></ion-input>
       <ion-input
-        [disabled]="!editPressed"
+        disabled
         class="title-label black-text no-padding"
         value="{{ adresToDisplay.mahalleAdi }}"
-        (ionChange)="mahalleAdi($event)"
       >
       </ion-input>
     </div>
@@ -55,9 +54,14 @@
   </div>
 </ion-card>
 <div style="text-align: end; padding-right: 1rem">
-  <ion-chip class="ter-bcg" (click)="editClicked()">
+  <ion-chip *ngIf="!editPressed" class="ter-bcg" (click)="editClicked()">
     <ion-icon class="white-text" name="pencil"></ion-icon>
     <ion-label class="white-text">düzenle</ion-label>
+  </ion-chip>
+
+  <ion-chip *ngIf="editPressed" class="ter-bcg" (click)="editClicked()">
+    <ion-icon class="white-text" name="pencil"></ion-icon>
+    <ion-label class="white-text">vazgeç</ion-label>
   </ion-chip>
 
   <ion-chip *ngIf="!editPressed" class="sec-bcg" (click)="deleteClicked()">

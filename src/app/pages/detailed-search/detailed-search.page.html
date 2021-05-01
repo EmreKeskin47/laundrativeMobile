@@ -42,11 +42,13 @@
     calenderTitle="ne zaman teslim alınsın"
     (selectedDate)="dateChange($event)"
     (selectedTime)="timeChange($event)"
+    initialDate="true"
   ></app-date-field>
   <app-date-field
     calenderTitle="ne zaman teslim edilsin"
     (selectedDate)="deliveryDateChange($event)"
     (selectedTime)="deliveryTimeChange($event)"
+    initialDate="true"
   ></app-date-field>
 
   <!--Search Service-->
