@@ -3,32 +3,37 @@
 <ion-content color="medium">
   <!-- Address and Date -->
   <div style="padding-top: 1rem">
-    <ion-item lines="none" class="item-container">
-      <ion-label class="gray-text">il</ion-label>
-      <ionic-selectable
-        [(ngModel)]="selectedProvince"
-        [items]="provinceList"
-        itemValueField="id"
-        itemTextField="adi"
-        [canSearch]="true"
-        (onChange)="provinceChange($event)"
-      >
-      </ionic-selectable>
-    </ion-item>
+    <div *ngIf="!isLogged; else logged">
+      <ion-item lines="none" class="item-container">
+        <ion-label class="gray-text">il</ion-label>
+        <ionic-selectable
+          [(ngModel)]="selectedProvince"
+          [items]="provinceList"
+          itemValueField="id"
+          itemTextField="adi"
+          [canSearch]="true"
+          (onChange)="provinceChange($event)"
+        >
+        </ionic-selectable>
+      </ion-item>
 
-    <ion-item lines="none" class="item-container">
-      <ion-label class="gray-text">ilçe</ion-label>
-      <ionic-selectable
-        [(ngModel)]="selectedDistrict"
-        [items]="searchableDistrictList"
-        itemValueField="mahalleId"
-        itemTextField="listeAdi"
-        [canSearch]="true"
-        [hasVirtualScroll]="true"
-        (onChange)="districtChange($event)"
-      >
-      </ionic-selectable>
-    </ion-item>
+      <ion-item lines="none" class="item-container">
+        <ion-label class="gray-text">ilçe</ion-label>
+        <ionic-selectable
+          [(ngModel)]="selectedDistrict"
+          [items]="searchableDistrictList"
+          itemValueField="mahalleId"
+          itemTextField="listeAdi"
+          [canSearch]="true"
+          [hasVirtualScroll]="true"
+          (onChange)="districtChange($event)"
+        >
+        </ionic-selectable>
+      </ion-item>
+    </div>
+    <ng-template #logged>
+      <app-adress-field (address)="addressChange($event)"></app-adress-field>
+    </ng-template>
 
     <app-date-field
       calenderTitle="ne zaman alalım"

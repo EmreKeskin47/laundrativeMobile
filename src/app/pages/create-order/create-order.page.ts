@@ -1,3 +1,5 @@
+import { MusteriAdres } from './../../models/MusteriAdres';
+import { AuthService } from './../../services/auth.service';
 import { Isletme } from './../../models/İsletme';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
@@ -23,6 +25,9 @@ export class CreateOrderPage implements OnInit {
 
   selectedDate: Date;
   selectedTime: Date;
+  selectedAddress: MusteriAdres;
+
+  isLogged = this.authService.getCredentials().token;
 
   //Find a better way
   selectedServices: number[] = [];
@@ -39,7 +44,8 @@ export class CreateOrderPage implements OnInit {
   constructor(
     private router: Router,
     private addressService: AddressService,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -87,11 +93,16 @@ export class CreateOrderPage implements OnInit {
         this.insList = inst;
         this.institutionService.currentInstitutionList = inst;
       });
-    this.router.navigate([
-      '/create-order/available-stores-list',
-      { mahalleAdi: this.selectedDistrict.listeAdi },
-    ]);
+    if (!this.isLogged) {
+      this.router.navigate([
+        '/create-order/available-stores-list',
+        { mahalleAdi: this.selectedDistrict.listeAdi },
+      ]);
+    } else {
+      this.router.navigate(['/create-order/available-stores-list']);
+    }
   }
+
   navigateToDetailedSearch() {
     this.router.navigate(['/create-order/detailed-search']);
   }
@@ -162,5 +173,14 @@ export class CreateOrderPage implements OnInit {
 
   dateChange(event: any) {
     this.selectedDate = new Date(event);
+  }
+  addressChange(event: MusteriAdres) {
+    this.selectedAddress = event;
+    this.institutionService.setSelectedDeliveryAddress(event);
+  }
+
+  ionViewDidEnter() {
+    this.selectedProvince = null;
+    this.selectedDistrict = null;
   }
 }

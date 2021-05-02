@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 @Component({
   selector: 'app-date-field',
   templateUrl: './date-field.component.html',
@@ -18,10 +17,16 @@ export class DateFieldComponent implements OnInit {
   ngOnInit() {
     this.currentDate = new Date();
     this.currentDate.setHours(this.currentDate.getHours() + 1);
+    this.currentDate.setMinutes(30);
     this.futureDate = new Date();
     this.futureDate.setHours(this.futureDate.getHours() + 48);
     this.months.push(this.currentDate.getMonth() + 1);
     this.months[1] = this.months[0] + 1;
+
+    this.initialDate
+      ? this.selectedDate.emit(this.futureDate)
+      : this.selectedDate.emit(this.currentDate);
+    this.selectedTime.emit(this.currentDate);
   }
 
   dateChange(event: any) {

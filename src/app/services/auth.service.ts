@@ -96,14 +96,6 @@ export class AuthService {
   get currentPlatform() {
     return this._currentPlatform;
   }
-
-  isNative() {
-    return this._currentPlatform === 'native';
-  }
-  isBrowser() {
-    return this._currentPlatform === 'browser';
-  }
-
   private setCurrentPlatform() {
     // Are we on mobile platform? Yes if platform is ios or android, but not desktop or mobileweb, no otherwise
     if (

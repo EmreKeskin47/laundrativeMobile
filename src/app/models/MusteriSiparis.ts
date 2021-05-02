@@ -1,5 +1,5 @@
 export class MusteriSiparis {
-  siparis_id: string;
+  // siparis_id: string;
   siparis_tarihi: Date;
   status: number;
   fiyat: number;
@@ -22,7 +22,7 @@ export class MusteriSiparis {
   ];
 
   constructor(
-    siparis_id: string,
+    public siparis_id: string,
     siparis_tarihi: Date,
     status: number,
     fiyat: number,
@@ -44,7 +44,7 @@ export class MusteriSiparis {
       }
     ]
   ) {
-    this.siparis_id = siparis_id;
+    // this.siparis_id = siparis_id;
     this.siparis_tarihi = siparis_tarihi;
     this.status = status;
     this.fiyat = fiyat;

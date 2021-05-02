@@ -1,6 +1,6 @@
 import { AddressService } from './../../services/address.service';
 import { MusteriAdres } from './../../models/MusteriAdres';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-adress-field',
   templateUrl: './adress-field.component.html',
@@ -9,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class AdressFieldComponent implements OnInit {
   selectedAddress: MusteriAdres;
   addressList: MusteriAdres[] = [];
+  @Output() address = new EventEmitter<MusteriAdres>();
 
   constructor(private addressService: AddressService) {}
 
   addressChange(event: any) {
-    console.log(event, 'address seçimi event');
     this.selectedAddress = event.detail.value;
+    this.address.emit(this.selectedAddress);
   }
 
   ngOnInit() {

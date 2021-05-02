@@ -1,3 +1,5 @@
+import { DeviceInfoService } from './device-info.service';
+import { SiparisOlustur } from './../models/SiparisOlustur';
 import { AuthService } from './auth.service';
 import { MusteriSiparis } from './../models/MusteriSiparis';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -17,7 +19,11 @@ export class OrderService {
   currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
   selectedItem: Cins;
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private devInfo: DeviceInfoService
+  ) {}
 
   getOrderList(): Observable<MusteriSiparis[]> {
     let user = this.authService.getCredentials();
@@ -43,6 +49,28 @@ export class OrderService {
       return this.http.delete<any>(`${this.url}/liste`, options);
     } catch (err) {
       console.log('err in DELETE order of customer');
+    }
+  }
+
+  async createOrder(siparis: SiparisOlustur) {
+    let user = this.authService.getCredentials();
+    let os = this.devInfo.currentPlatform;
+    let dev = await this.devInfo.setOtherDeviceInfo();
+    console.log(JSON.stringify(dev));
+
+    var data = {
+      token: user.token,
+      isletimSistemi: os,
+      isletimSistemiBilgisi: dev,
+      ...siparis,
+    };
+    var body = JSON.stringify(data);
+    console.log(body);
+
+    try {
+      return this.http.post<any>(`${this.url}/olustur`, body);
+    } catch (err) {
+      console.log('err in POST order', err);
     }
   }
 

@@ -1,3 +1,4 @@
+import { MusteriAdres } from './../models/MusteriAdres';
 import { AuthService } from './auth.service';
 import { DetayliArama } from './../models/DetayliArama';
 import { KategoriCins } from './../models/KategoriCins';
@@ -24,6 +25,7 @@ export class InstitutionService {
   premiumDelivery;
 
   selectedDeliveryDate;
+  selectedDeliveryAddress: MusteriAdres;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -32,11 +34,11 @@ export class InstitutionService {
     categories: number[],
     date: Date,
     hour: Date
-  ): Observable<Isletme[]> {
+  ): Observable<any[]> {
     this.selectedDeliveryDate = hour;
     let user = this.authService.getCredentials();
     try {
-      return this.http.get<Isletme[]>(
+      return this.http.get<any[]>(
         `${this.url}/liste?token=${
           user.token
         }&mahalleId=${neighborhoodId}&tarih=${date.toLocaleDateString()}%20${hour.toLocaleTimeString(
@@ -101,6 +103,10 @@ export class InstitutionService {
     this.locationOfSelected = location;
     this.workingHoursOfSelectedIns = this.selectedInstitution.calisma_saatleri;
     this.calculateDeliveryTime();
+  }
+
+  setSelectedDeliveryAddress(adres: MusteriAdres) {
+    this.selectedDeliveryAddress = adres;
   }
 
   calculateDeliveryTime() {

@@ -24,7 +24,11 @@ export class AvailableStoresListPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.location = this.route.snapshot.paramMap.get('mahalleAdi');
+    if (this.institutionService.selectedDeliveryAddress) {
+      this.location = this.institutionService.selectedDeliveryAddress.mahalleAdi;
+    } else {
+      this.location = this.route.snapshot.paramMap.get('mahalleAdi');
+    }
   }
 
   navigateToStore(kurum: Isletme) {

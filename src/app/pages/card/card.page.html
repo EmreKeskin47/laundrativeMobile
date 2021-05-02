@@ -130,6 +130,14 @@
       <ng-template #logged>
         <div style="padding-top: 1.5rem">
           <ion-item lines="none" class="input-item">
+            <ion-icon name="create" class="note-icon text-color"></ion-icon>
+            <div class="input-label">
+              <ion-label class="text-color"> sipariş notu</ion-label>
+              <ion-input value="{{not}}" (ionChange)="notChange($event)">
+              </ion-input>
+            </div>
+          </ion-item>
+          <ion-item lines="none" class="input-item">
             <ion-icon
               name="location"
               class="adres-icon primary-color"

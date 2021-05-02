@@ -1,3 +1,5 @@
+import { MusteriAdres } from './../../models/MusteriAdres';
+import { AuthService } from './../../services/auth.service';
 import { DetayliArama } from './../../models/DetayliArama';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { Semt } from './../../models/Semt';
@@ -16,6 +18,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 })
 export class DetailedSearchPage implements OnInit {
   pageTitle = 'detaylı arama';
+  selectedAddress: MusteriAdres;
   selectedDate: Date;
   selectedTime: Date;
   selectedDeliveryDate: Date;
@@ -36,6 +39,8 @@ export class DetailedSearchPage implements OnInit {
   textInput: string = '';
   selectedSearchResult = [];
 
+  isLogged = this.authService.getCredentials().token;
+
   itemCategoryName = {
     1: 'çamaşır yıkama',
     2: 'ütüleme',
@@ -49,7 +54,8 @@ export class DetailedSearchPage implements OnInit {
   constructor(
     private router: Router,
     private addressService: AddressService,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -151,5 +157,10 @@ export class DetailedSearchPage implements OnInit {
     if (index > -1) {
       this.selectedSearchResult.splice(index, 1);
     }
+  }
+
+  addressChange(event: MusteriAdres) {
+    this.selectedAddress = event;
+    this.institutionService.setSelectedDeliveryAddress(event);
   }
 }

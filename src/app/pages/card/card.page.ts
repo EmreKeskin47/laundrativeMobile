@@ -1,3 +1,6 @@
+import { MusteriAdres } from './../../models/MusteriAdres';
+import { OrderContent } from './../../models/ui/OrderContent';
+import { SiparisOlustur } from './../../models/SiparisOlustur';
 import { AuthService } from './../../services/auth.service';
 import { Cins } from './../../models/ui/Cins';
 import { Isletme } from './../../models/İsletme';
@@ -20,6 +23,8 @@ export class CardPage implements OnInit {
   currentCardCostContent: CardCostContent;
   insLocation: string;
   dateTime: Date;
+  deliveryAddress: MusteriAdres;
+  not: string;
 
   isLogged = this.authService.getCredentials().token;
 
@@ -37,6 +42,7 @@ export class CardPage implements OnInit {
     this.insLocation = this.institutionService.locationOfSelected;
     this.currentCardCostContent = this.orderService.currentCardCostContent;
     this.dateTime = this.institutionService.selectedDeliveryDate;
+    this.deliveryAddress = this.institutionService.selectedDeliveryAddress;
   }
 
   navigateToLogin() {
@@ -47,8 +53,42 @@ export class CardPage implements OnInit {
     this.router.navigate(['/signin']);
   }
 
-  navigateToPayment() {
+  async navigateToPayment() {
+    var orderContent: OrderContent[] = [];
+
+    for (let i = 0; i < this.cardItems.length; i++) {
+      orderContent.push({
+        kategoriId: this.cardItems[i].kategori_id,
+        cins: this.cardItems[i].cins_id,
+        tip: this.cardItems[i].secilenTip,
+        kurumId: 0,
+        adet: this.cardItems[i].adet,
+        fiyat: this.cardItems[i].fiyatlar[this.cardItems[i].secilenTip - 1]
+          .fiyat,
+        tarih: this.cardItems[i].teslimatTarihi,
+      });
+    }
+
+    let siparis = new SiparisOlustur(
+      '',
+      this.deliveryAddress.adres,
+      this.deliveryAddress.adres,
+      this.dateTime,
+      this.not,
+      null,
+      null,
+      (
+        this.currentCardCostContent.total + this.currentCardCostContent.totalTax
+      ).toString(),
+      orderContent
+    );
+    (await this.orderService.createOrder(siparis)).subscribe((res) =>
+      console.log(res, 'sipariş oluştur res')
+    );
     this.router.navigate(['card/payment']);
+  }
+  notChange(event: any) {
+    this.not = event.detail.value;
   }
 
   navigateToStoreMenu(item: Cins) {
@@ -61,5 +101,6 @@ export class CardPage implements OnInit {
     this.currentCardCostContent = this.orderService.currentCardCostContent;
     this.dateTime = this.institutionService.selectedDeliveryDate;
     this.insLocation = this.institutionService.locationOfSelected;
+    this.deliveryAddress = this.institutionService.selectedDeliveryAddress;
   }
 }

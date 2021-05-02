@@ -8,12 +8,15 @@
           class="location-icon primary-color"
         ></ion-icon>
       </div>
-      <ion-label class="text-1rem"> Adres </ion-label>
+      <ion-label class="text-1rem"> adres seçin </ion-label>
       <ion-select (ionChange)="addressChange($event)">
         <ion-select-option
+          cancelText="vazgeç"
+          okText="onayla"
+          class="text-color"
           *ngFor="let address of addressList"
           [value]="address"
-          >{{ address.mahalleAdi }}</ion-select-option
+          >{{ address.adresBasligi }}</ion-select-option
         >
       </ion-select>
     </ion-item>

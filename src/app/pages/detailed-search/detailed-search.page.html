@@ -12,37 +12,43 @@
   <div class="date-adress-label text-color">
     <ion-label>adres ve tarih seçin</ion-label>
   </div>
-  <ion-item lines="none" class="item-container">
-    <ion-label class="gray-text">il</ion-label>
-    <ionic-selectable
-      [(ngModel)]="selectedProvince"
-      [items]="provinceList"
-      itemValueField="id"
-      itemTextField="adi"
-      [canSearch]="true"
-      (onChange)="provinceChange($event)"
-    >
-    </ionic-selectable>
-  </ion-item>
 
-  <ion-item lines="none" class="item-container">
-    <ion-label class="gray-text">ilçe</ion-label>
-    <ionic-selectable
-      [(ngModel)]="selectedDistrict"
-      [items]="searchableDistrictList"
-      itemValueField="mahalleId"
-      itemTextField="listeAdi"
-      [canSearch]="true"
-      [hasVirtualScroll]="true"
-      (onChange)="districtChange($event)"
-    >
-    </ionic-selectable>
-  </ion-item>
+  <div *ngIf="!isLogged; else logged">
+    <ion-item lines="none" class="item-container">
+      <ion-label class="gray-text">il</ion-label>
+      <ionic-selectable
+        [(ngModel)]="selectedProvince"
+        [items]="provinceList"
+        itemValueField="id"
+        itemTextField="adi"
+        [canSearch]="true"
+        (onChange)="provinceChange($event)"
+      >
+      </ionic-selectable>
+    </ion-item>
+
+    <ion-item lines="none" class="item-container">
+      <ion-label class="gray-text">ilçe</ion-label>
+      <ionic-selectable
+        [(ngModel)]="selectedDistrict"
+        [items]="searchableDistrictList"
+        itemValueField="mahalleId"
+        itemTextField="listeAdi"
+        [canSearch]="true"
+        [hasVirtualScroll]="true"
+        (onChange)="districtChange($event)"
+      >
+      </ionic-selectable>
+    </ion-item>
+  </div>
+  <ng-template #logged>
+    <app-adress-field (address)="addressChange($event)"></app-adress-field>
+  </ng-template>
+
   <app-date-field
     calenderTitle="ne zaman teslim alınsın"
     (selectedDate)="dateChange($event)"
     (selectedTime)="timeChange($event)"
-    initialDate="true"
   ></app-date-field>
   <app-date-field
     calenderTitle="ne zaman teslim edilsin"
