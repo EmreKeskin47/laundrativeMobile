@@ -9,10 +9,12 @@
         ></ion-icon>
       </div>
       <ion-label class="text-1rem"> adres seçin </ion-label>
-      <ion-select (ionChange)="addressChange($event)">
+      <ion-select
+        (ionChange)="addressChange($event)"
+        interface="action-sheet"
+        cancelText="vazgeç"
+      >
         <ion-select-option
-          cancelText="vazgeç"
-          okText="onayla"
           class="text-color"
           *ngFor="let address of addressList"
           [value]="address"

@@ -39,6 +39,7 @@ export class OrdersPage implements OnInit {
   ngOnInit() {
     this.orderService.getOrderList().subscribe((order) => {
       this.orderList = order;
+      console.log(order, 'order list ');
     });
   }
 }

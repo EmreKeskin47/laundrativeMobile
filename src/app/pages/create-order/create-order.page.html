@@ -225,8 +225,8 @@
   <div class="select-shop-container">
     <ion-button
       class="lowerCase"
+      [disabled]="(!selectedDistrict && !selectedAddress) || selectedServices.length<1"
       (click)="navigateToStoreList()"
-      (disabled)="!selectedDistrict"
       expand="block"
       >teslim alma için uygun mağazaları göster</ion-button
     >

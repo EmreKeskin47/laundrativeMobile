@@ -88,12 +88,11 @@ export class CreateAddressPage implements OnInit {
       this.anotherUserName,
       this.anotherUserPhone
     );
-    console.log(newAddress);
-
     this.addressService
       .createAddress(newAddress)
-      .subscribe((item) => console.log(item));
-    this.router.navigate(['/profile/add-address-result']);
+      .subscribe((item) =>
+        this.router.navigate(['/profile/add-address-result'])
+      );
   }
 
   ngOnInit(): void {

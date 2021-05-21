@@ -101,6 +101,10 @@ export class StoreMenuPage implements OnInit {
     this.router.navigate(['/card']);
   }
 
+  cancelUpdateCard() {
+    this.alreadyAddedToCard = null;
+  }
+
   selectItem(event: any) {
     if (this.selected == event) {
       this.select = false;

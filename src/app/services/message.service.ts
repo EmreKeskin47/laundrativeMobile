@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class MessageService {
   url = `${BASE_URL}/mesaj`;
+  bildirimUrl = `${BASE_URL}/musteri`;
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +25,7 @@ export class MessageService {
   bildirimAyarları(bildirim: BildirimAyar) {
     let body = JSON.stringify(bildirim);
     try {
-      return this.http.post<any>(`${this.url}/bildirimAyar`, body);
+      return this.http.post<any>(`${this.bildirimUrl}/bildirimAyar`, body);
     } catch (err) {
       console.log('POST notification setting err ', err);
     }

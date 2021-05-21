@@ -106,10 +106,7 @@ export class DetailedSearchPage implements OnInit {
         this.institutionService.currentInstitutionList = ins;
       });
 
-    this.router.navigate([
-      '/create-order/available-stores-list',
-      { mahalleAdi: this.selectedDistrict.listeAdi },
-    ]);
+    this.router.navigate(['/create-order/available-stores-list']);
   }
 
   timeChange(event: any) {

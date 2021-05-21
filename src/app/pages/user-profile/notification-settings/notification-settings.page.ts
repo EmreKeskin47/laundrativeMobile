@@ -9,19 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationSettingsPage implements OnInit {
   pageTitle = 'bildirim ayarları';
-  mobileSelected: boolean = true;
-  emailSelected: boolean = true;
+  mobileSelected: number = 1;
+  emailSelected: number = 1;
   selectedNotifications: number[] = [0, 1, 2, 3, 4, 5, 6, 7];
 
   constructor(private mesaggeService: MessageService) {}
 
   ngOnInit() {}
   emailOption(event: any) {
-    this.emailSelected = event.detail.checked;
+    this.emailSelected == 0
+      ? (this.emailSelected = 1)
+      : (this.emailSelected = 0);
   }
 
   mobileOption(event: any) {
-    this.mobileSelected = event.detail.checked;
+    this.mobileSelected == 0
+      ? (this.mobileSelected = 1)
+      : (this.mobileSelected = 0);
   }
 
   addToSelecedNotifications(value: number) {
@@ -34,7 +38,13 @@ export class NotificationSettingsPage implements OnInit {
   }
 
   submit() {
-    let opt = new BildirimAyar(this.mobileSelected, this.emailSelected);
+    let opt = new BildirimAyar(
+      this.selectedNotifications,
+      this.mobileSelected,
+      this.emailSelected
+    );
+    console.log(opt);
+
     this.mesaggeService
       .bildirimAyarları(opt)
       .subscribe((res) => console.log(res, 'bildirim ayar output '));

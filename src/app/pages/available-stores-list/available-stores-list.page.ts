@@ -15,7 +15,7 @@ export class AvailableStoresListPage implements OnInit {
   inslist: boolean = false;
 
   location: string = '';
-  currentDay = new Date().getDay() + 1;
+  currentDay = new Date().getDay();
 
   constructor(
     private router: Router,
@@ -25,7 +25,8 @@ export class AvailableStoresListPage implements OnInit {
 
   ngOnInit(): void {
     if (this.institutionService.selectedDeliveryAddress) {
-      this.location = this.institutionService.selectedDeliveryAddress.mahalleAdi;
+      this.location =
+        this.institutionService.selectedDeliveryAddress.mahalleAdi;
     } else {
       this.location = this.route.snapshot.paramMap.get('mahalleAdi');
     }

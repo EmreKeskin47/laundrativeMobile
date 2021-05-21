@@ -53,39 +53,6 @@
   --background: whitesmoke;
 }
 
-//card item
-.card-container {
-  border-radius: 20px;
-  background-color: whitesmoke;
-  padding: 5;
-}
-
-.card-text {
-  text-align: start;
-  font-size: 0.5rem;
-  padding-top: 5px;
-}
-.card-icon {
-  font-size: 2rem;
-  padding-top: 0.5rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
-
-.card-items-content {
-  display: flex;
-  justify-content: space-between;
-}
-.flex {
-  display: flex;
-}
-.card-item-date {
-  right: 0;
-  padding-top: 3em;
-  padding-right: 1rem;
-  font-size: 0.5rem;
-  text-align: right;
-}
 .text-color {
   color: #5e5e5e;
   font-family: "Avenir";
@@ -94,6 +61,14 @@
 //add item button
 .btn-padding {
   padding: 1rem;
+}
+
+.cancel-btn-padding {
+  padding: 0rem 1rem 0 1rem;
+}
+
+.btn-color {
+  color: #e75761;
 }
 
 .toLowerCase {
@@ -108,15 +83,4 @@
   --padding-start: 0;
   --padding-end: 0;
   --inner-padding-end: 0;
-}
-
-.gray-text {
-  color: gray;
-}
-
-.card-icon {
-  width: 4rem;
-  height: 2.6rem;
-  padding-top: 0.2rem;
-  padding-right: 0.4rem;
 }

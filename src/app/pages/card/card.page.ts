@@ -63,8 +63,8 @@ export class CardPage implements OnInit {
         tip: this.cardItems[i].secilenTip,
         kurumId: 0,
         adet: this.cardItems[i].adet,
-        fiyat: this.cardItems[i].fiyatlar[this.cardItems[i].secilenTip - 1]
-          .fiyat,
+        fiyat:
+          this.cardItems[i].fiyatlar[this.cardItems[i].secilenTip - 1].fiyat,
         tarih: this.cardItems[i].teslimatTarihi,
       });
     }

@@ -161,7 +161,11 @@
   </ion-item>
 
   <div class="search-btn">
-    <ion-button class="lowerCase" (click)="navigateToStoreList()" expand="block"
+    <ion-button
+      class="lowerCase"
+      [disabled]="!selectedDistrict && !selectedAddress"
+      (click)="navigateToStoreList()"
+      expand="block"
       >teslim alma için uygun mağazaları göster</ion-button
     >
   </div>

@@ -1,8 +1,10 @@
 export class BildirimAyar {
-  mobil_bildirim: boolean;
-  email_bildirim: boolean;
+  ids: number[];
+  mobil_bildirim: number;
+  email_bildirim: number;
 
-  constructor(mobil_bildirim: boolean, email_bildirim: boolean) {
+  constructor(ids: number[], mobil_bildirim: number, email_bildirim: number) {
+    this.ids = ids;
     this.mobil_bildirim = mobil_bildirim;
     this.email_bildirim = email_bildirim;
   }

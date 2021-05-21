@@ -23,4 +23,10 @@ export class AddressListPage implements OnInit {
       this.adresList = address;
     });
   }
+
+  updateList() {
+    this.addressService.getAddressOfCustomer().subscribe((address) => {
+      this.adresList = address;
+    });
+  }
 }
