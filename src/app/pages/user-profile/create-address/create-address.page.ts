@@ -1,4 +1,3 @@
-import { YeniAdres } from './../../../models/ui/YeniAdres';
 import { AuthService } from './../../../services/auth.service';
 import { SemtListe } from './../../../models/ui/SemtListe';
 import { Semt } from './../../../models/Semt';
@@ -81,15 +80,14 @@ export class CreateAddressPage implements OnInit {
   }
 
   navigateToAddressList() {
-    let newAddress = new YeniAdres(
-      this.selectedDistrict.mahalleId,
-      this.addressName,
-      this.addressDesc,
-      this.anotherUserName,
-      this.anotherUserPhone
-    );
     this.addressService
-      .createAddress(newAddress)
+      .createAddress(
+        this.selectedDistrict.mahalleId,
+        this.addressName,
+        this.addressDesc,
+        this.anotherUserName,
+        this.anotherUserPhone
+      )
       .subscribe((item) =>
         this.router.navigate(['/profile/add-address-result'])
       );

@@ -1,6 +1,5 @@
 import { AdresDuzenle } from './../models/ui/AdresDuzenle';
 import { AuthService } from './auth.service';
-import { YeniAdres } from './../models/ui/YeniAdres';
 import { Semt } from './../models/Semt';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -44,9 +43,24 @@ export class AddressService {
     }
   }
 
-  createAddress(adres: YeniAdres): Observable<any> {
+  createAddress(
+    mahalleId: number,
+    addressName: string,
+    addressDesc: string,
+    anotherUserName: string,
+    anotherUserPhone: string
+  ): Observable<any> {
     let user = this.auhtService.getCredentials();
-    let withToken = Object.assign(adres, { token: user.token });
+    let withToken = Object.assign(
+      {
+        mahalleId,
+        addressName,
+        addressDesc,
+        anotherUserName,
+        anotherUserPhone,
+      },
+      { token: user.token }
+    );
     let body = JSON.stringify(withToken);
     try {
       return this.http.post<any>(`${this.customerUrl}/adresEkle`, body);
