@@ -8,6 +8,9 @@
         }}</ion-card-subtitle>
         <ion-card-title class="card-subtitle">{{ location }}</ion-card-title>
       </div>
+      <div *ngIf="fav > 0">
+        <img src="../../../assets/icon/favs.png" class="fav-icon" />
+      </div>
     </div>
 
     <div class="absolute child">

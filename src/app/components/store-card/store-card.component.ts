@@ -11,6 +11,7 @@ export class StoreCardComponent implements OnInit {
   @Input() public start;
   @Input() public end;
   @Input() public minFee;
+  @Input() public fav;
   now: boolean;
   day: string;
 

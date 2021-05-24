@@ -12,14 +12,20 @@
   <div class="container-padding card-border-radius">
     <div class="relative container card-border-radius">
       <div class="content">
-        <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
-        <div style="padding-top: 15px">
-          <ion-card-subtitle class="card-title text-color"
-            >{{ selectedIns.kurum_adi }}</ion-card-subtitle
-          >
-          <ion-card-title class="card-subtitle text-color">
-            {{ selectedInsLocation }}
-          </ion-card-title>
+        <div style="display: flex">
+          <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
+          <div style="padding-top: 15px">
+            <ion-card-subtitle class="card-title text-color"
+              >{{ selectedIns.kurum_adi }}</ion-card-subtitle
+            >
+            <ion-card-title class="card-subtitle text-color">
+              {{ selectedInsLocation }}
+            </ion-card-title>
+          </div>
+        </div>
+
+        <div *ngIf="selectedIns.favori>0">
+          <img src="../../../assets/icon/favs.png" class="fav-icon" />
         </div>
       </div>
 
