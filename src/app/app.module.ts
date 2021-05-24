@@ -1,13 +1,18 @@
 import { AuthInterceptor } from './services/auth-interceptor.interceptor';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { ToastrModule } from 'ngx-toastr';
+import { registerLocaleData } from '@angular/common';
+import localeTr from '@angular/common/locales/tr';
+import localeEn from '@angular/common/locales/en';
+
+registerLocaleData(localeEn, 'en');
+registerLocaleData(localeTr, 'tr');
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'tr' },
   ],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,4 @@
+import { kategoriAdi } from './../../services/order.service';
 import { MusteriAdres } from './../../models/MusteriAdres';
 import { AuthService } from './../../services/auth.service';
 import { DetayliArama } from './../../models/DetayliArama';
@@ -10,6 +11,7 @@ import { AdresIl } from './../../models/AdresIl';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detailed-search',
@@ -41,21 +43,14 @@ export class DetailedSearchPage implements OnInit {
 
   isLogged = this.authService.getCredentials().token;
 
-  itemCategoryName = {
-    1: 'çamaşır yıkama',
-    2: 'ütüleme',
-    3: 'kuru temizleme',
-    4: 'extra',
-    5: 'halı yıkama',
-    6: 'terzi',
-    7: 'lostra',
-  };
+  itemCategoryName = kategoriAdi;
 
   constructor(
     private router: Router,
     private addressService: AddressService,
     private institutionService: InstitutionService,
-    private authService: AuthService
+    private authService: AuthService,
+    public alertController: AlertController
   ) {}
 
   ngOnInit(): void {
@@ -89,24 +84,6 @@ export class DetailedSearchPage implements OnInit {
 
   districtChange(event: { component: IonicSelectableComponent; value: any }) {
     this.selectedDistrict = event.value;
-  }
-
-  navigateToStoreList() {
-    this.institutionService
-      .detailedSearch(
-        3,
-        this.selectedDate,
-        this.selectedTime,
-        this.selectedDeliveryDate,
-        this.selectedDeliveryTime,
-        this.freeDeliver
-      )
-      .subscribe((ins) => {
-        this.instList = ins;
-        this.institutionService.currentInstitutionList = ins;
-      });
-
-    this.router.navigate(['/create-order/available-stores-list']);
   }
 
   timeChange(event: any) {
@@ -160,4 +137,39 @@ export class DetailedSearchPage implements OnInit {
     this.selectedAddress = event;
     this.institutionService.setSelectedDeliveryAddress(event);
   }
+
+  navigateToStoreList() {
+    if (this.selectedDate > this.selectedDeliveryDate) {
+      this.dateAlert();
+    } else {
+      this.institutionService
+        .detailedSearch(
+          3,
+          this.selectedDate,
+          this.selectedTime,
+          this.selectedDeliveryDate,
+          this.selectedDeliveryTime,
+          this.freeDeliver
+        )
+        .subscribe((ins) => {
+          this.instList = ins;
+          this.institutionService.currentInstitutionList = ins;
+        });
+
+      this.router.navigate(['/create-order/available-stores-list']);
+    }
+  }
+
+  dateAlert = async () => {
+    const alert = await this.alertController.create({
+      header: 'Teslim alma tarihi, teslim etme tarihinden önce olmalıdır',
+      buttons: [
+        {
+          text: 'Anladım',
+          handler: () => {},
+        },
+      ],
+    });
+    await alert.present();
+  };
 }

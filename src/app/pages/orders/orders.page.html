@@ -15,6 +15,7 @@
       <div *ngFor="let item of liveOrders" class="root">
         <div>
           <app-order-card
+            (order)="item"
             currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
             currentOrderAddress="17.06.2021 Salı 16:30"
           ></app-order-card>
@@ -46,7 +47,7 @@
     </div>
     <ng-template #orders>
       <div *ngFor="let item of orderList">
-        <app-order-card [orderDone]="true"></app-order-card>
+        <app-order-card [orderDone]="true" (order)="item"></app-order-card>
       </div>
     </ng-template>
   </ng-template>

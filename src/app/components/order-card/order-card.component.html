@@ -3,14 +3,18 @@
     <div class="card-title-container">
       <!-- If order is not completed date and code is returned-->
       <div *ngIf="orderDone; else orderNotDone">
-        <ion-label class="order-number-label">A4567</ion-label>
-        <ion-label class="date-label">17.06.2020 </ion-label>
+        <ion-label class="order-number-label"
+          >A{{ order.siparis_id }}</ion-label
+        >
+        <ion-label class="date-label">{{ order.siparis_tarihi }} </ion-label>
         <!--Address is shown if order is not yet completed-->
       </div>
       <ng-template #orderNotDone>
         <div>
           <div>
-            <ion-label class="order-number-label">A4567</ion-label>
+            <ion-label class="order-number-label"
+              >A{{ order.siparis_id }}</ion-label
+            >
           </div>
           <div>
             <ion-label style="font-size: 0.7rem; font-weight: bold">
@@ -27,12 +31,16 @@
       <div>
         <div *ngIf="orderDone; else onlyText" class="text-tick-container">
           <ion-icon name="checkmark-circle-outline" class="check"></ion-icon>
-          <ion-label class="gray is-done-label">tamamlandı</ion-label>
+          <ion-label class="gray is-done-label">{{
+            durumAdlari[order.status]
+          }}</ion-label>
         </div>
         <ng-template #onlyText>
-          <ion-label class="gray is-done-label">planlandı</ion-label>
+          <ion-label class="gray is-done-label">{{
+            durumAdlari[order.status]
+          }}</ion-label>
         </ng-template>
-        <ion-label class="total-cost">77.00tl</ion-label>
+        <ion-label class="total-cost">{{ order.fiyat }},00tl</ion-label>
       </div>
     </div>
   </ion-item>
@@ -77,12 +85,14 @@
         <ion-col class="cost-labels black-text">
           <div>hizmet toplamı</div>
           <div>servis ücreti</div>
-          <div>cyberpark indirimi(%5)</div>
+          <div>
+            {{ indirimAdlari[order.indirim_tipi] }}(%{{ order.indirim_orani }})
+          </div>
           <div>kdv(%8)</div>
         </ion-col>
         <ion-col class="label-fee black-text">
           <div>36,11 tl</div>
-          <div>10,00 tl</div>
+          <div>{{ order.servis_tutari }},00 tl</div>
           <div>4,00 tl</div>
           <div>2,89 tl</div>
         </ion-col>
@@ -98,7 +108,7 @@
           <div>toplam ödeme</div>
         </ion-col>
         <ion-col class="total-cost">
-          <div>35,00 tl</div>
+          <div>{{ order.fiyat }},00 tl</div>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -9,6 +9,34 @@ import { Cins } from './../models/ui/Cins';
 import { CardCostContent } from './../models/ui/CardCostContent';
 import { Injectable } from '@angular/core';
 
+export const tipAdlari = { 3: 'prm', 2: 'exp', 1: 'std', 0: 'std' };
+export const kategoriAdi = {
+  1: 'çamaşır yıkama',
+  2: 'ütüleme',
+  3: 'kuru temizleme',
+  4: 'extra',
+  5: 'halı yıkama',
+  6: 'terzi',
+  7: 'lostra',
+};
+
+export const indirimAdi = {
+  1: 'kurum',
+  2: 'musteri',
+  3: 'özel',
+  4: 'indirim yok',
+  5: 'kampanya',
+};
+
+export const siparisDurum = {
+  0: 'teslim alınacak',
+  1: 'hazırlanıyor',
+  2: 'hazır',
+  3: 'teslim edildi',
+  4: 'teslim edilemedi',
+  5: 'gecikti',
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -79,17 +107,27 @@ export class OrderService {
   }
 
   addToCard(item: Cins) {
-    //if new item already exists in card
+    // if another kurum is selected current card content must be empty - if not alert
     if (
-      this.currentCardContent.findIndex(
-        (card) => card.cins_id === item.cins_id
-      ) > -1
+      this.currentCardContent.length > 0 &&
+      this.currentCardContent[0].kurum_id != item.kurum_id
     ) {
-      this.updateCard(item.adet, item.secilenTip);
+      this.currentCardContent = [];
+      console.log('make card content empty');
     } else {
-      this.currentCardContent.push(item);
-      this.setSelectedKindItem(item);
-      this.calculateTotal();
+      //if new item already exists in card
+      if (
+        this.currentCardContent.findIndex(
+          (card) => card.cins_id === item.cins_id
+        ) > -1
+      ) {
+        this.selectedItem = item;
+        this.updateCard(item.adet, item.secilenTip);
+      } else {
+        this.currentCardContent.push(item);
+        this.setSelectedKindItem(item);
+        this.calculateTotal();
+      }
     }
   }
 

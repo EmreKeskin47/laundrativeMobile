@@ -1,4 +1,5 @@
 export class Cins {
+  kurum_id: number;
   kategori_id: number;
   cins_resmi: string;
   cins_id: number;
@@ -14,6 +15,7 @@ export class Cins {
   secilenTip: number;
 
   constructor(
+    kurum_id: number,
     kategori_id,
     cins_resmi: string,
     cins_id: number,
@@ -26,6 +28,7 @@ export class Cins {
     ],
     teslimatTarihi: Date
   ) {
+    this.kurum_id = kurum_id;
     this.kategori_id = kategori_id;
     this.cins_resmi = cins_resmi;
     this.cins_id = cins_id;

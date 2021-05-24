@@ -12,7 +12,7 @@
     <!-- Account info labels-->
     <div style="width: 100%">
       <ion-item lines="none" class="input-item">
-        <ion-icon name="person-sharp" class="icon text-color"></ion-icon>
+        <img src="../../../../assets/icon/profil_icon.png" class="icon" />
         <div class="input-label">
           <ion-label class="text-color"> isim soyisim</ion-label>
           <ion-input
@@ -24,7 +24,10 @@
         </div>
       </ion-item>
       <ion-item lines="none" class="input-item">
-        <ion-icon name="mail-sharp" class="icon text-color"></ion-icon>
+        <img
+          src="../../../../assets/icon/profil/email.png"
+          class="email-icon"
+        />
         <div class="input-label">
           <ion-label class="text-color"> email adresi</ion-label>
           <ion-input
@@ -36,14 +39,17 @@
         </div>
       </ion-item>
       <ion-item lines="none" class="input-item">
-        <ion-icon name="lock-closed-sharp" class="icon text-color"></ion-icon>
+        <img src="../../../../assets/icon/profil/parola.png" class="icon" />
         <div class="input-label">
           <ion-label class="text-color"> parola</ion-label>
           <ion-input disabled> {{password}} </ion-input>
         </div>
       </ion-item>
       <ion-item lines="none" class="input-item">
-        <ion-icon name="call-sharp" class="icon text-color"></ion-icon>
+        <img
+          src="../../../../assets/icon/profil/bize ulaşın.png"
+          class="icon"
+        />
         <div class="input-label">
           <ion-label class="text-color"> telefon numaranız</ion-label>
           <ion-input
@@ -55,7 +61,10 @@
         </div>
       </ion-item>
       <ion-item lines="none" class="input-item">
-        <ion-icon name="cog-sharp" class="icon text-color"></ion-icon>
+        <img
+          src="../../../../assets/icon/profil/bağlı hesaplar.png"
+          class="icon"
+        />
         <div class="input-label">
           <ion-label class="text-color"> bağlı hesaplar </ion-label>
           <ion-input disabled>google</ion-input>
@@ -76,7 +85,10 @@
     <!--Delete Account-->
     <div>
       <ion-chip (click)="navigateToDeleteAccount()" color="medium">
-        <ion-icon name="triangle-sharp"></ion-icon>
+        <img
+          src="../../../../assets/icon/profil/hesabı sil.png"
+          class="delete-account-icon"
+        />
         <ion-label>hesabımı laundrative’den sil</ion-label>
       </ion-chip>
     </div>

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InstitutionService } from './../../services/institution.service';
-import { OrderService } from './../../services/order.service';
+import { kategoriAdi, OrderService } from './../../services/order.service';
 @Component({
   selector: 'app-store-menu',
   templateUrl: './store-menu.page.html',
@@ -32,15 +32,7 @@ export class StoreMenuPage implements OnInit {
   searchName: string = '';
   searchCategory: number = 0;
   showStoreCategoryOptions = false;
-  itemCategoryName = {
-    1: 'çamaşır yıkama',
-    2: 'ütüleme',
-    3: 'kuru temizleme',
-    4: 'extra',
-    5: 'halı yıkama',
-    6: 'terzi',
-    7: 'lostra',
-  };
+  itemCategoryName = kategoriAdi;
 
   constructor(
     private orderService: OrderService,
@@ -63,6 +55,7 @@ export class StoreMenuPage implements OnInit {
           this.storeCategories.push(this.storeItemList[i].kategoriId);
           for (let j = 0; j < this.storeItemList[i].cinsler.length; j++) {
             let cins = new Cins(
+              this.selectedIns.kurum_id,
               this.storeItemList[i].kategoriId,
               this.storeItemList[i].cinsler[j].cins_resmi,
               this.storeItemList[i].cinsler[j].cins_id,

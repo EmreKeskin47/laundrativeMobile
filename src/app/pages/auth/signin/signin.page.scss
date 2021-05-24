@@ -38,13 +38,6 @@
   padding-right: 1rem;
   padding-top: 2rem;
 }
-.btn-color {
-  color: #e75761;
-}
-
-.icon-clr {
-  color: #5e5e5e;
-}
 
 .list {
   padding-top: 0px;
@@ -55,15 +48,27 @@
   padding: 0.5rem;
 }
 
+.email-icon {
+  width: 2rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+}
+
 .icon {
-  font-size: 1.5rem;
-  padding-right: 1rem;
+  width: 1.4rem;
+  height: 1.8rem;
+  margin-right: 1rem;
+  margin-left: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.google-fb-icon {
+  width: 2rem;
+  height: 2rem;
 }
 .text-1rem {
   font-size: 0.8rem;
-  color: #5e5e5e;
-}
-.icon-color {
   color: #5e5e5e;
 }
 
