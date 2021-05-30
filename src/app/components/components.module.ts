@@ -1,3 +1,4 @@
+import { FiyatPipe } from './../pipes/fiyat.pipe';
 import { TypesComponent } from './types/types.component';
 import { DiscountComponent } from './discount/discount.component';
 import { AddressCardComponent } from './address-card/address-card.component';
@@ -26,6 +27,7 @@ import { CommonModule } from '@angular/common';
     AddressCardComponent,
     DiscountComponent,
     TypesComponent,
+    FiyatPipe,
   ],
   exports: [
     HeaderComponent,
@@ -38,6 +40,7 @@ import { CommonModule } from '@angular/common';
     AddressCardComponent,
     DiscountComponent,
     TypesComponent,
+    FiyatPipe,
   ],
 })
 export class ComponentsModule {}

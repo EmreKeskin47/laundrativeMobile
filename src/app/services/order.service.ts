@@ -28,14 +28,19 @@ export const indirimAdi = {
   5: 'kampanya',
 };
 
-export const siparisDurum = {
-  0: 'teslim alınacak',
-  1: 'hazırlanıyor',
-  2: 'hazır',
-  3: 'teslim edildi',
-  4: 'teslim edilemedi',
-  5: 'gecikti',
-};
+export const siparisDurum = new Map();
+siparisDurum.set('YENI_KAYIT_FROM_WEB', { isim: 'teslim alınacak', durum: 0 });
+siparisDurum.set('YENI_KAYIT_FROM_ANDROID', {
+  isim: 'teslim alınacak',
+  durum: 0,
+});
+siparisDurum.set('YENI_KAYIT_FROM_IOS', { isim: 'teslim alınacak', durum: 0 });
+siparisDurum.set('TESLIM_ALINDI', { isim: 'teslim alındı', durum: 1 });
+siparisDurum.set('SIPARIS_HAZIRLANIYOR', { isim: 'hazırlanıyor', durum: 1 });
+siparisDurum.set('HAZIR_BILGISI_GONDERILDI', { isim: 'hazır', durum: 1 });
+siparisDurum.set('TESLIM_EDILDI', { isim: 'teslim edildi', durum: 1 });
+siparisDurum.set('SIPARIS_TAMAMLANDI', { isim: 'tamamlandı', durum: 1 });
+siparisDurum.set('SIPARIS_GUNCELLENDI', { isim: 'güncellendi', durum: 1 });
 
 @Injectable({
   providedIn: 'root',
@@ -115,17 +120,27 @@ export class OrderService {
       this.currentCardContent = [];
       console.log('make card content empty');
     } else {
+      let added = false;
       //if new item already exists in card
-      if (
-        this.currentCardContent.findIndex(
-          (card) => card.cins_id === item.cins_id
-        ) > -1
-      ) {
-        this.selectedItem = item;
-        this.updateCard(item.adet, item.secilenTip);
-      } else {
-        this.currentCardContent.push(item);
-        this.setSelectedKindItem(item);
+      for (let i = 0; i < this.currentCardContent.length; i++) {
+        if (
+          this.currentCardContent[i].cins_id == item.cins_id &&
+          this.currentCardContent[i].secilenTip == item.secilenTip
+        ) {
+          console.log('ADET GÜNCELLEME GİRİŞİ');
+          console.log(this.currentCardContent[i]);
+          console.log('-------------------------------------------- ');
+          this.currentCardContent[i].adet = +item.adet;
+          added = true;
+          return;
+        }
+      }
+      if (!added) {
+        console.log('EKLEME GİRİŞİ');
+        console.log(this.currentCardContent);
+        console.log('-------------------------------------------- ');
+
+        this.currentCardContent[this.currentCardContent.length] = item;
         this.calculateTotal();
       }
     }
@@ -133,8 +148,9 @@ export class OrderService {
 
   removeFromCard() {
     this.currentCardContent = this.currentCardContent.filter((item) => {
-      item.cins_id != this.selectedItem.cins_id;
+      return item != this.selectedItem;
     });
+
     this.selectedItem = null;
     if (this.currentCardContent.length > 0) {
       this.calculateTotal();
@@ -152,16 +168,13 @@ export class OrderService {
 
   calculateTotal() {
     let total = 0;
-    let deliveryFee = 0;
     this.currentCardContent.forEach((item) => {
-      let withDelivery = item.fiyatlar[item.secilenTip - 1].fiyat * item.adet;
-      total += withDelivery;
-      deliveryFee += withDelivery - item.fiyatlar[0].fiyat * item.adet;
+      total += item.fiyatlar[item.secilenTip - 1].fiyat * item.adet;
     });
     this.currentCardCostContent = {
       total: total,
       totalTax: (total * 8) / 100,
-      totalDeliveryFee: deliveryFee,
+      totalDeliveryFee: 0,
     };
   }
 }

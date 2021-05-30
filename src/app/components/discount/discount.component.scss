@@ -1,5 +1,7 @@
-.container {
+.container-root {
   position: relative;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .image {
@@ -17,7 +19,6 @@
   opacity: 0.8;
   color: white;
   padding-left: 20px;
-  padding-right: 20px;
   height: 90%;
   text-align: right;
 }

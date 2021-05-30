@@ -10,16 +10,6 @@
   padding: 0.7rem 0.5rem 0rem 0.5rem;
 }
 
-.icon {
-  width: 1.2rem;
-  height: 1.6rem;
-  margin-right: 0.5rem;
-}
-.email-icon {
-  width: 1.5rem;
-  height: 1rem;
-}
-
 .delete-account-icon {
   width: 1.5rem;
   height: 1.5rem;
@@ -34,9 +24,7 @@
 .text-color {
   color: #5e5e5e;
 }
-.bold-text {
-  text-transform: bold;
-}
+
 .white-text {
   color: white;
 }
@@ -49,4 +37,46 @@
 .log-out-btn {
   width: 100%;
   padding: 0rem 0.5rem 0.7rem 0.5rem;
+}
+
+.profile-icon {
+  width: 23px;
+  height: 25px;
+}
+
+.email-icon {
+  width: 25px;
+  height: 16px;
+}
+
+.phone-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.lock-icon {
+  width: 16px;
+  height: 25px;
+}
+
+.account-icon {
+  width: 23px;
+  height: 23px;
+}
+
+.icon-padding {
+  margin-right: 0.4rem;
+}
+
+.lock {
+  margin-right: 15px;
+}
+
+.save-button-icon {
+  width: 16px;
+  height: 12px;
+}
+.edit-button-icon {
+  width: 10px;
+  height: 18px;
 }

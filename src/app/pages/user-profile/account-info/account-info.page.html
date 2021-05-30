@@ -12,7 +12,10 @@
     <!-- Account info labels-->
     <div style="width: 100%">
       <ion-item lines="none" class="input-item">
-        <img src="../../../../assets/icon/profil_icon.png" class="icon" />
+        <img
+          src="../../../../assets/icon/profil_icon.png"
+          class="profile-icon icon-padding"
+        />
         <div class="input-label">
           <ion-label class="text-color"> isim soyisim</ion-label>
           <ion-input
@@ -26,7 +29,7 @@
       <ion-item lines="none" class="input-item">
         <img
           src="../../../../assets/icon/profil/email.png"
-          class="email-icon"
+          class="email-icon icon-padding"
         />
         <div class="input-label">
           <ion-label class="text-color"> email adresi</ion-label>
@@ -39,7 +42,10 @@
         </div>
       </ion-item>
       <ion-item lines="none" class="input-item">
-        <img src="../../../../assets/icon/profil/parola.png" class="icon" />
+        <img
+          src="../../../../assets/icon/profil/parola.png"
+          class="lock-icon icon-padding lock"
+        />
         <div class="input-label">
           <ion-label class="text-color"> parola</ion-label>
           <ion-input disabled> {{password}} </ion-input>
@@ -48,7 +54,7 @@
       <ion-item lines="none" class="input-item">
         <img
           src="../../../../assets/icon/profil/bize ulaşın.png"
-          class="icon"
+          class="phone-icon icon-padding"
         />
         <div class="input-label">
           <ion-label class="text-color"> telefon numaranız</ion-label>
@@ -63,7 +69,7 @@
       <ion-item lines="none" class="input-item">
         <img
           src="../../../../assets/icon/profil/bağlı hesaplar.png"
-          class="icon"
+          class="account-icon icon-padding"
         />
         <div class="input-label">
           <ion-label class="text-color"> bağlı hesaplar </ion-label>
@@ -73,11 +79,17 @@
       <!--edit save buttons-->
       <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
         <ion-chip class="sec-bcg" (click)="editClicked()">
-          <ion-icon class="white-text" name="checkmark"></ion-icon>
+          <img
+            src="../../../../assets/icon/button/edit.png"
+            class="edit-button-icon icon-padding"
+          />
           <ion-label class="white-text">düzenle</ion-label>
         </ion-chip>
         <ion-chip class="ter-bcg" (click)="saveClicked()">
-          <ion-icon class="white-text" name="pencil"></ion-icon>
+          <img
+            src="../../../../assets/icon/button/save.png"
+            class="save-button-icon icon-padding"
+          />
           <ion-label class="white-text">kaydet</ion-label>
         </ion-chip>
       </div>

@@ -1,4 +1,8 @@
-import { indirimAdi, siparisDurum } from './../../services/order.service';
+import {
+  indirimAdi,
+  siparisDurum,
+  tipAdlari,
+} from './../../services/order.service';
 import { MusteriSiparis } from './../../models/MusteriSiparis';
 import { Component, Input, OnInit } from '@angular/core';
 @Component({
@@ -9,11 +13,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class OrderCardComponent implements OnInit {
   details = false;
   indirimAdlari = indirimAdi;
+  tipAdi = tipAdlari;
   durumAdlari = siparisDurum;
   @Input() public orderDone;
   @Input() public currentOrderDate;
   @Input() public currentOrderAddress;
   @Input() public order: MusteriSiparis;
+  orderStatus;
 
   constructor() {}
 
@@ -21,5 +27,10 @@ export class OrderCardComponent implements OnInit {
     this.details = !this.details;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this.orderDone) {
+      console.log(this.order);
+      this.orderStatus = this.durumAdlari.get(this.order.status);
+    }
+  }
 }

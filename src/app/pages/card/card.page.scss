@@ -129,11 +129,9 @@
 .input-item {
   --border-radius: 20px;
   padding: 0.7rem 0.5rem 0rem 0.5rem;
+  --padding-start: 1rem;
 }
 
-.adres-icon {
-  font-size: 2rem;
-}
 .input-label {
   padding-left: 1.4rem;
   font-size: 0.8rem;
@@ -142,25 +140,28 @@
 .text-color {
   color: #5e5e5e;
 }
-.primary-color {
-  color: #e75761;
-}
 
 .input-item {
-  --border-radius: 20px;
+  --border-radius: 10px;
   padding: 0.7rem 0.5rem 0rem 0.5rem;
 }
 
 .note-icon {
-  font-size: 2rem;
-}
-.input-label {
-  padding-left: 1.4rem;
-  font-size: 0.8rem;
-  width: 100%;
+  font-size: 1rem;
+  margin-right: 9px;
 }
 
 .fav-icon {
   width: 1.5rem;
   height: 2rem;
+}
+
+.location-icon {
+  width: 17px;
+  height: 26px;
+  margin-right: 9px;
+}
+.calendar-icon {
+  width: 24px;
+  height: 26px;
 }

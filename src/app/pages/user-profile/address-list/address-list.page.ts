@@ -29,4 +29,7 @@ export class AddressListPage implements OnInit {
       this.adresList = address;
     });
   }
+  deleteSuccess() {
+    this.router.navigate(['profile']);
+  }
 }

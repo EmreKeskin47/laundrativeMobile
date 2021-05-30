@@ -35,7 +35,6 @@ export class InstitutionService {
     date: Date,
     hour: Date
   ): Observable<any[]> {
-    this.selectedDeliveryDate = hour;
     let user = this.authService.getCredentials();
     try {
       return this.http.get<any[]>(
@@ -119,6 +118,8 @@ export class InstitutionService {
     openDate.setHours(open.hour);
     openDate.setMinutes(0);
 
+    this.selectedDeliveryDate = openDate;
+
     //standart type
     let standard = new Date(openDate.getTime());
     standard.setHours(openDate.getHours() + 48);
@@ -166,11 +167,13 @@ export class InstitutionService {
         );
         if (i != day) {
           return { day: i, hour: openTime, daysToAdd: Math.abs(day - i) };
+        } else if (openTime > hour) {
+          return { day: i, hour: openTime, daysToAdd: 0 };
         } else if (openTime < hour && closeTime > hour) {
           return { day: i, hour: hour, daysToAdd: Math.abs(day - i) };
         }
       } else if (i == 7) {
-        i = 1;
+        i = 0;
       }
     }
   }

@@ -13,23 +13,17 @@
     </div>
     <ng-template #nonEmpty>
       <div *ngFor="let item of liveOrders" class="root">
-        <div>
-          <app-order-card
-            (order)="item"
-            currentOrderDate="2518. sok kermes sitesi 3. blok no :44 ümit mah. çankaya Ankara"
-            currentOrderAddress="17.06.2021 Salı 16:30"
-          ></app-order-card>
-          <!--edit save buttons-->
-          <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
-            <ion-chip class="ter-bcg" (click)="editClicked()">
-              <ion-icon class="white-text" name="pencil"></ion-icon>
-              <ion-label class="white-text">düzenle</ion-label>
-            </ion-chip>
-            <ion-chip class="sec-bcg" (click)="deleteClicked() ">
-              <ion-icon class="white-text" name="close"></ion-icon>
-              <ion-label class="white-text">sil</ion-label>
-            </ion-chip>
-          </div>
+        <app-order-card style="width: 100%" [order]="item"></app-order-card>
+        <!--edit save buttons-->
+        <div class="button-container">
+          <ion-chip class="ter-bcg" (click)="editClicked()">
+            <ion-icon class="white-text" name="pencil"></ion-icon>
+            <ion-label class="white-text">düzenle</ion-label>
+          </ion-chip>
+          <ion-chip class="sec-bcg" (click)="deleteClicked() ">
+            <ion-icon class="white-text" name="close"></ion-icon>
+            <ion-label class="white-text">sil</ion-label>
+          </ion-chip>
         </div>
       </div>
 
@@ -47,7 +41,7 @@
     </div>
     <ng-template #orders>
       <div *ngFor="let item of orderList">
-        <app-order-card [orderDone]="true" (order)="item"></app-order-card>
+        <app-order-card [orderDone]="true" [order]="item"></app-order-card>
       </div>
     </ng-template>
   </ng-template>

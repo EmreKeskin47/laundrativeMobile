@@ -30,10 +30,11 @@
       </div>
 
       <div class="min-fee text-color">
-        min sipariş tutarı {{ selectedIns.min_siparis_tutari }},00tl
+        min sipariş tutarı {{ selectedIns.min_siparis_tutari | fiyat:
+        selectedIns.min_siparis_tutari }}
         <br />
-        {{selectedIns.min_servis_tutari}},00tl ve üzeri siparişlerde ücretsiz
-        servis
+        {{selectedIns.min_servis_tutari | fiyat:selectedIns.min_servis_tutari }}
+        ve üzeri siparişlerde ücretsiz servis
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@ import { StoreMenuPage } from './store-menu.page';
     StoreMenuPageRoutingModule,
     ComponentsModule,
     IonicSelectableModule,
+    ComponentsModule,
   ],
   declarations: [StoreMenuPage],
 })

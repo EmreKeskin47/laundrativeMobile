@@ -26,7 +26,9 @@ export class Cins {
         tip: number;
       }
     ],
-    teslimatTarihi: Date
+    teslimatTarihi: Date,
+    adet?: number,
+    secilenTip?: number
   ) {
     this.kurum_id = kurum_id;
     this.kategori_id = kategori_id;
@@ -34,8 +36,8 @@ export class Cins {
     this.cins_id = cins_id;
     this.cins_adi = cins_adi;
     this.fiyatlar = fiyatlar;
-    this.adet = 0;
+    adet ? (this.adet = adet) : (this.adet = 0);
     this.teslimatTarihi = teslimatTarihi;
-    this.secilenTip = 1;
+    secilenTip ? secilenTip : (this.secilenTip = 1);
   }
 }

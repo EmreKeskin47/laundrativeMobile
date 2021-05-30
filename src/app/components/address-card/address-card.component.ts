@@ -1,7 +1,7 @@
 import { AdresDuzenle } from './../../models/ui/AdresDuzenle';
 import { AddressService } from './../../services/address.service';
 import { MusteriAdres } from './../../models/MusteriAdres';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-address-card',
@@ -10,6 +10,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AddressCardComponent implements OnInit {
   @Input() public addres: MusteriAdres;
+  @Output() deleteSuccess = new EventEmitter<boolean>();
+
   adresToDisplay: MusteriAdres = null;
   user;
   editPressed = false;
@@ -51,9 +53,11 @@ export class AddressCardComponent implements OnInit {
   }
 
   deleteClicked() {
-    this.addressService
-      .deleteAdress(this.addres.adresId)
-      .subscribe((res) => console.log(res, 'delete address res'));
+    this.addressService.deleteAdress(this.addres.adresId).subscribe((res) => {
+      if (res) {
+        this.deleteSuccess.emit(true);
+      }
+    });
   }
 
   updateClicked() {

@@ -41,7 +41,9 @@
           </div>
         </ion-card>
       </ng-template>
-      <div class="min-fee text-color">min sipariş tutarı {{ minFee }},00tl</div>
+      <div class="min-fee text-color">
+        min sipariş tutarı {{ minFee | fiyat: minFee }}
+      </div>
     </div>
   </div>
 </div>

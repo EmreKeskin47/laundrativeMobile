@@ -9,7 +9,7 @@
           class="plus-minus-btn"
           (click)="minus()"
         >
-          <ion-icon name="remove-sharp" class="amount-icons"></ion-icon>
+          <img src="../../../assets/icon/minus.png" class="amount-minus" />
         </ion-button>
       </div>
       <ng-template #noMinus>
@@ -19,7 +19,7 @@
           class="plus-minus-btn"
           (click)="removeFromCard()"
         >
-          <ion-icon name="remove-sharp" class="amount-icons"></ion-icon>
+          <img src="../../../assets/icon/minus.png" class="amount-minus" />
         </ion-button>
       </ng-template>
 
@@ -30,101 +30,122 @@
         class="plus-minus-btn"
         (click)="plus()"
       >
-        <ion-icon name="add-sharp" class="amount-icons"></ion-icon>
+        <img src="../../../assets/icon/ekle.png" class="amount-icons" />
       </ion-button>
     </div>
-    <div class="cost" style="padding-right: 1rem">{{ totalCost }},00tl</div>
+    <div class="cost" style="padding-right: 1rem">
+      {{ totalCost | fiyat: totalCost }}
+    </div>
   </div>
 </div>
 
 <ion-row>
   <ion-col class="col-padding">
-    <div class="service-card-container">
-      <div class="card-content">
-        <div class="text-color fee">
-          {{ item.fiyatlar[0].fiyat }},00 tl <br /><b> standart </b>
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      (click)="selectType(1)"
+      class="service-card"
+    >
+      <div style="width: 100%">
+        <div class="card-content">
+          <div class="text-color fee">
+            {{ item.fiyatlar[0].fiyat | fiyat: item.fiyatlar[0].fiyat }}
+            <br /><b> standart </b>
+          </div>
+          <div *ngIf="selectedType != 1; else selected">
+            <img
+              src="../../../assets/icon/deactive.png"
+              class="check-btn active-img"
+            />
+          </div>
+          <ng-template #selected>
+            <img
+              src="../../../assets/icon/active.png"
+              class="check-btn active-img"
+            />
+          </ng-template>
         </div>
-        <ion-button
-          fill="clear"
-          shape="round"
-          class="check-btn"
-          (click)="selectType(1)"
-        >
-          <ion-icon
-            [ngClass]="{
-              'text-color': selectedType != 1,
-              selected: selectedType == 1
-            }"
-            name="checkmark-circle-outline"
-          ></ion-icon>
-        </ion-button>
-      </div>
 
-      <div class="card-date text-color">
-        {{ standard | date: "dd.MM.yy" }}
-        <br />
-        {{ standard | date: "EEEE":"":"tr" }} {{ standard | date: "HH:mm" }}
+        <div class="card-date text-color">
+          {{ standard | date: "dd.MM.yy" }}
+          <br />
+          {{ standard | date: "EEEE":"":"tr" }} {{ standard | date: "HH:mm" }}
+        </div>
       </div>
-    </div>
+    </ion-item>
   </ion-col>
 
-  <ion-col>
-    <div class="service-card-container">
-      <div class="card-content">
-        <div class="text-color fee">
-          {{ expressCost }},00 tl <br /><b> express </b>
+  <ion-col class="col-padding">
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      (click)="selectType(2)"
+      class="service-card"
+    >
+      <div style="width: 100%">
+        <div class="card-content">
+          <div class="text-color fee">
+            {{ expressCost | fiyat: expressCost }} <br /><b> express </b>
+          </div>
+          <div *ngIf="selectedType != 2; else selected">
+            <img
+              src="../../../assets/icon/deactive.png"
+              class="check-btn active-img"
+            />
+          </div>
+          <ng-template #selected>
+            <img
+              src="../../../assets/icon/active.png"
+              class="check-btn active-img"
+            />
+          </ng-template>
         </div>
-        <ion-button
-          fill="clear"
-          shape="round"
-          class="check-btn"
-          (click)="selectType(2)"
-        >
-          <ion-icon
-            [ngClass]="{
-              'text-color': selectedType != 2,
-              selected: selectedType == 2
-            }"
-            name="checkmark-circle-outline"
-          ></ion-icon>
-        </ion-button>
-      </div>
 
-      <div class="card-date text-color">
-        {{ express | date: "dd.MM.yy" }}
-        <br />
-        {{ express | date: "EEEE":"":"tr" }} {{ express | date: "HH:mm" }}
+        <div class="card-date text-color">
+          {{ express | date: "dd.MM.yy" }}
+          <br />
+          {{ express | date: "EEEE":"":"tr" }} {{ express | date: "HH:mm" }}
+        </div>
       </div>
-    </div>
+    </ion-item>
   </ion-col>
 
-  <ion-col>
-    <div class="service-card-container">
-      <div class="card-content">
-        <div class="text-color fee">
-          {{ premiumCost }},00 tl <br /><b> premium </b>
+  <ion-col class="col-padding">
+    <ion-item
+      button
+      lines="none"
+      detail="false"
+      (click)="selectType(3)"
+      class="service-card"
+    >
+      <div style="width: 100%">
+        <div class="card-content">
+          <div class="text-color fee">
+            {{ premiumCost | fiyat: premiumCost }} <br /><b> premium </b>
+          </div>
+          <div *ngIf="selectedType != 3; else selected">
+            <img
+              src="../../../assets/icon/deactive.png"
+              class="check-btn active-img"
+            />
+          </div>
+          <ng-template #selected>
+            <img
+              src="../../../assets/icon/active.png"
+              class="check-btn active-img"
+            />
+          </ng-template>
         </div>
-        <ion-button
-          fill="clear"
-          shape="round"
-          class="check-btn"
-          (click)="selectType(3)"
-        >
-          <ion-icon
-            [ngClass]="{
-              'text-color': selectedType != 3,
-              selected: selectedType == 3
-            }"
-            name="checkmark-circle-outline"
-          ></ion-icon>
-        </ion-button>
-      </div>
 
-      <div class="card-date text-color">
-        {{ premium | date: "dd.MM.yy" }}
-        <br />
-        {{ premium | date: "EEEE":"":"tr" }} {{ premium | date: "HH:mm" }}
+        <div class="card-date text-color">
+          {{ premium | date: "dd.MM.yy" }}
+          <br />
+          {{ premium | date: "EEEE":"":"tr" }} {{ premium | date: "HH:mm" }}
+        </div>
       </div>
-    </div>
+    </ion-item>
   </ion-col>
 </ion-row>

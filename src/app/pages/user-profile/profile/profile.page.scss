@@ -12,15 +12,10 @@
   margin: 1.3rem 0.5rem 0 0.5rem;
   justify-content: space-between;
 }
-.icon {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 0.7rem;
-}
 
 .label {
   font-size: 0.8rem;
-  padding-top: 0.8rem;
+  padding-top: 0.4rem;
 }
 
 .text-color {
@@ -41,4 +36,32 @@
 }
 .bottom-container {
   width: 100%;
+}
+
+.icon-padding {
+  margin-right: 1rem;
+}
+
+.profile-icon {
+  width: 23px;
+  height: 25px;
+}
+
+.home-icon {
+  width: 25px;
+  height: 24px;
+}
+
+.notif-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.gift-icon {
+  width: 23px;
+  height: 26px;
+}
+.phone-icon {
+  width: 25px;
+  height: 25px;
 }

@@ -4,8 +4,13 @@
   padding: inherit;
 }
 .discount-container {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 0.5rem;
+}
+
+.all-discounts {
+  font-size: 0.7rem;
+  color: #424242;
+  margin-top: -0.75rem;
 }
 .centered {
   position: absolute;
@@ -62,4 +67,35 @@
 
 .gray-text {
   color: gray;
+}
+
+//icon sizes
+.laundry-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.hanger {
+  width: 31px;
+  height: 18px;
+}
+
+.shirt {
+  width: 31px;
+  height: 28px;
+}
+
+.terzi {
+  width: 30px;
+  height: 28px;
+}
+
+.shoe {
+  width: 35px;
+  height: 19px;
+}
+
+.hali {
+  width: 28px;
+  height: 26px;
 }

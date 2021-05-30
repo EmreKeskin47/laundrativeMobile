@@ -10,14 +10,18 @@
   <div class="root">
     <div class="address-card-container">
       <div *ngFor="let address of adresList">
-        <app-address-card [addres]="address"></app-address-card>
+        <app-address-card
+          (deleteSuccess)="deleteSuccess()"
+          [addres]="address"
+        ></app-address-card>
       </div>
     </div>
 
     <div class="new-address">
-      <ion-button (click)="navigateToCreateAddress()" expand="block"
-        >yeni adres ekle</ion-button
-      >
+      <ion-button (click)="navigateToCreateAddress()" expand="block">
+        <img src="../../../../assets/icon/button/add.png" class="add-icon" />
+        <ion-label class="btn-label">yeni adres ekle </ion-label>
+      </ion-button>
     </div>
   </div>
 </ion-content>

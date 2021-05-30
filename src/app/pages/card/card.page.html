@@ -29,9 +29,11 @@
         </div>
 
         <div class="min-fee text-color">
-          min sipariş tutarı {{ selectedIns.min_siparis_tutari }},00tl
+          min sipariş tutarı {{ selectedIns.min_siparis_tutari |
+          fiyat:selectedIns.min_siparis_tutari }}
           <br />
-          {{selectedIns.min_servis_tutari}} ,00tl ve üzeri siparişlerde ücretsiz
+          {{selectedIns.min_servis_tutari |
+          fiyat:selectedIns.min_servis_tutari}} ve üzeri siparişlerde ücretsiz
           servis
         </div>
       </div>
@@ -71,8 +73,14 @@
               <div>teslimat</div>
             </ion-col>
             <ion-col class="label-fee text-color">
-              <div>{{currentCardCostContent.totalTax}} tl</div>
-              <div>{{currentCardCostContent.totalDeliveryFee}} tl</div>
+              <div>
+                {{currentCardCostContent.totalTax
+                | fiyat:currentCardCostContent.totalTax }}
+              </div>
+              <div>
+                {{currentCardCostContent.totalDeliveryFee
+                | fiyat:currentCardCostContent.totalDeliveryFee }}
+              </div>
             </ion-col>
           </ion-row>
           <hr class="half-width-seperator" />
@@ -87,8 +95,9 @@
             </ion-col>
             <ion-col class="total-cost">
               <div>
-                {{currentCardCostContent.total +
-                currentCardCostContent.totalTax}} tl
+                {{currentCardCostContent.total + currentCardCostContent.totalTax
+                | fiyat:currentCardCostContent.total +
+                currentCardCostContent.totalTax }}
               </div>
             </ion-col>
           </ion-row>
@@ -136,7 +145,10 @@
       <ng-template #logged>
         <div style="padding-top: 1.5rem">
           <ion-item lines="none" class="input-item">
-            <ion-icon name="create" class="note-icon text-color"></ion-icon>
+            <img
+              src="../../../assets/icon/calendar_icon_filled.png"
+              class="calendar-icon"
+            />
             <div class="input-label">
               <ion-label class="text-color"> sipariş notu</ion-label>
               <ion-input value="{{not}}" (ionChange)="notChange($event)">
@@ -144,10 +156,11 @@
             </div>
           </ion-item>
           <ion-item lines="none" class="input-item">
-            <ion-icon
-              name="location"
-              class="adres-icon primary-color"
-            ></ion-icon>
+            <img
+              src="../../../assets/icon/location_icon_filled.png"
+              class="location-icon"
+            />
+
             <div class="input-label">
               <ion-label class="text-color"> adres</ion-label>
               <div>{{insLocation}}</div>
@@ -155,10 +168,11 @@
           </ion-item>
 
           <ion-item lines="none" class="input-item">
-            <ion-icon
-              name="calendar"
-              class="adres-icon primary-color"
-            ></ion-icon>
+            <img
+              src="../../../assets/icon/calendar_icon_filled.png"
+              class="calendar-icon"
+            />
+
             <div class="input-label">
               <ion-label class="text-color"> teslim alma zamanı</ion-label>
               <div>{{ dateTime | date: "d.M.yy EEEE HH:mm":'':'tr'}}</div>

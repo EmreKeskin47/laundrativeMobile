@@ -39,7 +39,15 @@ export class OrdersPage implements OnInit {
   ngOnInit() {
     this.orderService.getOrderList().subscribe((order) => {
       this.orderList = order;
-      console.log(order, 'order list ');
+      for (let i = 0; i < this.orderList.length; i++) {
+        if (
+          this.orderList[i].status == 'YENI_KAYIT_FROM_IOS' ||
+          'YENI_KAYIT_FROM_ANDROID ' ||
+          'YENI_KAYIT_FROM_WEB'
+        ) {
+          this.liveOrders.push(this.orderList[i]);
+        }
+      }
     });
   }
 }

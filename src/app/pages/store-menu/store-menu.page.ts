@@ -70,11 +70,15 @@ export class StoreMenuPage implements OnInit {
   }
 
   addToCard() {
+    console.log('-------------------------------------------- ');
+    console.log(this.selected, 'selected from store menu');
+    this.orderService.setSelectedKindItem(this.selected);
     this.orderService.addToCard(this.selected);
     this.select = false;
     this.selected = null;
     this.searchCategory = 0;
     this.searchName = '';
+    console.log('-------------------------------------------- ');
   }
 
   removeFromCard() {
@@ -127,19 +131,25 @@ export class StoreMenuPage implements OnInit {
       this.alreadyAddedToCard.secilenTip = event;
       if (event == 3) {
         this.alreadyAddedToCard.teslimatTarihi = this.premiumDelivery;
+        this.alreadyAddedToCard.secilenTip = 3;
       } else if (event == 2) {
         this.alreadyAddedToCard.teslimatTarihi = this.expressDelivery;
+        this.alreadyAddedToCard.secilenTip = 2;
       } else {
         this.alreadyAddedToCard.teslimatTarihi = this.standardDelivery;
+        this.alreadyAddedToCard.secilenTip = 1;
       }
     } else {
       this.selected.secilenTip = event;
       if (event == 3) {
         this.selected.teslimatTarihi = this.premiumDelivery;
+        this.selected.secilenTip = 3;
       } else if (event == 2) {
         this.selected.teslimatTarihi = this.expressDelivery;
+        this.selected.secilenTip = 2;
       } else {
         this.selected.teslimatTarihi = this.standardDelivery;
+        this.selected.secilenTip = 1;
       }
     }
   }

@@ -46,9 +46,13 @@
   <div class="discount-container">
     <app-discount></app-discount>
     <div style="text-align: end">
-      <button (click)="navigateToDiscount()" style="font-size: 0.7rem">
+      <ion-button
+        fill="clear"
+        (click)="navigateToDiscount()"
+        class="all-discounts"
+      >
         tüm kampanyaları gör
-      </button>
+      </ion-button>
     </div>
   </div>
 
@@ -70,7 +74,7 @@
               <div *ngIf="!isSelected1 else selected1">
                 <img
                   src="../../../assets/create-order/camasir_yikama_icon.png"
-                  class="icon"
+                  class="laundry-icon"
                 />
 
                 <ion-label class="grid-label"> çamaşır yıkama</ion-label>
@@ -101,7 +105,7 @@
               <div *ngIf="!isSelected6 else selected6">
                 <img
                   src="../../../assets/create-order/terzi_icon.png"
-                  class="icon"
+                  class="terzi"
                 />
                 <ion-label class="grid-label"> terzi tadilat</ion-label>
               </div>
@@ -132,7 +136,7 @@
               <div *ngIf="!isSelected2 else selected2">
                 <img
                   src="../../../assets/create-order/utuleme_icon.png"
-                  class="icon"
+                  class="hanger"
                 />
                 <ion-label class="grid-label"> ütüleme</ion-label>
               </div>
@@ -162,7 +166,7 @@
               <div *ngIf="!isSelected7 else selected7">
                 <img
                   src="../../../assets/create-order/lostra_icon.png"
-                  class="icon"
+                  class="shoe"
                 />
                 <ion-label class="grid-label"> lostra</ion-label>
               </div>
@@ -193,7 +197,7 @@
               <div *ngIf="!isSelected3 else selected3">
                 <img
                   src="../../../assets/create-order/kuru_temizleme_icon.png"
-                  class="icon"
+                  class="shirt"
                 />
                 <ion-label class="grid-label"> kuru temizleme</ion-label>
               </div>
@@ -223,7 +227,7 @@
               <div *ngIf="!isSelected5 else selected5">
                 <img
                   src="../../../assets/create-order/hali_icon.png"
-                  class="icon"
+                  class="hali"
                 />
                 <ion-label class="grid-label"> halı yıkama</ion-label>
               </div>

@@ -11,15 +11,20 @@
   padding-right: 1rem;
 }
 .location-icon {
-  height: 2.2rem;
-  width: 1.5rem;
+  width: 17px;
+  height: 27px;
 }
 
 .text-1rem {
   font-size: 0.8rem;
   color: black;
+  margin-left: 5px;
 }
 
 .text-color {
   color: #5e5e5e;
+}
+
+.address {
+  --padding-start: 10px;
 }

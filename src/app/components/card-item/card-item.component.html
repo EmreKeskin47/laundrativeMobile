@@ -13,7 +13,7 @@
       </div>
     </div>
     <div>
-      <div class="cost">{{ itemCost }},00tl</div>
+      <div class="cost">{{ itemCost | fiyat: itemCost }}</div>
     </div>
   </div>
   <div>
@@ -33,7 +33,9 @@
 <ng-template #oldOrderType>
   <div class="card-items-content">
     <div class="flex">
-      <ion-icon name="shirt" class="card-icon text-color"></ion-icon>
+      <div *ngIf="itemIcon">
+        <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
+      </div>
       <div style="padding-top: 1.5rem">
         <ion-card-title class="card-text text-color">{{
           itemName
@@ -41,6 +43,6 @@
       </div>
     </div>
     <div class="old-order-type">{{ type }} &nbsp;</div>
-    <div class="cost">{{ itemCost }}</div>
+    <div class="cost">{{ itemCost | fiyat: itemCost }}</div>
   </div>
 </ng-template>

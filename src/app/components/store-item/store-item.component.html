@@ -35,7 +35,7 @@
       </div>
       <div *ngIf="itemCost; else deliveyDate">
         <ion-card-subtitle class="store-item-card-text text-color">
-          {{ itemCost }},00 tl
+          {{ itemCost | fiyat: itemCost }}
         </ion-card-subtitle>
       </div>
     </div>
