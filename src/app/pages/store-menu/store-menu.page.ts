@@ -70,15 +70,12 @@ export class StoreMenuPage implements OnInit {
   }
 
   addToCard() {
-    console.log('-------------------------------------------- ');
-    console.log(this.selected, 'selected from store menu');
     this.orderService.setSelectedKindItem(this.selected);
     this.orderService.addToCard(this.selected);
     this.select = false;
     this.selected = null;
     this.searchCategory = 0;
     this.searchName = '';
-    console.log('-------------------------------------------- ');
   }
 
   removeFromCard() {
@@ -112,11 +109,14 @@ export class StoreMenuPage implements OnInit {
       this.setSelectedImage();
       this.selected.teslimatTarihi = this.standardDelivery;
       this.selected.adet = 1;
+      this.selected.secilenTip = 1;
     }
   }
 
-  cancelSelected(cancelled: boolean) {
-    this.removeFromCard();
+  cancelSelected(cancelled: boolean, rem: boolean) {
+    if (rem) {
+      this.removeFromCard();
+    }
     this.select = cancelled;
     this.selectedItemImage = null;
     if (this.alreadyAddedToCard) {
@@ -202,8 +202,12 @@ export class StoreMenuPage implements OnInit {
   }
 
   categorySelect(event: any) {
-    this.select = false;
-    this.selected = null;
-    this.searchCategory = event;
+    if (event) {
+      this.select = false;
+      this.selected = null;
+      this.searchCategory = event;
+    } else {
+      this.searchCategory = 0;
+    }
   }
 }

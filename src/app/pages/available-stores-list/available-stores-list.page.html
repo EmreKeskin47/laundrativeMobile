@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
@@ -10,6 +10,7 @@
 <ion-content color="medium">
   <div *ngFor="let kurum of institutionList">
     <ion-item
+      class="ion-no-padding item"
       color="medium"
       lines="none"
       button

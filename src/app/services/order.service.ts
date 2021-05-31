@@ -47,7 +47,6 @@ siparisDurum.set('SIPARIS_GUNCELLENDI', { isim: 'güncellendi', durum: 1 });
 })
 export class OrderService {
   url = `${BASE_URL}/siparis`;
-
   currentCardContent: Cins[] = [];
   currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
   selectedItem: Cins;
@@ -124,23 +123,28 @@ export class OrderService {
       //if new item already exists in card
       for (let i = 0; i < this.currentCardContent.length; i++) {
         if (
-          this.currentCardContent[i].cins_id == item.cins_id &&
-          this.currentCardContent[i].secilenTip == item.secilenTip
+          this.currentCardContent[i].cins_id === item.cins_id &&
+          this.currentCardContent[i].secilenTip === item.secilenTip &&
+          this.currentCardContent[i].teslimatTarihi === item.teslimatTarihi
         ) {
-          console.log('ADET GÜNCELLEME GİRİŞİ');
-          console.log(this.currentCardContent[i]);
-          console.log('-------------------------------------------- ');
-          this.currentCardContent[i].adet = +item.adet;
+          this.currentCardContent[i].adet += item.adet;
           added = true;
           return;
         }
       }
       if (!added) {
-        console.log('EKLEME GİRİŞİ');
-        console.log(this.currentCardContent);
-        console.log('-------------------------------------------- ');
-
-        this.currentCardContent[this.currentCardContent.length] = item;
+        let newItem = new Cins(
+          item.kurum_id,
+          item.kategori_id,
+          item.cins_resmi,
+          item.cins_id,
+          item.cins_adi,
+          item.fiyatlar,
+          item.teslimatTarihi,
+          item.adet,
+          item.secilenTip
+        );
+        this.currentCardContent.push(newItem);
         this.calculateTotal();
       }
     }

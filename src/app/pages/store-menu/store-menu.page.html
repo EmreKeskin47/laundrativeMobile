@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>{{ pageTitle }}</ion-title>
   </ion-toolbar>
@@ -14,7 +14,7 @@
       <div class="content">
         <div style="display: flex">
           <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
-          <div style="padding-top: 15px">
+          <div style="padding-top: 0.4rem">
             <ion-card-subtitle class="card-title text-color"
               >{{ selectedIns.kurum_adi }}</ion-card-subtitle
             >
@@ -50,18 +50,38 @@
         <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
         kategori seçimi
       </ion-button>
-      <div *ngIf="showStoreCategoryOptions">
-        <div *ngFor="let cat of storeCategories">
-          <ion-button
-            class="toLowerCase service-select-btn"
-            color="secondary"
-            (click)="categorySelect(cat)"
-          >
-            <ion-icon slot="start" name="ellipse-outline"></ion-icon>
-            {{itemCategoryName[cat]}}
-          </ion-button>
+      <ion-item
+        *ngIf="showStoreCategoryOptions"
+        color="secondary"
+        lines="none"
+        style="--padding-start: 0"
+      >
+        <div>
+          <div *ngFor="let cat of storeCategories">
+            <ion-button
+              class="toLowerCase service-select-btn"
+              fill="clear"
+              (click)="categorySelect(cat)"
+            >
+              <img
+                src='{{"../../../assets/create-order/" + itemCategoryName[cat]
+              + ".png"}}'
+                class="cat-icon"
+              />
+              {{itemCategoryName[cat]}}
+            </ion-button>
+          </div>
+          <div>
+            <ion-button
+              class="toLowerCase service-select-btn"
+              fill="clear"
+              (click)="categorySelect(null)"
+            >
+              tüm kategorileri seç
+            </ion-button>
+          </div>
         </div>
-      </div>
+      </ion-item>
     </div>
 
     <ion-button class="text-color" color="medium" style="font-size: 0.7rem">
@@ -107,20 +127,19 @@
           [standard]="standardDelivery"
           [premium]="premiumDelivery"
           [express]="expressDelivery"
-          (cancelled)="cancelSelected(false)"
+          (cancelled)="cancelSelected(false,true)"
           (type)="changeTypeOfSelected($event)"
           (amount)="changeAmountOfSelected($event)"
         ></app-types>
 
         <!--Button to add to card-->
         <div class="btn-padding">
-          <ion-button shape="round" expand="block" (click)="updateCard()"
+          <ion-button expand="block" (click)="updateCard()"
             >sepeti güncelle</ion-button
           >
         </div>
         <div class="cancel-btn-padding btn-color">
           <ion-button
-            shape="round"
             color="primary"
             fill="outline"
             expand="block"
@@ -152,6 +171,7 @@
               itemImage="{{item.cins_resmi}}"
               [itemDeliveryDate]="item.teslimatTarihi"
               itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
+              [dateOverPrice]="selected==item"
               style="width: 100%"
             ></app-store-item>
           </ion-item>
@@ -163,14 +183,15 @@
               [standard]="standardDelivery"
               [premium]="premiumDelivery"
               [express]="expressDelivery"
-              (cancelled)="cancelSelected(false)"
+              (cancelled)="cancelSelected(false,false)"
+              [deleteAlertDisable]="true"
               (type)="changeTypeOfSelected($event)"
               (amount)="changeAmountOfSelected($event)"
             ></app-types>
 
             <!--Button to add to card-->
             <div class="btn-padding">
-              <ion-button shape="round" expand="block" (click)="addToCard()"
+              <ion-button expand="block" (click)="addToCard()"
                 >sepete ekle</ion-button
               >
             </div>
@@ -190,8 +211,11 @@
               >
                 <app-store-item
                   itemName="{{item.cins_adi}}"
+                  [itemType]="item.secilenTip"
                   itemImage="{{item.cins_resmi}}"
+                  [itemDeliveryDate]="item.teslimatTarihi"
                   itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
+                  [dateOverPrice]="selected==item"
                   style="width: 100%"
                 ></app-store-item>
               </ion-item>
@@ -210,8 +234,11 @@
                 >
                   <app-store-item
                     itemName="{{item.cins_adi}}"
+                    [itemType]="item.secilenTip"
                     itemImage="{{item.cins_resmi}}"
+                    [itemDeliveryDate]="item.teslimatTarihi"
                     itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
+                    [dateOverPrice]="selected==item"
                     style="width: 100%"
                   ></app-store-item>
                 </ion-item>
@@ -225,14 +252,15 @@
                 [standard]="standardDelivery"
                 [premium]="premiumDelivery"
                 [express]="expressDelivery"
-                (cancelled)="cancelSelected(false)"
+                [deleteAlertDisable]="true"
+                (cancelled)="cancelSelected(false,false)"
                 (type)="changeTypeOfSelected($event)"
                 (amount)="changeAmountOfSelected($event)"
               ></app-types>
 
               <!--Button to add to card-->
               <div class="btn-padding">
-                <ion-button shape="round" expand="block" (click)="addToCard()"
+                <ion-button expand="block" (click)="addToCard()"
                   >sepete ekle</ion-button
                 >
               </div>

@@ -1,11 +1,11 @@
 .date-adress-label {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: end;
   padding: 1rem 1rem 0 0;
 }
 .text-color {
-  color: gray;
+  color: #5e5e5e;
 }
 .rounded {
   border-top: 3px solid rgb(26, 25, 25);
@@ -51,6 +51,8 @@
   top: 2rem;
   right: 7rem;
   font-size: 0.5rem;
+  color: black;
+  font-weight: bold;
 }
 
 .added-filter-padding {

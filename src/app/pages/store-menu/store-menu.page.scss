@@ -8,9 +8,8 @@
   position: relative;
 }
 .container {
-  height: 4.5rem;
+  height: 3.7rem;
   background-color: whitesmoke;
-  padding: 5;
 }
 .content {
   display: flex;
@@ -18,7 +17,7 @@
 }
 .icon {
   font-size: 2rem;
-  padding-top: 1rem;
+  padding-top: 0.4rem;
   padding-right: 0.5rem;
 }
 .card-title {
@@ -36,6 +35,11 @@
 }
 
 //service and discount button
+.cat-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 0.6rem;
+}
 .button-container {
   padding-left: 0.5rem;
   justify-content: space-between;
@@ -61,7 +65,7 @@
 
 //add item button
 .btn-padding {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
 }
 
 .cancel-btn-padding {

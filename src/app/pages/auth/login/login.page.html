@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>{{ pageTitle }}</ion-title>
   </ion-toolbar>
@@ -80,13 +80,18 @@
         <div class="first-button-container">
           <ion-item lines="none" color="medium">
             <ion-label class="text-1rem">beni hatırla</ion-label>
-            <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+            <ion-checkbox
+              class="checkbox"
+              color="primary"
+              checked
+              slot="start"
+            ></ion-checkbox>
           </ion-item>
 
           <ion-button
             fill="clear"
             expand="block"
-            style="font-size: 0.8rem"
+            style="font-size: 0.7rem"
             class="toLowerCase"
             >parolamı hatırlamıyorum</ion-button
           >
@@ -108,14 +113,14 @@
               src="../../../../assets/icon/profil/google.png"
               class="google-fb-icon"
             />
-            <p class="sign-options toLowerCase">sign in with google</p>
+            <p class="sign-options toLowerCase">google ile giriş yap</p>
           </ion-button>
           <ion-button class="sign-btn" color="light"
             ><img
               src="../../../../assets/icon/profil/facebook.png"
               class="google-fb-icon"
             />
-            <p class="sign-options toLowerCase">sign in with facebook</p>
+            <p class="sign-options toLowerCase">facebook ile giriş yap</p>
           </ion-button>
         </div>
       </div>

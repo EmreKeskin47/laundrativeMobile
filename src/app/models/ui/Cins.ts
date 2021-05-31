@@ -10,8 +10,8 @@ export class Cins {
       tip: number;
     }
   ];
-  adet: number;
   teslimatTarihi: Date;
+  adet: number;
   secilenTip: number;
 
   constructor(
@@ -36,8 +36,8 @@ export class Cins {
     this.cins_id = cins_id;
     this.cins_adi = cins_adi;
     this.fiyatlar = fiyatlar;
-    adet ? (this.adet = adet) : (this.adet = 0);
     this.teslimatTarihi = teslimatTarihi;
-    secilenTip ? secilenTip : (this.secilenTip = 1);
+    adet ? (this.adet = adet) : (this.adet = 0);
+    secilenTip ? (this.secilenTip = secilenTip) : (this.secilenTip = 1);
   }
 }

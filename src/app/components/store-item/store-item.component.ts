@@ -9,9 +9,10 @@ export class StoreItemComponent implements OnInit {
   @Input() public itemName;
   @Input() public itemCost;
   @Input() public itemImage;
-  @Input() public itemDeliveryDate = null;
+  @Input() public itemDeliveryDate;
   @Input() public itemType;
   @Input() public itemCategory;
+  @Input() public dateOverPrice;
 
   constructor(private sanitizer: DomSanitizer) {}
   typeNames = { 3: 'premium', 2: 'express', 1: 'standard', 0: 'standard' };

@@ -1,15 +1,6 @@
 .input-container {
   padding: 0.5rem;
-  border-radius: 20px;
-}
-.label {
-  padding-left: 3rem;
-}
-
-.card-icon {
-  position: absolute;
-  margin-top: 1.5rem;
-  font-size: 2rem;
+  border-radius: 10px;
 }
 
 .toLowerCase {
@@ -19,53 +10,38 @@
 .sign-in-buttons-container {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.2rem 0.6rem 0rem 0.6rem;
 }
 .sign-options {
   padding-left: 0.4rem;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   font-size: 0.6rem;
   flex: 1;
 }
 .sign-btn {
   width: 9rem;
-  border-radius: 10px;
-  box-shadow: 1px 2px #5e5e5e;
+  height: 2rem;
+  border-radius: 5px;
+  box-shadow: 1px 2px 1px 2px #9e9c9c;
+  --padding-start: 0.5rem;
 }
 
 .button-padding {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 2rem;
+  padding: 2.5rem 0.5rem 0rem 0.5rem;
 }
 
 .list {
   padding-top: 0px;
   padding-bottom: 0px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .input-container {
   padding: 0.5rem;
 }
 
-.email-icon {
-  width: 2rem;
-  height: 1.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0.2rem;
-}
-
-.icon {
-  width: 1.4rem;
-  height: 1.8rem;
-  margin-right: 1rem;
-  margin-left: 0.4rem;
-  margin-top: 0.2rem;
-}
-
 .google-fb-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 20px;
+  height: 20px;
 }
 .text-1rem {
   font-size: 0.8rem;
@@ -78,4 +54,29 @@
   font-size: 0.8rem;
   margin-left: 10px;
   margin-top: 10px;
+}
+
+.icon-profile {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+}
+
+.icon-phone {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.icon-mail {
+  width: 21px;
+  height: 15px;
+  margin-right: 9px;
+}
+
+.icon-password {
+  width: 15px;
+  height: 21px;
+  margin-right: 12px;
+  margin-left: 3px;
 }

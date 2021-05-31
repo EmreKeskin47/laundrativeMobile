@@ -13,7 +13,7 @@
         <div class="content">
           <div style="display: flex">
             <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
-            <div style="padding-top: 15px">
+            <div style="padding-top: 0.4rem">
               <ion-card-subtitle class="card-title text-color"
                 >{{ selectedIns.kurum_adi }}</ion-card-subtitle
               >
@@ -151,7 +151,11 @@
             />
             <div class="input-label">
               <ion-label class="text-color"> sipariş notu</ion-label>
-              <ion-input value="{{not}}" (ionChange)="notChange($event)">
+              <ion-input
+                value="{{not}}"
+                (ionChange)="notChange($event)"
+                style="--padding-bottom: 0"
+              >
               </ion-input>
             </div>
           </ion-item>

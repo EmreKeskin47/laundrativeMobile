@@ -13,6 +13,7 @@ export class TypesComponent implements OnInit {
   @Input() public standard;
   @Input() public premium;
   @Input() public express;
+  @Input() public deleteAlertDisable;
 
   @Output() cancelled = new EventEmitter<boolean>();
   @Output() type = new EventEmitter<number>();
@@ -56,19 +57,22 @@ export class TypesComponent implements OnInit {
   }
 
   removeFromCard = async () => {
-    const alert = await this.alertController.create({
-      header: 'Sepetten çıkarmak istediğinize emin misiniz?',
-      buttons: [
-        'Hayır',
-        {
-          text: 'Evet',
-          handler: () => {
-            this.cancelled.emit(true);
+    if (!this.deleteAlertDisable) {
+      const alert = await this.alertController.create({
+        header: 'Sepetten çıkarmak istediğinize emin misiniz?',
+        buttons: [
+          'Hayır',
+          {
+            text: 'Evet',
+            handler: () => {
+              this.cancelled.emit(true);
+            },
           },
-        },
-      ],
-    });
-
-    await alert.present();
+        ],
+      });
+      await alert.present();
+    } else {
+      this.cancelled.emit(true);
+    }
   };
 }

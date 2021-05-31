@@ -5,20 +5,17 @@
   align-content: center;
 }
 .container-padding {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.5rem;
+  padding: 0.5rem;
 }
 .card-border-radius {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .relative {
   position: relative;
 }
 .container {
-  height: 4rem;
+  height: 3.7rem;
   background-color: whitesmoke;
-  padding: 5;
 }
 .content {
   display: flex;
@@ -26,8 +23,8 @@
 }
 .icon {
   font-size: 2rem;
-  padding-top: 1rem;
-  padding-right: 1rem;
+  padding-top: 0.4rem;
+  padding-right: 0.5rem;
 }
 .card-title {
   font-size: 0.6rem;
@@ -40,7 +37,7 @@
   font-size: 0.5rem;
   position: absolute;
   right: 1rem;
-  bottom: 0vh;
+  bottom: 0.5rem;
 }
 .cost-labels {
   text-align: right;
