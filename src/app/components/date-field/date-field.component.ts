@@ -11,6 +11,7 @@ export class DateFieldComponent implements OnInit {
   @Output() selectedTime = new EventEmitter<Date>();
   currentDate: Date;
   futureDate: Date;
+  dateToShow: Date;
   months: number[] = [];
   constructor() {}
 
@@ -27,6 +28,9 @@ export class DateFieldComponent implements OnInit {
       ? this.selectedDate.emit(this.futureDate)
       : this.selectedDate.emit(this.currentDate);
     this.selectedTime.emit(this.currentDate);
+    this.initialDate
+      ? (this.dateToShow = this.futureDate)
+      : (this.dateToShow = this.currentDate);
   }
 
   dateChange(event: any) {

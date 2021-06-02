@@ -3,10 +3,6 @@
   border-radius: 10px;
 }
 
-.toLowerCase {
-  text-transform: lowercase;
-}
-
 .sign-in-buttons-container {
   display: flex;
   justify-content: space-between;
@@ -30,11 +26,6 @@
   padding: 2.5rem 0.5rem 0rem 0.5rem;
 }
 
-.list {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  border-radius: 10px;
-}
 .input-container {
   padding: 0.5rem;
 }
@@ -42,41 +33,4 @@
 .google-fb-icon {
   width: 20px;
   height: 20px;
-}
-.text-1rem {
-  font-size: 0.8rem;
-  color: #5e5e5e;
-}
-
-.error-message {
-  color: #5e5e5e;
-  font-weight: bold;
-  font-size: 0.8rem;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-.icon-profile {
-  width: 22px;
-  height: 22px;
-  margin-right: 8px;
-}
-
-.icon-phone {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.icon-mail {
-  width: 21px;
-  height: 15px;
-  margin-right: 9px;
-}
-
-.icon-password {
-  width: 15px;
-  height: 21px;
-  margin-right: 12px;
-  margin-left: 3px;
 }

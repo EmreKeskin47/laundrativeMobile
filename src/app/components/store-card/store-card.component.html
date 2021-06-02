@@ -1,8 +1,8 @@
-<div class="container-padding card-border-radius">
-  <div class="relative container card-border-radius">
+<div class="container-padding border-radius">
+  <div class="relative container border-radius">
     <div class="content">
       <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
-      <div style="padding-top: 0.7rem">
+      <div style="padding-top: 0.5rem">
         <ion-card-subtitle class="card-title">{{
           storeName
         }}</ion-card-subtitle>
@@ -17,25 +17,25 @@
       <ion-card
         *ngIf="now; else secondary"
         color="tertiary"
-        class="card-border-radius"
+        class="border-radius"
       >
-        <div style="padding: 7px">
+        <div style="padding: 9px">
           <ion-card-title class="child-card-title"
             >{{ start | slice: 0:-3 }} - {{ end | slice: 0:-3 }}</ion-card-title
           >
-          <ion-card-subtitle class="child-card-subtitle toLowerCase">{{
+          <ion-card-subtitle class="child-card-subtitle lowercase">{{
             day
           }}</ion-card-subtitle>
         </div>
       </ion-card>
       <ng-template #secondary>
-        <ion-card color="secondary" class="card-border-radius">
-          <div style="padding: 7px">
+        <ion-card color="secondary" class="border-radius">
+          <div style="padding: 9px">
             <ion-card-title class="child-card-title"
               >{{ start | slice: 0:-3 }} -
               {{ end | slice: 0:-3 }}</ion-card-title
             >
-            <ion-card-subtitle class="child-card-subtitle toLowerCase">{{
+            <ion-card-subtitle class="child-card-subtitle lowercase">{{
               day
             }}</ion-card-subtitle>
           </div>

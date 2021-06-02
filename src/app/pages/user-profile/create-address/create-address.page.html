@@ -3,13 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-title>yeni adres oluştur</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
   <div class="root">
-    <div style="width: 100%">
+    <div class="full-width">
       <ion-item lines="none" class="item-container">
         <ion-label class="gray-text">il</ion-label>
         <ionic-selectable
@@ -24,7 +24,7 @@
       </ion-item>
 
       <ion-item lines="none" class="item-container">
-        <ion-label class="gray-text">ilçe</ion-label>
+        <ion-label class="gray-text">Mahalle</ion-label>
         <ionic-selectable
           [(ngModel)]="selectedDistrict"
           [items]="searchableDistrictList"
@@ -37,92 +37,120 @@
         </ionic-selectable>
       </ion-item>
 
-      <ion-item lines="none" class="item-container">
-        <ion-icon name="home" slot="start" class="input-icon white"></ion-icon>
-        <div>
-          <ion-label class="label-size gray-text">adres başlığı *</ion-label>
-          <ion-input
-            class="input-text gray-text"
-            (ionChange)="addressNameChange($event)"
-          ></ion-input>
-        </div>
-      </ion-item>
-
-      <ion-item lines="none" class="item-container">
-        <ion-icon
-          name="home"
-          slot="start"
-          class="input-icon gray-text"
-        ></ion-icon>
-        <ion-label class="label-size gray-text" position="stacked"
-          >adres</ion-label
-        >
-        <ion-textarea
-          autoGrow="false"
-          rows="3"
-          class="input-text gray-text"
-          (ionChange)="addressDescChange($event)"
-        ></ion-textarea>
-      </ion-item>
-
-      <ion-item lines="none" class="item-container">
-        <ion-icon
-          name="location"
-          slot="start"
-          class="input-icon gray-text"
-        ></ion-icon>
-        <div>
-          <ion-label class="label-size gray-text"
-            >konum ekle (opsiyonel)</ion-label
-          >
-          <ion-input class="input-text gray-text"></ion-input>
-        </div>
-      </ion-item>
-
-      <!--Contact info-->
-      <div style="padding: 0.5rem 0.5rem 0.5rem 1rem">
-        <ion-checkbox
-          (click)="onChange()"
-          style="--size: 1rem; margin-right: 0.5rem"
-        ></ion-checkbox>
-        <ion-label class="gray-text">başka bir alıcı</ion-label>
-      </div>
-      <div *ngIf="anotherUser">
-        <ion-item lines="none" class="item-container">
-          <ion-icon
-            name="person"
-            slot="start"
-            class="input-icon gray-text"
-          ></ion-icon>
-          <div>
-            <ion-label class="label-size gray-text">isim soyisim</ion-label>
-            <ion-input
-              class="input-text gray-text"
-              (ionChange)="anotherUserNameChange($event)"
-            ></ion-input>
-          </div>
-        </ion-item>
-        <ion-item lines="none" class="item-container">
-          <ion-icon
-            name="call"
-            slot="start"
-            class="input-icon gray-text"
-          ></ion-icon>
-          <div>
-            <ion-label class="label-size gray-text"
-              >telefon numaranız</ion-label
+      <!-- ADRES BAŞLIĞI -->
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img src="../../../../assets/icon/home.png" class="input-home-icon" />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              adres başlığı *</ion-label
             >
             <ion-input
-              class="input-text gray-text"
-              (ionChange)="anotherUserPhoneChange($event)"
-            ></ion-input>
+              (ionChange)="addressNameChange($event)"
+              class="input-text input-text-margin"
+              placeholder="ev adresim"
+            >
+            </ion-input>
           </div>
         </ion-item>
+      </div>
+
+      <!-- ADRES -->
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img
+            src="../../../../assets/icon/home.png"
+            class="input-home-icon"
+            style="margin-top: 9px"
+          />
+          <div class="input-label full-width">
+            <ion-label class="input-label input-text-margin"> adres </ion-label>
+            <ion-textarea
+              autoGrow="false"
+              rows="3"
+              class="input-text input-text-margin"
+              (ionChange)="addressDescChange($event)"
+              placeholder="ev "
+            ></ion-textarea>
+          </div>
+        </ion-item>
+      </div>
+
+      <!-- KONUM EKLE BAŞLIĞI -->
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img
+            src="../../../../assets/icon/teslim_etme_active.png"
+            class="input-location-icon"
+          />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              konum ekle (opsiyonel)</ion-label
+            >
+            <ion-input class="input-text input-text-margin" disabled>
+            </ion-input>
+          </div>
+        </ion-item>
+      </div>
+
+      <!--Contact info-->
+      <div>
+        <ion-item lines="none" color="medium">
+          <ion-label class="checkbox-text">başka bir alıcı</ion-label>
+          <ion-checkbox
+            slot="start"
+            (click)="onChange()"
+            class="checkbox"
+          ></ion-checkbox>
+        </ion-item>
+      </div>
+
+      <div *ngIf="anotherUser">
+        <!-- KULLANICI İSMİ -->
+        <div class="input-full-width">
+          <ion-item lines="none" class="input-ion-item input-border-radius">
+            <img
+              src="../../../../assets/icon/profil_icon.png"
+              class="input-profile-icon"
+            />
+            <div class="input-label full-width">
+              <ion-label class="text-color input-label input-text-margin">
+                isim soyisim
+              </ion-label>
+              <ion-input
+                class="input-text input-text-margin"
+                (ionChange)="anotherUserNameChange($event)"
+              ></ion-input>
+            </div>
+          </ion-item>
+        </div>
+
+        <!-- KULLANICI TEL -->
+        <div class="input-full-width">
+          <ion-item lines="none" class="input-ion-item input-border-radius">
+            <img
+              src="../../../../assets/icon/profil/bize-ulaşın.png"
+              class="input-phone-icon"
+            />
+            <div class="input-label full-width">
+              <ion-label class="text-color input-label input-text-margin">
+                telefon numaranız
+              </ion-label>
+              <ion-input
+                class="input-text input-text-margin"
+                (ionChange)="anotherUserPhoneChange($event)"
+              ></ion-input>
+            </div>
+          </ion-item>
+        </div>
       </div>
     </div>
 
     <div class="new-address">
-      <ion-button (click)="navigateToAddressList()" expand="block"
+      <ion-button
+        expand="block"
+        class="ion-button-block"
+        (click)="navigateToAddressList()"
         >kaydet</ion-button
       >
     </div>

@@ -5,69 +5,15 @@
   align-content: space-between;
 }
 
-.input-item {
-  --border-radius: 10px;
-  padding: 0.7rem 0.5rem 0rem 0.5rem;
-}
-
 .delete-account-icon {
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 0.3rem;
 }
 
-.input-label {
-  padding-left: 0.8rem;
-  font-size: 0.8rem;
-  width: 100%;
-}
-.text-color {
-  color: #5e5e5e;
-}
-
-.white-text {
-  color: white;
-}
-.sec-bcg {
-  --background: linear-gradient(-45deg, #ff9300, #ee5f5f);
-}
-.ter-bcg {
-  --background: linear-gradient(-45deg, #ea8ed6, #7a81ff);
-}
 .log-out-btn {
   width: 100%;
   padding: 0rem 0.5rem 0.7rem 0.5rem;
-}
-
-.profile-icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
-}
-
-.email-icon {
-  width: 25px;
-  height: 16px;
-  margin-right: 5px;
-}
-
-.phone-icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
-}
-
-.lock-icon {
-  width: 16px;
-  height: 25px;
-  margin-right: 10px;
-  margin-left: 4px;
-}
-
-.account-icon {
-  width: 23px;
-  height: 23px;
-  margin-right: 7px;
 }
 
 .icon-padding {

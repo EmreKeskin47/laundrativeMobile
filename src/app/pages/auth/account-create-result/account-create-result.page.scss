@@ -3,15 +3,10 @@
   color: #e75761;
   padding-right: 1rem;
 }
-.toLowerCase {
-  text-transform: lowercase;
-}
+
 .message-container {
   display: flex;
   padding-left: 2rem;
-}
-.text-color {
-  color: gray;
 }
 
 .black-color {
@@ -24,10 +19,6 @@
 }
 .message {
   font-size: 0.7rem;
-}
-
-.toLowerCase {
-  text-transform: lowercase;
 }
 
 .button-padding {
@@ -60,8 +51,4 @@
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
-}
-
-.full-width {
-  width: 100%;
 }

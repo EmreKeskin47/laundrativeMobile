@@ -9,7 +9,6 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
-
 /* Core CSS required for Ionic components to work properly */
 
 @import "~@ionic/angular/css/core.css";
@@ -29,29 +28,178 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 @font-face {
-    font-family: "Avenir"; //This is what we are going to call
-    src: url("./assets/TT-Norms-Fonts/TTNorms-Regular.otf");
-}
-
-.btn-radius {
-    --border-radius: 11px;
-}
-
-ion-button {
-    --box-shadow: none;
-    --padding-start: 0;
-    --padding-end: 0;
-    font-size: 0.75rem;
+  font-family: "Avenir"; //This is what we are going to call
+  src: url("./assets/TT-Norms-Fonts/TTNorms-Regular.otf");
 }
 
 ion-tab-button {
-    --padding-start: 0;
-    --padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
 }
 
-ion-button {
-    &[disabled] {
-        //opacity: 0.5;
-        color: #FFF;
-    }
+.ion-button-block {
+  --box-shadow: none;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 11px;
+  font-size: 0.75rem;
+  text-transform: lowercase;
+  margin-right: 5px;
+  margin-left: 5px;
+
+  &[disabled] {
+    //opacity: 0.5;
+    color: #fff;
+  }
+}
+
+.border-radius {
+  border-radius: 11px;
+}
+
+.text-color {
+  color: #5e5e5e;
+  font-family: "Avenir";
+}
+.bold-text {
+  font-weight: bold;
+}
+.lowercase {
+  text-transform: lowercase;
+  font-family: "Avenir";
+}
+
+.pink-color {
+  color: rgb(255, 47, 146);
+}
+
+.full-width-padding {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.prm-bcg {
+  --background: linear-gradient(-45deg, #e75761, #db5776, #cf4f87, #b84092);
+}
+.sec-bcg {
+  --background: linear-gradient(-45deg, #ff9300, #ee5f5f);
+}
+.ter-bcg {
+  --background: linear-gradient(-45deg, #ea8ed6, #7a81ff);
+}
+
+.white-text {
+  color: white;
+}
+.white-bg {
+  --background: whitesmoke;
+}
+
+.black-text {
+  color: black;
+}
+
+.raleway-font {
+  font-family: "Raleway";
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+// INPUT ITEMS LABELS AND ICONS
+.input-ion-item {
+  --padding-start: 0.75rem;
+}
+
+.input-item-list {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 10px;
+  height: 3rem;
+}
+
+.input-error-message {
+  color: #5e5e5e;
+  font-weight: bold;
+  font-size: 0.6rem;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.input-full-width {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.input-label {
+  font-size: 0.75rem;
+  font-family: "Avenir";
+}
+
+.input-text {
+  font-size: 0.85rem;
+  font-family: "Avenir";
+}
+
+.input-profile-icon {
+  width: 22px;
+  height: 22px;
+  margin-left: 3px;
+  margin-right: 9px;
+}
+.input-email-icon {
+  width: 24px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.input-password-icon {
+  width: 16px;
+  height: 24px;
+  margin-right: 15px;
+  margin-left: 3px;
+}
+
+.input-home-icon {
+  width: 22px;
+  height: 22px;
+  margin-left: 3px;
+  margin-right: 9px;
+}
+
+.input-location-icon {
+  width: 16px;
+  height: 24px;
+  margin-right: 15px;
+  margin-left: 3px;
+}
+
+.input-phone-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 4px;
+}
+
+.input-account-icon {
+  width: 23px;
+  height: 23px;
+  margin-right: 11px;
+}
+
+.input-text-margin {
+  margin-left: 0.5rem;
+  --padding-top: 2px;
+  --padding-start: 0;
+}
+
+.input-border-radius {
+  --border-radius: 11px;
 }

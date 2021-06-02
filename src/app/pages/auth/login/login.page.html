@@ -21,25 +21,25 @@
       class="full-width"
     >
       <div>
-        <div class="input-container">
-          <ion-list class="list">
-            <ion-item lines="none">
+        <div class="input-full-width">
+          <ion-list class="input-item-list">
+            <ion-item lines="none" class="input-ion-item">
               <img
                 src="../../../../assets/icon/profil/email.png"
-                class="email-icon"
+                class="input-email-icon"
               />
-              <ion-label class="text-1rem"> </ion-label>
               <ion-input
                 type="text"
                 formControlName="email"
                 placeholder="e-mail"
+                class="input-text"
               ></ion-input>
             </ion-item>
           </ion-list>
-          <div class="validation-errors">
+          <div>
             <ng-container *ngFor="let validation of validation_messages.email">
               <div
-                class="error-message"
+                class="input-error-message"
                 *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
               >
                 {{ validation.message }}
@@ -48,27 +48,27 @@
           </div>
         </div>
 
-        <div class="input-container">
-          <ion-list class="list">
-            <ion-item lines="none">
+        <div class="input-full-width">
+          <ion-list class="input-item-list">
+            <ion-item lines="none" class="input-ion-item">
               <img
                 src="../../../../assets/icon/profil/parola.png"
-                class="icon"
+                class="input-password-icon"
               />
-              <ion-label class="text-1rem"> </ion-label>
               <ion-input
                 type="password"
                 formControlName="password"
                 placeholder="parola"
+                class="input-text"
               ></ion-input>
             </ion-item>
           </ion-list>
-          <div class="validation-errors">
+          <div>
             <ng-container
               *ngFor="let validation of validation_messages.password "
             >
               <div
-                class="error-message"
+                class="input-error-message"
                 *ngIf="validations_form.get('password').hasError(validation.type)&& (validations_form.get('password').dirty || validations_form.get('password').touched) "
               >
                 {{ validation.message }}
@@ -79,7 +79,7 @@
 
         <div class="first-button-container">
           <ion-item lines="none" color="medium">
-            <ion-label class="text-1rem">beni hatırla</ion-label>
+            <ion-label class="remember-me">beni hatırla</ion-label>
             <ion-checkbox
               class="checkbox"
               color="primary"
@@ -92,7 +92,7 @@
             fill="clear"
             expand="block"
             style="font-size: 0.7rem"
-            class="toLowerCase"
+            class="lowercase text-color"
             >parolamı hatırlamıyorum</ion-button
           >
         </div>
@@ -101,41 +101,38 @@
         <div class="button-padding">
           <ion-button
             expand="block"
-            class="toLowerCase"
+            class="lowercase ion-button-block"
             type="submit"
             [disabled]="!validations_form.valid"
             >giriş yap</ion-button
           >
         </div>
-        <div class="sign-in-buttons-container">
+        <div class="sign-in-buttons-container full-width-padding">
           <ion-button class="sign-btn" color="light"
             ><img
               src="../../../../assets/icon/profil/google.png"
               class="google-fb-icon"
             />
-            <p class="sign-options toLowerCase">google ile giriş yap</p>
+            <p class="sign-options lowercase">google ile giriş yap</p>
           </ion-button>
           <ion-button class="sign-btn" color="light"
             ><img
               src="../../../../assets/icon/profil/facebook.png"
               class="google-fb-icon"
             />
-            <p class="sign-options toLowerCase">facebook ile giriş yap</p>
+            <p class="sign-options lowercase">facebook ile giriş yap</p>
           </ion-button>
         </div>
       </div>
-      <div class="full-width">
-        <div class="button-padding btn-color">
-          <ion-button
-            (click)="navigateToSignup()"
-            fill="outline"
-            expand="block"
-            color="primary"
-            class="toLowerCase"
-          >
-            yeni hesap oluştur</ion-button
-          >
-        </div>
+      <div class="button-padding">
+        <ion-button
+          (click)="navigateToSignup()"
+          fill="outline"
+          expand="block"
+          class="lowercase ion-button-block pink-color"
+        >
+          yeni hesap oluştur</ion-button
+        >
       </div>
     </form>
   </div>

@@ -15,24 +15,24 @@
     <div style="padding-top: 5rem">
       <!--NAME-->
       <div class="input-container">
-        <ion-list class="list">
-          <ion-item lines="none">
+        <ion-list class="input-item-list">
+          <ion-item lines="none" class="input-ion-item">
             <img
-              src="../../../../assets/icon/profil_icon.png"
-              class="icon-profile"
+              src="./assets/icon/profil_icon.png"
+              class="input-profile-icon"
             />
-            <ion-label class="text-1rem"> </ion-label>
             <ion-input
               type="text"
               placeholder="isim soyisim"
               formControlName="name"
+              class="input-text"
             ></ion-input>
           </ion-item>
         </ion-list>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.name">
             <div
-              class="error-message"
+              class="input-error-message"
               *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)"
             >
               {{ validation.message }}
@@ -43,24 +43,24 @@
 
       <!--PHONE NUMBER-->
       <div class="input-container">
-        <ion-list class="list">
-          <ion-item lines="none">
+        <ion-list class="input-item-list">
+          <ion-item lines="none" class="input-ion-item">
             <img
-              src="../../../../assets/icon/profil/bize ulaşın.png"
-              class="icon-phone"
+              src="./assets/icon/profil/bize ulaşın.png"
+              class="input-phone-icon"
             />
-            <ion-label class="text-1rem"> </ion-label>
             <ion-input
               type="text"
               placeholder="cep telefonu"
               formControlName="phone"
+              class="input-text"
             ></ion-input>
           </ion-item>
         </ion-list>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.phone">
             <div
-              class="error-message"
+              class="input-error-message"
               *ngIf="validations_form.get('phone').hasError(validation.type)&&(validations_form.get('phone').dirty || validations_form.get('phone').touched)"
             >
               {{ validation.message }}
@@ -71,24 +71,24 @@
 
       <!-- Email -->
       <div class="input-container">
-        <ion-list class="list">
-          <ion-item lines="none">
+        <ion-list class="input-item-list">
+          <ion-item lines="none" class="input-ion-item">
             <img
-              src="../../../../assets/icon/profil/email.png"
-              class="icon-mail"
+              src="./assets/icon/profil/email.png"
+              class="input-email-icon"
             />
-            <ion-label class="text-1rem"> </ion-label>
             <ion-input
               type="text"
               formControlName="email"
               placeholder="e-mail"
+              class="input-text"
             ></ion-input>
           </ion-item>
         </ion-list>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.email">
             <div
-              class="error-message"
+              class="input-error-message"
               *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
             >
               {{ validation.message }}
@@ -99,17 +99,17 @@
 
       <div formGroupName="matching_passwords">
         <div class="input-container">
-          <ion-list class="list">
-            <ion-item lines="none">
+          <ion-list class="input-item-list">
+            <ion-item lines="none" class="input-ion-item">
               <img
-                src="../../../../assets/icon/profil/parola.png"
-                class="icon-password"
+                src="./assets/icon/profil/parola.png"
+                class="input-password-icon"
               />
-              <ion-label class="text-1rem"> </ion-label>
               <ion-input
                 type="password"
                 formControlName="password"
                 placeholder="parola"
+                class="input-text"
               ></ion-input>
             </ion-item>
           </ion-list>
@@ -118,7 +118,7 @@
               *ngFor="let validation of validation_messages.password"
             >
               <div
-                class="error-message"
+                class="input-error-message"
                 *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
               >
                 {{ validation.message }}
@@ -128,17 +128,17 @@
         </div>
 
         <div class="input-container">
-          <ion-list class="list">
-            <ion-item lines="none">
+          <ion-list class="input-item-list">
+            <ion-item lines="none" class="input-ion-item">
               <img
-                src="../../../../assets/icon/profil/parola.png"
-                class="icon-password"
+                src="./assets/icon/profil/parola.png"
+                class="input-password-icon"
               />
-              <ion-label class="text-1rem"> </ion-label>
               <ion-input
                 type="text"
                 formControlName="confirm_password"
                 placeholder="parola tekrar"
+                class="input-text"
               ></ion-input>
             </ion-item>
           </ion-list>
@@ -147,7 +147,7 @@
               *ngFor="let validation of validation_messages.confirm_password"
             >
               <div
-                class="error-message"
+                class="input-error-message"
                 *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
               >
                 {{ validation.message }}
@@ -161,7 +161,7 @@
       <div class="button-padding">
         <ion-button
           expand="block"
-          class="toLowerCase"
+          class="lowercase ion-button-block"
           type="submit"
           [disabled]="!validations_form.valid"
           >yeni hesap oluştur</ion-button
@@ -174,14 +174,14 @@
             src="../../../../assets/icon/profil/google.png"
             class="google-fb-icon"
           />
-          <p class="sign-options toLowerCase">sign up with google</p>
+          <p class="sign-options lowercase">sign up with google</p>
         </ion-button>
         <ion-button class="sign-btn" color="light">
           <img
             src="../../../../assets/icon/profil/facebook.png"
             class="google-fb-icon"
           />
-          <p class="sign-options toLowerCase">sign up with google</p>
+          <p class="sign-options lowercase">sign up with google</p>
         </ion-button>
       </div>
     </div>

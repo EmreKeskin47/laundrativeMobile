@@ -48,7 +48,7 @@
       (click)="selectType(1)"
       class="service-card"
     >
-      <div style="width: 100%">
+      <div class="full-width">
         <div class="card-content">
           <div class="text-color fee">
             {{ item.fiyatlar[0].fiyat | fiyat: item.fiyatlar[0].fiyat }}
@@ -85,7 +85,7 @@
       (click)="selectType(2)"
       class="service-card"
     >
-      <div style="width: 100%">
+      <div class="full-width">
         <div class="card-content">
           <div class="text-color fee">
             {{ expressCost | fiyat: expressCost }} <br /><b> express </b>
@@ -121,7 +121,7 @@
       (click)="selectType(3)"
       class="service-card"
     >
-      <div style="width: 100%">
+      <div class="full-width">
         <div class="card-content">
           <div class="text-color fee">
             {{ premiumCost | fiyat: premiumCost }} <br /><b> premium </b>

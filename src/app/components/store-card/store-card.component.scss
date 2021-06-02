@@ -7,18 +7,16 @@
   height: 3rem;
   width: 96vw;
   background-color: whitesmoke;
-  padding: 5;
-  box-shadow: 2px 2px #b9bed1;
+  padding: 5px;
+  box-shadow: 2px 5px #b9bed1;
 }
-.card-border-radius {
-  border-radius: 10px;
-}
+
 .content {
   display: flex;
 }
 .icon {
-  font-size: 1.5rem;
-  padding-top: 0.7rem;
+  font-size: 1.8rem;
+  padding-top: 0.4rem;
   padding-right: 0.5rem;
 }
 .card-title {
@@ -27,18 +25,15 @@
 .card-subtitle {
   font-size: 0.6rem;
 }
-
 .child {
   height: 5rem;
 }
-
 .absolute {
   position: absolute;
   bottom: 0;
   right: 0rem;
-  height: 5.5rem;
+  height: 5.8rem;
 }
-
 .relative {
   position: relative;
 }
@@ -50,20 +45,13 @@
   bottom: 0.3rem;
 }
 .child-card-title {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 .child-card-subtitle {
   font-size: 0.5rem;
+  text-align: center;
 }
-.text-color {
-  color: #5e5e5e;
-}
-
-.toLowerCase {
-  text-transform: lowercase;
-}
-
 .fav-icon {
   width: 1.5rem;
   height: 2rem;

@@ -50,10 +50,6 @@
   font-size: 0.5rem;
   font-weight: bold;
 }
-
-.text-color {
-  color: gray;
-}
 .half-width-seperator {
   width: 50vw;
   border-top: 2px solid rgb(36, 35, 35);
@@ -105,16 +101,11 @@
   padding-right: 2rem;
   padding-top: 0.5rem;
 }
-.lowerCase {
-  text-transform: lowercase;
-}
+
 .pay-btn {
   padding: 1rem;
 }
 
-.btn-clr {
-  color: #e75761;
-}
 .card-item-container {
   --padding-start: 0;
   --padding-end: 0;
@@ -133,9 +124,6 @@
   padding-left: 1.4rem;
   font-size: 0.8rem;
   width: 100%;
-}
-.text-color {
-  color: #5e5e5e;
 }
 
 .input-item {

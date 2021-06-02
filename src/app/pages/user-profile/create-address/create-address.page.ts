@@ -12,7 +12,6 @@ import { IonicSelectableComponent } from 'ionic-selectable';
   styleUrls: ['./create-address.page.scss'],
 })
 export class CreateAddressPage implements OnInit {
-  pageTitle = 'yeni adres oluştur';
   provinceList: AdresIl[];
   selectedProvince: AdresIl;
   districtList: Semt[];

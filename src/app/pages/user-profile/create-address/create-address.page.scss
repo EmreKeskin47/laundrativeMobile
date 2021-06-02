@@ -1,32 +1,27 @@
-.label-size {
-  font-size: 0.6rem;
-}
-.input-icon {
-  margin-top: 0.2rem;
-  font-size: 1.4rem;
-}
 .item-container {
   --border-radius: 10px;
   padding: 0.5rem;
 }
-.input-text {
-  font-size: 0.6rem;
-}
-.white {
-  color: white;
-}
-
-.gray-text {
-  color: gray;
-}
 
 .new-address {
   width: 100%;
-  padding: 1rem;
+  padding-bottom: 2rem;
 }
 .root {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  width: 20px;
+  height: 20px;
+}
+.checkbox-text {
+  font-size: 0.7rem;
+  color: #424242;
+  margin-top: 0.9rem;
 }

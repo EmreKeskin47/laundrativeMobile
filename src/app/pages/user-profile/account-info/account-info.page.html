@@ -10,84 +10,116 @@
 <ion-content color="medium">
   <div class="root">
     <!-- Account info labels-->
-    <div style="width: 100%">
-      <ion-item lines="none" class="input-item">
-        <img
-          src="../../../../assets/icon/profil_icon.png"
-          class="profile-icon"
-        />
-        <div class="input-label">
-          <ion-label class="text-color"> isim soyisim</ion-label>
-          <ion-input
-            [disabled]="disableEdit"
-            value="{{name}}"
-            (ionChange)="nameChange($event)"
-          >
-          </ion-input>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="input-item">
-        <img
-          src="../../../../assets/icon/profil/email.png"
-          class="email-icon"
-        />
-        <div class="input-label">
-          <ion-label class="text-color"> email adresi</ion-label>
-          <ion-input
-            [disabled]="disableEdit"
-            value="{{email}}"
-            (ionChange)="emailChange($event)"
-          >
-          </ion-input>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="input-item">
-        <img
-          src="../../../../assets/icon/profil/parola.png"
-          class="lock-icon"
-        />
-        <div class="input-label">
-          <ion-label class="text-color"> parola</ion-label>
-          <ion-input disabled> {{password}} </ion-input>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="input-item">
-        <img
-          src="../../../../assets/icon/profil/bize ulaşın.png"
-          class="phone-icon"
-        />
-        <div class="input-label">
-          <ion-label class="text-color"> telefon numaranız</ion-label>
-          <ion-input
-            [disabled]="disableEdit"
-            value="{{phone}}"
-            (ionChange)="phoneChange($event)"
-          >
-          </ion-input>
-        </div>
-      </ion-item>
-      <ion-item lines="none" class="input-item">
-        <img
-          src="../../../../assets/icon/profil/bağlı hesaplar.png"
-          class="account-icon"
-        />
-        <div class="input-label">
-          <ion-label class="text-color"> bağlı hesaplar </ion-label>
-          <ion-input disabled>google</ion-input>
-        </div>
-      </ion-item>
+    <div class="full-width">
+      <!-- NAME -->
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img src="./assets/icon/profil_icon.png" class="input-profile-icon" />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              isim soyisim</ion-label
+            >
+            <ion-input
+              [disabled]="disableEdit"
+              value="{{name}}"
+              (ionChange)="nameChange($event)"
+              class="input-text input-text-margin"
+            >
+            </ion-input>
+          </div>
+        </ion-item>
+      </div>
+
+      <!-- EMAIL -->
+
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img src="./assets/icon/profil/email.png" class="input-email-icon" />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              email adresi</ion-label
+            >
+            <ion-input
+              [disabled]="disableEdit"
+              value="{{email}}"
+              (ionChange)="emailChange($event)"
+              class="input-text input-text-margin"
+            >
+            </ion-input>
+          </div>
+        </ion-item>
+      </div>
+
+      <!-- PASSWORD -->
+
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img
+            src="./assets/icon/profil/parola.png"
+            class="input-password-icon"
+          />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              parola</ion-label
+            >
+            <ion-input class="input-text input-text-margin" disabled>
+              {{password}}
+            </ion-input>
+          </div>
+        </ion-item>
+      </div>
+
+      <!-- PHONE -->
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img
+            src="./assets/icon/profil/bize ulaşın.png"
+            class="input-phone-icon"
+          />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              telefon numaranız</ion-label
+            >
+            <ion-input
+              [disabled]="disableEdit"
+              value="{{phone}}"
+              (ionChange)="phoneChange($event)"
+              class="input-text input-text-margin"
+            >
+            </ion-input>
+          </div>
+        </ion-item>
+      </div>
+
+      <!-- BAĞLI HESAPLAR  -->
+      <div class="input-full-width">
+        <ion-item lines="none" class="input-ion-item input-border-radius">
+          <img
+            src="./assets/icon/profil/bağlı hesaplar.png"
+            class="input-account-icon"
+          />
+          <div class="input-label full-width">
+            <ion-label class="text-color input-label input-text-margin">
+              bağlı hesaplar
+            </ion-label>
+            <ion-input class="input-text input-text-margin" disabled
+              >google</ion-input
+            >
+          </div>
+        </ion-item>
+      </div>
       <!--edit save buttons-->
       <div style="padding-top: 1rem; text-align: end; padding-right: 1rem">
         <ion-chip class="sec-bcg" (click)="editClicked()">
           <img
-            src="../../../../assets/icon/button/edit.png"
+            src="./assets/icon/button/edit.png"
             class="edit-button-icon icon-padding"
           />
           <ion-label class="white-text">düzenle</ion-label>
         </ion-chip>
         <ion-chip class="ter-bcg" (click)="saveClicked()">
           <img
-            src="../../../../assets/icon/button/save.png"
+            src="./assets/icon/button/save.png"
             class="save-button-icon icon-padding"
           />
           <ion-label class="white-text">kaydet</ion-label>
@@ -98,7 +130,7 @@
     <div>
       <ion-chip (click)="navigateToDeleteAccount()" color="medium">
         <img
-          src="../../../../assets/icon/profil/hesabı sil.png"
+          src="./assets/icon/profil/hesabı sil.png"
           class="delete-account-icon"
         />
         <ion-label>hesabımı laundrative’den sil</ion-label>
@@ -107,7 +139,10 @@
 
     <!--Log out button-->
     <div class="log-out-btn">
-      <ion-button (click)="navigateToLogin()" expand="block"
+      <ion-button
+        (click)="navigateToLogin()"
+        class="ion-button-block"
+        expand="block"
         >çıkış yap</ion-button
       >
     </div>

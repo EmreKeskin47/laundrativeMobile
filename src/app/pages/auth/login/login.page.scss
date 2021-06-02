@@ -1,40 +1,15 @@
 .root {
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
 }
-.full-width {
-  width: 100%;
-}
+
 .title {
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
   color: #5e5e5e;
-}
-.list {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  border-radius: 10px;
-}
-.input-container {
-  padding: 0.5rem;
-}
-
-.email-icon {
-  width: 24px;
-  height: 16px;
-  margin-right: 10px;
-  margin-top: 0.2rem;
-}
-
-.icon {
-  width: 16px;
-  height: 24px;
-  margin-right: 15px;
-  margin-left: 3px;
-  margin-top: 0.6rem;
 }
 
 .google-fb-icon {
@@ -42,15 +17,14 @@
   height: 20px;
 }
 
-.text-1rem {
-  font-size: 0.8rem;
-  color: black;
+.remember-me {
+  font-size: 0.7rem;
+  color: #424242;
 }
 
 .first-button-container {
   display: flex;
   justify-content: space-between;
-  color: black;
 }
 .checkbox {
   width: 20px;
@@ -58,18 +32,14 @@
   margin-right: 0.6rem;
 }
 
-.icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.7rem;
-}
-
 .sign-in-buttons-container {
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0.6rem 0rem 0.6rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 .sign-options {
-  padding-left: 0.4rem;
+  padding-left: 10px;
   padding-top: 0.8rem;
   font-size: 0.6rem;
   flex: 1;
@@ -83,20 +53,5 @@
 }
 
 .button-padding {
-  padding: 2.5rem 0.5rem 0rem 0.5rem;
-}
-.btn-color {
-  color: #ff2f92;
-}
-
-.toLowerCase {
-  text-transform: lowercase;
-}
-
-.error-message {
-  color: #5e5e5e;
-  font-weight: bold;
-  font-size: 0.8rem;
-  margin-left: 10px;
-  margin-top: 10px;
+  padding-top: 2.5rem;
 }

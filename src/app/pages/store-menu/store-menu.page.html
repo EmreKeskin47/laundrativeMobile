@@ -43,7 +43,7 @@
   <div class="button-container">
     <div>
       <ion-button
-        class="toLowerCase service-select-btn"
+        class="lowercase service-select-btn"
         color="secondary"
         (click)="expandServiceOptions()"
       >
@@ -59,7 +59,7 @@
         <div>
           <div *ngFor="let cat of storeCategories">
             <ion-button
-              class="toLowerCase service-select-btn"
+              class="lowercase service-select-btn"
               fill="clear"
               (click)="categorySelect(cat)"
             >
@@ -73,7 +73,7 @@
           </div>
           <div>
             <ion-button
-              class="toLowerCase service-select-btn"
+              class="lowercase service-select-btn"
               fill="clear"
               (click)="categorySelect(null)"
             >
@@ -90,7 +90,7 @@
         name="settings-sharp"
         class="text-color discount-btn"
       ></ion-icon>
-      <div class="text-color toLowerCase">kampanyalar</div>
+      <div class="text-color lowercase">kampanyalar</div>
     </ion-button>
   </div>
 
@@ -116,7 +116,7 @@
           [itemType]="alreadyAddedToCard.secilenTip"
           itemImage="{{alreadyAddedToCard.cins_resmi}}"
           [itemDeliveryDate]="alreadyAddedToCard.teslimatTarihi"
-          style="width: 100%"
+          class="full-width"
         ></app-store-item>
       </ion-item>
       <div>
@@ -172,7 +172,7 @@
               [itemDeliveryDate]="item.teslimatTarihi"
               itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
               [dateOverPrice]="selected==item"
-              style="width: 100%"
+              class="full-width"
             ></app-store-item>
           </ion-item>
           <div *ngIf="selected == item">
@@ -216,7 +216,7 @@
                   [itemDeliveryDate]="item.teslimatTarihi"
                   itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
                   [dateOverPrice]="selected==item"
-                  style="width: 100%"
+                  class="full-width"
                 ></app-store-item>
               </ion-item>
             </div>
@@ -239,7 +239,7 @@
                     [itemDeliveryDate]="item.teslimatTarihi"
                     itemCost="{{item.fiyatlar[item.secilenTip-1].fiyat}}"
                     [dateOverPrice]="selected==item"
-                    style="width: 100%"
+                    class="full-width"
                   ></app-store-item>
                 </ion-item>
               </div>

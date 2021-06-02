@@ -1,5 +1,5 @@
 <!-- DatePicker Component-->
-<div class="date-container">
+<div class="date-container full-width-padding">
   <!-- <ion-label class="text-1rem"> {{ calenderTitle }}</ion-label> -->
   <ion-item-group class="item-group">
     <ion-item lines="none" class="border-radius date-item">
@@ -12,12 +12,12 @@
         <ion-datetime
           (ionChange)="dateChange($event)"
           monthValues="{{ months }}"
-          displayFormat="MMMM DD"
-          month-names="ocak, şubat, mart, nisan, mayıs, haziran, temmuz, ağustos, ,eylül, ekim, kasım, aralık"
+          displayFormat="DD.MM.YYYY DDDD"
+          day-names="Pazartesi,Salı,Çarşamba,Perşembe,Cuma,Cumartesi,Pazar"
           value="{{ initialDate ? futureDate : currentDate }}"
           cancelText="iptal"
           doneText="onayla"
-          style="padding: 0"
+          style="padding: 0; font-size: 0.8rem"
         ></ion-datetime>
       </div>
     </ion-item>
@@ -34,7 +34,7 @@
           hour-values=" 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "
           cancelText="iptal"
           doneText="onayla"
-          style="padding: 0"
+          style="padding: 0; font-size: 0.8rem"
         ></ion-datetime>
       </div>
     </ion-item>
