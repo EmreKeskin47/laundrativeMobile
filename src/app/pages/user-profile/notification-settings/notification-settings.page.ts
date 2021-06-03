@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notification-settings.page.scss'],
 })
 export class NotificationSettingsPage implements OnInit {
-  pageTitle = 'bildirim ayarları';
   mobileSelected: number = 1;
   emailSelected: number = 1;
   selectedNotifications: number[] = [0, 1, 2, 3, 4, 5, 6, 7];

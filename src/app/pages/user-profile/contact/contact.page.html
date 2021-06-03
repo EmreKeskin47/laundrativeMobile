@@ -3,19 +3,19 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-title>bize ulaşın</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
   <div>
-    <ion-chip class="container">
+    <ion-chip class="ion-chip-container">
       <div style="display: flex">
         <img
-          src="../../../../assets/icon/profil/nasıl çalışıyoruz.png"
-          class="icon-1 margin-right"
+          src="./assets/icon/profil/nasil-calisiyoruz.png"
+          class="chip-how-icon"
         />
-        <ion-label class="label text-color bold-text"
+        <ion-label class="ion-chip-label text-color bold-text"
           >nasıl çalışıyoruz ?</ion-label
         >
       </div>
@@ -24,13 +24,13 @@
       </div>
     </ion-chip>
 
-    <ion-chip class="container">
+    <ion-chip class="ion-chip-container">
       <div style="display: flex">
         <img
-          src="../../../../assets/icon/profil/nasıl çalışıyoruz.png"
-          class="icon-1 margin-right"
+          src="./assets/icon/profil/nasil-calisiyoruz.png"
+          class="chip-how-icon"
         />
-        <ion-label class="label text-color bold-text"
+        <ion-label class="ion-chip-label text-color bold-text"
           >laundrative nasıl kullanılır ?</ion-label
         >
       </div>
@@ -39,13 +39,15 @@
       </div>
     </ion-chip>
 
-    <ion-chip class="container" (click)="messagePressed()">
+    <ion-chip class="ion-chip-container" (click)="messagePressed()">
       <div style="display: flex">
         <img
-          src="../../../../assets/icon/profil/mesaj gönderin.png"
-          class="icon-3 margin-right"
+          src="../../../../assets/icon/profil/mesaj-gonder.png"
+          class="chip-email-icon"
         />
-        <ion-label class="label text-color bold-text">mesaj gönderin</ion-label>
+        <ion-label class="ion-chip-label text-color bold-text"
+          >mesaj gönderin</ion-label
+        >
       </div>
       <div *ngIf="!showMessage else downArrow">
         <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
@@ -80,13 +82,15 @@
       </div>
     </div>
 
-    <ion-chip class="container">
+    <ion-chip class="ion-chip-container">
       <div style="display: flex">
         <img
           src="../../../../assets/icon/profil/telefon-filled.png"
-          class="icon-4 margin-right"
+          class="chip-phone-icon-filled"
         />
-        <ion-label class="label text-color bold-text">sizi arayalım</ion-label>
+        <ion-label class="ion-chip-label text-color bold-text"
+          >sizi arayalım</ion-label
+        >
       </div>
       <div>
         <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>

@@ -5,12 +5,9 @@
   align-content: space-between;
 }
 .message-container {
-  padding: 2rem 0rem 2rem 3rem;
+  padding: 2rem 0rem 2rem 4.7rem;
 }
 
-.black-color {
-  color: black;
-}
 .title {
   font-weight: bold;
   font-size: 14px;
@@ -26,18 +23,15 @@
 }
 .btn-padding {
   padding-bottom: 2rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 
 .inner-item {
-  border-radius: 15px;
   font-size: 0.9rem;
   width: 100%;
 }
 
 .text-area {
-  --border-radius: 20px;
+  --border-radius: 11px;
   font-size: 0.8rem;
   padding: 0.5rem 1rem 0rem 4.5rem;
 }

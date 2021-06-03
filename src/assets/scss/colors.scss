@@ -1,0 +1,26 @@
+.text-color {
+  color: #5e5e5e !important;
+  font-family: "Avenir";
+}
+.black-text {
+  color: #424242;
+  font-family: "Avenir";
+}
+.prm-bcg {
+  --background: linear-gradient(-45deg, #e75761, #db5776, #cf4f87, #b84092);
+}
+.sec-bcg {
+  --background: linear-gradient(-45deg, #ff9300, #ee5f5f);
+}
+.ter-bcg {
+  --background: linear-gradient(-45deg, #ea8ed6, #7a81ff);
+}
+.white-text {
+  color: white;
+}
+.white-bg {
+  --background: whitesmoke;
+}
+.pink-color {
+  color: rgb(255, 47, 146);
+}
