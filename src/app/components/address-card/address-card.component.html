@@ -1,6 +1,6 @@
-<ion-card class="card-container">
+<ion-card class="card-container item-border-radius full-width-margin">
   <div style="display: flex">
-    <ion-icon class="address-icon" name="home"></ion-icon>
+    <img src="../../../assets/icons/home.png" class="address-home-icon" />
     <div>
       <ion-input
         class="text gray-text input"
@@ -44,7 +44,7 @@
   </div>
 
   <div style="display: flex">
-    <ion-icon class="location-icon" name="location"></ion-icon>
+    <img src="../../../assets/icons/location_icon.png" class="location-icon" />
     <div style="padding-top: 0.6rem">
       <div>
         <ion-label class="title-label black-text">paylaşılan konum</ion-label>
@@ -53,24 +53,41 @@
     </div>
   </div>
 </ion-card>
-<div style="text-align: end; padding-right: 1rem">
-  <ion-chip *ngIf="!editPressed" class="sec-bcg" (click)="editClicked()">
-    <ion-icon class="white-text" name="pencil"></ion-icon>
-    <ion-label class="white-text">düzenle</ion-label>
-  </ion-chip>
 
-  <ion-chip *ngIf="editPressed" class="prm-bcg" (click)="editClicked()">
-    <ion-icon class="white-text" name="pencil"></ion-icon>
-    <ion-label class="white-text">vazgeç</ion-label>
-  </ion-chip>
+<div style="text-align: end">
+  <ion-button
+    *ngIf="!editPressed"
+    color="secondary"
+    class="crud-button"
+    (click)="editClicked()"
+  >
+    <img src="../../../assets/icons/button/edit.png" class="crud-edit-icon" />
 
-  <ion-chip *ngIf="!editPressed" class="prm-bcg" (click)="deleteClicked()">
-    <ion-icon class="white-text" name="close"></ion-icon>
-    <ion-label class="white-text">kaldır</ion-label>
-  </ion-chip>
+    <ion-label class="white-text lowercase">düzenle</ion-label>
+  </ion-button>
 
-  <ion-chip *ngIf="editPressed" class="sec-bcg" (click)="updateClicked()">
-    <ion-icon class="white-text" name="checkmark-outline"></ion-icon>
-    <ion-label class="white-text">değişiklikleri kaydet</ion-label>
-  </ion-chip>
+  <ion-button
+    *ngIf="editPressed"
+    class="crud-button"
+    color="secondary"
+    (click)="updateClicked()"
+  >
+    <img src="../../../assets/icons/button/edit.png" class="crud-edit-icon" />
+    <ion-label class="white-text lowercase">değişiklikleri kaydet</ion-label>
+  </ion-button>
+
+  <ion-button
+    *ngIf="!editPressed"
+    class="crud-button"
+    (click)="deleteClicked()"
+  >
+    <img src="../../../assets/icons/button/delete.png" class="crud-edit-icon" />
+    <ion-label class="white-text lowercase">kaldır</ion-label>
+  </ion-button>
+
+  <ion-button *ngIf="editPressed" class="crud-button" (click)="editClicked()">
+    <img src="../../../assets/icons/button/delete.png" class="crud-edit-icon" />
+
+    <ion-label class="white-text lowercase">vazgeç</ion-label>
+  </ion-button>
 </div>

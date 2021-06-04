@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-title>detaylı arama</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,32 +14,9 @@
   </div>
 
   <div *ngIf="!isLogged; else logged">
-    <ion-item lines="none" class="item-container">
-      <ion-label class="gray-text">il</ion-label>
-      <ionic-selectable
-        [(ngModel)]="selectedProvince"
-        [items]="provinceList"
-        itemValueField="id"
-        itemTextField="adi"
-        [canSearch]="true"
-        (onChange)="provinceChange($event)"
-      >
-      </ionic-selectable>
-    </ion-item>
-
-    <ion-item lines="none" class="item-container">
-      <ion-label class="gray-text">Mahalle</ion-label>
-      <ionic-selectable
-        [(ngModel)]="selectedDistrict"
-        [items]="searchableDistrictList"
-        itemValueField="mahalleId"
-        itemTextField="listeAdi"
-        [canSearch]="true"
-        [hasVirtualScroll]="true"
-        (onChange)="districtChange($event)"
-      >
-      </ionic-selectable>
-    </ion-item>
+    <app-city-district-picker
+      (selectedSemt)="adjustSelectedDistrict($event)"
+    ></app-city-district-picker>
   </div>
   <ng-template #logged>
     <app-adress-field (address)="addressChange($event)"></app-adress-field>
@@ -61,13 +38,15 @@
   <div class="date-adress-label text-color">
     <ion-label>ürün/hizmet arayın</ion-label>
   </div>
+
   <ion-searchbar
     showCancelButton="focus"
     (ionChange)="searchText($event)"
-    class="text-color"
+    class="text-color full-width-padding"
     cancelButtonText="vazgeç"
     placeholder="ürün ara"
   ></ion-searchbar>
+
   <ion-infinite-scroll>
     <div *ngIf="searchResult!== [] && textInput">
       <div *ngFor="let item of searchResult.slice(0, 10)">
@@ -78,7 +57,7 @@
             itemImage="{{item.resim}}"
           ></app-store-item>
           <div>
-            <ion-label class="category-name text-color"
+            <ion-label class="category-name black-text bold-text"
               >{{itemCategoryName[item.kategori]}}</ion-label
             >
             <ion-button
@@ -125,7 +104,7 @@
               <ion-label class="text-color item-name">{{item.isim}}</ion-label>
             </ion-col>
             <ion-col size="auto" style="padding: 0">
-              <ion-label class="text-color item-category">
+              <ion-label class="black-text bold-text item-category">
                 {{itemCategoryName[item.kategori]}}
               </ion-label>
             </ion-col>
@@ -141,7 +120,7 @@
     details="false"
     lines="none"
     color="medium"
-    style="height: 1.9rem"
+    class="checkbox-margin"
   >
     <ion-label class="text-color checkbox-text">ücretsiz teslimat</ion-label>
     <ion-checkbox class="checkbox" color="primary" slot="start"></ion-checkbox>
@@ -152,7 +131,7 @@
     details="false"
     lines="none"
     color="medium"
-    style="height: 1.9rem"
+    class="checkbox-margin"
   >
     <ion-label class="text-color checkbox-text"
       >sadece promosyon olanları göster</ion-label
@@ -162,7 +141,7 @@
 
   <div class="search-btn">
     <ion-button
-      class="lowerCase"
+      class="lowercase ion-button-block"
       [disabled]="!selectedDistrict && !selectedAddress"
       (click)="navigateToStoreList()"
       expand="block"

@@ -1,0 +1,34 @@
+<ion-item lines="none" class="full-width-padding item-padding-top">
+  <ion-label class="text-color">il</ion-label>
+  <ionic-selectable
+    [(ngModel)]="selectedProvince"
+    [items]="provinceList"
+    itemValueField="id"
+    itemTextField="adi"
+    searchFailText="İl bulunamadı"
+    closeButtonText="Vazgeç"
+    searchPlaceholder="Ara"
+    [canSearch]="true"
+    (onChange)="provinceChange($event)"
+    class="black-text bold-text"
+  >
+  </ionic-selectable>
+</ion-item>
+
+<ion-item lines="none" class="full-width-padding item-padding-top">
+  <ion-label class="text-color">Mahalle</ion-label>
+  <ionic-selectable
+    [(ngModel)]="selectedDistrict"
+    [items]="searchableDistrictList"
+    itemValueField="mahalleId"
+    itemTextField="listeAdi"
+    searchFailText="Mahalle bulunamadı"
+    closeButtonText="Vazgeç"
+    searchPlaceholder="Ara"
+    [canSearch]="true"
+    [hasVirtualScroll]="true"
+    (onChange)="districtChange($event)"
+    class="black-text bold-text"
+  >
+  </ionic-selectable>
+</ion-item>

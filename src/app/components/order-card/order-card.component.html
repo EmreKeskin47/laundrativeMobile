@@ -18,7 +18,10 @@
       </div>
       <div *ngIf="!details; else detailOpen">
         <div class="text-tick-container">
-          <img src="../../../assets/icon/checkbox-check.png" class="check" />
+          <img
+            src="../../../assets/icons/filled/checkbox-check.png"
+            class="check"
+          />
           <ion-label class="gray is-done-label"> tamamlandı </ion-label>
         </div>
 
@@ -30,7 +33,7 @@
     <ng-template #detailOpen>
       <div class="detail-open">
         <ion-label class="gray is-done-label">sipariş detayları</ion-label>
-        <img src="../../../assets/icon/profil/arrow up.png" class="arrow-up" />
+        <img src="../../../assets/icons/button/arrow_up.png" class="arrow-up" />
       </div>
     </ng-template>
   </ion-item>
@@ -110,7 +113,7 @@
           </div>
           <div *ngIf="!details; else downArrow" class="detail-close">
             <img
-              src="../../../assets/icon/profil/arrow up.png"
+              src="../../../assets/icons/button/arrow_up.png"
               class="arrow-up"
             />
             <ion-label class="gray is-done-label">sipariş detayları</ion-label>
@@ -118,7 +121,7 @@
           <ng-template #downArrow>
             <div class="detail-close">
               <img
-                src="../../../assets/icon/profil/arrow down.png"
+                src="../../../assets/icons/button/arrow_down.png"
                 class="arrow-up"
               />
               <ion-label class="gray is-done-label"

@@ -1,0 +1,17 @@
+$crud-radius: 9px;
+
+.crud-button {
+  height: 2rem;
+  --padding-start: 0.5rem;
+  margin: 0;
+  font-size: 0.8rem;
+  --padding-end: 0.8rem;
+  --border-radius: 9px;
+  padding-right: 5px;
+}
+
+.crud-edit-icon {
+  width: 16px;
+  height: 15px;
+  margin-right: 0.4rem;
+}

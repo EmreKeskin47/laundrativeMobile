@@ -32,6 +32,7 @@
 @import "./assets/scss/colors.scss";
 @import "./assets/scss/input-item.scss";
 @import "./assets/scss/ion-chip.scss";
+@import "./assets/scss/crud-buttons.scss";
 
 $radius: 11px;
 
@@ -64,6 +65,9 @@ ion-tab-button {
 .border-radius {
   border-radius: $radius;
 }
+.item-border-radius {
+  --border-radius: $radius;
+}
 
 .bold-text {
   font-weight: bold;
@@ -73,8 +77,12 @@ ion-tab-button {
 }
 
 .full-width-padding {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.full-width-margin {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
 }
 
 .full-width {

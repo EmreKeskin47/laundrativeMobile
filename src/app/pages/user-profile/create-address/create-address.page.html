@@ -10,37 +10,16 @@
 <ion-content color="medium">
   <div class="root">
     <div class="full-width">
-      <ion-item lines="none" class="item-container">
-        <ion-label class="gray-text">il</ion-label>
-        <ionic-selectable
-          [(ngModel)]="selectedProvince"
-          [items]="provinceList"
-          itemValueField="id"
-          itemTextField="adi"
-          [canSearch]="true"
-          (onChange)="provinceChange($event)"
-        >
-        </ionic-selectable>
-      </ion-item>
-
-      <ion-item lines="none" class="item-container">
-        <ion-label class="gray-text">Mahalle</ion-label>
-        <ionic-selectable
-          [(ngModel)]="selectedDistrict"
-          [items]="searchableDistrictList"
-          itemValueField="mahalleId"
-          itemTextField="listeAdi"
-          [canSearch]="true"
-          [hasVirtualScroll]="true"
-          (onChange)="districtChange($event)"
-        >
-        </ionic-selectable>
-      </ion-item>
-
+      <app-city-district-picker
+        (selectedSemt)="adjustSelectedDistrict($event)"
+      ></app-city-district-picker>
       <!-- ADRES BAŞLIĞI -->
       <div class="input-full-width">
         <ion-item lines="none" class="input-ion-item input-border-radius">
-          <img src="../../../../assets/icon/home.png" class="input-home-icon" />
+          <img
+            src="../../../../assets/icons/home.png"
+            class="input-home-icon"
+          />
           <div class="input-label full-width">
             <ion-label class="text-color input-label input-text-margin">
               adres başlığı *</ion-label
@@ -59,7 +38,7 @@
       <div class="input-full-width">
         <ion-item lines="none" class="input-ion-item input-border-radius">
           <img
-            src="../../../../assets/icon/home.png"
+            src="../../../../assets/icons/home.png"
             class="input-home-icon"
             style="margin-top: 9px"
           />
@@ -80,7 +59,7 @@
       <div class="input-full-width">
         <ion-item lines="none" class="input-ion-item input-border-radius">
           <img
-            src="../../../../assets/icon/teslim_etme_active.png"
+            src="../../../../assets/icons/teslim_etme_active.png"
             class="input-location-icon"
           />
           <div class="input-label full-width">
@@ -110,7 +89,7 @@
         <div class="input-full-width">
           <ion-item lines="none" class="input-ion-item input-border-radius">
             <img
-              src="../../../../assets/icon/profil_icon.png"
+              src="../../../../assets/icons/profil/profil_icon.png"
               class="input-profile-icon"
             />
             <div class="input-label full-width">
@@ -129,7 +108,7 @@
         <div class="input-full-width">
           <ion-item lines="none" class="input-ion-item input-border-radius">
             <img
-              src="../../../../assets/icon/profil/bize-ulaşın.png"
+              src="../../../../assets/icons/profil/bize-ulaşın.png"
               class="input-phone-icon"
             />
             <div class="input-label full-width">

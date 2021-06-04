@@ -9,7 +9,10 @@
           class="plus-minus-btn"
           (click)="minus()"
         >
-          <img src="../../../assets/icon/minus.png" class="amount-minus" />
+          <img
+            src="../../../assets/icons/filled/minus.png"
+            class="amount-minus"
+          />
         </ion-button>
       </div>
       <ng-template #noMinus>
@@ -19,7 +22,10 @@
           class="plus-minus-btn"
           (click)="removeFromCard()"
         >
-          <img src="../../../assets/icon/minus.png" class="amount-minus" />
+          <img
+            src="../../../assets/icons/filled/minus.png"
+            class="amount-minus"
+          />
         </ion-button>
       </ng-template>
 
@@ -30,7 +36,7 @@
         class="plus-minus-btn"
         (click)="plus()"
       >
-        <img src="../../../assets/icon/ekle.png" class="amount-icons" />
+        <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
       </ion-button>
     </div>
     <div class="cost" style="padding-right: 1rem">
@@ -56,13 +62,13 @@
           </div>
           <div *ngIf="selectedType != 1; else selected">
             <img
-              src="../../../assets/icon/deactive.png"
+              src="../../../assets/icons/deactive.png"
               class="check-btn active-img"
             />
           </div>
           <ng-template #selected>
             <img
-              src="../../../assets/icon/active.png"
+              src="../../../assets/icons/active.png"
               class="check-btn active-img"
             />
           </ng-template>
@@ -92,13 +98,13 @@
           </div>
           <div *ngIf="selectedType != 2; else selected">
             <img
-              src="../../../assets/icon/deactive.png"
+              src="../../../assets/icons/deactive.png"
               class="check-btn active-img"
             />
           </div>
           <ng-template #selected>
             <img
-              src="../../../assets/icon/active.png"
+              src="../../../assets/icons/active.png"
               class="check-btn active-img"
             />
           </ng-template>
@@ -128,13 +134,13 @@
           </div>
           <div *ngIf="selectedType != 3; else selected">
             <img
-              src="../../../assets/icon/deactive.png"
+              src="../../../assets/icons/deactive.png"
               class="check-btn active-img"
             />
           </div>
           <ng-template #selected>
             <img
-              src="../../../assets/icon/active.png"
+              src="../../../assets/icons/active.png"
               class="check-btn active-img"
             />
           </ng-template>

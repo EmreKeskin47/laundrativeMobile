@@ -1,4 +1,3 @@
-import { IonicSelectableModule } from 'ionic-selectable';
 import { ComponentsModule } from '../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,8 +14,6 @@ import { StoreMenuPage } from './store-menu.page';
     FormsModule,
     IonicModule,
     StoreMenuPageRoutingModule,
-    ComponentsModule,
-    IonicSelectableModule,
     ComponentsModule,
   ],
   declarations: [StoreMenuPage],

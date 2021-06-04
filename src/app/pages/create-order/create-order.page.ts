@@ -2,11 +2,7 @@ import { MusteriAdres } from './../../models/MusteriAdres';
 import { AuthService } from './../../services/auth.service';
 import { Isletme } from './../../models/İsletme';
 import { SemtListe } from './../../models/ui/SemtListe';
-import { Semt } from './../../models/Semt';
 import { InstitutionService } from './../../services/institution.service';
-import { IonicSelectableComponent } from 'ionic-selectable';
-import { AddressService } from './../../services/address.service';
-import { AdresIl } from '../../models/AdresIl';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -17,16 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class CreateOrderPage implements OnInit {
   title = 'mağaza arayın';
   insList: Isletme[];
-  provinceList: AdresIl[] = [];
-  selectedProvince: AdresIl;
-  districtList: Semt[] = [];
-  searchableDistrictList: SemtListe[] = [];
   selectedDistrict: SemtListe;
 
   selectedDate: Date;
   selectedTime: Date;
   selectedAddress: MusteriAdres;
-
   isLogged = this.authService.getCredentials().token;
 
   //Find a better way
@@ -38,47 +29,17 @@ export class CreateOrderPage implements OnInit {
   isSelected6 = false;
   isSelected7 = false;
 
-  image =
-    'https://media.istockphoto.com/photos/colorful-clothes-in-laundry-basket-blue-indigo-purple-picture-id119623848?k=6&m=119623848&s=612x612&w=0&h=g8_MG32-0cSlkH4RjBHzMiyH_gGPPg9rObdK-i-FUNk=';
-
   constructor(
     private router: Router,
-    private addressService: AddressService,
     private institutionService: InstitutionService,
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
-    this.addressService.getAllProvinces().subscribe((pro) => {
-      this.provinceList = pro;
-    });
-  }
+  ngOnInit(): void {}
 
-  provinceChange(event: { component: IonicSelectableComponent; value: any }) {
-    this.selectedProvince = event.value;
-    if (this.selectedDistrict) {
-      this.selectedDistrict = null;
-    }
-    this.searchableDistrictList = [];
-    this.addressService
-      .getDistrict(this.selectedProvince.id)
-      .subscribe((dist) => {
-        this.districtList = dist;
-        for (let i = 0; i < this.districtList.length; i++) {
-          for (let j = 0; j < this.districtList[i].mahalleler.length; j++) {
-            let item = new SemtListe(
-              this.districtList[i].mahalleler[j].adi,
-              this.districtList[i].mahalleler[j].id,
-              this.districtList[i].ilceAdi
-            );
-            this.searchableDistrictList.push(item);
-          }
-        }
-      });
-  }
-
-  districtChange(event: { component: IonicSelectableComponent; value: any }) {
-    this.selectedDistrict = event.value;
+  adjustSelectedDistrict(event: SemtListe) {
+    this.selectedDistrict = event;
+    console.log(event);
   }
 
   navigateToStoreList() {
@@ -180,7 +141,6 @@ export class CreateOrderPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.selectedProvince = null;
     this.selectedDistrict = null;
   }
 }

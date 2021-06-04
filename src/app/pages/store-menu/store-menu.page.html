@@ -25,7 +25,7 @@
         </div>
 
         <div *ngIf="selectedIns.favori>0">
-          <img src="../../../assets/icon/favs.png" class="fav-icon" />
+          <img src="../../../assets/icons/favs.png" class="fav-icon" />
         </div>
       </div>
 
@@ -64,8 +64,7 @@
               (click)="categorySelect(cat)"
             >
               <img
-                src='{{"../../../assets/create-order/" + itemCategoryName[cat]
-              + ".png"}}'
+                src='{{"../../../assets/icons/category/"+cat+".png"}}'
                 class="cat-icon"
               />
               {{itemCategoryName[cat]}}

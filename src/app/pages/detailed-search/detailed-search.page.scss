@@ -7,7 +7,7 @@
 
 .rounded {
   border-top: 3px solid rgb(26, 25, 25);
-  width: 85%;
+  width: 95%;
   opacity: 0.8;
   margin: auto;
 }
@@ -21,7 +21,7 @@
 
 .search-btn {
   padding-top: 3rem;
-  padding: 3rem 1rem 3rem 1rem;
+  padding-bottom: 2rem;
 }
 
 .relative {
@@ -30,27 +30,23 @@
 
 .select-btn {
   padding-right: 1.5rem;
-  margin-top: 1rem;
-  height: 1.5rem;
+  margin-top: 0.5rem;
+  height: 1.8rem;
   position: absolute;
   top: 0rem;
-  right: 0rem;
+  right: -0.5rem;
   z-index: 9;
   font-size: 1rem;
-}
-
-.item-container {
-  --border-radius: 20px;
-  padding: 0.5rem;
+  width: 6rem;
+  --border-radius: 7px;
+  --padding-bottom: 3px;
 }
 
 .category-name {
   position: absolute;
-  top: 2rem;
-  right: 7rem;
+  top: 1.3rem;
+  right: 6.4rem;
   font-size: 0.5rem;
-  color: black;
-  font-weight: bold;
 }
 
 .added-filter-padding {
@@ -80,4 +76,9 @@
   text-align: right;
   padding: 0;
   margin: 0;
+}
+
+.checkbox-margin {
+  height: 1.9rem;
+  --padding-start: 0;
 }
