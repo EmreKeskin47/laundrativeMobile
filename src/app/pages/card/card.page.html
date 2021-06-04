@@ -8,40 +8,15 @@
 
   <ng-template #storeSelected>
     <!-- Store Info -->
-    <div class="container-padding card-border-radius">
-      <div class="relative container card-border-radius">
-        <div class="content">
-          <div style="display: flex">
-            <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
-            <div style="padding-top: 0.4rem">
-              <ion-card-subtitle class="card-title text-color"
-                >{{ selectedIns.kurum_adi }}</ion-card-subtitle
-              >
-              <ion-card-title class="card-subtitle text-color">
-                {{ insLocation }}
-              </ion-card-title>
-            </div>
-          </div>
-
-          <div *ngIf="selectedIns.favori>0">
-            <img src="../../../assets/icons/favs.png" class="fav-icon" />
-          </div>
-        </div>
-
-        <div class="min-fee text-color">
-          min sipariş tutarı {{ selectedIns.min_siparis_tutari |
-          fiyat:selectedIns.min_siparis_tutari }}
-          <br />
-          {{selectedIns.min_servis_tutari |
-          fiyat:selectedIns.min_servis_tutari}} ve üzeri siparişlerde ücretsiz
-          servis
-        </div>
-      </div>
-    </div>
+    <app-store-info-card
+      [selectedIns]="selectedIns"
+      [selectedInsLocation]="insLocation"
+    >
+    </app-store-info-card>
 
     <!-- Card Contents -->
     <div class="card-padding">
-      <ion-content scrollY="true" class="card-container container">
+      <ion-content scrollY="true" class="card-container container white-bg">
         <div *ngFor="let item of cardItems">
           <ion-item
             button
@@ -93,7 +68,7 @@
             <ion-col class="cost-labels text-color">
               <div>toplam ödeme</div>
             </ion-col>
-            <ion-col class="total-cost">
+            <ion-col class="total-cost pink-color">
               <div>
                 {{currentCardCostContent.total + currentCardCostContent.totalTax
                 | fiyat:currentCardCostContent.total +

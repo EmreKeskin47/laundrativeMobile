@@ -1,44 +1,7 @@
-.bottom-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-}
-.container-padding {
-  padding: 0.5rem;
-}
-.card-border-radius {
-  border-radius: 10px;
-}
-.relative {
-  position: relative;
-}
 .container {
   height: 3.7rem;
-  background-color: whitesmoke;
 }
-.content {
-  display: flex;
-  justify-content: space-between;
-}
-.icon {
-  font-size: 2rem;
-  padding-top: 0.4rem;
-  padding-right: 0.5rem;
-}
-.card-title {
-  font-size: 0.6rem;
-}
-.card-subtitle {
-  font-size: 0.5rem;
-}
-.min-fee {
-  text-align: end;
-  font-size: 0.5rem;
-  position: absolute;
-  right: 1rem;
-  bottom: 0.5rem;
-}
+
 .cost-labels {
   text-align: right;
   font-size: 0.5rem;
@@ -61,7 +24,6 @@
 .total-cost {
   text-align: right;
   font-size: 1.2rem;
-  color: #eb4691;
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -129,16 +91,6 @@
 .input-item {
   --border-radius: 10px;
   padding: 0.7rem 0.5rem 0rem 0.5rem;
-}
-
-.note-icon {
-  font-size: 1rem;
-  margin-right: 9px;
-}
-
-.fav-icon {
-  width: 1.5rem;
-  height: 2rem;
 }
 
 .location-icon {

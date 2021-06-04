@@ -9,13 +9,13 @@
 
 <ion-content color="medium">
   <!--Cost and message -->
-  <div class="message-container">
+  <div class="message-container white-bg">
     <div class="total-container">
       <div class="total-text">
-        <ion-text class="black-color title">toplam ödeme</ion-text>
+        <ion-text class="black-text title">toplam ödeme</ion-text>
       </div>
       <div class="total-cost">
-        <ion-text color="primary" class="cost">35.00tl</ion-text>
+        <ion-text color="primary" class="cost pink-color">35.00tl</ion-text>
       </div>
     </div>
 
@@ -29,16 +29,15 @@
     <ion-button
       expand="block"
       color="primary"
-      class="lowercase"
+      class="lowercase ion-button-block"
       (click)="navigateToPaymentSuccess()"
     >
       ödeme yap</ion-button
     >
     <ion-button
-      class="lowercase btn-color"
+      class="lowercase pink-color ion-button-block"
       fill="outline"
       expand="block"
-      color="primary"
       (click)="backToCard()"
     >
       vazgeç</ion-button

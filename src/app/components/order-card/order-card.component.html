@@ -22,17 +22,19 @@
             src="../../../assets/icons/filled/checkbox-check.png"
             class="check"
           />
-          <ion-label class="gray is-done-label"> tamamlandı </ion-label>
+          <ion-label class="text-color is-done-label"> tamamlandı </ion-label>
         </div>
 
-        <ion-label class="total-cost">{{
+        <ion-label class="total-cost pink-color">{{
           order.fiyat | fiyat: order.fiyat
         }}</ion-label>
       </div>
     </div>
     <ng-template #detailOpen>
       <div class="detail-open">
-        <ion-label class="gray is-done-label">sipariş detayları</ion-label>
+        <ion-label class="text-color is-done-label"
+          >sipariş detayları</ion-label
+        >
         <img src="../../../assets/icons/button/arrow_up.png" class="arrow-up" />
       </div>
     </ng-template>
@@ -116,7 +118,9 @@
               src="../../../assets/icons/button/arrow_up.png"
               class="arrow-up"
             />
-            <ion-label class="gray is-done-label">sipariş detayları</ion-label>
+            <ion-label class="text-color is-done-label"
+              >sipariş detayları</ion-label
+            >
           </div>
           <ng-template #downArrow>
             <div class="detail-close">
@@ -124,14 +128,14 @@
                 src="../../../assets/icons/button/arrow_down.png"
                 class="arrow-up"
               />
-              <ion-label class="gray is-done-label"
+              <ion-label class="text-color is-done-label"
                 >sipariş detayları</ion-label
               >
             </div>
           </ng-template>
         </div>
         <div>
-          <ion-label class="gray is-done-label">{{
+          <ion-label class="text-color is-done-label">{{
             orderStatus.isim
           }}</ion-label>
 

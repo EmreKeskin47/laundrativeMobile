@@ -1,6 +1,6 @@
 <!-- amount controller -->
-<div style="padding: 10px">
-  <div class="amount-container">
+<div class="types-padding full-width-padding">
+  <div class="amount-container white-bg border-radius">
     <div style="display: flex">
       <div *ngIf="item.adet > 1; else noMinus">
         <ion-button
@@ -29,7 +29,9 @@
         </ion-button>
       </ng-template>
 
-      <ion-label class="amount-text text-color">{{ item.adet }} Adet</ion-label>
+      <ion-label class="amount-text text-color bold-text"
+        >{{ item.adet }} Adet</ion-label
+      >
       <ion-button
         fill="clear"
         shape="round"
@@ -39,7 +41,7 @@
         <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
       </ion-button>
     </div>
-    <div class="cost" style="padding-right: 1rem">
+    <div class="cost pink-color" style="padding-right: 1rem">
       {{ totalCost | fiyat: totalCost }}
     </div>
   </div>

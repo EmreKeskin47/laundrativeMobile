@@ -1,3 +1,4 @@
+import { StoreInfoCardComponent } from './store-info-card/store-info-card.component';
 import { FormsModule } from '@angular/forms';
 import {
   IonicSelectableComponent,
@@ -35,6 +36,7 @@ import { CommonModule } from '@angular/common';
     TypesComponent,
     FiyatPipe,
     CityDistrictPickerComponent,
+    StoreInfoCardComponent,
   ],
   exports: [
     HeaderComponent,
@@ -49,6 +51,7 @@ import { CommonModule } from '@angular/common';
     TypesComponent,
     FiyatPipe,
     CityDistrictPickerComponent,
+    StoreInfoCardComponent,
   ],
 })
 export class ComponentsModule {}

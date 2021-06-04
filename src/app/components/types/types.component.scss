@@ -1,7 +1,9 @@
 //amount container
+.types-padding {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 .amount-container {
-  background-color: whitesmoke;
-  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   height: 2.5rem;
@@ -12,22 +14,17 @@
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
-
 .amount-minus {
   width: 1rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
-
 .cost {
   font-size: 1.3rem;
-  color: #eb4691;
-  font-weight: bold;
 }
 .amount-text {
-  padding: 0.7rem 0.2rem 0 0.2rem;
+  padding: 0.6rem 0.2rem 0 0.2rem;
   font-size: 0.8rem;
-  font-weight: bold;
 }
 .plus-minus-btn {
   --padding-end: 0rem;
@@ -41,22 +38,10 @@
 //Services card
 .service-card {
   --background: whitesmoke;
-
   border-radius: 10px;
-  /* display: block; */
-  /* --padding-end: 0rem; */
   --padding-start: 0;
-  /* --padding-bottom: 0; */
   --inner-padding-end: 0;
-  /* --inner-padding-start: -; */
   --inner-padding-top: 0.5;
-  /* --inner-padding-bottom: 0; */
-  /* height: 5rem; */
-}
-.service-card-container {
-  background-color: whitesmoke;
-  border-radius: 10px;
-  display: block;
 }
 .card-content {
   display: flex;

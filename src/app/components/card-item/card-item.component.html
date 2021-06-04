@@ -13,13 +13,13 @@
       </div>
     </div>
     <div>
-      <div class="cost">{{ itemCost | fiyat: itemCost }}</div>
+      <div class="cost pink-text">{{ itemCost | fiyat: itemCost }}</div>
     </div>
   </div>
   <div>
     <ion-card-subtitle class="card-text text-color lowercase">
       <div style="display: flex">
-        <div class="type-color">{{ typeNames[type] }} &nbsp;</div>
+        <div class="pink-color">{{ typeNames[type] }} &nbsp;</div>
         <div>
           teslimat {{ deliveryDate | date: "d.M.yy EEEE HH:mm":"":"tr" }} a
           kadar teslim edilir
@@ -36,7 +36,7 @@
       <div *ngIf="itemIcon">
         <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
       </div>
-      <div style="padding-top: 1.5rem">
+      <div style="padding-top: 1.7rem">
         <ion-card-title class="card-text text-color">{{
           itemName
         }}</ion-card-title>

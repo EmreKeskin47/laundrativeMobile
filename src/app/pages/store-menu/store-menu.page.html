@@ -8,39 +8,14 @@
 </ion-header>
 
 <ion-content color="medium">
-  <!-- Store Info -->
-  <div class="container-padding card-border-radius">
-    <div class="relative container card-border-radius">
-      <div class="content">
-        <div style="display: flex">
-          <ion-icon name="card-sharp" class="icon text-color"></ion-icon>
-          <div style="padding-top: 0.4rem">
-            <ion-card-subtitle class="card-title text-color"
-              >{{ selectedIns.kurum_adi }}</ion-card-subtitle
-            >
-            <ion-card-title class="card-subtitle text-color">
-              {{ selectedInsLocation }}
-            </ion-card-title>
-          </div>
-        </div>
-
-        <div *ngIf="selectedIns.favori>0">
-          <img src="../../../assets/icons/favs.png" class="fav-icon" />
-        </div>
-      </div>
-
-      <div class="min-fee text-color">
-        min sipariş tutarı {{ selectedIns.min_siparis_tutari | fiyat:
-        selectedIns.min_siparis_tutari }}
-        <br />
-        {{selectedIns.min_servis_tutari | fiyat:selectedIns.min_servis_tutari }}
-        ve üzeri siparişlerde ücretsiz servis
-      </div>
-    </div>
-  </div>
+  <app-store-info-card
+    [selectedIns]="selectedIns"
+    [selectedInsLocation]="selectedInsLocation"
+  >
+  </app-store-info-card>
 
   <!--service and discount button-->
-  <div class="button-container">
+  <div class="button-container full-width-padding">
     <div>
       <ion-button
         class="lowercase service-select-btn"
@@ -99,7 +74,7 @@
       (ionChange)="onInput($event)"
       (ionClear)="onCancel()"
       placeholder="ürün ara"
-      class="searchbar"
+      class="searchbar full-width-padding"
     ></ion-searchbar>
 
     <div *ngIf="alreadyAddedToCard else default" class="card-padding">
@@ -132,16 +107,17 @@
         ></app-types>
 
         <!--Button to add to card-->
-        <div class="btn-padding">
-          <ion-button expand="block" (click)="updateCard()"
+        <div class="btn-padding full-width-padding">
+          <ion-button
+            expand="block"
+            class="ion-button-block"
+            (click)="updateCard()"
             >sepeti güncelle</ion-button
           >
-        </div>
-        <div class="cancel-btn-padding btn-color">
           <ion-button
-            color="primary"
             fill="outline"
             expand="block"
+            class="ion-button-block pink-color"
             (click)="cancelUpdateCard()"
             >vazgeç</ion-button
           >
@@ -190,7 +166,10 @@
 
             <!--Button to add to card-->
             <div class="btn-padding">
-              <ion-button expand="block" (click)="addToCard()"
+              <ion-button
+                expand="block"
+                class="ion-button-block"
+                (click)="addToCard()"
                 >sepete ekle</ion-button
               >
             </div>
@@ -259,7 +238,10 @@
 
               <!--Button to add to card-->
               <div class="btn-padding">
-                <ion-button expand="block" (click)="addToCard()"
+                <ion-button
+                  expand="block"
+                  class="ion-button-block"
+                  (click)="addToCard()"
                   >sepete ekle</ion-button
                 >
               </div>

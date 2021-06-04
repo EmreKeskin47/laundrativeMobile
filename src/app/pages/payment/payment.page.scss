@@ -4,7 +4,6 @@
   margin-right: 0.5rem;
   border-radius: 20px;
   height: 7rem;
-  background-color: white;
 }
 .total-container {
   display: flex;
@@ -20,9 +19,6 @@
   text-align: center;
 }
 
-.black-color {
-  color: black;
-}
 .title {
   font-weight: bold;
   font-size: 1rem;
@@ -30,7 +26,6 @@
 .cost {
   font-size: 1.5rem;
   margin: 1rem;
-  color: #eb4691;
   font-weight: bold;
 }
 .cost-label {
@@ -39,10 +34,5 @@
   margin-left: 1rem;
 }
 .button-padding {
-  padding: 1rem;
   padding-top: 4rem;
-}
-.btn-color {
-  color: #e75761;
-  margin-top: 2rem;
 }
