@@ -1,5 +1,6 @@
 .text-1rem {
   font-size: 0.8rem;
+  margin-left: 1rem;
 }
 .item-group {
   display: flex;
@@ -22,16 +23,8 @@
   width: 8rem;
 }
 
-.date-icon {
-  width: 25px;
-  height: 28px;
-  margin-left: 0.5rem;
-  margin-right: 1rem;
-}
-
-.time-icon {
-  width: 27x;
-  height: 27px;
-  margin-left: 0.5rem;
-  margin-right: 1rem;
+.selected-label {
+  padding: 0;
+  font-size: 0.8rem;
+  margin-left: 1rem;
 }

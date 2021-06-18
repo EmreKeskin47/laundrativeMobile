@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  pageTitle = 'profil';
-
   constructor(private router: Router) {}
 
   ngOnInit() {}

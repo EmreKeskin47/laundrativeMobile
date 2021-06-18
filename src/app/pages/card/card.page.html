@@ -1,4 +1,4 @@
-<app-header headerTitle="{{title}}"></app-header>
+<app-header headerTitle="sepet"> </app-header>
 
 <ion-content color="medium">
   <!-- If no store is selected -->
@@ -15,8 +15,11 @@
     </app-store-info-card>
 
     <!-- Card Contents -->
-    <div class="card-padding">
-      <ion-content scrollY="true" class="card-container container white-bg">
+    <div class="card-padding full-width-padding">
+      <ion-card-content
+        scrollY="true"
+        class="card-container white-bg border-radius"
+      >
         <div *ngFor="let item of cardItems">
           <ion-item
             button
@@ -77,7 +80,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-content>
+      </ion-card-content>
     </div>
 
     <!-- Footnote for order-->
@@ -105,7 +108,7 @@
             >giriş yap</ion-button
           >
         </div>
-        <div class="button-padding text-color">
+        <div class="pay-btn text-color">
           <ion-button
             (click)="navigateToSignup()"
             fill="outline"
@@ -122,9 +125,9 @@
           <ion-item lines="none" class="input-item">
             <img
               src="../../../assets/icons/filled/calendar_icon_filled.png"
-              class="calendar-icon"
+              class="date-icon"
             />
-            <div class="input-label">
+            <div class="input-label full-width">
               <ion-label class="text-color"> sipariş notu</ion-label>
               <ion-input
                 value="{{not}}"
@@ -137,31 +140,33 @@
           <ion-item lines="none" class="input-item">
             <img
               src="../../../assets/icons/filled/location_icon_filled.png"
-              class="location-icon"
+              class="location-icon location-margin"
             />
 
-            <div class="input-label">
+            <div class="input-label full-width">
               <ion-label class="text-color"> adres</ion-label>
               <div>{{insLocation}}</div>
             </div>
           </ion-item>
 
-          <ion-item lines="none" class="input-item">
+          <ion-item lines="none" class="input-item item-border-radius width-75">
             <img
               src="../../../assets/icons/filled/calendar_icon_filled.png"
-              class="calendar-icon"
+              class="date-icon"
             />
 
             <div class="input-label">
               <ion-label class="text-color"> teslim alma zamanı</ion-label>
-              <div>{{ dateTime | date: "d.M.yy EEEE HH:mm":'':'tr'}}</div>
+              <ion-label
+                >{{ dateTime | date: "d.M.yy EEEE HH:mm":'':'tr'}}</ion-label
+              >
             </div>
           </ion-item>
 
           <div class="pay-btn">
             <ion-button
               (click)="navigateToPayment()"
-              class="lowerCase"
+              class="ion-button-block"
               expand="block"
               >ödeme yap</ion-button
             >

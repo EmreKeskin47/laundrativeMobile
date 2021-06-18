@@ -1,8 +1,14 @@
-<app-header headerTitle="{{pageTitle}}"></app-header>
+<app-header headerTitle="siparişleriniz"></app-header>
 <ion-content color="medium">
   <div class="button-padding">
-    <ion-button (click)="allOrders()">tüm siparişler</ion-button>
-    <ion-button (click)="currentOrders()" fill="outline" class="pink-color">
+    <ion-button (click)="allOrders()" class="ion-button custom-width"
+      >tüm siparişler</ion-button
+    >
+    <ion-button
+      (click)="currentOrders()"
+      fill="outline"
+      class="pink-color ion-button custom-width"
+    >
       planlanan siparişler</ion-button
     >
   </div>
@@ -16,19 +22,32 @@
         <app-order-card style="width: 100%" [order]="item"></app-order-card>
         <!--edit save buttons-->
         <div class="button-container">
-          <ion-chip class="sec-bcg" (click)="editClicked()">
-            <ion-icon class="white-text" name="pencil"></ion-icon>
-            <ion-label class="white-text">düzenle</ion-label>
-          </ion-chip>
-          <ion-chip class="prm-bcg" (click)="deleteClicked() ">
-            <ion-icon class="white-text" name="close"></ion-icon>
-            <ion-label class="white-text">sil</ion-label>
-          </ion-chip>
+          <ion-button
+            class="crud-button"
+            color="secondary"
+            (click)="editClicked()"
+          >
+            <img
+              src="../../../assets/icons/button/edit.png"
+              class="crud-edit-icon"
+            />
+            <ion-label class="white-text lowercase">düzenle</ion-label>
+          </ion-button>
+          <ion-button class="crud-button" (click)="deleteClicked()">
+            <img
+              src="../../../assets/icons/button/delete.png"
+              class="crud-edit-icon"
+            />
+            <ion-label class="white-text lowercase">sil</ion-label>
+          </ion-button>
         </div>
       </div>
 
       <div class="new-order">
-        <ion-button (click)="navigateToCreateOrder()" expand="block"
+        <ion-button
+          (click)="navigateToCreateOrder()"
+          expand="block"
+          class="ion-button-block"
           >yeni sipariş oluştur</ion-button
         >
       </div>

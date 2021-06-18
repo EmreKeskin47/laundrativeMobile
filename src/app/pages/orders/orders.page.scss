@@ -6,7 +6,8 @@
 .button-padding {
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .button-container {
   padding-bottom: 1rem;
@@ -15,6 +16,10 @@
 }
 
 .new-order {
-  width: 100%;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.custom-width {
+  width: 40%;
 }

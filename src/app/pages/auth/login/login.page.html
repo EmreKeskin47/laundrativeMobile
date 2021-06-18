@@ -1,11 +1,4 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ pageTitle }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header headerTitle="kullanıcı girişi"> </app-header>
 
 <ion-content color="medium">
   <div class="root">
@@ -79,9 +72,9 @@
 
         <div class="first-button-container">
           <ion-item lines="none" color="medium">
-            <ion-label class="remember-me black-text">beni hatırla</ion-label>
+            <ion-label class="remember-me text-color">beni hatırla</ion-label>
             <ion-checkbox
-              class="checkbox"
+              class="checkbox checkbox-size"
               color="primary"
               checked
               slot="start"
@@ -101,7 +94,7 @@
         <div class="button-padding">
           <ion-button
             expand="block"
-            class="lowercase ion-button-block"
+            class="ion-button-block"
             type="submit"
             [disabled]="!validations_form.valid"
             >giriş yap</ion-button
@@ -129,7 +122,7 @@
           (click)="navigateToSignup()"
           fill="outline"
           expand="block"
-          class="lowercase ion-button-block pink-color"
+          class="ion-button-block pink-color"
         >
           yeni hesap oluştur</ion-button
         >

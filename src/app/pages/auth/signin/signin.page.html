@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="ion-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-title class="header-title">hesap oluştur</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -161,7 +161,7 @@
       <div class="button-padding">
         <ion-button
           expand="block"
-          class="lowercase ion-button-block"
+          class="ion-button-block"
           type="submit"
           [disabled]="!validations_form.valid"
           >yeni hesap oluştur</ion-button

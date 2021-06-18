@@ -24,7 +24,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(0)"
       ></ion-checkbox>
     </ion-item>
@@ -34,7 +34,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(1)"
       ></ion-checkbox>
     </ion-item>
@@ -44,7 +44,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(2)"
       ></ion-checkbox>
     </ion-item>
@@ -54,7 +54,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(3)"
       ></ion-checkbox>
     </ion-item>
@@ -64,7 +64,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(4)"
       ></ion-checkbox>
     </ion-item>
@@ -74,7 +74,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(5)"
       ></ion-checkbox>
     </ion-item>
@@ -84,7 +84,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(6)"
       ></ion-checkbox>
     </ion-item>
@@ -100,7 +100,7 @@
         checked
         color="primary"
         slot="start"
-        class="checkbox"
+        class="checkbox-size"
         (ionChange)="addToSelecedNotifications(7)"
       ></ion-checkbox>
     </ion-item>
@@ -109,7 +109,7 @@
     <ion-item lines="none" color="medium" class="title-container">
       <img
         src="../../../../assets/icons/filled/bildirim-filled.png"
-        class="icon-2"
+        class="bildirim-icon-filled"
       />
       <ion-label class="text-color bold-text">bildirim kanalları</ion-label>
     </ion-item>
@@ -135,8 +135,8 @@
         (ionChange)="emailOption($event)"
       ></ion-toggle>
     </ion-item>
-    <div style="padding: 1rem 0.5rem 1rem 0.5rem">
-      <ion-button (click)="submit()" expand="block">
+    <div style="padding: 2rem 0rem 1rem 0rem">
+      <ion-button (click)="submit()" expand="block" class="ion-button-block">
         ayarları kaydet</ion-button
       >
     </div>

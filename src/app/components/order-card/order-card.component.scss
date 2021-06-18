@@ -1,9 +1,10 @@
 .card-container {
   border-radius: 10px;
-  margin: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 .box-shadow {
-  box-shadow: 1px 3px #5b5c69;
+  box-shadow: 1px 2px #5b5c69;
 }
 .detail-open {
   display: flex;
@@ -46,15 +47,7 @@
   font-size: 0.5rem;
   font-weight: bold;
 }
-.half-width-seperator {
-  width: 50vw;
-  border-top: 2px solid rgb(36, 35, 35);
-  border-radius: 1px;
-  opacity: 0.7;
-  float: right;
-  margin: 0;
-  margin-bottom: 0.4rem;
-}
+
 .total-cost {
   text-align: right;
   font-size: 1.2rem;
@@ -63,13 +56,6 @@
 
 .bold {
   font-weight: bold;
-}
-.rounded {
-  border-top: 2px solid rgb(36, 35, 35);
-  border-radius: 1px;
-  opacity: 0.5;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
 }
 
 .text-tick-container {
@@ -80,18 +66,6 @@
 
 .detail-close {
   display: flex;
-  justify-content: flex-end;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-}
-
-.arrow-up {
-  width: 13px;
-  height: 16px;
-  margin-right: 0.7rem;
-}
-.arrow-down {
-  width: 13px;
-  height: 16px;
-  margin-right: 0.7rem;
 }

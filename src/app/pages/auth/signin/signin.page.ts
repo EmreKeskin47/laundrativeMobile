@@ -15,7 +15,6 @@ import {
   styleUrls: ['./signin.page.scss'],
 })
 export class SigninPage implements OnInit {
-  pageTitle = 'hesap oluştur';
   matchingPasswords: FormGroup;
   validations_form: FormGroup;
 

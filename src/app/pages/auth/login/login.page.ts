@@ -13,7 +13,6 @@ import {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public pageTitle = 'kullanıcı girişi';
   validations_form: FormGroup;
 
   constructor(

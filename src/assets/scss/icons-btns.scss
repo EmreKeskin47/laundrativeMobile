@@ -1,0 +1,96 @@
+.arrow-up {
+  width: 24px;
+  height: 13px;
+  margin-right: 0.7rem;
+}
+.arrow-down {
+  width: 24px;
+  height: 13px;
+  margin-right: 0.7rem;
+}
+
+.checkbox-size {
+  --size: 1.5rem;
+}
+
+.toggle {
+  height: 28px;
+  width: 50px;
+}
+
+.bildirim-baslik-icon {
+  width: 18px;
+  height: 23px;
+  margin-right: 16px;
+  margin-left: 0.5rem;
+}
+.bildirim-icon-filled {
+  width: 24px;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 0.5rem;
+}
+
+.ion-button-block {
+  --box-shadow: none;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 11px;
+  font-size: 0.75rem;
+  text-transform: lowercase;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 2.5rem;
+
+  &[disabled] {
+    //opacity: 0.5;
+    color: #fff;
+  }
+}
+
+.ion-button {
+  --box-shadow: none;
+  --border-radius: 11px;
+  font-size: 0.75rem;
+  text-transform: lowercase;
+  margin-right: 5px;
+  margin-left: 5px;
+
+  &[disabled] {
+    //opacity: 0.5;
+    color: #fff;
+  }
+}
+
+.address-home-icon {
+  width: 25px;
+  height: 22px;
+  margin-top: 15px;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+.address-location-icon {
+  width: 15px;
+  height: 22px;
+  margin-top: 15px;
+  margin-left: 0.9rem;
+  margin-right: 1.3rem;
+}
+
+.location-icon {
+  width: 17px;
+  height: 27px;
+  margin-left: 4px;
+}
+
+.date-icon {
+  width: 25px;
+  height: 28px;
+  margin-left: 10px;
+}
+
+.time-icon {
+  width: 27x;
+  height: 27px;
+  margin-left: 8px;
+}

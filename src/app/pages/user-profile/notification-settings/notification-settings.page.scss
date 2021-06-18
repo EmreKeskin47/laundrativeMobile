@@ -1,10 +1,5 @@
 .item-container {
-  padding: 0 0.5rem 0rem 0.5rem;
-  --border-radius: 10px;
-}
-
-.checkbox {
-  --size: 1rem;
+  padding: 0 0.5rem 0rem 0.4rem;
 }
 
 .label {
@@ -16,21 +11,4 @@
 }
 .title-container {
   padding-top: 2rem;
-}
-.toggle {
-  height: 2rem;
-  width: 3.5rem;
-}
-
-.bildirim-baslik-icon {
-  width: 18px;
-  height: 23px;
-  margin-right: 16px;
-  margin-left: 0.5rem;
-}
-.icon-2 {
-  width: 24px;
-  height: 25px;
-  margin-right: 10px;
-  margin-left: 0.5rem;
 }

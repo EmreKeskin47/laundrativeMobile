@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.page.scss'],
 })
 export class OrdersPage implements OnInit {
-  pageTitle = 'siparişleriniz';
   onlyDone = false;
   orderList: MusteriSiparis[] = [];
   liveOrders: MusteriSiparis[] = [];

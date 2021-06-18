@@ -12,20 +12,7 @@
 .text {
   font-size: 0.7rem;
 }
-.address-home-icon {
-  width: 25px;
-  height: 22px;
-  margin-top: 15px;
-  margin-left: 0.5rem;
-  margin-right: 1rem;
-}
-.location-icon {
-  width: 15px;
-  height: 22px;
-  margin-top: 15px;
-  margin-left: 0.9rem;
-  margin-right: 1.3rem;
-}
+
 .input {
   --padding-bottom: 0;
   --padding-top: 0.8rem;
@@ -36,12 +23,7 @@
   --padding-top: 0rem;
 }
 
-.rounded {
-  border-top: 1px solid rgb(34, 33, 33);
-  border-radius: 1px;
-  opacity: 0.8;
-  margin: 0.5rem;
-  margin-bottom: 0.5rem;
+.seperator-width {
   width: 85%;
   margin: 0rem 0rem 0rem 2.7rem;
 }

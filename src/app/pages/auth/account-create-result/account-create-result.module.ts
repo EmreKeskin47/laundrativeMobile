@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +14,9 @@ import { AccountCreateResultPage } from './account-create-result.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AccountCreateResultPageRoutingModule
+    AccountCreateResultPageRoutingModule,
+    ComponentsModule,
   ],
-  declarations: [AccountCreateResultPage]
+  declarations: [AccountCreateResultPage],
 })
 export class AccountCreateResultPageModule {}

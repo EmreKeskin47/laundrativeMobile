@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="header-toolbar">
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>bize ulaşın</ion-title>
+    <ion-title class="header-title">bize ulaşın</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -78,7 +78,9 @@
       </ion-item>
 
       <div class="send-btn">
-        <ion-button (click)="sendMessage()"> gönder</ion-button>
+        <ion-button (click)="sendMessage()" class="ion-button">
+          gönder</ion-button
+        >
       </div>
     </div>
 

@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-create-result.page.scss'],
 })
 export class AccountCreateResultPage implements OnInit {
-  pageTitle = 'adres ve kredi kartı bilgisi';
-
   constructor(private router: Router) {}
 
   ngOnInit() {}

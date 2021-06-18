@@ -11,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-order.page.scss'],
 })
 export class CreateOrderPage implements OnInit {
-  title = 'mağaza arayın';
   insList: Isletme[];
   selectedDistrict: SemtListe;
 
