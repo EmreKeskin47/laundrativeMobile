@@ -7,14 +7,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
-
-  {
-    path: 'create-order',
-    loadChildren: () =>
-      import('./pages/create-order/create-order.module').then(
-        (m) => m.CreateOrderPageModule
-      ),
-  },
   {
     path: 'orders',
     loadChildren: () =>
@@ -26,11 +18,6 @@ const routes: Routes = [
       import('./pages/card/card.module').then((m) => m.CardPageModule),
   },
   {
-    path: 'help',
-    loadChildren: () =>
-      import('./pages/help/help.module').then((m) => m.HelpPageModule),
-  },
-  {
     path: 'profile',
     loadChildren: () =>
       import('./pages/user-profile/profile/profile.module').then(
@@ -38,24 +25,10 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'homepage',
-    loadChildren: () =>
-      import('./pages/homepage/homepage.module').then(
-        (m) => m.HomepagePageModule
-      ),
-  },
-  {
     path: 'available-stores-list',
     loadChildren: () =>
       import('./pages/available-stores-list/available-stores-list.module').then(
         (m) => m.AvailableStoresListPageModule
-      ),
-  },
-  {
-    path: 'store-menu',
-    loadChildren: () =>
-      import('./pages/store-menu/store-menu.module').then(
-        (m) => m.StoreMenuPageModule
       ),
   },
   {
@@ -84,23 +57,12 @@ const routes: Routes = [
         './pages/user-profile/add-address-result/add-address-result.module'
       ).then((m) => m.AddAddressResultPageModule),
   },
-  {
-    path: 'payment',
-    loadChildren: () =>
-      import('./pages/payment/payment.module').then((m) => m.PaymentPageModule),
-  },
+
   {
     path: 'payment-success',
     loadChildren: () =>
       import('./pages/payment-success/payment-success.module').then(
         (m) => m.PaymentSuccessPageModule
-      ),
-  },
-  {
-    path: 'detailed-search',
-    loadChildren: () =>
-      import('./pages/detailed-search/detailed-search.module').then(
-        (m) => m.DetailedSearchPageModule
       ),
   },
   {
@@ -133,13 +95,6 @@ const routes: Routes = [
       ).then((m) => m.NotificationSettingsPageModule),
   },
   {
-    path: 'discount-list',
-    loadChildren: () =>
-      import('./pages/user-profile/discount-list/discount-list.module').then(
-        (m) => m.DiscountListPageModule
-      ),
-  },
-  {
     path: 'contact',
     loadChildren: () =>
       import('./pages/user-profile/contact/contact.module').then(
@@ -152,6 +107,25 @@ const routes: Routes = [
       import('./pages/user-profile/create-address/create-address.module').then(
         (m) => m.CreateAddressPageModule
       ),
+  },
+  {
+    path: 'yeni-siparis',
+    loadChildren: () =>
+      import('./pages/yeni-siparis/yeni-siparis.module').then(
+        (m) => m.YeniSiparisPageModule
+      ),
+  },
+  {
+    path: 'hizmet-ekle',
+    loadChildren: () =>
+      import('./pages/hizmet-ekle/hizmet-ekle.module').then(
+        (m) => m.HizmetEklePageModule
+      ),
+  },
+  {
+    path: 'splash',
+    loadChildren: () =>
+      import('./pages/splash/splash.module').then((m) => m.SplashPageModule),
   },
 ];
 @NgModule({

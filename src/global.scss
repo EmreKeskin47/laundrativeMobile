@@ -9,6 +9,7 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+
 /* Core CSS required for Ionic components to work properly */
 
 @import "~@ionic/angular/css/core.css";
@@ -27,7 +28,6 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
 //Custom imports
 @import "./assets/scss/colors.scss";
 @import "./assets/scss/input-item.scss";
@@ -36,61 +36,99 @@
 @import "./assets/scss/header.scss";
 @import "./assets/scss/icons-btns.scss";
 $radius: 11px;
-
 @font-face {
-  font-family: "Avenir"; //This is what we are going to call
-  src: url("./assets/TT-Norms-Fonts/TTNorms-Regular.otf");
+    font-family: "Avenir"; //This is what we are going to call
+    src: url("./assets/TT-Norms-Fonts/TTNorms-Regular.otf");
 }
 
 ion-tab-button {
-  --padding-start: 0;
-  --padding-end: 0;
+    --padding-start: 0;
+    --padding-end: 0;
 }
 
 ion-card-content {
-  padding-top: 5px !important;
+    padding-top: 5px !important;
 }
 
 .border-radius {
-  border-radius: $radius;
+    border-radius: $radius;
 }
+
 .item-border-radius {
-  --border-radius: $radius;
+    --border-radius: $radius;
 }
 
 .bold-text {
-  font-weight: bold;
+    font-weight: bold;
 }
+
 .lowercase {
-  text-transform: lowercase;
+    text-transform: lowercase;
 }
 
 .full-width-padding {
-  padding-left: 5px !important;
-  padding-right: 5px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
 }
+
 .full-width-margin {
-  margin-left: 5px !important;
-  margin-right: 5px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
 }
 
 .full-width {
-  width: 100%;
+    width: 100%;
 }
 
 .half-width-seperator {
-  width: 50vw;
-  border-top: 2px solid rgb(36, 35, 35);
-  border-radius: 1px;
-  opacity: 0.7;
-  float: right;
-  margin: 0;
+    width: 50vw;
+    border-top: 2px solid rgb(36, 35, 35);
+    border-radius: 1px;
+    opacity: 0.7;
+    float: right;
+    margin: 0;
 }
 
 .rounded {
-  border-top: 2px solid rgb(36, 35, 35);
-  border-radius: 1px;
-  opacity: 0.5;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
+    border-top: 2px solid rgb(36, 35, 35);
+    border-radius: 1px;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.ion-item-block {
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0
+}
+
+.block-item-padding {
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+}
+
+.text-size12 {
+    font-size: 1.2rem !important;
+}
+
+.text-size10 {
+    font-size: 1rem !important;
+}
+
+.text-size9 {
+    font-size: 0.9rem !important;
+}
+
+.text-size8 {
+    font-size: 0.8rem !important;
+}
+
+.text-size6 {
+    font-size: 0.6rem !important;
+}
+
+.bottom-btn-padding {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
 }

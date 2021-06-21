@@ -1,0 +1,41 @@
+.container {
+    padding: inherit;
+}
+
+.grid-text-top-right {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.h2 {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+}
+
+.image-height {
+    height: 120px;
+}
+
+.grid-text-bottom-right {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.grid-item {
+    padding-top: 2px;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+}
+
+.grid-label {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-top: 0.1rem;
+}
+
+ion-col {
+    padding: 0;
+}

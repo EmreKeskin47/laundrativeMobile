@@ -1,15 +1,16 @@
 .text-color {
     color: #5e5e5e !important;
-    font-family: "Avenir";
+    font-family: "Avenir" !important;
 }
 
 .black-text {
     color: #424242;
-    font-family: "Avenir";
+    font-family: "Avenir" !important;
 }
 
 .white-text {
     color: white;
+    font-family: "Avenir" !important;
 }
 
 .pink-color {
@@ -29,5 +30,9 @@
 }
 
 .white-bg {
-    background-color: whitesmoke;
+    background-color: whitesmoke !important;
+}
+
+.white-bg-item {
+    --background: whitesmoke !important;
 }

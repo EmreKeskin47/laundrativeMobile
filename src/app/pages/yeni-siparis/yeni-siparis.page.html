@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar color="primary" class="ion-toolbar">
+        <ion-title class="header-title"> laundrative</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+    <!-- Address and Date -->
+    <ion-item color="primary" lines="none" detail="false" class="ion-item-block block-item-padding">
+        <div class="full-width">
+            <div *ngIf="!isLogged; else logged">
+                <app-city-district-picker (selectedSemt)="adjustSelectedDistrict($event)"></app-city-district-picker>
+            </div>
+            <ng-template #logged>
+                <app-adress-field (address)="addressChange($event)"></app-adress-field>
+            </ng-template>
+            <app-date-field calenderTitle="ne zaman alalım" (selectedDate)="dateChange($event)" (selectedTime)="timeChange($event)"></app-date-field>
+        </div>
+    </ion-item>
+
+    <div class="h2 bold-text">
+        <ion-label class="black-text ">
+            bir hizmet seçin</ion-label>
+
+    </div>
+
+
+    <!-- Grid of Services-->
+    <ion-row>
+        <ion-item color="medium" button lines="none" detail="false" class="grid-item" (click)="navigateToStoreList([1,2,3])">
+            <div class="container">
+                <img src="../../assets/images/create-order/camasir-kuru.png" class="image-height full-width" />
+                <div class="grid-text-top-right">
+                    <ion-label class="grid-label white-color">
+                        çamaşır yıkama</ion-label>
+                    <ion-label class="grid-label white-color">
+                        kuru temizleme</ion-label>
+                    <ion-label class="grid-label white-color">
+                        ütüleme</ion-label>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-col>
+            <ion-item color="medium" button lines="none" detail="false" class="grid-item" (click)="navigateToStoreList([6,7])">
+                <div class="container">
+                    <img src="../../assets/images/create-order/terzi-lostra.png" class="full-width image-height " />
+                    <div class="grid-text-bottom-right">
+                        <ion-label class="grid-label white-color">
+                            terzi & lostra</ion-label>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-col>
+
+        <ion-col>
+            <ion-item color="medium" button lines="none" detail="false" class="grid-item" (click)="navigateToStoreList([5])">
+                <div class="container">
+                    <img src="../../assets/images/create-order/hali-yikama.png" class="full-width image-height" />
+                    <div class="grid-text-bottom-right">
+                        <ion-label class="grid-label white-color">
+                            halı yıkama</ion-label>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+</ion-content>

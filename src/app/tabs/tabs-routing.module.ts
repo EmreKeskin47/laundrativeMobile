@@ -13,13 +13,6 @@ const routes: Routes = [
           import('../pages/card/card.module').then((m) => m.CardPageModule),
       },
       {
-        path: 'card/payment',
-        loadChildren: () =>
-          import('../pages/payment/payment.module').then(
-            (m) => m.PaymentPageModule
-          ),
-      },
-      {
         path: 'card/payment/payment-success',
         loadChildren: () =>
           import('../pages/payment-success/payment-success.module').then(
@@ -34,17 +27,17 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'create-order',
+        path: 'yeni-siparis',
         loadChildren: () =>
-          import('../pages/create-order/create-order.module').then(
-            (m) => m.CreateOrderPageModule
+          import('../pages/yeni-siparis/yeni-siparis.module').then(
+            (m) => m.YeniSiparisPageModule
           ),
       },
       {
-        path: 'create-order/detailed-search',
+        path: 'hizmet-ekle',
         loadChildren: () =>
-          import('../pages/detailed-search/detailed-search.module').then(
-            (m) => m.DetailedSearchPageModule
+          import('../pages/hizmet-ekle/hizmet-ekle.module').then(
+            (m) => m.HizmetEklePageModule
           ),
       },
       {
@@ -53,18 +46,6 @@ const routes: Routes = [
           import(
             '../pages/available-stores-list/available-stores-list.module'
           ).then((m) => m.AvailableStoresListPageModule),
-      },
-      {
-        path: 'create-order/store-menu',
-        loadChildren: () =>
-          import('../pages/store-menu/store-menu.module').then(
-            (m) => m.StoreMenuPageModule
-          ),
-      },
-      {
-        path: 'help',
-        loadChildren: () =>
-          import('../pages/help/help.module').then((m) => m.HelpPageModule),
       },
       {
         path: 'profile',
@@ -116,13 +97,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'profile/discount-list',
-        loadChildren: () =>
-          import(
-            '../pages/user-profile/discount-list/discount-list.module'
-          ).then((m) => m.DiscountListPageModule),
-      },
-      {
         path: 'profile/notification-settings',
         loadChildren: () =>
           import(
@@ -131,7 +105,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/create-order',
+        redirectTo: '/yeni-siparis',
         pathMatch: 'full',
       },
     ],

@@ -1,7 +1,7 @@
 export class Cins {
   kurum_id: number;
   kategori_id: number;
-  cins_resmi: string;
+  cins_resmi: any;
   cins_id: number;
   cins_adi: string;
   fiyatlar: [
@@ -17,7 +17,7 @@ export class Cins {
   constructor(
     kurum_id: number,
     kategori_id,
-    cins_resmi: string,
+    cins_resmi: any,
     cins_id: number,
     cins_adi: string,
     fiyatlar: [

@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-back-button text="geri"></ion-back-button>
+        <ion-title>hizmet ekleyin</ion-title>
+    </ion-toolbar>
+    <ion-toolbar class="searchtoolbar">
+        <ion-searchbar (ionChange)="onInput($event)" (ionClear)="onCancel()" placeholder="hizmet arayın" class="searchbar full-width-padding"></ion-searchbar>
+        <ion-slides *ngIf="storeMenu" style="opacity: 1">
+            <div *ngFor="let item of storeMenu; let i = index; ">
+                <ion-slide *ngIf="!storeMenu[i-1] || storeMenu[i-1].kategori_id != item.kategori_id ">
+                    <ion-button [class.active-category]="activeCategory == i ||item.kategori_id == activeCategory" fill="clear" (click)="selectCategory(i)">
+                        <div class="cat-container">
+                            <img src='{{"../../../assets/icons/category/"+item.kategori_id+".png"}}' class="cat-icon" />
+                            <div [innerHTML]="itemCategoryName[item.kategori_id] | kategoriIsmi:itemCategoryName[item.kategori_id]" [ngClass]="{'text-size8': item.kategori_id != activeCategory, 'text-size9': item.kategori_id == activeCategory }">
+                            </div>
+                        </div>
+                    </ion-button>
+                </ion-slide>
+            </div>
+            <ion-button *ngIf="seciliUrunler.length>=1" [class.active-category]="activeCategory == 0" fill="clear" (click)="displaySelected()">
+                <div class="cat-container">
+                    <img src='{{"../../../assets/icons/sepet_icon.png"}}' class="sepet-icon" />
+                    <div [ngClass]="{'text-size8': activeCategory == 0, 'text-size9': activeCategory != 0 }"> sepet
+                    </div>
+                </div>
+            </ion-button>
+        </ion-slides>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content color="medium" [fullscreen]=false style="height: 88%" scrollEvents=true (ionScroll)="onScroll()">
+    <div *ngFor="let item of storeMenu; let i = index;">
+        <ion-list-header *ngIf="!storeMenu[i-1] || storeMenu[i-1].kategori_id != item.kategori_id">
+            <ion-label class="text-size8 black-text cat-name-header">
+                {{itemCategoryName[item.kategori_id]}}
+            </ion-label>
+        </ion-list-header>
+        <ion-list *ngIf="!searchName || item.cins_adi.toLowerCase().includes(searchName)" color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 0">
+            <div class="full-width-margin ">
+                <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
+                    <div class="item-container">
+                        <div style="display: flex;">
+                            <img [src]="item.cins_resmi" alt="Resim Hatası" class="item-img text-color" />
+                            <ion-label class="text-size8 text-color name-label lowercase">
+                                {{ item.cins_adi }}
+                            </ion-label>
+                        </div>
+                        <ion-button fill="clear" (click)="urunSecim(item)" *ngIf="seciliUrunler.indexOf(item) < 0 else adetAyar">
+                            <ion-label class="text-size8 text-color add-btn">
+                                ekle
+                            </ion-label>
+                        </ion-button>
+
+                        <ng-template #adetAyar>
+                            <div style="display: flex">
+                                <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
+                                    <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
+                                </ion-button>
+                                <ion-label class="amount-text text-color text-size8">{{ item.adet }} Adet</ion-label>
+                                <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="urunSecim(item)">
+                                    <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
+                                </ion-button>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+        <ion-item *ngIf="i==1" color="tertiary" button detail="false" lines="none" class="ozel-istek">
+            <ion-label class="text-size6 ozel-istek-label">
+                özel istek ekle
+            </ion-label>
+        </ion-item>
+    </div>
+</ion-content>
+
+<div slot="fixed" class="bottom-btn-padding">
+    <ion-button expand="block" class="ion-button-block">uygun mağazaları göster</ion-button>
+</div>
