@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MusteriAdres } from './../../models/MusteriAdres';
 import { AuthService } from './../../services/auth.service';
-import { Isletme } from './../../models/İsletme';
 import { SemtListe } from './../../models/ui/SemtListe';
 import { InstitutionService } from './../../services/institution.service';
 import { Router } from '@angular/router';
@@ -12,9 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./yeni-siparis.page.scss'],
 })
 export class YeniSiparisPage implements OnInit {
-  insList: Isletme[];
   selectedDistrict: SemtListe;
-
   selectedDate: Date;
   selectedTime: Date;
   selectedAddress: MusteriAdres;
@@ -33,26 +30,7 @@ export class YeniSiparisPage implements OnInit {
   }
 
   navigateToStoreList(category: number[]) {
-    // this.institutionService
-    //   .getInstitutionsInNeighborhood(
-    //     3,
-    //     category,
-    //     this.selectedDate,
-    //     this.selectedTime
-    //   )
-    //   .subscribe((inst) => {
-    //     this.insList = inst;
-    //     this.institutionService.currentInstitutionList = inst;
-    //   });
-    // if (!this.isLogged) {
-    //   this.router.navigate([
-    //     '/create-order/available-stores-list',
-    //     { mahalleAdi: this.selectedDistrict.listeAdi },
-    //   ]);
-    // } else {
-    //   this.router.navigate(['/create-order/available-stores-list']);
-    // }
-    this.router.navigate(['/hizmet-ekle', { selectedCategory: category }]);
+    this.router.navigate(['/hizmet-ekle', { kategoriler: category }]);
   }
 
   timeChange(event: any) {

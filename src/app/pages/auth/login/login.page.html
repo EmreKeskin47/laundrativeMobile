@@ -1,132 +1,80 @@
-<app-header headerTitle="kullanıcı girişi"> </app-header>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">kullanıcı girişi</ion-title>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content color="medium">
-  <div class="root">
-    <div class="full-width">
-      <ion-text>
-        <h1 class="title text-color">hoş geldiniz</h1>
-      </ion-text>
+    <div class="root">
+        <div class="full-width">
+            <ion-text>
+                <h1 class="title text-color">hoş geldiniz</h1>
+            </ion-text>
+        </div>
+
+        <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" class="full-width">
+            <div>
+                <div class="input-full-width">
+                    <ion-list class="input-item-list">
+                        <ion-item lines="none" class="input-ion-item">
+                            <img src="../../../../assets/icons/profil/email.png" class="input-email-icon" />
+                            <ion-input type="text" formControlName="email" placeholder="e-mail" class="input-text"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                    <div>
+                        <ng-container *ngFor="let validation of validation_messages.email">
+                            <div class="input-error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="input-full-width">
+                    <ion-list class="input-item-list">
+                        <ion-item lines="none" class="input-ion-item">
+                            <img src="../../../../assets/icons/profil/parola.png" class="input-password-icon" />
+                            <ion-input type="password" formControlName="password" placeholder="parola" class="input-text"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                    <div>
+                        <ng-container *ngFor="let validation of validation_messages.password ">
+                            <div class="input-error-message" *ngIf="validations_form.get('password').hasError(validation.type)&& (validations_form.get('password').dirty || validations_form.get('password').touched) ">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="first-button-container">
+                    <ion-item lines="none" color="medium">
+                        <ion-label class="remember-me text-color">beni hatırla</ion-label>
+                        <ion-checkbox class="checkbox checkbox-size" color="primary" checked slot="start"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-button fill="clear" expand="block" style="font-size: 0.7rem" class="lowercase text-color">parolamı hatırlamıyorum</ion-button>
+                </div>
+            </div>
+            <div class="full-width">
+                <div class="button-padding">
+                    <ion-button expand="block" class="ion-button-block" type="submit" [disabled]="!validations_form.valid">giriş yap</ion-button>
+                </div>
+                <div class="sign-in-buttons-container full-width-padding">
+                    <ion-button class="sign-btn" color="light"><img src="../../../../assets/icons/profil/google.png" class="google-fb-icon" />
+                        <p class="sign-options lowercase">google ile giriş yap</p>
+                    </ion-button>
+                    <ion-button class="sign-btn" color="light"><img src="../../../../assets/icons/profil/facebook.png" class="google-fb-icon" />
+                        <p class="sign-options lowercase">facebook ile giriş yap</p>
+                    </ion-button>
+                </div>
+            </div>
+            <div class="button-padding">
+                <ion-button (click)="navigateToSignup()" fill="outline" expand="block" class="ion-button-block pink-color">
+                    yeni hesap oluştur</ion-button>
+            </div>
+        </form>
     </div>
-
-    <form
-      [formGroup]="validations_form"
-      (ngSubmit)="onSubmit(validations_form.value)"
-      class="full-width"
-    >
-      <div>
-        <div class="input-full-width">
-          <ion-list class="input-item-list">
-            <ion-item lines="none" class="input-ion-item">
-              <img
-                src="../../../../assets/icons/profil/email.png"
-                class="input-email-icon"
-              />
-              <ion-input
-                type="text"
-                formControlName="email"
-                placeholder="e-mail"
-                class="input-text"
-              ></ion-input>
-            </ion-item>
-          </ion-list>
-          <div>
-            <ng-container *ngFor="let validation of validation_messages.email">
-              <div
-                class="input-error-message"
-                *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
-              >
-                {{ validation.message }}
-              </div>
-            </ng-container>
-          </div>
-        </div>
-
-        <div class="input-full-width">
-          <ion-list class="input-item-list">
-            <ion-item lines="none" class="input-ion-item">
-              <img
-                src="../../../../assets/icons/profil/parola.png"
-                class="input-password-icon"
-              />
-              <ion-input
-                type="password"
-                formControlName="password"
-                placeholder="parola"
-                class="input-text"
-              ></ion-input>
-            </ion-item>
-          </ion-list>
-          <div>
-            <ng-container
-              *ngFor="let validation of validation_messages.password "
-            >
-              <div
-                class="input-error-message"
-                *ngIf="validations_form.get('password').hasError(validation.type)&& (validations_form.get('password').dirty || validations_form.get('password').touched) "
-              >
-                {{ validation.message }}
-              </div>
-            </ng-container>
-          </div>
-        </div>
-
-        <div class="first-button-container">
-          <ion-item lines="none" color="medium">
-            <ion-label class="remember-me text-color">beni hatırla</ion-label>
-            <ion-checkbox
-              class="checkbox checkbox-size"
-              color="primary"
-              checked
-              slot="start"
-            ></ion-checkbox>
-          </ion-item>
-
-          <ion-button
-            fill="clear"
-            expand="block"
-            style="font-size: 0.7rem"
-            class="lowercase text-color"
-            >parolamı hatırlamıyorum</ion-button
-          >
-        </div>
-      </div>
-      <div class="full-width">
-        <div class="button-padding">
-          <ion-button
-            expand="block"
-            class="ion-button-block"
-            type="submit"
-            [disabled]="!validations_form.valid"
-            >giriş yap</ion-button
-          >
-        </div>
-        <div class="sign-in-buttons-container full-width-padding">
-          <ion-button class="sign-btn" color="light"
-            ><img
-              src="../../../../assets/icons/profil/google.png"
-              class="google-fb-icon"
-            />
-            <p class="sign-options lowercase">google ile giriş yap</p>
-          </ion-button>
-          <ion-button class="sign-btn" color="light"
-            ><img
-              src="../../../../assets/icons/profil/facebook.png"
-              class="google-fb-icon"
-            />
-            <p class="sign-options lowercase">facebook ile giriş yap</p>
-          </ion-button>
-        </div>
-      </div>
-      <div class="button-padding">
-        <ion-button
-          (click)="navigateToSignup()"
-          fill="outline"
-          expand="block"
-          class="ion-button-block pink-color"
-        >
-          yeni hesap oluştur</ion-button
-        >
-      </div>
-    </form>
-  </div>
 </ion-content>

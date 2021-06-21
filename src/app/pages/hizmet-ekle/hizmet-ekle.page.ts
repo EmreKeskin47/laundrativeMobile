@@ -4,7 +4,6 @@ import { Cins } from './../../models/ui/Cins';
 import { Isletme } from './../../models/İsletme';
 import { InstitutionService } from './../../services/institution.service';
 import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -40,7 +39,6 @@ export class HizmetEklePage implements OnInit {
   categoriClick: number = 0;
 
   constructor(
-    private http: HttpClient,
     @Inject(DOCUMENT) private document: Document,
     private institutionService: InstitutionService,
     private domSanitizer: DomSanitizer,
@@ -49,9 +47,8 @@ export class HizmetEklePage implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      if (params['selectedCategory']) {
-        this.selectedCategoryOptions = params.selectedCategory;
-        console.log(this.selectedCategoryOptions);
+      if (params['kategoriler']) {
+        this.selectedCategoryOptions = params.kategoriler;
         this.institutionService
           .getItemsInInstitution(1)
           .subscribe(async (item) => {
