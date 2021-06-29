@@ -1,0 +1,23 @@
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+}
+
+.message-container {
+    display: flex;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.thank {
+    padding-top: 3rem;
+}
+
+.root {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

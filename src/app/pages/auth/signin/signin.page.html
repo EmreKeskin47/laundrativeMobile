@@ -1,189 +1,115 @@
 <ion-header>
-  <ion-toolbar color="primary" class="ion-toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-    <ion-title class="header-title">hesap oluştur</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary" class="ion-toolbar">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">hesap oluştur</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <form
-    [formGroup]="validations_form"
-    (ngSubmit)="onSubmit(validations_form.value)"
-  >
-    <div style="padding-top: 5rem">
-      <!--NAME-->
-      <div class="input-container">
-        <ion-list class="input-item-list">
-          <ion-item lines="none" class="input-ion-item">
-            <img
-              src="./assets/icons/profil/profil_icon.png"
-              class="input-profile-icon"
-            />
-            <ion-input
-              type="text"
-              placeholder="isim soyisim"
-              formControlName="name"
-              class="input-text"
-            ></ion-input>
-          </ion-item>
-        </ion-list>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validation_messages.name">
-            <div
-              class="input-error-message"
-              *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)"
-            >
-              {{ validation.message }}
+    <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+        <div style="padding-top: 5rem">
+            <!--NAME-->
+            <div class="input-container">
+                <ion-list class="input-item-list">
+                    <ion-item lines="none" class="input-ion-item">
+                        <img src="./assets/icons/profil/profil_icon.png" class="input-profile-icon" />
+                        <ion-input type="text" placeholder="isim soyisim" formControlName="name" class="input-text"></ion-input>
+                    </ion-item>
+                </ion-list>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.name">
+                        <div class="input-error-message" *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
-          </ng-container>
-        </div>
-      </div>
 
-      <!--PHONE NUMBER-->
-      <div class="input-container">
-        <ion-list class="input-item-list">
-          <ion-item lines="none" class="input-ion-item">
-            <img
-              src="../../../../assets/icons/profil/bize-ulasin.png"
-              class="input-phone-icon"
-            />
-            <ion-input
-              type="text"
-              placeholder="cep telefonu"
-              formControlName="phone"
-              class="input-text"
-            ></ion-input>
-          </ion-item>
-        </ion-list>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validation_messages.phone">
-            <div
-              class="input-error-message"
-              *ngIf="validations_form.get('phone').hasError(validation.type)&&(validations_form.get('phone').dirty || validations_form.get('phone').touched)"
-            >
-              {{ validation.message }}
+            <!--PHONE NUMBER-->
+            <div class="input-container">
+                <ion-list class="input-item-list">
+                    <ion-item lines="none" class="input-ion-item">
+                        <img src="../../../../assets/icons/profil/bize-ulasin.png" class="input-phone-icon" />
+                        <ion-input type="text" placeholder="cep telefonu" formControlName="phone" class="input-text"></ion-input>
+                    </ion-item>
+                </ion-list>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.phone">
+                        <div class="input-error-message" *ngIf="validations_form.get('phone').hasError(validation.type)&&(validations_form.get('phone').dirty || validations_form.get('phone').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
-          </ng-container>
-        </div>
-      </div>
 
-      <!-- Email -->
-      <div class="input-container">
-        <ion-list class="input-item-list">
-          <ion-item lines="none" class="input-ion-item">
-            <img
-              src="./assets/icons/profil/email.png"
-              class="input-email-icon"
-            />
-            <ion-input
-              type="text"
-              formControlName="email"
-              placeholder="e-mail"
-              class="input-text"
-            ></ion-input>
-          </ion-item>
-        </ion-list>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validation_messages.email">
-            <div
-              class="input-error-message"
-              *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
-            >
-              {{ validation.message }}
+            <!-- Email -->
+            <div class="input-container">
+                <ion-list class="input-item-list">
+                    <ion-item lines="none" class="input-ion-item">
+                        <img src="./assets/icons/profil/email.png" class="input-email-icon" />
+                        <ion-input type="text" formControlName="email" placeholder="e-mail" class="input-text"></ion-input>
+                    </ion-item>
+                </ion-list>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.email">
+                        <div class="input-error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
-          </ng-container>
-        </div>
-      </div>
 
-      <div formGroupName="matching_passwords">
-        <div class="input-container">
-          <ion-list class="input-item-list">
-            <ion-item lines="none" class="input-ion-item">
-              <img
-                src="./assets/icons/profil/parola.png"
-                class="input-password-icon"
-              />
-              <ion-input
-                type="password"
-                formControlName="password"
-                placeholder="parola"
-                class="input-text"
-              ></ion-input>
-            </ion-item>
-          </ion-list>
-          <div class="validation-errors">
-            <ng-container
-              *ngFor="let validation of validation_messages.password"
-            >
-              <div
-                class="input-error-message"
-                *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)"
-              >
-                {{ validation.message }}
-              </div>
-            </ng-container>
-          </div>
-        </div>
+            <div formGroupName="matching_passwords">
+                <div class="input-container">
+                    <ion-list class="input-item-list">
+                        <ion-item lines="none" class="input-ion-item">
+                            <img src="./assets/icons/profil/parola.png" class="input-password-icon" />
+                            <ion-input type="password" formControlName="password" placeholder="parola" class="input-text"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.password">
+                            <div class="input-error-message" *ngIf="validations_form.get('matching_passwords').get('password').hasError(validation.type) && (validations_form.get('matching_passwords').get('password').dirty || validations_form.get('matching_passwords').get('password').touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
 
-        <div class="input-container">
-          <ion-list class="input-item-list">
-            <ion-item lines="none" class="input-ion-item">
-              <img
-                src="./assets/icons/profil/parola.png"
-                class="input-password-icon"
-              />
-              <ion-input
-                type="text"
-                formControlName="confirm_password"
-                placeholder="parola tekrar"
-                class="input-text"
-              ></ion-input>
-            </ion-item>
-          </ion-list>
-          <div class="validation-errors">
-            <ng-container
-              *ngFor="let validation of validation_messages.confirm_password"
-            >
-              <div
-                class="input-error-message"
-                *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)"
-              >
-                {{ validation.message }}
-              </div>
-            </ng-container>
-          </div>
+                <div class="input-container">
+                    <ion-list class="input-item-list">
+                        <ion-item lines="none" class="input-ion-item">
+                            <img src="./assets/icons/profil/parola.png" class="input-password-icon" />
+                            <ion-input type="text" formControlName="confirm_password" placeholder="parola tekrar" class="input-text"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.confirm_password">
+                            <div class="input-error-message" *ngIf="validations_form.get('matching_passwords').get('confirm_password').hasError(validation.type) && (validations_form.get('matching_passwords').get('confirm_password').dirty || validations_form.get('matching_passwords').get('confirm_password').touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div style="padding-top: 2rem">
-      <div class="button-padding">
-        <ion-button
-          expand="block"
-          class="ion-button-block"
-          type="submit"
-          [disabled]="!validations_form.valid"
-          >yeni hesap oluştur</ion-button
-        >
-      </div>
+        <div style="padding-top: 2rem">
+            <div class="button-padding">
+                <ion-button expand="block" class="ion-button-block" type="submit" [disabled]="!validations_form.valid">yeni hesap oluştur</ion-button>
+            </div>
 
-      <div class="sign-in-buttons-container">
-        <ion-button class="sign-btn" color="light">
-          <img
-            src="../../../../assets/icons/profil/google.png"
-            class="google-fb-icon"
-          />
-          <p class="sign-options lowercase">sign up with google</p>
-        </ion-button>
-        <ion-button class="sign-btn" color="light">
-          <img
-            src="../../../../assets/icons/profil/facebook.png"
-            class="google-fb-icon"
-          />
-          <p class="sign-options lowercase">sign up with google</p>
-        </ion-button>
-      </div>
-    </div>
-  </form>
+            <div class="sign-in-buttons-container">
+                <ion-button class="sign-btn" color="light">
+                    <img src="../../../../assets/icons/profil/google.png" class="google-fb-icon" />
+                    <p class="sign-options text-size6 lowercase">sign up with google</p>
+                </ion-button>
+                <ion-button class="sign-btn" color="light">
+                    <img src="../../../../assets/icons/profil/facebook.png" class="google-fb-icon" />
+                    <p class="sign-options text-size6 lowercase">sign up with google</p>
+                </ion-button>
+            </div>
+        </div>
+    </form>
 </ion-content>

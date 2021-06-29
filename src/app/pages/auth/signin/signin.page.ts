@@ -69,7 +69,7 @@ export class SigninPage implements OnInit {
   }
 
   navigateToAccountResult() {
-    this.router.navigate(['/account-create-result']);
+    this.router.navigate(['/hesap-olusturuldu']);
   }
 
   //Error messages

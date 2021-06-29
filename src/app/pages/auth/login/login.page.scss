@@ -1,53 +1,45 @@
 .root {
-  height: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-evenly;
-}
-
-.title {
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
 }
 
 .google-fb-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.remember-me {
-  font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
 }
 
 .first-button-container {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
 .checkbox {
-  margin-right: 0.6rem;
+    margin-right: 0.6rem;
 }
 
 .sign-in-buttons-container {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
 }
+
 .sign-options {
-  padding-left: 10px;
-  padding-top: 0.8rem;
-  font-size: 0.6rem;
-  flex: 1;
+    padding-left: 10px;
+    padding-top: 0.8rem;
+    flex: 1;
 }
+
 .sign-btn {
-  width: 9rem;
-  height: 2rem;
-  border-radius: 5px;
-  box-shadow: 1px 2px 1px 2px #9e9c9c;
-  --padding-start: 0.5rem;
+    width: 9rem;
+    height: 2rem;
+    border-radius: 5px;
+    box-shadow: 1px 2px 1px 2px #9e9c9c;
+    --padding-start: 0.5rem;
 }
 
 .button-padding {
-  padding-top: 2.5rem;
+    padding-top: 2.5rem;
 }

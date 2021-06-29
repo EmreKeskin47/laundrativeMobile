@@ -1,21 +1,22 @@
 .new-address {
-  width: 100%;
-  padding-bottom: 2rem;
+    width: 100%;
+    padding-bottom: 2rem;
 }
+
 .root {
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
 .checkbox {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  width: 20px;
-  height: 20px;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    width: 20px;
+    height: 20px;
 }
+
 .checkbox-text {
-  font-size: 0.7rem;
-  margin-top: 0.9rem;
+    margin-top: 0.9rem;
 }

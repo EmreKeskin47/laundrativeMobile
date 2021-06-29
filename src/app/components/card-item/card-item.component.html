@@ -1,48 +1,45 @@
 <!--If delivery date is given, this component represents current order-->
 <div *ngIf="!oldOrder; else oldOrderType" class="card-container-border-radius">
-  <div class="card-items-content">
-    <div class="flex">
-      <div *ngIf="itemIcon">
-        <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
-      </div>
+    <div class="card-items-content">
+        <div class="flex">
+            <div *ngIf="itemIcon">
+                <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
+            </div>
 
-      <div style="padding-top: 1.5rem">
-        <ion-card-title class="card-text text-color">{{
-          amount + " adet " + itemName
-        }}</ion-card-title>
-      </div>
+            <div style="padding-top: 1.5rem">
+                <ion-card-title class="card-text text-size6 text-color">{{ amount + " adet " + itemName }}
+                </ion-card-title>
+            </div>
+        </div>
+        <div>
+            <div class="cost pink-color">{{ itemCost | fiyat: itemCost }}</div>
+        </div>
     </div>
     <div>
-      <div class="cost pink-color">{{ itemCost | fiyat: itemCost }}</div>
+        <ion-card-subtitle class="card-text text-size6 text-color lowercase">
+            <div style="display: flex">
+                <div class="pink-color">{{ typeNames[type] }} &nbsp;</div>
+                <div>
+                    teslimat {{ deliveryDate | date: "d.M.yy EEEE HH:mm":"":"tr" }} a kadar teslim edilir
+                </div>
+            </div>
+        </ion-card-subtitle>
     </div>
-  </div>
-  <div>
-    <ion-card-subtitle class="card-text text-color lowercase">
-      <div style="display: flex">
-        <div class="pink-color">{{ typeNames[type] }} &nbsp;</div>
-        <div>
-          teslimat {{ deliveryDate | date: "d.M.yy EEEE HH:mm":"":"tr" }} a
-          kadar teslim edilir
-        </div>
-      </div>
-    </ion-card-subtitle>
-  </div>
 </div>
 
 <!--If delivery date is not given, this component represents an old order-->
 <ng-template #oldOrderType>
-  <div class="card-items-content">
-    <div class="flex">
-      <div *ngIf="itemIcon">
-        <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
-      </div>
-      <div style="padding-top: 1.7rem">
-        <ion-card-title class="card-text text-color">{{
-          itemName
-        }}</ion-card-title>
-      </div>
+    <div class="card-items-content">
+        <div class="flex">
+            <div *ngIf="itemIcon">
+                <img [src]="itemIcon" alt="Image Source" class="card-icon text-color" />
+            </div>
+            <div style="padding-top: 1.7rem">
+                <ion-card-title class="card-text text-size6 text-color">{{ itemName }}
+                </ion-card-title>
+            </div>
+        </div>
+        <div class="old-order-type text-size6 black-text bold-text">{{ type }} &nbsp;</div>
+        <div class="cost text-size12 pink-color">{{ itemCost | fiyat: itemCost }}</div>
     </div>
-    <div class="old-order-type black-text bold-text">{{ type }} &nbsp;</div>
-    <div class="cost pink-color">{{ itemCost | fiyat: itemCost }}</div>
-  </div>
 </ng-template>

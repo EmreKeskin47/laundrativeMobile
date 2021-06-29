@@ -1,26 +1,14 @@
 <!-- Address Component-->
 <div class="address-container">
-  <ion-list class="list">
-    <ion-item lines="none" class="address">
-      <div class="address-bar">
-        <img
-          src="../../../assets/icons/filled/location_icon_filled.png"
-          class="location-icon"
-        />
-      </div>
-      <ion-label class="text-1rem text-color"> adres seçin </ion-label>
-      <ion-select
-        (ionChange)="addressChange($event)"
-        interface="action-sheet"
-        cancelText="vazgeç"
-      >
-        <ion-select-option
-          class="text-color"
-          *ngFor="let address of addressList"
-          [value]="address"
-          >{{ address.adresBasligi }}</ion-select-option
-        >
-      </ion-select>
-    </ion-item>
-  </ion-list>
+    <ion-list class="list">
+        <ion-item lines="none" class="address">
+            <div class="address-bar">
+                <img src="../../../assets/icons/filled/location_icon_filled.png" class="location-icon" />
+            </div>
+            <ion-label class="text-margin text-size10 text-color"> adres seçin </ion-label>
+            <ion-select (ionChange)="addressChange($event)" interface="action-sheet" cancelText="vazgeç">
+                <ion-select-option class="text-color" *ngFor="let address of addressList" [value]="address">{{ address.adresBasligi }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
 </div>

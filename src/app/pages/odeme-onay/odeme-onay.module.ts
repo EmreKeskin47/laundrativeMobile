@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PaymentSuccessPageRoutingModule } from './payment-success-routing.module';
+import { OdemeOnayPageRoutingModule } from './odeme-onay-routing.module';
 
-import { PaymentSuccessPage } from './payment-success.page';
+import { OdemeOnayPage } from './odeme-onay.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PaymentSuccessPageRoutingModule
+    OdemeOnayPageRoutingModule
   ],
-  declarations: [PaymentSuccessPage]
+  declarations: [OdemeOnayPage]
 })
-export class PaymentSuccessPageModule {}
+export class OdemeOnayPageModule {}

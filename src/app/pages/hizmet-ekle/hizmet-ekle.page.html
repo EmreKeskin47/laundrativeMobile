@@ -13,7 +13,7 @@
                     <ion-button [class.active-category]="activeCategory == item" fill="clear" (click)="selectCategory(item)">
                         <div class="cat-container">
                             <img src='{{"../../../assets/icons/category/"+item+".png"}}' class="cat-icon" />
-                            <div [innerHTML]="itemCategoryName[item] | kategoriIsmi:itemCategoryName[item]" [ngClass]="{'text-size8': item != activeCategory, 'text-size9': item == activeCategory }">
+                            <div [innerHTML]="itemCategoryName[item] | kategoriIsmi:itemCategoryName[item]" [ngClass]="{'text-size8': item != activeCategory, '10': item == activeCategory }">
                             </div>
                         </div>
                     </ion-button>
@@ -22,7 +22,7 @@
             <ion-button *ngIf="seciliUrunler.length>0" [class.active-category]="activeCategory == 0" fill="clear" (click)="selectCategory(0)">
                 <div class="cat-container">
                     <img src='{{"../../../assets/icons/sepet_icon.png"}}' class="sepet-icon" />
-                    <div [ngClass]="{'text-size8': activeCategory == 0, 'text-size9': activeCategory != 0 }"> seçilenler
+                    <div [ngClass]="{'text-size8': activeCategory == 0, 'text-size10': activeCategory != 0 }"> seçilenler
                     </div>
                 </div>
             </ion-button>

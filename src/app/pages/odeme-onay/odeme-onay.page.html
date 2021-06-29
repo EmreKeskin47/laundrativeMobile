@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary" class="header-toolbar">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">ödeme onayı</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+    <div class="root">
+        <div class="full-width">
+            <div class="thank text-size-title text-center">
+                <ion-text class="text-color bold-text">teşekkürler</ion-text>
+            </div>
+
+            <!--Icon and message -->
+            <div class="message-container">
+                <img src="../../../assets/icons/active.png" class="icon" />
+                <div>
+                    <ion-label class="black-text text-size8 bold-text">ödemeniz onaylanmıştır<br /></ion-label>
+                    <ion-label class="text-color text-size8">
+                        siparişinizin durumunu <b> siparişler </b> sayfasından
+                        <br />takip edebilirsiniz.
+                    </ion-label>
+                </div>
+            </div>
+        </div>
+        <div class="full-width">
+            <ion-button expand="block" color="primary" class="ion-button-block" (click)="backToCard()">
+                ana sayfaya dön</ion-button>
+        </div>
+    </div>
+
+</ion-content>

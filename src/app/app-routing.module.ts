@@ -27,26 +27,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'account-create-result',
-    loadChildren: () =>
-      import(
-        './pages/auth/account-create-result/account-create-result.module'
-      ).then((m) => m.AccountCreateResultPageModule),
-  },
-  {
     path: 'add-address-result',
     loadChildren: () =>
       import(
         './pages/user-profile/add-address-result/add-address-result.module'
       ).then((m) => m.AddAddressResultPageModule),
-  },
-
-  {
-    path: 'payment-success',
-    loadChildren: () =>
-      import('./pages/payment-success/payment-success.module').then(
-        (m) => m.PaymentSuccessPageModule
-      ),
   },
   {
     path: 'account-info',
@@ -127,6 +112,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/user-profile/siparislerim/siparislerim.module').then(
         (m) => m.SiparislerimPageModule
+      ),
+  },
+  {
+    path: 'odeme-onay',
+    loadChildren: () =>
+      import('./pages/odeme-onay/odeme-onay.module').then(
+        (m) => m.OdemeOnayPageModule
+      ),
+  },
+  {
+    path: 'hesap-olusturuldu',
+    loadChildren: () =>
+      import('./pages/auth/hesap-olusturuldu/hesap-olusturuldu.module').then(
+        (m) => m.HesapOlusturulduPageModule
       ),
   },
 ];

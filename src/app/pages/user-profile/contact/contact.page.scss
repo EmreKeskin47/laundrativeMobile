@@ -1,13 +1,31 @@
 .item-container {
-  --border-radius: 10px;
-  padding: 0.5rem;
+    --border-radius: 10px;
+    padding: 0.5rem;
 }
+
 .input-text {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
 .send-btn {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+}
+
+.top-left-margin {
+    margin-top: 1rem;
+    margin-left: 1.6rem;
+}
+
+.margin-top {
+    margin-top: 2rem;
+}
+
+.left-margin {
+    margin-left: 0.6rem;
+}
+
+.ion-button-height {
+    height: 1rem;
 }

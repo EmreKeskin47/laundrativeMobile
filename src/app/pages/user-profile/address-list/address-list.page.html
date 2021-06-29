@@ -14,20 +14,20 @@
                     <div style="display: flex">
                         <img src="../../../assets/icons/home.png" class="address-home-icon" />
                         <div>
-                            <ion-input class="text gray-text input" [disabled]="!editPressed" value="{{ adresToDisplay.adresBasligi }}" (ionChange)="adresBasligi($event)"></ion-input>
-                            <ion-input disabled class="title-label black-text no-padding" value="{{ adresToDisplay.mahalleAdi }}">
+                            <ion-input class="text-size8 text-color input" [disabled]="!editPressed" value="{{ adresToDisplay.adresBasligi }}" (ionChange)="adresBasligi($event)"></ion-input>
+                            <ion-input disabled class="text-size8 bold-text black-text no-padding" value="{{ adresToDisplay.mahalleAdi }}">
                             </ion-input>
                         </div>
                     </div>
                     <hr class="rounded seperator-width" />
 
                     <div style="padding-left: 3rem">
-                        <ion-input class="text gray-text no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.teslimAlanAdi }}" (ionChange)="teslimAlanAdi($event)"></ion-input>
+                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.teslimAlanAdi }}" (ionChange)="teslimAlanAdi($event)"></ion-input>
 
-                        <ion-input class="text gray-text no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.teslimAlanTel }}" (ionChange)="teslimAlanTel($event)">
+                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.teslimAlanTel }}" (ionChange)="teslimAlanTel($event)">
                         </ion-input>
 
-                        <ion-input class="text gray-text no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.adres }}" (ionChange)="adres($event)">
+                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.adres }}" (ionChange)="adres($event)">
                         </ion-input>
                     </div>
 
@@ -35,9 +35,9 @@
                         <img src="../../../assets/icons/location_icon.png" class="address-location-icon" />
                         <div style="padding-top: 0.6rem">
                             <div>
-                                <ion-label class="title-label black-text">paylaşılan konum</ion-label>
+                                <ion-label class="text-size8 bold-text black-text">paylaşılan konum</ion-label>
                             </div>
-                            <ion-label class="text gray-text">{{ "null" }}</ion-label>
+                            <ion-label class="text-size8 text-color">{{ "null" }}</ion-label>
                         </div>
                     </div>
                 </ion-card>

@@ -8,11 +8,18 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'card/payment/payment-success',
+        path: 'odeme-onay',
         loadChildren: () =>
-          import('../pages/payment-success/payment-success.module').then(
-            (m) => m.PaymentSuccessPageModule
+          import('../pages/odeme-onay/odeme-onay.module').then(
+            (m) => m.OdemeOnayPageModule
           ),
+      },
+      {
+        path: 'hesap-olusturuldu',
+        loadChildren: () =>
+          import(
+            '../pages/auth/hesap-olusturuldu/hesap-olusturuldu.module'
+          ).then((m) => m.HesapOlusturulduPageModule),
       },
       {
         path: 'yeni-siparis',

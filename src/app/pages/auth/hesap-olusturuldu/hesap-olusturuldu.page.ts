@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-add-address-result',
-  templateUrl: './add-address-result.page.html',
-  styleUrls: ['./add-address-result.page.scss'],
+  selector: 'app-hesap-olusturuldu',
+  templateUrl: './hesap-olusturuldu.page.html',
+  styleUrls: ['./hesap-olusturuldu.page.scss'],
 })
-export class AddAddressResultPage implements OnInit {
+export class HesapOlusturulduPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}

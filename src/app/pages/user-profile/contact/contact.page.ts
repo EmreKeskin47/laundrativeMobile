@@ -13,9 +13,6 @@ export class ContactPage implements OnInit {
   message: string = '';
   constructor(private messageService: MessageService) {}
 
-  messagePressed() {
-    this.showMessage = !this.showMessage;
-  }
   subjectChange(event: any) {
     this.subject = event.detail.value;
   }

@@ -1,102 +1,79 @@
 <ion-header>
-  <ion-toolbar color="primary" class="header-toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-    <ion-title class="header-title">bize ulaşın</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary" class="header-toolbar">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">bize ulaşın</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <div>
-    <ion-chip class="ion-chip-container">
-      <div style="display: flex">
-        <img
-          src="../../../../assets/icons/filled/nasil-calisiyoruz.png"
-          class="chip-how-icon"
-        />
-        <ion-label class="ion-chip-label text-color bold-text"
-          >nasıl çalışıyoruz ?</ion-label
-        >
-      </div>
-      <div>
-        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </div>
-    </ion-chip>
+    <div>
+        <div class="top-left-margin">
+            <ion-label class="black-text bold-text text-size10">mesaj gönderin</ion-label>
+        </div>
+        <!--Message container-->
+        <div>
+            <ion-item lines="none" class="item-container">
+                <ion-input class="input-text gray-text" placeholder="konu" value="{{subject}}" (ionChange)="subjectChange($event)"></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="item-container">
+                <ion-textarea rows="4" class="input-text gray-text" placeholder="mesaj" value="{{message}}" (ionChange)="mesaageChange($event)"></ion-textarea>
+            </ion-item>
 
-    <ion-chip class="ion-chip-container">
-      <div style="display: flex">
-        <img
-          src="../../../../assets/icons/filled/nasil-calisiyoruz.png"
-          class="chip-how-icon"
-        />
-        <ion-label class="ion-chip-label text-color bold-text"
-          >laundrative nasıl kullanılır ?</ion-label
-        >
-      </div>
-      <div>
-        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </div>
-    </ion-chip>
+            <div class="send-btn">
+                <ion-button (click)="sendMessage()" class="ion-button">
+                    gönder</ion-button>
+            </div>
+        </div>
 
-    <ion-chip class="ion-chip-container" (click)="messagePressed()">
-      <div style="display: flex">
-        <img
-          src="../../../../assets/icons/filled/mesaj-gonder.png"
-          class="chip-email-icon"
-        />
-        <ion-label class="ion-chip-label text-color bold-text"
-          >mesaj gönderin</ion-label
-        >
-      </div>
-      <div *ngIf="!showMessage else downArrow">
-        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </div>
-      <ng-template #downArrow>
-        <ion-icon name="chevron-down-sharp"></ion-icon>
-      </ng-template>
-    </ion-chip>
+        <!--Sizi arayalım-->
+        <div class="top-left-margin">
+            <ion-label class="black-text bold-text text-size10">sizi arayalım</ion-label>
+        </div>
+        <div>
+            <ion-item lines="none" class="item-container">
+                <ion-input class="input-text gray-text" placeholder="telefon numaranız"></ion-input>
+            </ion-item>
 
-    <!--Message container-->
-    <div *ngIf="showMessage">
-      <ion-item lines="none" class="item-container">
-        <ion-input
-          class="input-text gray-text"
-          placeholder="konu"
-          value="{{subject}}"
-          (ionChange)="subjectChange($event)"
-        ></ion-input>
-      </ion-item>
-      <ion-item lines="none" class="item-container">
-        <ion-textarea
-          rows="4"
-          class="input-text gray-text"
-          placeholder="mesaj"
-          value="{{message}}"
-          (ionChange)="mesaageChange($event)"
-        ></ion-textarea>
-      </ion-item>
+            <div class="send-btn">
+                <ion-button (click)="sendMessage()" class="ion-button">
+                    tamam</ion-button>
+            </div>
+        </div>
 
-      <div class="send-btn">
-        <ion-button (click)="sendMessage()" class="ion-button">
-          gönder</ion-button
-        >
-      </div>
+        <div class="margin-top top-left-margin">
+            <ion-label class="text-color text-size8 ">
+                laundrative müşteri hizmetleri
+                <ion-label class="bold-text text-color">
+                    hafta içi 09:00 - 18:00
+                </ion-label><br>
+                <ion-label>
+                    saatleri arasında canlı yardım hizmet vermektedir.
+                </ion-label>
+            </ion-label>
+        </div>
+
+        <div class="margin-top">
+            <ion-button color=medium class="left-margin ion-button-height">
+                <ion-label class="black-text bold-text text-size10">hakkımızda</ion-label>
+            </ion-button>
+        </div>
+        <div>
+            <ion-button color=medium class="left-margin ion-button-height">
+                <ion-label class="black-text bold-text text-size10">kullanıcı sözleşmesi</ion-label>
+            </ion-button>
+        </div>
+
+        <div class="margin-top top-left-margin">
+            <ion-label class="text-color text-size8 ">
+                laundrative yazılım a.ş
+            </ion-label>
+        </div>
+
+
+
+
+
     </div>
-
-    <ion-chip class="ion-chip-container">
-      <div style="display: flex">
-        <img
-          src="../../../../assets/icons/filled/telefon-filled.png"
-          class="chip-phone-icon-filled"
-        />
-        <ion-label class="ion-chip-label text-color bold-text"
-          >sizi arayalım</ion-label
-        >
-      </div>
-      <div>
-        <ion-icon class="text-color" name="chevron-forward-sharp"></ion-icon>
-      </div>
-    </ion-chip>
-  </div>
 </ion-content>
