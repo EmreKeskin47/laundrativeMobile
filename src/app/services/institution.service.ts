@@ -26,8 +26,17 @@ export class InstitutionService {
 
   selectedDeliveryDate;
   selectedDeliveryAddress: MusteriAdres;
+  selectedCategoryList: number[] = [];
 
   constructor(private http: HttpClient, private authService: AuthService) {}
+
+  setSelectedCategoryList(selected: any) {
+    this.selectedCategoryList = selected;
+  }
+
+  getSelected() {
+    return this.selectedCategoryList;
+  }
 
   getInstitutionsInNeighborhood(
     neighborhoodId: number,

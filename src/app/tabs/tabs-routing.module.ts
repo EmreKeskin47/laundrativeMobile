@@ -34,18 +34,23 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'hizmet-ekle',
+        path: 'yeni-siparis/hizmet-ekle',
         loadChildren: () =>
           import('../pages/hizmet-ekle/hizmet-ekle.module').then(
             (m) => m.HizmetEklePageModule
           ),
       },
       {
-        path: 'create-order/available-stores-list',
+        path: 'yeni-siparis/magaza-secim',
         loadChildren: () =>
-          import(
-            '../pages/available-stores-list/available-stores-list.module'
-          ).then((m) => m.AvailableStoresListPageModule),
+          import('../pages/magaza-secim/magaza-secim.module').then(
+            (m) => m.MagazaSecimPageModule
+          ),
+      },
+      {
+        path: 'yeni-siparis/sepet',
+        loadChildren: () =>
+          import('../pages/sepet/sepet.module').then((m) => m.SepetPageModule),
       },
       {
         path: 'profile',

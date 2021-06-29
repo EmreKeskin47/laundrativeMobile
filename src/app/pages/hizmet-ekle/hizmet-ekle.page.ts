@@ -1,4 +1,4 @@
-import { kategoriAdi } from './../../services/order.service';
+import { kategoriAdi, OrderService } from './../../services/order.service';
 import { KategoriCins } from './../../models/KategoriCins';
 import { Cins } from './../../models/ui/Cins';
 import { Isletme } from './../../models/İsletme';
@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { IonContent, IonList, IonSlides } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-hizmet-ekle',
   templateUrl: './hizmet-ekle.page.html',
@@ -25,6 +25,7 @@ export class HizmetEklePage implements OnInit {
   selectedIns: Isletme;
   storeItemList: KategoriCins[] = [];
   storeMenu: Cins[] = [];
+  listToDisplay: Cins[];
   itemCategoryName = kategoriAdi;
 
   activeCategory = 0;
@@ -41,14 +42,17 @@ export class HizmetEklePage implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private institutionService: InstitutionService,
+    private orderService: OrderService,
     private domSanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    this.selectedCategoryOptions = this.institutionService.getSelected();
+    this.activeCategory = this.selectedCategoryOptions[0];
     this.route.params.subscribe((params) => {
       if (params['kategoriler']) {
-        this.selectedCategoryOptions = params.kategoriler;
         this.institutionService
           .getItemsInInstitution(1)
           .subscribe(async (item) => {
@@ -72,11 +76,16 @@ export class HizmetEklePage implements OnInit {
           });
         this.storeMenu.sort((a, b) => (a.kategori_id > b.kategori_id ? 1 : -1));
       }
+      this.listToDisplay = this.storeMenu;
     });
   }
 
   // Get all list viewchildren when ready
   ngAfterViewInit() {
+    this.updateList();
+  }
+
+  updateList() {
     this.lists.changes.subscribe((_) => {
       this.listElements = this.lists.toArray();
     });
@@ -87,7 +96,19 @@ export class HizmetEklePage implements OnInit {
 
   selectCategory(index) {
     this.categoriClick++;
-    this.activeCategory = this.storeMenu[index + 2].kategori_id;
+    if (index != 0) {
+      for (let i = 0; i < this.storeMenu.length; i++) {
+        if (this.storeMenu[i].kategori_id == index) {
+          index = i;
+          break;
+        }
+      }
+      this.activeCategory =
+        this.listToDisplay[index + this.seciliUrunler.length + 2].kategori_id;
+    } else {
+      this.activeCategory = 0;
+    }
+    console.log(index);
     const child = this.listElements[index].nativeElement;
     this.content.scrollToPoint(0, child.offsetTop - 50, 1000).then(() => {
       this.categoriClick--;
@@ -102,7 +123,8 @@ export class HizmetEklePage implements OnInit {
       if (this.isElementInViewport(item)) {
         this.slides.slideTo(i);
         if (this.categoriClick === 0)
-          this.activeCategory = this.storeMenu[i + 3].kategori_id;
+          this.activeCategory =
+            this.listToDisplay[i + 3 + this.seciliUrunler.length].kategori_id;
         break;
       }
     }
@@ -145,6 +167,7 @@ export class HizmetEklePage implements OnInit {
       item.adet = 1;
       this.seciliUrunler.push(item);
     }
+    this.listToDisplay = this.seciliUrunler.concat(this.storeMenu);
   }
 
   adetEksi(item: Cins) {
@@ -157,7 +180,8 @@ export class HizmetEklePage implements OnInit {
     }
   }
 
-  displaySelected() {
-    this.activeCategory = 0;
+  navigateToMagazaSecim() {
+    this.orderService.setSelectedItems(this.seciliUrunler);
+    this.router.navigate(['yeni-siparis/magaza-secim']);
   }
 }

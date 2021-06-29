@@ -51,11 +51,11 @@ ion-card-content {
 }
 
 .border-radius {
-    border-radius: $radius;
+    border-radius: $radius !important;
 }
 
 .item-border-radius {
-    --border-radius: $radius;
+    --border-radius: $radius !important;
 }
 
 .bold-text {
@@ -131,4 +131,21 @@ ion-card-content {
 .bottom-btn-padding {
     padding-top: 2rem;
     padding-bottom: 1rem;
+}
+
+.ion-item-inner-padding {
+    --padding-start: 5px;
+    --inner-padding-end: 5px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.right-text {
+    text-align: right;
+}
+
+.global-shadow {
+    box-shadow: 1px 1px 1px 2px #ccc9c9
 }

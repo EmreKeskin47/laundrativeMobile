@@ -57,6 +57,14 @@ export class OrderService {
     private devInfo: DeviceInfoService
   ) {}
 
+  setSelectedItems(list: Cins[]) {
+    this.currentCardContent = list;
+  }
+
+  getSelectedItems() {
+    return this.currentCardContent;
+  }
+
   getOrderList(): Observable<MusteriSiparis[]> {
     let user = this.authService.getCredentials();
     try {

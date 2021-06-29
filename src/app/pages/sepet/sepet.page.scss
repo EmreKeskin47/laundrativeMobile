@@ -1,0 +1,97 @@
+.store-card-container {
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.store-card {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.store-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+}
+
+.store-card-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+ion-list {
+    margin-bottom: 0.5rem;
+}
+
+.ion-toolbar {
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+.item-padding {
+    --padding-top: 0.2rem;
+    --padding-bottom: 0.2rem;
+    --border-radius: 11px;
+}
+
+.store-menu-item {
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+
+.name-label {
+    margin-left: 0.5rem;
+    margin-top: 1.2rem;
+}
+
+.cat-name-header {
+    margin-bottom: 0.5rem;
+    margin-top: 0px !important;
+}
+
+.item-img {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.item-container {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.label-fee {
+    text-align: right;
+    font-weight: bold;
+}
+
+.total-cost {
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+.input-item {
+    --border-radius: 11px;
+    padding: 0.7rem 0.5rem 0rem 0.5rem;
+    --padding-start: 0rem;
+}
+
+.input-label {
+    padding-left: 1.4rem;
+}
+
+.login-container {
+    margin-top: 2rem;
+}
+
+.amount-text {
+    margin-top: 2px;
+}
+
+.amounc-cost-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}

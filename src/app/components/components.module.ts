@@ -9,7 +9,6 @@ import { OrderCardComponent } from './order-card/order-card.component';
 import { AdressFieldComponent } from './adress-field/adress-field.component';
 import { DateFieldComponent } from './date-field/date-field.component';
 import { CardItemComponent } from './card-item/card-item.component';
-import { StoreCardComponent } from './store-card/store-card.component';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
@@ -18,7 +17,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [IonicModule, CommonModule, IonicSelectableModule, FormsModule],
   declarations: [
-    StoreCardComponent,
     CardItemComponent,
     DateFieldComponent,
     AdressFieldComponent,
@@ -30,7 +28,6 @@ import { CommonModule } from '@angular/common';
     KategoriIsmiPipe,
   ],
   exports: [
-    StoreCardComponent,
     CardItemComponent,
     DateFieldComponent,
     AdressFieldComponent,

@@ -1,0 +1,72 @@
+    .type-container {
+        padding-top: 0.5rem;
+    }
+    
+    .text-indent {
+        margin-left: 0.9rem;
+    }
+    
+    .service-card {
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        --inner-padding-top: 0.5;
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-date {
+        text-align: end;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .check-btn {
+        --padding-end: 0.5rem;
+        --padding-start: 0;
+        --padding-bottom: 0;
+    }
+    
+    .active-img {
+        width: 25px;
+        height: 25px;
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .reduce-opacity {
+        opacity: 0.2;
+    }
+    
+    .center-text {
+        text-align: center;
+    }
+    
+    .store-list-container {
+        margin-top: 2rem;
+        padding-bottom: 3rem;
+    }
+    
+    .store-card {
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .store-img {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.5rem;
+    }
+    
+    .store-card-content {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+    
+    ion-grid {
+        padding: 0;
+    }
+    
+    .ion-col-padding {
+        padding: 2px 0 2px 0;
+    }

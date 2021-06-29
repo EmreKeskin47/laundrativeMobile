@@ -25,13 +25,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'available-stores-list',
-    loadChildren: () =>
-      import('./pages/available-stores-list/available-stores-list.module').then(
-        (m) => m.AvailableStoresListPageModule
-      ),
-  },
-  {
     path: 'login',
     loadChildren: () =>
       import('./pages/auth/login/login.module').then((m) => m.LoginPageModule),
@@ -126,6 +119,18 @@ const routes: Routes = [
     path: 'splash',
     loadChildren: () =>
       import('./pages/splash/splash.module').then((m) => m.SplashPageModule),
+  },
+  {
+    path: 'magaza-secim',
+    loadChildren: () =>
+      import('./pages/magaza-secim/magaza-secim.module').then(
+        (m) => m.MagazaSecimPageModule
+      ),
+  },
+  {
+    path: 'sepet',
+    loadChildren: () =>
+      import('./pages/sepet/sepet.module').then((m) => m.SepetPageModule),
   },
 ];
 @NgModule({

@@ -1,5 +1,5 @@
 ion-list-header {
-    --background: #f1f1f1;
+    //--background: #f1f1f1;
 }
 
 ion-list {
@@ -27,7 +27,7 @@ ion-slides {
     --background: var(--ion-color-secondary);
     --color: #fff;
     font-weight: bold;
-    opacity: 1.5;
+    opacity: 1;
 }
 
 .cat-icon {
@@ -86,7 +86,6 @@ ion-slides {
 .item-img {
     max-width: 40px;
     max-height: 40px;
-    border: 0.1px solid #b8b8b8;
 }
 
 .bottom-btn-padding {

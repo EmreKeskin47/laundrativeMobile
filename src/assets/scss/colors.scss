@@ -4,7 +4,7 @@
 }
 
 .black-text {
-    color: #424242;
+    color: #424242 !important;
     font-family: "Avenir" !important;
 }
 
@@ -30,9 +30,13 @@
 }
 
 .white-bg {
-    background-color: whitesmoke !important;
+    background-color: white !important;
+}
+
+.item-white-bg {
+    --background: white !important;
 }
 
 .white-bg-item {
-    --background: whitesmoke !important;
+    --background: white !important;
 }

@@ -1,26 +1,28 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-back-button text="geri"></ion-back-button>
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
         <ion-title>hizmet ekleyin</ion-title>
     </ion-toolbar>
     <ion-toolbar class="searchtoolbar">
         <ion-searchbar (ionChange)="onInput($event)" (ionClear)="onCancel()" placeholder="hizmet arayın" class="searchbar full-width-padding"></ion-searchbar>
         <ion-slides *ngIf="storeMenu" style="opacity: 1">
-            <div *ngFor="let item of storeMenu; let i = index; ">
-                <ion-slide *ngIf="!storeMenu[i-1] || storeMenu[i-1].kategori_id != item.kategori_id ">
-                    <ion-button [class.active-category]="activeCategory == i ||item.kategori_id == activeCategory" fill="clear" (click)="selectCategory(i)">
+            <div *ngFor="let item of selectedCategoryOptions; let i = index; ">
+                <ion-slide>
+                    <ion-button [class.active-category]="activeCategory == item" fill="clear" (click)="selectCategory(item)">
                         <div class="cat-container">
-                            <img src='{{"../../../assets/icons/category/"+item.kategori_id+".png"}}' class="cat-icon" />
-                            <div [innerHTML]="itemCategoryName[item.kategori_id] | kategoriIsmi:itemCategoryName[item.kategori_id]" [ngClass]="{'text-size8': item.kategori_id != activeCategory, 'text-size9': item.kategori_id == activeCategory }">
+                            <img src='{{"../../../assets/icons/category/"+item+".png"}}' class="cat-icon" />
+                            <div [innerHTML]="itemCategoryName[item] | kategoriIsmi:itemCategoryName[item]" [ngClass]="{'text-size8': item != activeCategory, 'text-size9': item == activeCategory }">
                             </div>
                         </div>
                     </ion-button>
                 </ion-slide>
             </div>
-            <ion-button *ngIf="seciliUrunler.length>=1" [class.active-category]="activeCategory == 0" fill="clear" (click)="displaySelected()">
+            <ion-button *ngIf="seciliUrunler.length>0" [class.active-category]="activeCategory == 0" fill="clear" (click)="selectCategory(0)">
                 <div class="cat-container">
                     <img src='{{"../../../assets/icons/sepet_icon.png"}}' class="sepet-icon" />
-                    <div [ngClass]="{'text-size8': activeCategory == 0, 'text-size9': activeCategory != 0 }"> sepet
+                    <div [ngClass]="{'text-size8': activeCategory == 0, 'text-size9': activeCategory != 0 }"> seçilenler
                     </div>
                 </div>
             </ion-button>
@@ -30,13 +32,48 @@
 
 
 <ion-content color="medium" [fullscreen]=false style="height: 88%" scrollEvents=true (ionScroll)="onScroll()">
+
+    <!-- SEÇİLİ ÜRÜNLER LOOP-->
+    <ion-list-header *ngIf="seciliUrunler.length>0">
+        <ion-label class="text-size8 black-text cat-name-header">
+            seçilenler
+        </ion-label>
+    </ion-list-header>
+
+    <div *ngFor="let item of seciliUrunler; let i = index;">
+        <ion-list color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 1110">
+            <div class="full-width-margin ">
+                <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
+                    <div class="item-container">
+                        <div style="display: flex;">
+                            <img [src]="item.cins_resmi" alt="Resim Hatası" class="item-img text-color" />
+                            <ion-label class="text-size8 text-color name-label lowercase">
+                                {{ item.cins_adi }}
+                            </ion-label>
+                        </div>
+                        <div style="display: flex">
+                            <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
+                                <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
+                            </ion-button>
+                            <ion-label class="amount-text text-color text-size8">{{ item.adet }} Adet</ion-label>
+                            <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="urunSecim(item)">
+                                <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
+                            </ion-button>
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <!-- BÜTÜN ÜRÜNLER-->
     <div *ngFor="let item of storeMenu; let i = index;">
         <ion-list-header *ngIf="!storeMenu[i-1] || storeMenu[i-1].kategori_id != item.kategori_id">
-            <ion-label class="text-size8 black-text cat-name-header">
+            <ion-label *ngIf="item.kategori_id!=0" class="text-size8 black-text cat-name-header">
                 {{itemCategoryName[item.kategori_id]}}
             </ion-label>
         </ion-list-header>
-        <ion-list *ngIf="!searchName || item.cins_adi.toLowerCase().includes(searchName)" color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 0">
+        <ion-list color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 1110">
             <div class="full-width-margin ">
                 <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
                     <div class="item-container">
@@ -67,14 +104,14 @@
                 </ion-item>
             </div>
         </ion-list>
-        <ion-item *ngIf="i==1" color="tertiary" button detail="false" lines="none" class="ozel-istek">
+        <!-- <ion-item *ngIf="i==1" color="tertiary" button detail="false" lines="none" class="ozel-istek">
             <ion-label class="text-size6 ozel-istek-label">
                 özel istek ekle
             </ion-label>
-        </ion-item>
+        </ion-item> -->
     </div>
 </ion-content>
 
 <div slot="fixed" class="bottom-btn-padding">
-    <ion-button expand="block" class="ion-button-block">uygun mağazaları göster</ion-button>
+    <ion-button expand="block" class="ion-button-block" (click)="navigateToMagazaSecim()">uygun mağazaları göster</ion-button>
 </div>

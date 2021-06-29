@@ -30,7 +30,11 @@ export class YeniSiparisPage implements OnInit {
   }
 
   navigateToStoreList(category: number[]) {
-    this.router.navigate(['/hizmet-ekle', { kategoriler: category }]);
+    this.institutionService.setSelectedCategoryList(category);
+    this.router.navigate([
+      'yeni-siparis/hizmet-ekle',
+      { kategoriler: category },
+    ]);
   }
 
   timeChange(event: any) {
