@@ -1,25 +1,24 @@
 .root {
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
 .label {
-  font-size: 0.8rem;
-  padding-top: 0.4rem;
-  margin-left: 0.7rem;
+    padding-top: 0.4rem;
+    margin-left: 0.7rem;
 }
 
 .contact-us-container {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .button-padding {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .chip-bg {
-  --background: #ebeaf0;
+    --background: #ebeaf0;
 }

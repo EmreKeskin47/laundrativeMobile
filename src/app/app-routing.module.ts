@@ -8,16 +8,6 @@ const routes: Routes = [
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
-    path: 'orders',
-    loadChildren: () =>
-      import('./pages/orders/orders.module').then((m) => m.OrdersPageModule),
-  },
-  {
-    path: 'card',
-    loadChildren: () =>
-      import('./pages/card/card.module').then((m) => m.CardPageModule),
-  },
-  {
     path: 'profile',
     loadChildren: () =>
       import('./pages/user-profile/profile/profile.module').then(
@@ -131,6 +121,13 @@ const routes: Routes = [
     path: 'sepet',
     loadChildren: () =>
       import('./pages/sepet/sepet.module').then((m) => m.SepetPageModule),
+  },
+  {
+    path: 'siparislerim',
+    loadChildren: () =>
+      import('./pages/user-profile/siparislerim/siparislerim.module').then(
+        (m) => m.SiparislerimPageModule
+      ),
   },
 ];
 @NgModule({

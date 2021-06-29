@@ -1,144 +1,45 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-    <ion-title>bildirim ayarları</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>bildirimler</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <div>
-    <ion-item lines="none" color="medium" class="title-container">
-      <img
-        src="../../../../assets/icons/filled/bildirim_basliklari.png"
-        class="bildirim-baslik-icon"
-      />
-      <ion-label class="text-color bold-text">bildirim başlıkları</ion-label>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label"
-        >ödeme alındı, siparişiniz onaylandı</ion-label
-      >
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(0)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">teslim alma durumu</ion-label>
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(1)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">sipariş durumu</ion-label>
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(2)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">teslim etme durumu</ion-label>
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(3)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">adresinizdeyiz</ion-label>
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(4)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">genel kampanyalar</ion-label>
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(5)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">size özel promosyonlar</ion-label>
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(6)"
-      ></ion-checkbox>
-    </ion-item>
-    <ion-item lines="none" color="medium" class="item-container">
-      <div>
-        <ion-label class="text-color label">hatırlatıcılar</ion-label>
-        <ion-label class="text-color reminder"
-          >* planlanan siparişlerde bu özellik kapatılamaz</ion-label
-        >
-      </div>
-
-      <ion-checkbox
-        checked
-        color="primary"
-        slot="start"
-        class="checkbox-size"
-        (ionChange)="addToSelecedNotifications(7)"
-      ></ion-checkbox>
-    </ion-item>
-  </div>
-  <div>
-    <ion-item lines="none" color="medium" class="title-container">
-      <img
-        src="../../../../assets/icons/filled/bildirim-filled.png"
-        class="bildirim-icon-filled"
-      />
-      <ion-label class="text-color bold-text">bildirim kanalları</ion-label>
-    </ion-item>
-
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">mobil bildirimler</ion-label>
-      <ion-toggle
-        slot="start"
-        name="blueberry"
-        checked
-        class="toggle"
-        (ionChange)="mobileOption($event)"
-      ></ion-toggle>
-    </ion-item>
-
-    <ion-item lines="none" color="medium" class="item-container">
-      <ion-label class="text-color label">email bildirimler</ion-label>
-      <ion-toggle
-        slot="start"
-        name="blueberry"
-        checked
-        class="toggle"
-        (ionChange)="emailOption($event)"
-      ></ion-toggle>
-    </ion-item>
-    <div style="padding: 2rem 0rem 1rem 0rem">
-      <ion-button (click)="submit()" expand="block" class="ion-button-block">
-        ayarları kaydet</ion-button
-      >
+    <div>
+        <ion-item lines="none" color="medium" class="title-container">
+            <img src="../../../../assets/icons/filled/bildirim_basliklari.png" class="bildirim-baslik-icon" />
+            <ion-label class="black-text bold-text">bildirim konuları</ion-label>
+        </ion-item>
+        <ion-item lines="none" color="medium" class="item-container">
+            <ion-label class="text-color text-size8">sipariş ve ödeme bildirimleri</ion-label>
+            <ion-checkbox checked color="primary" slot="start" class="checkbox-size" (ionChange)="addToSelecedNotifications(0)"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none" color="medium" class="item-container">
+            <ion-label class="text-color text-size8">reklam ve promosyon bildirimleri</ion-label>
+            <ion-checkbox checked color="primary" slot="start" class="checkbox-size" (ionChange)="addToSelecedNotifications(1)"></ion-checkbox>
+        </ion-item>
     </div>
-  </div>
+    <div>
+        <ion-item lines="none" color="medium" class="title-container">
+            <img src="../../../../assets/icons/filled/bildirim-filled.png" class="bildirim-icon-filled" />
+            <ion-label class="text-color bold-text">bildirim kanalları</ion-label>
+        </ion-item>
+
+        <ion-item lines="none" color="medium" class="item-container">
+            <ion-label class="text-color text-size8">mobil bildirimler</ion-label>
+            <ion-toggle slot="start" name="blueberry" checked class="toggle" (ionChange)="mobileOption($event)"></ion-toggle>
+        </ion-item>
+
+        <ion-item lines="none" color="medium" class="item-container">
+            <ion-label class="text-color text-size8">email bildirimler</ion-label>
+            <ion-toggle slot="start" name="blueberry" checked class="toggle" (ionChange)="emailOption($event)"></ion-toggle>
+        </ion-item>
+        <div style="padding: 2rem 0rem 1rem 0rem">
+            <ion-button (click)="submit()" expand="block" class="ion-button-block">
+                ayarları kaydet</ion-button>
+        </div>
+    </div>
 </ion-content>

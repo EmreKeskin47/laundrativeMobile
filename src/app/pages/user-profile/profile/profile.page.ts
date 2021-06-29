@@ -26,8 +26,8 @@ export class ProfilePage implements OnInit {
     this.router.navigate(['/profile/contact']);
   }
 
-  navigateToDiscountList() {
-    this.router.navigate(['/profile/discount-list']);
+  navigateToOrders() {
+    this.router.navigate(['/profile/siparislerim']);
   }
 
   navigateToNotifications() {

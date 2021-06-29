@@ -8,22 +8,10 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'card',
-        loadChildren: () =>
-          import('../pages/card/card.module').then((m) => m.CardPageModule),
-      },
-      {
         path: 'card/payment/payment-success',
         loadChildren: () =>
           import('../pages/payment-success/payment-success.module').then(
             (m) => m.PaymentSuccessPageModule
-          ),
-      },
-      {
-        path: 'orders',
-        loadChildren: () =>
-          import('../pages/orders/orders.module').then(
-            (m) => m.OrdersPageModule
           ),
       },
       {
@@ -49,6 +37,11 @@ const routes: Routes = [
       },
       {
         path: 'yeni-siparis/sepet',
+        loadChildren: () =>
+          import('../pages/sepet/sepet.module').then((m) => m.SepetPageModule),
+      },
+      {
+        path: 'sepet',
         loadChildren: () =>
           import('../pages/sepet/sepet.module').then((m) => m.SepetPageModule),
       },
@@ -107,6 +100,13 @@ const routes: Routes = [
           import(
             '../pages/user-profile/notification-settings/notification-settings.module'
           ).then((m) => m.NotificationSettingsPageModule),
+      },
+      {
+        path: 'profile/siparislerim',
+        loadChildren: () =>
+          import('../pages/user-profile/siparislerim/siparislerim.module').then(
+            (m) => m.SiparislerimPageModule
+          ),
       },
       {
         path: '',

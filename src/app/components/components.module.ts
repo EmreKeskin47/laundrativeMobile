@@ -1,11 +1,8 @@
 import { KategoriIsmiPipe } from './../pipes/kategori-ismi.pipe';
-import { StoreInfoCardComponent } from './store-info-card/store-info-card.component';
 import { FormsModule } from '@angular/forms';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { CityDistrictPickerComponent } from './city-district-picker/city-district-picker.component';
 import { FiyatPipe } from './../pipes/fiyat.pipe';
-import { AddressCardComponent } from './address-card/address-card.component';
-import { OrderCardComponent } from './order-card/order-card.component';
 import { AdressFieldComponent } from './adress-field/adress-field.component';
 import { DateFieldComponent } from './date-field/date-field.component';
 import { CardItemComponent } from './card-item/card-item.component';
@@ -20,22 +17,16 @@ import { CommonModule } from '@angular/common';
     CardItemComponent,
     DateFieldComponent,
     AdressFieldComponent,
-    OrderCardComponent,
-    AddressCardComponent,
     FiyatPipe,
     CityDistrictPickerComponent,
-    StoreInfoCardComponent,
     KategoriIsmiPipe,
   ],
   exports: [
     CardItemComponent,
     DateFieldComponent,
     AdressFieldComponent,
-    OrderCardComponent,
-    AddressCardComponent,
     FiyatPipe,
     CityDistrictPickerComponent,
-    StoreInfoCardComponent,
     KategoriIsmiPipe,
   ],
 })

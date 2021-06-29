@@ -1,0 +1,188 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">siparişleriniz</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+
+    <ion-label *ngIf="orderList.length==0; else orders" class="text-color">
+        sipariş bulunmamaktadır
+    </ion-label>
+    <ng-template #orders>
+        <div *ngFor="let order of orderList">
+            <!-- ORDER DONE  -->
+            <ion-card *ngIf="order.status; else notDone" class="card-container full-width-margin" [ngClass]="{ 'box-shadow ': detayGoster == order }">
+                <ion-item button detail="false" lines="none" (click)="showDetails(order)">
+                    <div class="card-title-container">
+                        <!-- If order is not completed date and code is returned-->
+                        <div *ngIf="order.status">
+                            <ion-label class="date-label">{{ order.siparis_tarihi | date: "dd.MM.yyyy " }}
+                            </ion-label>
+                            <ion-label class="order-number-label">A{{ order.siparis_id }}</ion-label>
+                            <!--Address is shown if order is not yet completed-->
+                        </div>
+                        <div *ngIf="detayGoster != order; else detailOpen">
+                            <div class="text-tick-container">
+                                <img src="../../../assets/icons/filled/checkbox-check.png" class="check" />
+                                <ion-label class="text-color is-done-label"> tamamlandı </ion-label>
+                            </div>
+
+                            <ion-label class="total-cost pink-color">{{ order.fiyat | fiyat: order.fiyat }}
+                            </ion-label>
+                        </div>
+                    </div>
+                    <ng-template #detailOpen>
+                        <div class="detail-open">
+                            <ion-label class="text-color is-done-label">sipariş detayları</ion-label>
+                            <img src="../../../assets/icons/button/arrow_up.png" class="arrow-up" />
+                        </div>
+                    </ng-template>
+                </ion-item>
+
+                <ion-card-content *ngIf="detayGoster == order">
+                    <div *ngIf="order.status">
+                        <div *ngFor="let detay of order.detaylar">
+                            <app-card-item [itemName]="detay.cins" [itemCost]="detay.fiyat" [itemIcon]="detay.resim">
+                            </app-card-item>
+                        </div>
+                    </div>
+                    <hr class="rounded" />
+
+                    <!--Cost labels and fees-->
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col> </ion-col>
+                            <ion-col class="cost-labels black-text">
+                                <div>hizmet toplamı</div>
+                                <div>servis ücreti</div>
+                                <div *ngIf="order.indirim_tipi">
+                                    {{ indirimAdlari[order.indirim_tipi] }}(%{{ order.indirim_orani }})
+                                </div>
+                                <div>kdv(%8)</div>
+                            </ion-col>
+                            <ion-col class="label-fee black-text">
+                                <div>36,11 tl</div>
+                                <div>{{ order.servis_tutari | fiyat: order.servis_tutari }}</div>
+                                <div *ngIf="order.indirim_tipi">
+                                    {{ order.indirim_orani }}
+                                </div>
+                                <div>2,89 tl</div>
+                            </ion-col>
+                        </ion-row>
+                        <hr class="half-width-seperator" />
+                    </ion-grid>
+
+                    <!--Total Cost -->
+                    <ion-grid class="total-cost-grid">
+                        <ion-row>
+                            <ion-col> </ion-col>
+                            <ion-col class="cost-labels black-text">
+                                <div>toplam ödeme</div>
+                            </ion-col>
+                            <ion-col class="total-cost bold pink-color">
+                                <div>{{ order.fiyat | fiyat: order.fiyat }}</div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ORDER NOT DONE  -->
+            <ng-template #notDone>
+                <ion-card class="card-container full-width-margin">
+                    <ion-item button detail="false" lines="none" (click)="showDetails(order)">
+                        <div class="card-title-container">
+                            <div style="width: 50%">
+                                <div>
+                                    <ion-label class="order-number-label">A{{ order.siparis_id }}</ion-label>
+                                </div>
+                                <div>
+                                    <ion-label style="font-size: 0.7rem; font-weight: bold">
+                                        {{ order.siparis_tarihi | date: "d.M.yy EEEE HH:mm":"":"tr" }}
+                                    </ion-label>
+                                    <ion-text style="font-size: 0.6rem">
+                                        <p>
+                                            {{ order.teslim_alma_adresi }}
+                                        </p>
+                                    </ion-text>
+                                </div>
+                                <div *ngIf="detayGoster == order else downArrow" class="detail-close">
+                                    <img src="../../../assets/icons/button/arrow_down.png" class="arrow-up" />
+                                    <ion-label class="text-color is-done-label">sipariş detayları</ion-label>
+                                </div>
+                                <ng-template #downArrow>
+                                    <div class="detail-close">
+                                        <img src="../../../assets/icons/button/arrow_up.png" class="arrow-up" />
+                                        <ion-label class="text-color is-done-label">sipariş detayları</ion-label>
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <div>
+                                <ion-label class="text-color is-done-label">{{ getOrderStatusName(order) }}
+                                </ion-label>
+
+                                <ion-label class="total-cost pink-color">{{ order.fiyat | fiyat: order.fiyat }}
+                                </ion-label>
+                            </div>
+                        </div>
+                        <ng-template #detailOpen> </ng-template>
+                    </ion-item>
+                </ion-card>
+
+                <ion-card *ngIf="detayGoster == order" class="card-container full-width-margin" [ngClass]="{ 'box-shadow ': detayGoster == order }">
+                    <ion-card-content>
+                        <div *ngFor="let detay of order.detaylar">
+                            <app-card-item [itemName]="detay.cins" [itemCost]="detay.fiyat" [itemIcon]="detay.resim" [type]="tipAdi[detay.tip]">
+                            </app-card-item>
+                        </div>
+
+                        <hr class="rounded" />
+
+                        <!--Cost labels and fees-->
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col> </ion-col>
+                                <ion-col class="cost-labels black-text">
+                                    <div>hizmet toplamı</div>
+                                    <div>servis ücreti</div>
+                                    <div *ngIf="order.indirim_tipi">
+                                        {{ indirimAdlari[order.indirim_tipi] }}(%{{ order.indirim_orani }})
+                                    </div>
+                                    <div>kdv(%8)</div>
+                                </ion-col>
+                                <ion-col class="label-fee black-text">
+                                    <div>36,11 tl</div>
+                                    <div>{{ order.servis_tutari | fiyat: order.servis_tutari }}</div>
+                                    <div *ngIf="order.indirim_tipi">
+                                        {{ order.indirim_orani }}
+                                    </div>
+                                    <div>2,89 tl</div>
+                                </ion-col>
+                            </ion-row>
+                            <hr class="half-width-seperator" />
+                        </ion-grid>
+
+                        <!--Total Cost -->
+                        <ion-grid class="total-cost-grid">
+                            <ion-row>
+                                <ion-col> </ion-col>
+                                <ion-col class="cost-labels black-text">
+                                    <div>toplam ödeme</div>
+                                </ion-col>
+                                <ion-col class="total-cost bold pink-color">
+                                    <div>{{ order.fiyat | fiyat: order.fiyat }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </ion-card>
+            </ng-template>
+
+        </div>
+    </ng-template>
+
+</ion-content>

@@ -1,25 +1,56 @@
 .new-address {
-  width: 100%;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+    width: 100%;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .root {
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
 .address-card-container {
-  width: 100%;
+    width: 100%;
 }
 
 .add-icon {
-  width: 11px;
-  height: 11px;
+    width: 11px;
+    height: 11px;
 }
 
 .btn-label {
-  margin-left: 0.3rem;
+    margin-left: 0.3rem;
+}
+
+.card-container {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.title-label {
+    font-size: 0.8rem;
+    font-weight: "bold";
+}
+
+.text {
+    font-size: 0.7rem;
+}
+
+.input {
+    --padding-bottom: 0;
+    --padding-top: 0.8rem;
+}
+
+.no-padding {
+    --padding-bottom: 0;
+    --padding-top: 0rem;
+}
+
+.seperator-width {
+    width: 85%;
+    margin: 0rem 0rem 0rem 2.7rem;
 }
