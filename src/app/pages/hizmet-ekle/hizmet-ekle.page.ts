@@ -16,6 +16,7 @@ import {
 import { IonContent, IonList, IonSlides } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-hizmet-ekle',
   templateUrl: './hizmet-ekle.page.html',
@@ -103,14 +104,13 @@ export class HizmetEklePage implements OnInit {
           break;
         }
       }
-      this.activeCategory =
-        this.listToDisplay[index + this.seciliUrunler.length + 2].kategori_id;
+      index = index + this.seciliUrunler.length;
+      this.activeCategory = this.listToDisplay[index].kategori_id;
     } else {
       this.activeCategory = 0;
     }
-    console.log(index);
     const child = this.listElements[index].nativeElement;
-    this.content.scrollToPoint(0, child.offsetTop - 50, 1000).then(() => {
+    this.content.scrollToPoint(0, child.offsetTop - 40, 1000).then(() => {
       this.categoriClick--;
     });
   }
@@ -122,9 +122,15 @@ export class HizmetEklePage implements OnInit {
       const item = this.listElements[i].nativeElement;
       if (this.isElementInViewport(item)) {
         this.slides.slideTo(i);
-        if (this.categoriClick === 0)
-          this.activeCategory =
-            this.listToDisplay[i + 3 + this.seciliUrunler.length].kategori_id;
+        console.log(i);
+        if (this.categoriClick === 0) {
+          if (i <= this.seciliUrunler.length) {
+            this.activeCategory = 0;
+          } else {
+            this.activeCategory =
+              this.storeMenu[i - this.seciliUrunler.length - 1].kategori_id;
+          }
+        }
         break;
       }
     }
@@ -133,7 +139,7 @@ export class HizmetEklePage implements OnInit {
   isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return (
-      rect.top >= 0 &&
+      rect.top >= 250 &&
       rect.bottom <=
         (window.innerHeight || document.documentElement.clientHeight)
     );
