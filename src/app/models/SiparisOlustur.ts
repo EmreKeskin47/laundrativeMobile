@@ -1,4 +1,3 @@
-import { OrderContent } from './ui/OrderContent';
 export class SiparisOlustur {
   eskiSiparisNo: string;
   teslimAlmaAdres: string;
@@ -8,7 +7,6 @@ export class SiparisOlustur {
   indirimMiktari: string;
   indirimTipi: string;
   toplam: string;
-  siparisler: OrderContent[];
   constructor(
     eskiSiparisNo: string,
     teslimAlmaAdres: string,
@@ -17,8 +15,7 @@ export class SiparisOlustur {
     not: string,
     indirimMiktari: string,
     indirimTipi: string,
-    toplam: string,
-    siparisler: OrderContent[]
+    toplam: string
   ) {
     this.eskiSiparisNo = eskiSiparisNo;
     this.teslimAlmaAdres = teslimAlmaAdres;
@@ -28,6 +25,5 @@ export class SiparisOlustur {
     this.indirimMiktari = indirimMiktari;
     this.indirimTipi = indirimTipi;
     this.toplam = toplam;
-    this.siparisler = siparisler;
   }
 }

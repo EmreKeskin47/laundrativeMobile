@@ -88,8 +88,8 @@ export class AuthService {
       return { mail, pass, token };
     } else {
       let token =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbiIsImF1ZCI6ImxldmVudC5ndXJlbkBnbWFpbC5jb20iLCJqdGkiOiIxIiwiZXhwIjoxNjE5Mzc5MTY5fQ.8jjzohhgn1W9vA4zmeq4okRFKvDX8H5DoFZ_Z1VoEcTSW43q2ANzQalSjnhl0kUMOeKmb5Cu3BnuMUglf1l_Tg';
-      return { mail: 'levent.guren@gmail.com', pass: '123', token };
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbiIsImF1ZCI6ImFrZHI1N0Bob3RtYWlsLmNvbSIsImp0aSI6IjE2ODU1IiwiZXhwIjoxNjI5ODI4NDYyfQ.Y-dwTTzLREbpo3i_kgmIe1U9eCtitSeVWWwHZ6uAkdCt6tTqyzgyIZZx0BQH3UvvBobOR5sLuUvZJ-w1QDOvZQ';
+      return { mail: 'akdr57@hotmail.com', pass: '123', token };
     }
   }
 

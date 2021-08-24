@@ -187,7 +187,7 @@ export class HizmetEklePage implements OnInit {
   }
 
   navigateToMagazaSecim() {
-    this.siparisSrv.setSelectedItems(this.seciliUrunler);
+    this.siparisSrv.setSepeteEklenenler(this.seciliUrunler);
     this.router.navigate(['yeni-siparis/magaza-secim']);
   }
 }

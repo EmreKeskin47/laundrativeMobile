@@ -12,11 +12,15 @@ import { Observable } from 'rxjs';
 export class IsletmeService {
   url: string = `${BASE_URL}/isletme`;
 
-  httpHeaders = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Cache-Control', 'no-cache')
-    .set('Authorization', `Bearer ${this.authService.getCredentials().token}`);
-  options = { headers: this.httpHeaders, withCredentials: true };
+  httpHeaders;
+  options: {
+    headers?:
+      | HttpHeaders
+      | {
+          [header: string]: string | string[];
+        };
+    withCredentials: boolean;
+  };
 
   currentInstitutionList: Isletme[];
   selectedInstitution: Isletme = null;
@@ -29,16 +33,25 @@ export class IsletmeService {
 
   selectedDeliveryDate: Date = new Date();
   selectedDeliveryAddress: MusteriAdres;
-  selectedCategoryList: number[] = [];
+  secilenKategoriler: number[] = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.httpHeaders = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Cache-Control', 'no-cache')
+      .set(
+        'Authorization',
+        `Bearer ${this.authService.getCredentials().token}`
+      );
+    this.options = { headers: this.httpHeaders, withCredentials: true };
+  }
 
   setSelectedCategoryList(selected: any) {
-    this.selectedCategoryList = selected;
+    this.secilenKategoriler = selected;
   }
 
   getSelected() {
-    return this.selectedCategoryList;
+    return this.secilenKategoriler;
   }
 
   setSelectedTeslimAlma(hour, day) {
@@ -55,7 +68,7 @@ export class IsletmeService {
         {
           mahalleId: this.selectedDeliveryAddress,
           teslimAlmaTarihi: this.selectedDeliveryDate,
-          hizmetlerArr: this.selectedCategoryList,
+          hizmetlerArr: this.secilenKategoriler,
         },
         this.options
       );
@@ -66,9 +79,17 @@ export class IsletmeService {
 
   getItemsInInstitution(storeID: number): Observable<KategoriCins[]> {
     try {
+      let myhttpHeaders = {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Authorization': `Bearer ${this.authService.getCredentials().token}`,
+      };
+
+      let myoptions = { headers: myhttpHeaders, withCredentials: true };
+      console.log(myoptions.headers);
       return this.http.get<KategoriCins[]>(
         `${this.url}/sorgu?isletmeId=${storeID}`,
-        this.options
+        myoptions
       );
     } catch (err) {
       console.log('Error in GET store content by id', err);

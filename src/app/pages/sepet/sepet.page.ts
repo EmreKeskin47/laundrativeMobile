@@ -23,7 +23,7 @@ export class SepetPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.sepet = this.siparisSrv.getSelectedItems();
+    this.sepet = this.siparisSrv.getSepeteEklenenler();
     console.log(this.sepet);
   }
 

@@ -47,7 +47,7 @@ siparisDurum.set('SIPARIS_GUNCELLENDI', { isim: 'güncellendi', durum: 1 });
 })
 export class SiparisService {
   url = `${BASE_URL}/siparis`;
-  currentCardContent: Hizmet[] = [];
+  sepeteEklenenler: Hizmet[] = [];
 
   httpHeaders = new HttpHeaders()
     .set('Content-Type', 'application/json')
@@ -62,12 +62,12 @@ export class SiparisService {
     private isletmeSrv: IsletmeService
   ) {}
 
-  setSelectedItems(list: Hizmet[]) {
-    this.currentCardContent = list;
+  setSepeteEklenenler(list: Hizmet[]) {
+    this.sepeteEklenenler = list;
   }
 
-  getSelectedItems() {
-    return this.currentCardContent;
+  getSepeteEklenenler() {
+    return this.sepeteEklenenler;
   }
 
   getOrderList(): Observable<MusteriSiparis[]> {
