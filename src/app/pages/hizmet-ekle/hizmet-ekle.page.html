@@ -22,33 +22,26 @@
             <ion-button *ngIf="seciliUrunler.length>0" [class.active-category]="activeCategory == 0" fill="clear" (click)="selectCategory(0)">
                 <div class="cat-container">
                     <img src='{{"../../../assets/icons/sepet_icon.png"}}' class="sepet-icon" />
-                    <div class="text-size8 white-color" [ngClass]="{'disable-opacity': activeCategory != 0 }"> seçilenler
-                    </div>
+                    <div class="text-size8 white-color" [ngClass]="{'disable-opacity': activeCategory != 0 }"> seçilenler </div>
                 </div>
             </ion-button>
         </ion-slides>
     </ion-toolbar>
 </ion-header>
-
-
 <ion-content color="medium" [fullscreen]=false style="height: 88%" scrollEvents=true (ionScroll)="onScroll()">
-
     <!-- SEÇİLİ ÜRÜNLER LOOP-->
     <ion-list-header *ngIf="seciliUrunler.length>0">
-        <ion-label class="text-size8 black-text cat-name-header">
-            seçilenler
-        </ion-label>
+        <ion-label class="text-size8 black-text cat-name-header"> seçilenler </ion-label>
     </ion-list-header>
-
     <div *ngFor="let item of seciliUrunler; let i = index;">
         <ion-list color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 1110">
             <div class="full-width-margin ">
                 <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
                     <div class="item-container">
                         <div style="display: flex;">
-                            <img [src]="item.cins_resmi" alt="Resim Hatası" class="item-img text-color" />
+                            <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
                             <ion-label class="text-size8 text-color name-label lowercase">
-                                {{ item.cins_adi }}
+                                {{ item.hizmet_adi }}
                             </ion-label>
                         </div>
                         <div style="display: flex">
@@ -65,7 +58,6 @@
             </div>
         </ion-list>
     </div>
-
     <!-- BÜTÜN ÜRÜNLER-->
     <div *ngFor="let item of storeMenu; let i = index;">
         <ion-list-header *ngIf="!storeMenu[i-1] || storeMenu[i-1].kategori_id != item.kategori_id">
@@ -78,17 +70,14 @@
                 <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
                     <div class="item-container">
                         <div style="display: flex;">
-                            <img [src]="item.cins_resmi" alt="Resim Hatası" class="item-img text-color" />
+                            <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
                             <ion-label class="text-size8 text-color name-label lowercase">
-                                {{ item.cins_adi }}
+                                {{ item.hizmet_adi }}
                             </ion-label>
                         </div>
                         <ion-button fill="clear" (click)="urunSecim(item)" *ngIf="seciliUrunler.indexOf(item) < 0 else adetAyar">
-                            <ion-label class="text-size8 text-color add-btn">
-                                ekle
-                            </ion-label>
+                            <ion-label class="text-size8 text-color add-btn"> ekle </ion-label>
                         </ion-button>
-
                         <ng-template #adetAyar>
                             <div style="display: flex">
                                 <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
@@ -111,7 +100,6 @@
         </ion-item> -->
     </div>
 </ion-content>
-
 <div slot="fixed" class="bottom-btn-padding">
     <ion-button expand="block" class="ion-button-block" (click)="navigateToMagazaSecim()">uygun mağazaları göster</ion-button>
 </div>

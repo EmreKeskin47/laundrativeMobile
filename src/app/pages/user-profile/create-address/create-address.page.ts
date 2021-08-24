@@ -1,4 +1,4 @@
-import { SemtListe } from './../../../models/ui/SemtListe';
+import { SemtListe } from '../../../models/SemtListe';
 import { AddressService } from './../../../services/address.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

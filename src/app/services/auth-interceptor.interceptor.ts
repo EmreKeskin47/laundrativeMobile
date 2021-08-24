@@ -38,7 +38,11 @@ export class AuthInterceptor implements HttpInterceptor {
         .set('Cache-Control', 'no-cache, no-store, must-revalidate')
         .set('Pragma', 'no-cache')
         .set('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT')
-        .set('If-Modified-Since', '0'),
+        .set('If-Modified-Since', '0')
+        .set(
+          'Authorization',
+          `Bearer ${this.authService.getCredentials().token}`
+        ),
     });
     if (this.loginError !== 0) {
       return next.handle(apiReq);
@@ -70,7 +74,7 @@ export class AuthInterceptor implements HttpInterceptor {
     var username;
     var password;
     if (this._currentPlatform == 'browser') {
-      username = 'levent.guren@gmail.com';
+      username = 'akdr57@hotmail.com';
       password = '123';
     } else {
       username = localStorage.getItem('username');

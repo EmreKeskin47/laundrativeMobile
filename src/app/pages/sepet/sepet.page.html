@@ -6,7 +6,6 @@
         <ion-title class="header-title">sepet</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content color=medium>
     <div *ngIf="sepet.length > 0 else sepetBos">
         <!-- STORE CARD -->
@@ -17,28 +16,19 @@
                     <ion-label class="text-size8 bold-text">bil-wash <br> laundry</ion-label>
                     <div style="width: 40%;">
                         <ion-row>
-                            <ion-label class="black-text text-size6 bold-text right-text">
-                                teslimat tarihi
-                            </ion-label>
+                            <ion-label class="black-text text-size6 bold-text right-text"> teslimat tarihi </ion-label>
                         </ion-row>
-                        <ion-row class="black-text text-size6 right-text">
-                            15 haz cts 08:00 - 10:00
-                        </ion-row>
+                        <ion-row class="black-text text-size6 right-text"> 15 haz cts 08:00 - 10:00 </ion-row>
                     </div>
                 </ion-item>
                 <ion-card-content class="store-card-content">
                     <ion-row>
-                        <ion-col size=2.3 class="black-text text-size6 bold-text ">
-                            teslim alma
-                        </ion-col>
-                        <ion-col size=4 class="black-text text-size6">
-                            14 haz cts 08:00 - 10:00
-                        </ion-col>
+                        <ion-col size=2.3 class="black-text text-size6 bold-text "> teslim alma </ion-col>
+                        <ion-col size=4 class="black-text text-size6"> 14 haz cts 08:00 - 10:00 </ion-col>
                     </ion-row>
                 </ion-card-content>
             </ion-card>
         </div>
-
         <!-- SEPET İÇERİĞİ -->
         <div>
             <div *ngFor="let item of sepet; let i = index;">
@@ -52,9 +42,9 @@
                         <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
                             <div class="item-container">
                                 <div style="display: flex;">
-                                    <img [src]="item.cins_resmi" alt="Resim Hatası" class="item-img text-color" />
+                                    <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
                                     <ion-label class="text-size8 text-color name-label lowercase">
-                                        {{ item.cins_adi }}
+                                        {{ item.hizmet_adi }}
                                     </ion-label>
                                 </div>
                             </div>
@@ -71,7 +61,6 @@
                 </ion-list>
             </div>
         </div>
-
         <div class=" full-width-padding">
             <!--Cost labels and fees-->
             <ion-grid>
@@ -92,21 +81,17 @@
                 </ion-row>
                 <hr class="half-width-seperator" />
             </ion-grid>
-
             <!--Total Cost -->
             <ion-grid>
                 <ion-row>
                     <ion-col> </ion-col>
-                    <ion-col class="bold-text text-color total-cost text-size6">
-                        toplam ödeme
-                    </ion-col>
+                    <ion-col class="bold-text text-color total-cost text-size6"> toplam ödeme </ion-col>
                     <ion-col class="bold-text pink-color total-cost text-size10">
                         {{112 | fiyat:112 }}
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </div>
-
         <div>
             <ion-item lines="none" class="input-item">
                 <div class="input-label full-width text-size6">
@@ -115,21 +100,16 @@
                     </ion-input>
                 </div>
             </ion-item>
-
             <!--Sign up / add address container-->
             <div *ngIf="!isLogged; else logged">
-                <div class="text-size8 text-color center-text login-container">
-                    ödeme yapabilmek için lütfen kullanıcı girişi yapın
-                </div>
+                <div class="text-size8 text-color center-text login-container"> ödeme yapabilmek için lütfen kullanıcı girişi yapın </div>
                 <div>
                     <ion-button (click)="navigateToLogin()" expand="block" class="ion-button-block">giriş yap</ion-button>
                 </div>
                 <div>
-                    <ion-button (click)="navigateToSignup()" fill="outline" expand="block" class="ion-button-block pink-color">
-                        yeni hesap oluştur</ion-button>
+                    <ion-button (click)="navigateToSignup()" fill="outline" expand="block" class="ion-button-block pink-color"> yeni hesap oluştur</ion-button>
                 </div>
             </div>
-
             <ng-template #logged>
                 <div>
                     <div>
@@ -139,13 +119,7 @@
             </ng-template>
         </div>
     </div>
-
     <ng-template #sepetBos>
         <ion-label class="text-color text-size10 center-text"> SEPET BOŞ </ion-label>
     </ng-template>
-
-
-
-
-
 </ion-content>

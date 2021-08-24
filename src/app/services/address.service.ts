@@ -1,4 +1,4 @@
-import { AdresDuzenle } from './../models/ui/AdresDuzenle';
+import { AdresDuzenle } from '../models/AdresDuzenle';
 import { AuthService } from './auth.service';
 import { Semt } from './../models/Semt';
 import { Observable } from 'rxjs';
@@ -13,8 +13,13 @@ import { MusteriAdres } from '../models/MusteriAdres';
 export class AddressService {
   url: string = `${BASE_URL}/adres`;
   customerUrl: string = `${BASE_URL}/musteri`;
+  httpHeaders = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Cache-Control', 'no-cache')
+    .set('Authorization', `Bearer ${this.authService.getCredentials().token}`);
+  options = { headers: this.httpHeaders, withCredentials: true };
 
-  constructor(private http: HttpClient, private auhtService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getAllProvinces(): Observable<any> {
     try {
@@ -33,10 +38,10 @@ export class AddressService {
   }
 
   getAddressOfCustomer(): Observable<MusteriAdres[]> {
-    let user = this.auhtService.getCredentials();
     try {
       return this.http.get<MusteriAdres[]>(
-        `${this.customerUrl}/adresler?token=${user.token}`
+        `${this.customerUrl}/adresler`,
+        this.options
       );
     } catch (err) {
       console.log('GET address of customer err ', err);
@@ -50,49 +55,43 @@ export class AddressService {
     anotherUserName: string,
     anotherUserPhone: string
   ): Observable<any> {
-    let user = this.auhtService.getCredentials();
-    let withToken = Object.assign(
-      {
-        mahalleId,
-        addressName,
-        addressDesc,
-        anotherUserName,
-        anotherUserPhone,
-      },
-      { token: user.token }
-    );
+    let withToken = Object.assign({
+      mahalleId,
+      addressName,
+      addressDesc,
+      anotherUserName,
+      anotherUserPhone,
+    });
     let body = JSON.stringify(withToken);
     try {
-      return this.http.post<any>(`${this.customerUrl}/adresEkle`, body);
+      return this.http.post<any>(
+        `${this.customerUrl}/adresEkle`,
+        body,
+        this.options
+      );
     } catch (err) {
       console.log('POST address of customer err ', err);
     }
   }
 
   editAddress(adres: AdresDuzenle): Observable<any> {
-    let user = this.auhtService.getCredentials();
-    let withToken = Object.assign(adres, { token: user.token });
-    let body = JSON.stringify(withToken);
     try {
-      return this.http.post<any[]>(`${this.customerUrl}/adresDuzenle`, body);
+      return this.http.post<any[]>(
+        `${this.customerUrl}/adresDuzenle`,
+        adres,
+        this.options
+      );
     } catch (err) {
       console.log('PUT address of customer err ', err);
     }
   }
 
   deleteAdress(id: number): Observable<any> {
-    let user = this.auhtService.getCredentials();
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      body: {
-        adresId: id,
-        token: user.token,
-      },
-    };
     try {
-      return this.http.delete<any>(`${this.customerUrl}/adresSil`, options);
+      return this.http.delete<any>(
+        `${this.customerUrl}/adresSil`,
+        this.options
+      );
     } catch (err) {
       console.log('DELETE address of customer', err);
     }

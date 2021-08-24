@@ -1,3 +1,4 @@
+import { IsletmeService } from './isletme.service';
 import { DeviceInfoService } from './device-info.service';
 import { SiparisOlustur } from './../models/SiparisOlustur';
 import { AuthService } from './auth.service';
@@ -5,8 +6,7 @@ import { MusteriSiparis } from './../models/MusteriSiparis';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from './../api/baseUrl';
-import { Cins } from './../models/ui/Cins';
-import { CardCostContent } from './../models/ui/CardCostContent';
+import { Hizmet } from '../models/Hizmet';
 import { Injectable } from '@angular/core';
 
 export const tipAdlari = { 3: 'prm', 2: 'exp', 1: 'std', 0: 'std' };
@@ -45,19 +45,24 @@ siparisDurum.set('SIPARIS_GUNCELLENDI', { isim: 'güncellendi', durum: 1 });
 @Injectable({
   providedIn: 'root',
 })
-export class OrderService {
+export class SiparisService {
   url = `${BASE_URL}/siparis`;
-  currentCardContent: Cins[] = [];
-  currentCardCostContent: CardCostContent = new CardCostContent(0, 0, 0);
-  selectedItem: Cins;
+  currentCardContent: Hizmet[] = [];
+
+  httpHeaders = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Cache-Control', 'no-cache')
+    .set('Authorization', `Bearer ${this.authService.getCredentials().token}`);
+  options = { headers: this.httpHeaders, withCredentials: true };
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private devInfo: DeviceInfoService
+    private devInfo: DeviceInfoService,
+    private isletmeSrv: IsletmeService
   ) {}
 
-  setSelectedItems(list: Cins[]) {
+  setSelectedItems(list: Hizmet[]) {
     this.currentCardContent = list;
   }
 
@@ -66,9 +71,8 @@ export class OrderService {
   }
 
   getOrderList(): Observable<MusteriSiparis[]> {
-    let user = this.authService.getCredentials();
     try {
-      return this.http.get<any>(`${this.url}/liste?token=${user.token}`);
+      return this.http.get<any>(`${this.url}/liste`, this.options);
     } catch (err) {
       console.log('err in GET order list of customer');
     }
@@ -93,13 +97,11 @@ export class OrderService {
   }
 
   async createOrder(siparis: SiparisOlustur) {
-    let user = this.authService.getCredentials();
     let os = this.devInfo.currentPlatform;
     let dev = await this.devInfo.setOtherDeviceInfo();
     console.log(JSON.stringify(dev));
 
     var data = {
-      token: user.token,
       isletimSistemi: os,
       isletimSistemiBilgisi: dev,
       ...siparis,
@@ -108,85 +110,21 @@ export class OrderService {
     console.log(body);
 
     try {
-      return this.http.post<any>(`${this.url}/olustur`, body);
+      return this.http.post<any>(`${this.url}/olustur`, body, this.options);
     } catch (err) {
       console.log('err in POST order', err);
     }
   }
 
-  setSelectedKindItem(item: Cins) {
-    this.selectedItem = item;
-  }
-
-  addToCard(item: Cins) {
-    // if another kurum is selected current card content must be empty - if not alert
-    if (
-      this.currentCardContent.length > 0 &&
-      this.currentCardContent[0].kurum_id != item.kurum_id
-    ) {
-      this.currentCardContent = [];
-      console.log('make card content empty');
-    } else {
-      let added = false;
-      //if new item already exists in card
-      for (let i = 0; i < this.currentCardContent.length; i++) {
-        if (
-          this.currentCardContent[i].cins_id === item.cins_id &&
-          this.currentCardContent[i].secilenTip === item.secilenTip &&
-          this.currentCardContent[i].teslimatTarihi === item.teslimatTarihi
-        ) {
-          this.currentCardContent[i].adet += item.adet;
-          added = true;
-          return;
-        }
-      }
-      if (!added) {
-        let newItem = new Cins(
-          item.kurum_id,
-          item.kategori_id,
-          item.cins_resmi,
-          item.cins_id,
-          item.cins_adi,
-          item.fiyatlar,
-          item.teslimatTarihi,
-          item.adet,
-          item.secilenTip
-        );
-        this.currentCardContent.push(newItem);
-        this.calculateTotal();
-      }
-    }
-  }
-
-  removeFromCard() {
-    this.currentCardContent = this.currentCardContent.filter((item) => {
-      return item != this.selectedItem;
-    });
-
-    this.selectedItem = null;
-    if (this.currentCardContent.length > 0) {
-      this.calculateTotal();
-    }
-  }
-
-  updateCard(newAmount: number, newType: number) {
-    const index = this.currentCardContent.indexOf(this.selectedItem);
-    if (index >= 0) {
-      this.currentCardContent[index].adet = newAmount;
-      this.currentCardContent[index].secilenTip = newType;
-      this.calculateTotal();
-    }
-  }
-
-  calculateTotal() {
-    let total = 0;
-    this.currentCardContent.forEach((item) => {
-      total += item.fiyatlar[item.secilenTip - 1].fiyat * item.adet;
-    });
-    this.currentCardCostContent = {
-      total: total,
-      totalTax: (total * 8) / 100,
-      totalDeliveryFee: 0,
-    };
-  }
+  //   calculateTotal() {
+  //     let total = 0;
+  //     this.currentCardContent.forEach((item) => {
+  //       total += item.fiyatlar[0].fiyat * item.adet;
+  //     });
+  //     this.currentCardCostContent = {
+  //       total: total,
+  //       totalTax: (total * 8) / 100,
+  //       totalDeliveryFee: 0,
+  //     };
+  //   }
 }

@@ -1,8 +1,8 @@
+import { IsletmeService } from './../../services/isletme.service';
 import { Component, OnInit } from '@angular/core';
 import { MusteriAdres } from './../../models/MusteriAdres';
 import { AuthService } from './../../services/auth.service';
-import { SemtListe } from './../../models/ui/SemtListe';
-import { InstitutionService } from './../../services/institution.service';
+import { SemtListe } from '../../models/SemtListe';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class YeniSiparisPage implements OnInit {
 
   constructor(
     private router: Router,
-    private institutionService: InstitutionService,
+    private isletmeSrv: IsletmeService,
     private authService: AuthService
   ) {}
 
@@ -30,7 +30,7 @@ export class YeniSiparisPage implements OnInit {
   }
 
   navigateToStoreList(category: number[]) {
-    this.institutionService.setSelectedCategoryList(category);
+    this.isletmeSrv.setSelectedCategoryList(category);
     this.router.navigate([
       'yeni-siparis/hizmet-ekle',
       { kategoriler: category },
@@ -46,7 +46,7 @@ export class YeniSiparisPage implements OnInit {
   }
   addressChange(event: MusteriAdres) {
     this.selectedAddress = event;
-    this.institutionService.setSelectedDeliveryAddress(event);
+    this.isletmeSrv.setSelectedDeliveryAddress(event);
   }
 
   ionViewDidEnter() {

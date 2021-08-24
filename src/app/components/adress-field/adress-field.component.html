@@ -6,7 +6,7 @@
                 <img src="../../../assets/icons/filled/location_icon_filled.png" class="location-icon" />
             </div>
             <ion-label class="text-margin text-size10 text-color"> adres seçin </ion-label>
-            <ion-select (ionChange)="addressChange($event)" interface="action-sheet" cancelText="vazgeç">
+            <ion-select *ngIf="addressList !== []" (ionChange)="addressChange($event)" interface="action-sheet" cancelText="vazgeç">
                 <ion-select-option class="text-color" *ngFor="let address of addressList" [value]="address">{{ address.adresBasligi }}</ion-select-option>
             </ion-select>
         </ion-item>

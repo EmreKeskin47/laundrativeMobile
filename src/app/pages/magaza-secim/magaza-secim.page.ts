@@ -1,3 +1,5 @@
+import { IsletmeService } from './../../services/isletme.service';
+import { Isletme } from './../../models/İsletme';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MagazaSecimPage implements OnInit {
   selectedType: number = 1;
+  isletmeList: Isletme[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private isletmeSrv: IsletmeService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isletmeSrv.getInstitutionsInNeighborhood().subscribe((res) => {
+      console.log(res);
+      this.isletmeList = res;
+    });
+  }
 
   selectType(selectedTypeId: number) {
     this.selectedType = selectedTypeId;

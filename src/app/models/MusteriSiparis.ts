@@ -4,8 +4,6 @@ export class MusteriSiparis {
   status: string;
   fiyat: number;
   servis_tutari: number;
-  indirim_tipi: number;
-  indirim_orani: number;
   teslim_alma_zamani: Date;
   teslim_etme_zamani: Date;
   teslim_alma_adresi: string;
@@ -27,8 +25,6 @@ export class MusteriSiparis {
     status: string,
     fiyat: number,
     servis_tutari: number,
-    indirim_tipi: number,
-    indirim_orani: number,
     teslim_alma_zamani: Date,
     teslim_etme_zamani: Date,
     teslim_alma_adresi: string,
@@ -49,8 +45,6 @@ export class MusteriSiparis {
     this.status = status;
     this.fiyat = fiyat;
     this.servis_tutari = servis_tutari;
-    this.indirim_tipi = indirim_tipi;
-    this.indirim_orani = indirim_orani;
     this.teslim_alma_zamani = teslim_alma_zamani;
     this.teslim_etme_zamani = teslim_etme_zamani;
     this.teslim_alma_adresi = teslim_alma_adresi;

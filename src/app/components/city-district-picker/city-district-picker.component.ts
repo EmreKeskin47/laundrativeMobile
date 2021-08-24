@@ -1,6 +1,6 @@
 import { AddressService } from './../../services/address.service';
 import { AdresIl } from './../../models/AdresIl';
-import { SemtListe } from './../../models/ui/SemtListe';
+import { SemtListe } from '../../models/SemtListe';
 import { Semt } from './../../models/Semt';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';

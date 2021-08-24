@@ -1,4 +1,4 @@
-import { AdresDuzenle } from './../../../models/ui/AdresDuzenle';
+import { AdresDuzenle } from '../../../models/AdresDuzenle';
 import { MusteriAdres } from './../../../models/MusteriAdres';
 import { AddressService } from './../../../services/address.service';
 import { Router } from '@angular/router';

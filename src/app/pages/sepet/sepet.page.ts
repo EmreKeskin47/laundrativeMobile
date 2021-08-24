@@ -1,7 +1,8 @@
+import { SiparisService } from './../../services/siparis.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
-import { Cins } from './../../models/ui/Cins';
-import { OrderService, kategoriAdi } from './../../services/order.service';
+import { Hizmet } from '../../models/Hizmet';
+import { kategoriAdi } from './../../services/siparis.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,19 +11,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sepet.page.scss'],
 })
 export class SepetPage implements OnInit {
-  sepet: Cins[] = [];
+  sepet: Hizmet[] = [];
   itemCategoryName = kategoriAdi;
   not: string;
   isLogged = this.authService.getCredentials().token;
 
   constructor(
-    private orderService: OrderService,
+    private siparisSrv: SiparisService,
     private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.sepet = this.orderService.getSelectedItems();
+    this.sepet = this.siparisSrv.getSelectedItems();
     console.log(this.sepet);
   }
 

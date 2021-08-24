@@ -1,10 +1,10 @@
 export class KategoriCins {
   kategoriId: number;
-  cinsler: [
+  hizmetler: [
     {
-      cins_resmi: string;
-      cins_id: number;
-      cins_adi: string;
+      hizmet_resmi: string;
+      hizmet_id: number;
+      hizmet_adi: string;
       fiyatlar: [
         {
           fiyat: number;
@@ -15,11 +15,11 @@ export class KategoriCins {
   ];
   constructor(
     kategoriId: number,
-    cinsler: [
+    hizmetler: [
       {
-        cins_resmi: string;
-        cins_id: number;
-        cins_adi: string;
+        hizmet_resmi: string;
+        hizmet_id: number;
+        hizmet_adi: string;
         fiyatlar: [
           {
             fiyat: number;
@@ -30,6 +30,6 @@ export class KategoriCins {
     ]
   ) {
     this.kategoriId = kategoriId;
-    this.cinsler = cinsler;
+    this.hizmetler = hizmetler;
   }
 }

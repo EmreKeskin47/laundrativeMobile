@@ -38,8 +38,10 @@ export class LoginPage implements OnInit {
   }
   onSubmit(values) {
     this.authService.login(values.email, values.password).subscribe((res) => {
-      if (res.token) {
-        console.log('login success');
+      console.log(res);
+
+      if (res.status && res.result.token) {
+        console.log('login success', res.result.token);
         this.authService.setCredentials(
           values.email,
           values.password,
@@ -57,7 +59,7 @@ export class LoginPage implements OnInit {
   }
 
   navigateToAccount() {
-    this.router.navigate(['/create-order']);
+    this.router.navigate(['/yeni-siparis']);
   }
 
   //Error messages

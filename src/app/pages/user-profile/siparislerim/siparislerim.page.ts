@@ -1,10 +1,8 @@
-import { Musteri } from './../../../models/Musteri';
 import {
-  indirimAdi,
   tipAdlari,
   siparisDurum,
-} from './../../../services/order.service';
-import { OrderService } from '../../../services/order.service';
+  SiparisService,
+} from './../../../services/siparis.service';
 import { Router } from '@angular/router';
 import { MusteriSiparis } from '../../../models/MusteriSiparis';
 import { Component, OnInit } from '@angular/core';
@@ -18,12 +16,11 @@ export class SiparislerimPage implements OnInit {
   onlyDone = false;
   orderList: MusteriSiparis[] = [];
   liveOrders: MusteriSiparis[] = [];
-  indirimAdlari = indirimAdi;
   tipAdi = tipAdlari;
   durumAdlari = siparisDurum;
   detayGoster: MusteriSiparis;
 
-  constructor(private router: Router, private orderService: OrderService) {}
+  constructor(private router: Router, private siparisSrv: SiparisService) {}
 
   showDetails(order: MusteriSiparis) {
     if (this.detayGoster == order) {
@@ -33,7 +30,7 @@ export class SiparislerimPage implements OnInit {
     }
   }
   ngOnInit() {
-    this.orderService.getOrderList().subscribe((order) => {
+    this.siparisSrv.getOrderList().subscribe((order) => {
       this.orderList = order;
       for (let i = 0; i < this.orderList.length; i++) {
         if (
