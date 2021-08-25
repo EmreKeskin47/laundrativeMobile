@@ -1,8 +1,8 @@
+import { FeedbackAlertService } from './../../../services/feedback-alert.service';
 import { Musteri } from './../../../models/Musteri';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.page.html',
@@ -16,10 +16,15 @@ export class AccountInfoPage implements OnInit {
   password = '*******';
   phone = '';
   disableEdit = true;
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private alertSrv: FeedbackAlertService
+  ) {}
 
   ngOnInit() {
     this.authService.getUserInfo().subscribe((user) => {
+      console.log(user, 'get user info');
       this.name = user.adi;
       this.email = user.email;
       this.phone = user.telefon;
@@ -53,9 +58,13 @@ export class AccountInfoPage implements OnInit {
   saveClicked() {
     let user = new Musteri(this.name, this.phone, this.email, this.password);
     this.authService.updateUserInfo(user).subscribe((res) => {
-      res.result == 'ok'
-        ? this.navigateToAccount()
-        : console.log('error updating user info');
+      console.log(res);
+      if (res.result == 'ok') {
+        this.disableEdit = true;
+        this.alertSrv.successAlert('Kullanıcı başarıyla güncellendi!');
+      } else {
+        this.alertSrv.errorAlert('Kullanıcı güncelleme hatası');
+      }
     });
   }
 

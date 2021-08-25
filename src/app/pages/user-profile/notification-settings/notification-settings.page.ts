@@ -1,3 +1,4 @@
+import { FeedbackAlertService } from './../../../services/feedback-alert.service';
 import { BildirimAyar } from './../../../models/BildirimAyar';
 import { MessageService } from './../../../services/message.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class NotificationSettingsPage implements OnInit {
   mobileSelected: number = 1;
   emailSelected: number = 1;
-  selectedNotifications: number[] = [0, 1, 2, 3, 4, 5, 6, 7];
+  selectedNotifications: number[] = [0, 1];
 
-  constructor(private mesaggeService: MessageService) {}
+  constructor(
+    private mesaggeService: MessageService,
+    private alertSrv: FeedbackAlertService
+  ) {}
 
   ngOnInit() {}
   emailOption(event: any) {
@@ -44,8 +48,14 @@ export class NotificationSettingsPage implements OnInit {
     );
     console.log(opt);
 
-    this.mesaggeService
-      .bildirimAyarları(opt)
-      .subscribe((res) => console.log(res, 'bildirim ayar output '));
+    this.mesaggeService.bildirimAyarları(opt).subscribe((res) => {
+      console.log(res, 'bildirim ayar output ');
+
+      if (res.result == 'ok') {
+        this.alertSrv.successAlert('Bildirim Ayarları Kaydedildi');
+      } else {
+        this.alertSrv.errorAlert('Bildirim Ayarları Kaydedilemedi');
+      }
+    });
   }
 }

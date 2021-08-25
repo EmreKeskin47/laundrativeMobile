@@ -1,9 +1,9 @@
+import { FeedbackAlertService } from './../../../services/feedback-alert.service';
 import { AdresDuzenle } from '../../../models/AdresDuzenle';
 import { MusteriAdres } from './../../../models/MusteriAdres';
 import { AddressService } from './../../../services/address.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-address-list',
   templateUrl: './address-list.page.html',
@@ -13,8 +13,13 @@ export class AddressListPage implements OnInit {
   pageTitle = 'adreslerim';
   adresList: MusteriAdres[] = [];
   seciliAdres: MusteriAdres;
+  editPressed = false;
 
-  constructor(private router: Router, private addressService: AddressService) {}
+  constructor(
+    private router: Router,
+    private addressService: AddressService,
+    private alertSrv: FeedbackAlertService
+  ) {}
 
   navigateToCreateAddress() {
     this.router.navigate(['profile/create-address']);
@@ -23,6 +28,7 @@ export class AddressListPage implements OnInit {
   ngOnInit() {
     this.addressService.getAddressOfCustomer().subscribe((address) => {
       this.adresList = address;
+      console.log(address);
     });
   }
 
@@ -34,7 +40,6 @@ export class AddressListPage implements OnInit {
   deleteSuccess() {
     this.router.navigate(['profile']);
   }
-  editPressed = false;
 
   adresBasligi(event: any) {
     this.seciliAdres.adresBasligi = event.detail.value;
@@ -50,6 +55,7 @@ export class AddressListPage implements OnInit {
   }
 
   editClicked(address: MusteriAdres) {
+    this.editPressed = true;
     if (this.seciliAdres == address) {
       this.seciliAdres = null;
     } else {
@@ -75,8 +81,15 @@ export class AddressListPage implements OnInit {
       this.seciliAdres.teslimAlanAdi,
       this.seciliAdres.teslimAlanTel
     );
-    this.addressService
-      .editAddress(update)
-      .subscribe((res) => console.log(res));
+    this.addressService.editAddress(update).subscribe((res) => {
+      console.log(res, 'update adress res');
+      this.editPressed = false;
+      this.seciliAdres = null;
+      if (res.result == 'ok') {
+        this.alertSrv.successAlert('Adres Güncellendi');
+      } else {
+        this.alertSrv.errorAlert('Adres Güncelleme hatası');
+      }
+    });
   }
 }

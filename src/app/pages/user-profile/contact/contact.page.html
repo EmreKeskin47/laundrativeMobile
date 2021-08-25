@@ -6,7 +6,6 @@
         <ion-title class="header-title">bize ulaşın</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content color="medium">
     <div>
         <div class="top-left-margin">
@@ -20,40 +19,27 @@
             <ion-item lines="none" class="item-container">
                 <ion-textarea rows="4" class="input-text gray-text" placeholder="mesaj" value="{{message}}" (ionChange)="mesaageChange($event)"></ion-textarea>
             </ion-item>
-
             <div class="send-btn">
-                <ion-button (click)="sendMessage()" class="ion-button">
-                    gönder</ion-button>
+                <ion-button (click)="sendMessage()" class="ion-button"> gönder</ion-button>
             </div>
         </div>
-
         <!--Sizi arayalım-->
         <div class="top-left-margin">
             <ion-label class="black-text bold-text text-size10">sizi arayalım</ion-label>
         </div>
         <div>
             <ion-item lines="none" class="item-container">
-                <ion-input class="input-text gray-text" placeholder="telefon numaranız"></ion-input>
+                <ion-input class="input-text gray-text" placeholder="telefon numaranız" value="{{phone}}" (ionChange)="telChange($event)"></ion-input>
             </ion-item>
-
             <div class="send-btn">
-                <ion-button (click)="sendMessage()" class="ion-button">
-                    tamam</ion-button>
+                <ion-button (click)="siziArayalim()" class="ion-button"> tamam</ion-button>
             </div>
         </div>
-
         <div class="margin-top top-left-margin">
-            <ion-label class="text-color text-size8 ">
-                laundrative müşteri hizmetleri
-                <ion-label class="bold-text text-color">
-                    hafta içi 09:00 - 18:00
-                </ion-label><br>
-                <ion-label>
-                    saatleri arasında canlı yardım hizmet vermektedir.
-                </ion-label>
+            <ion-label class="text-color text-size8 "> laundrative müşteri hizmetleri <ion-label class="bold-text text-color"> hafta içi 09:00 - 18:00 </ion-label><br>
+                <ion-label> saatleri arasında canlı yardım hizmet vermektedir. </ion-label>
             </ion-label>
         </div>
-
         <div class="margin-top">
             <ion-button color=medium class="left-margin ion-button-height">
                 <ion-label class="black-text bold-text text-size10">hakkımızda</ion-label>
@@ -64,16 +50,8 @@
                 <ion-label class="black-text bold-text text-size10">kullanıcı sözleşmesi</ion-label>
             </ion-button>
         </div>
-
         <div class="margin-top top-left-margin">
-            <ion-label class="text-color text-size8 ">
-                laundrative yazılım a.ş
-            </ion-label>
+            <ion-label class="text-color text-size8 "> laundrative yazılım a.ş </ion-label>
         </div>
-
-
-
-
-
     </div>
 </ion-content>

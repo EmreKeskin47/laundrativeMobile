@@ -93,7 +93,7 @@
             </ion-grid>
         </div>
         <div>
-            <ion-item lines="none" class="input-item">
+            <ion-item lines="none" class="input-item my-4">
                 <div class="input-label full-width text-size6">
                     <ion-label class="text-color"> sipariş notu</ion-label>
                     <ion-input value="{{not}}" (ionChange)="notChange($event)" style="--padding-bottom: 0">
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <ng-template #logged>
-                <div>
+                <div class="my-2">
                     <div>
                         <ion-button (click)="navigateToPayment()" class="ion-button-block" expand="block">ödeme yap</ion-button>
                     </div>

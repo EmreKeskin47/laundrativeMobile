@@ -13,6 +13,12 @@ export class AuthService {
   url2: string = `${BASE_URL}/kullanici`;
   private _currentPlatform;
 
+  httpHeaders = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Cache-Control', 'no-cache')
+    .set('Authorization', `Bearer ${this.getCredentials().token}`);
+  options = { headers: this.httpHeaders, withCredentials: true };
+
   constructor(private http: HttpClient, private platform: Platform) {
     this.setCurrentPlatform();
   }
@@ -31,11 +37,12 @@ export class AuthService {
   }
 
   updateUserInfo(updatedUser: Musteri): Observable<any> {
-    let user = this.getCredentials();
-    let withToken = Object.assign(updatedUser, { token: user.token });
-    let body = JSON.stringify(withToken);
     try {
-      return this.http.put<any>(`${this.url}/guncelle`, body);
+      return this.http.put<any>(
+        `${this.url}/guncelle`,
+        updatedUser,
+        this.options
+      );
     } catch (err) {
       console.log('Register user err ', err);
     }
@@ -60,9 +67,8 @@ export class AuthService {
   }
 
   getUserInfo(): Observable<any> {
-    let user = this.getCredentials();
     try {
-      return this.http.get(`${this.url}/musteriBilgisi?token=${user.token}`);
+      return this.http.get(`${this.url}/musteriBilgisi`, this.options);
     } catch (err) {
       console.log('GET user account info', err);
     }
@@ -81,16 +87,16 @@ export class AuthService {
   }
 
   getCredentials(): { mail: string; pass: string; token: string } {
-    if (this._currentPlatform !== 'browser') {
-      let mail = localStorage.getItem('email');
-      let pass = localStorage.getItem('password');
-      let token = localStorage.getItem('token');
-      return { mail, pass, token };
-    } else {
-      let token =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbiIsImF1ZCI6ImFrZHI1N0Bob3RtYWlsLmNvbSIsImp0aSI6IjE2ODU1IiwiZXhwIjoxNjI5ODI4NDYyfQ.Y-dwTTzLREbpo3i_kgmIe1U9eCtitSeVWWwHZ6uAkdCt6tTqyzgyIZZx0BQH3UvvBobOR5sLuUvZJ-w1QDOvZQ';
-      return { mail: 'akdr57@hotmail.com', pass: '123', token };
-    }
+    // if (this._currentPlatform !== 'browser') {
+    //   let mail = localStorage.getItem('email');
+    //   let pass = localStorage.getItem('password');
+    //   let token = localStorage.getItem('token');
+    //   return { mail, pass, token };
+    // } else {
+    let token =
+      'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbiIsImF1ZCI6ImljbGliZXJhQGdtYWlsLmNvbSIsImp0aSI6IjE2ODU5IiwiZXhwIjoxNjI5OTEwNjM2fQ.-Oi-DTSimH7LYyXAw94F58OOt6aRGs6w366y_ZiNHAHHFOYs-qnX6ea2ZvNNN4GdAyJBGQpgUYPtQzrIGLAo2w';
+    return { mail: 'aydinabdulkerim@gmail.com', pass: '123', token };
+    //}
   }
 
   get currentPlatform() {

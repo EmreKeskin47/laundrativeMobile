@@ -13,6 +13,7 @@ import { MusteriAdres } from '../models/MusteriAdres';
 export class AddressService {
   url: string = `${BASE_URL}/adres`;
   customerUrl: string = `${BASE_URL}/musteri`;
+
   httpHeaders = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Cache-Control', 'no-cache')
@@ -50,23 +51,22 @@ export class AddressService {
 
   createAddress(
     mahalleId: number,
-    addressName: string,
-    addressDesc: string,
-    anotherUserName: string,
-    anotherUserPhone: string
+    baslik: string,
+    adres: string,
+    aliciAdi: string,
+    aliciTelefon: string
   ): Observable<any> {
-    let withToken = Object.assign({
-      mahalleId,
-      addressName,
-      addressDesc,
-      anotherUserName,
-      anotherUserPhone,
-    });
-    let body = JSON.stringify(withToken);
     try {
       return this.http.post<any>(
         `${this.customerUrl}/adresEkle`,
-        body,
+        {
+          mahalleId,
+          baslik,
+          adres,
+          gecerliAdres: 1,
+          aliciAdi,
+          aliciTelefon,
+        },
         this.options
       );
     } catch (err) {

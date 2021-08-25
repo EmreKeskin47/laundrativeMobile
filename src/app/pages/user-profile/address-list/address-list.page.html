@@ -8,29 +8,25 @@
 </ion-header>
 <ion-content color="medium">
     <div class="root">
-        <div class="address-card-container">
+        <div *ngIf="adresList !== [] else emptyList" class="address-card-container">
             <div *ngFor="let adresToDisplay of adresList">
                 <ion-card class="card-container item-border-radius full-width-margin">
                     <div style="display: flex">
                         <img src="../../../assets/icons/home.png" class="address-home-icon" />
                         <div>
-                            <ion-input class="text-size8 text-color input" [disabled]="!editPressed" value="{{ adresToDisplay.adresBasligi }}" (ionChange)="adresBasligi($event)"></ion-input>
+                            <ion-input class="text-size8 text-color input" [disabled]="!editPressed || seciliAdres!== adresToDisplay" value="{{ adresToDisplay.adresBasligi }}" (ionChange)="adresBasligi($event)"></ion-input>
                             <ion-input disabled class="text-size8 bold-text black-text no-padding" value="{{ adresToDisplay.mahalleAdi }}">
                             </ion-input>
                         </div>
                     </div>
                     <hr class="rounded seperator-width" />
-
                     <div style="padding-left: 3rem">
-                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.teslimAlanAdi }}" (ionChange)="teslimAlanAdi($event)"></ion-input>
-
-                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.teslimAlanTel }}" (ionChange)="teslimAlanTel($event)">
+                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed || seciliAdres!== adresToDisplay" value="{{ adresToDisplay.teslimAlanAdi }}" (ionChange)="teslimAlanAdi($event)"></ion-input>
+                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed || seciliAdres!== adresToDisplay" value="{{ adresToDisplay.teslimAlanTel }}" (ionChange)="teslimAlanTel($event)">
                         </ion-input>
-
-                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed" value="{{ adresToDisplay.adres }}" (ionChange)="adres($event)">
+                        <ion-input class="text-size8 text-color no-padding" [disabled]="!editPressed || seciliAdres!== adresToDisplay" value="{{ adresToDisplay.adres }}" (ionChange)="adres($event)">
                         </ion-input>
                     </div>
-
                     <div style="display: flex">
                         <img src="../../../assets/icons/location_icon.png" class="address-location-icon" />
                         <div style="padding-top: 0.6rem">
@@ -41,34 +37,31 @@
                         </div>
                     </div>
                 </ion-card>
-
                 <div style="text-align: end">
                     <ion-button *ngIf="seciliAdres != adresToDisplay" color="secondary" class="crud-button" (click)="editClicked(adresToDisplay)">
                         <img src="../../../assets/icons/button/edit.png" class="crud-edit-icon" />
-
                         <ion-label class="white-text lowercase">düzenle</ion-label>
                     </ion-button>
-
                     <ion-button *ngIf="seciliAdres == adresToDisplay" class="crud-button" color="secondary" (click)="updateClicked()">
                         <img src="../../../assets/icons/button/edit.png" class="crud-edit-icon" />
                         <ion-label class="white-text lowercase">değişiklikleri kaydet</ion-label>
                     </ion-button>
-
                     <ion-button *ngIf="seciliAdres != adresToDisplay" class="crud-button" (click)="deleteClicked()">
                         <img src="../../../assets/icons/button/delete.png" class="crud-edit-icon" />
                         <ion-label class="white-text lowercase">kaldır</ion-label>
                     </ion-button>
-
                     <ion-button *ngIf="seciliAdres == adresToDisplay" class="crud-button" (click)="editClicked(adresToDisplay)">
                         <img src="../../../assets/icons/button/delete.png" class="crud-edit-icon" />
-
                         <ion-label class="white-text lowercase">vazgeç</ion-label>
                     </ion-button>
                 </div>
-
             </div>
         </div>
-
+        <ng-template #emptyList>
+            <div class="address-card-container">
+                <ion-label> ADRES YOK </ion-label>
+            </div>
+        </ng-template>
         <div class="new-address">
             <ion-button (click)="navigateToCreateAddress()" expand="block" class="ion-button-block">
                 <img src="../../../../assets/icons/button/create.png" class="add-icon" />

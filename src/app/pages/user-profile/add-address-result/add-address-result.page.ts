@@ -10,8 +10,10 @@ export class AddAddressResultPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
-
   navigateToCard() {
     this.router.navigate(['/yeni-siparis']);
+  }
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
   }
 }
