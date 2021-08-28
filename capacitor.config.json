@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "laundrativeMobile",
+  "appId": "com.laundrative.laundrativeApp.customer.mobile",
+  "appName": "Laundrative",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -9,5 +9,9 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {}
+  "cordova": {},
+  "server": {
+    "url": "http://192.168.1.105:8100",
+    "cleartext": true
+  }
 }

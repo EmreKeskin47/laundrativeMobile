@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-content color=medium>
-    <div *ngIf="sepet.length == 0 else sepetBos">
+    <div *ngIf="sepet.length > 0 else sepetBos">
         <!-- STORE CARD -->
         <div class="full-width-padding store-card-container">
             <ion-card class="store-card full-width global-shadow ">

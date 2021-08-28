@@ -3,13 +3,13 @@ import { BildirimAyar } from './../models/BildirimAyar';
 import { Mesaj } from './../models/Mesaj';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BASE_URL } from './../api/baseUrl';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
-  url = `${BASE_URL}/mesaj`;
+  //url = `${BASE_URL}/mesaj`;
   bildirimUrl = `${BASE_URL}/musteri`;
 
   httpHeaders = new HttpHeaders()
@@ -18,11 +18,19 @@ export class MessageService {
     .set('Authorization', `Bearer ${this.authService.getCredentials().token}`);
   options = { headers: this.httpHeaders, withCredentials: true };
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    @Inject('BASE_API_URL') private baseUrl: string
+  ) {}
 
   bizeUlasin(mesaj: Mesaj) {
     try {
-      return this.http.post<any>(`${this.url}/bizeUlasin`, mesaj, this.options);
+      return this.http.post<any>(
+        `${this.baseUrl}/musteri/bizeUlasin`,
+        mesaj,
+        this.options
+      );
     } catch (err) {
       console.log('POST customer message err ', err);
     }
@@ -30,7 +38,11 @@ export class MessageService {
 
   siziArayalim(tel: string) {
     try {
-      return this.http.post<any>(`${this.url}/siziArayalim`, tel, this.options);
+      return this.http.post<any>(
+        `${this.baseUrl}/musteri/siziArayalim`,
+        tel,
+        this.options
+      );
     } catch (err) {
       console.log('POST sizi arayalım err ', err);
     }
@@ -39,7 +51,7 @@ export class MessageService {
   bildirimAyarları(bildirim: BildirimAyar) {
     try {
       return this.http.post<any>(
-        `${this.bildirimUrl}/bildirimAyar`,
+        `${this.bildirimUrl}/musteri/bildirimAyar`,
         bildirim,
         this.options
       );

@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  version: '1.0.0',
+  apiUrl: 'https://customer.laundrative.com:21000',
 };

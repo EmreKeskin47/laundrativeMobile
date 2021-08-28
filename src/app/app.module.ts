@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { AuthInterceptor } from './services/auth-interceptor.interceptor';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,8 @@ import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
 import localeEn from '@angular/common/locales/en';
 import { LongPressDirective } from './long-press.directive';
-
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeTr, 'tr');
 
@@ -29,6 +31,10 @@ registerLocaleData(localeTr, 'tr');
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'tr' },
+    { provide: 'BASE_API_URL', useValue: environment.apiUrl },
+    { provide: 'VERSION', useValue: environment.version },
+    SplashScreen,
+    CallNumber,
   ],
   bootstrap: [AppComponent],
 })

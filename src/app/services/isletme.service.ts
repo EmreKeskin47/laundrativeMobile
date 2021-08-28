@@ -3,14 +3,14 @@ import { AuthService } from './auth.service';
 import { KategoriCins } from './../models/KategoriCins';
 import { Isletme } from './../models/İsletme';
 import { BASE_URL } from './../api/baseUrl';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class IsletmeService {
-  url: string = `${BASE_URL}/isletme`;
+  //url: string = `${BASE_URL}/isletme`;
 
   httpHeaders;
   options: {
@@ -36,7 +36,11 @@ export class IsletmeService {
   selectedDeliveryAddress: MusteriAdres;
   secilenKategoriler: number[] = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    @Inject('BASE_API_URL') private baseUrl: string
+  ) {
     this.httpHeaders = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Cache-Control', 'no-cache')
@@ -72,7 +76,7 @@ export class IsletmeService {
     this.selectedDeliveryAddress;
     try {
       return this.http.post<any[]>(
-        `${this.url}/liste`,
+        `${this.baseUrl}/isletme/liste`,
         {
           mahalleId: this.selectedDeliveryAddress.mahalleId,
           teslimAlmaTarihi: this.selectedDeliveryDate,
@@ -95,7 +99,7 @@ export class IsletmeService {
 
       let myoptions = { headers: myhttpHeaders, withCredentials: true };
       return this.http.get<KategoriCins[]>(
-        `${this.url}/sorgu?isletmeId=${storeID}`,
+        `${this.baseUrl}/isletme/sorgu?isletmeId=${storeID}`,
         myoptions
       );
     } catch (err) {

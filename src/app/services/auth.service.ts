@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Musteri } from '../models/Musteri';
 import { BASE_URL } from './../api/baseUrl';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
 @Injectable({
@@ -19,27 +19,37 @@ export class AuthService {
     .set('Authorization', `Bearer ${this.getCredentials().token}`);
   options = { headers: this.httpHeaders, withCredentials: true };
 
-  constructor(private http: HttpClient, private platform: Platform) {
+  constructor(
+    private http: HttpClient,
+    private platform: Platform,
+    @Inject('BASE_API_URL') private baseUrl: string
+  ) {
     this.setCurrentPlatform();
+  }
+
+  getVersion(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/version`, this.options);
   }
 
   registerUser(user: Musteri): Observable<any> {
     let body = JSON.stringify(user);
     try {
-      return this.http.post<any>(`${this.url}/olustur`, body);
+      return this.http.post<any>(`${this.baseUrl}/musteri/olustur`, body);
     } catch (err) {
       console.log('Register user err ', err);
     }
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.get(`${this.url2}/giris?email=${email}&sifre=${password}`);
+    return this.http.get(
+      `${this.baseUrl}/kullanici/giris?email=${email}&sifre=${password}`
+    );
   }
 
   updateUserInfo(updatedUser: Musteri): Observable<any> {
     try {
       return this.http.put<any>(
-        `${this.url}/guncelle`,
+        `${this.baseUrl}/musteri/guncelle`,
         updatedUser,
         this.options
       );
@@ -60,7 +70,7 @@ export class AuthService {
       },
     };
     try {
-      return this.http.delete<any>(`${this.url}/sil`, options);
+      return this.http.delete<any>(`${this.url}/musteri/sil`, options);
     } catch (err) {
       console.log('DELETE user account err ', err);
     }
@@ -68,7 +78,7 @@ export class AuthService {
 
   getUserInfo(): Observable<any> {
     try {
-      return this.http.get(`${this.url}/musteriBilgisi`, this.options);
+      return this.http.get(`${this.url}/musteri/musteriBilgisi`, this.options);
     } catch (err) {
       console.log('GET user account info', err);
     }

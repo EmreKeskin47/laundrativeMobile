@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  version: '1.0.0',
+  apiUrl: 'http://192.168.1.105:21000',
 };
 
 /*
@@ -14,3 +16,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+//export const BASE_URL: string = 'http://192.168.1.105:21000';
+//export const BASE_URL: string = 'https://monster:21000';

@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from './../api/baseUrl';
 import { Hizmet } from '../models/Hizmet';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 export const tipAdlari = { 3: 'prm', 2: 'exp', 1: 'std', 0: 'std' };
 export const kategoriAdi = {
@@ -46,7 +46,7 @@ siparisDurum.set('SIPARIS_GUNCELLENDI', { isim: 'güncellendi', durum: 1 });
   providedIn: 'root',
 })
 export class SiparisService {
-  url = `${BASE_URL}/siparis`;
+  //url = `${BASE_URL}/siparis`;
   sepeteEklenenler: Hizmet[] = [];
   toplamTutar: number = 0;
   sepetSize: number = 0;
@@ -61,7 +61,8 @@ export class SiparisService {
     private http: HttpClient,
     private authService: AuthService,
     private devInfo: DeviceInfoService,
-    private isletmeSrv: IsletmeService
+    private isletmeSrv: IsletmeService,
+    @Inject('BASE_API_URL') private baseUrl: string
   ) {}
 
   setSepeteEklenenler(list: Hizmet[]) {
@@ -126,7 +127,7 @@ export class SiparisService {
 
   getOrderList(): Observable<MusteriSiparis[]> {
     try {
-      return this.http.get<any>(`${this.url}/liste`, this.options);
+      return this.http.get<any>(`${this.baseUrl}/siparis/liste`, this.options);
     } catch (err) {
       console.log('err in GET order list of customer');
     }
@@ -144,7 +145,7 @@ export class SiparisService {
       },
     };
     try {
-      return this.http.delete<any>(`${this.url}/liste`, options);
+      return this.http.delete<any>(`${this.baseUrl}/siparis/liste`, options);
     } catch (err) {
       console.log('err in DELETE order of customer');
     }
@@ -164,7 +165,11 @@ export class SiparisService {
     console.log(body);
 
     try {
-      return this.http.post<any>(`${this.url}/olustur`, body, this.options);
+      return this.http.post<any>(
+        `${this.baseUrl}/siparis/olustur`,
+        body,
+        this.options
+      );
     } catch (err) {
       console.log('err in POST order', err);
     }
