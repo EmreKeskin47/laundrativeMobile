@@ -1,38 +1,38 @@
 .container {
-    padding: inherit;
+  padding: inherit;
 }
 
 .grid-text-top-right {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
 
 .h2 {
-    margin-left: 1rem;
-    margin-top: 1rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 .image-height {
-    height: 120px;
+  height: 120px;
 }
 
 .grid-text-bottom-right {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }
 
 .grid-item {
-    padding-top: 2px;
-    --padding-start: 0;
-    --inner-padding-end: 0;
+  padding-top: 2px;
+  --padding-start: 0;
+  --inner-padding-end: 0;
 }
 
 .grid-label {
-    margin-top: 0.1rem;
+  margin-top: 0.1rem;
 }
 
 ion-col {
-    padding: 0;
+  padding: 0;
 }

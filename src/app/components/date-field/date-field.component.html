@@ -5,16 +5,14 @@
         <ion-item lines="none" class="border-radius date-item">
             <img src="../../../assets/icons/filled/calendar_icon_filled.png" class="date-icon" />
             <div>
-                <ion-label class="text-margin text-size8 text-color">tarih seçin</ion-label>
-                <ion-datetime (ionChange)="dateChange($event)" monthValues="{{ months }}" displayFormat="DD.MM.YYYY DDDD" day-names="Pazartesi,Salı,Çarşamba,Perşembe,Cuma,Cumartesi,Pazar" value="{{ initialDate ? futureDate : currentDate }}" cancelText="iptal" doneText="onayla"
-                    class="selected-label text-size8"></ion-datetime>
+                <ion-label class="text-margin text-size8 text-color">tarih seçiniz</ion-label>
+                <ion-datetime (ionChange)="dateChange($event)" monthValues="{{ months }}" displayFormat="DD.MM.YYYY DDDD" day-names="Pazar,Pzt,Salı,Çarş,Perş,Cuma,Cts" value="{{ initialDate ? futureDate : currentDate }}" cancelText="iptal" doneText="onayla" class="selected-label text-size8"></ion-datetime>
             </div>
         </ion-item>
-
         <ion-item lines="none" class="border-radius time-item">
             <img src="../../../assets/icons/filled/clock_icon_filled.png" class="time-icon" />
             <div>
-                <ion-label class="text-margin text-size8 text-color">saat seçin</ion-label>
+                <ion-label class="text-margin text-size8 text-color">saat seçiniz</ion-label>
                 <ion-datetime (ionChange)="timeChange($event)" displayFormat="HH:mm" value="{{ initialDate ? futureDate : currentDate }}" minuteValues="0,15,30,45" hour-values=" 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 " cancelText="iptal" doneText="onayla" class="selected-label text-size8"></ion-datetime>
             </div>
         </ion-item>

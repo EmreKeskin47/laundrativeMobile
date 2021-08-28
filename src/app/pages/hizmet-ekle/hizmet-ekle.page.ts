@@ -1,3 +1,4 @@
+import { FeedbackAlertService } from './../../services/feedback-alert.service';
 import { kategoriAdi, SiparisService } from './../../services/siparis.service';
 import { IsletmeService } from './../../services/isletme.service';
 import { KategoriCins } from './../../models/KategoriCins';
@@ -39,24 +40,27 @@ export class HizmetEklePage implements OnInit {
   selectedCategoryOptions: number[] = [];
   seciliUrunler: Hizmet[] = [];
   categoriClick: number = 0;
+  sepetSize: number = 0;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private isletmeSrv: IsletmeService,
     private siparisSrv: SiparisService,
+    private alertSrv: FeedbackAlertService,
     private domSanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.seciliUrunler = this.siparisSrv.sepeteEklenenler;
+    this.sepetSize = this.siparisSrv.getSepetSize();
+  }
 
   ngOnInit() {
-    this.selectedCategoryOptions = this.isletmeSrv.getSelected();
+    this.selectedCategoryOptions = this.isletmeSrv.getSelectedKategoriler();
     this.activeCategory = this.selectedCategoryOptions[0];
     this.route.params.subscribe((params) => {
       if (params['kategoriler']) {
         this.isletmeSrv.getItemsInInstitution(1).subscribe(async (item) => {
-          console.log(item);
-
           this.storeItemList = item;
           for (let i = 0; i < this.storeItemList.length; i++) {
             for (let j = 0; j < this.storeItemList[i].hizmetler.length; j++) {
@@ -92,14 +96,11 @@ export class HizmetEklePage implements OnInit {
     });
   }
 
-  // Handle click on a button within slides
-  // Automatically scroll to viewchild
-
   selectCategory(index) {
     this.categoriClick++;
     if (index != 0) {
-      for (let i = 0; i < this.storeMenu.length; i++) {
-        if (this.storeMenu[i].kategori_id == index) {
+      for (let i = 0; i < this.listToDisplay.length; i++) {
+        if (this.listToDisplay[i].kategori_id == index) {
           index = i;
           break;
         }
@@ -110,7 +111,7 @@ export class HizmetEklePage implements OnInit {
       this.activeCategory = 0;
     }
     const child = this.listElements[index].nativeElement;
-    this.content.scrollToPoint(0, child.offsetTop - 40, 1000).then(() => {
+    this.content.scrollToPoint(0, child.offsetTop - 50, 1000).then(() => {
       this.categoriClick--;
     });
   }
@@ -122,13 +123,12 @@ export class HizmetEklePage implements OnInit {
       const item = this.listElements[i].nativeElement;
       if (this.isElementInViewport(item)) {
         this.slides.slideTo(i);
-        console.log(i);
         if (this.categoriClick === 0) {
           if (i <= this.seciliUrunler.length) {
             this.activeCategory = 0;
           } else {
             this.activeCategory =
-              this.storeMenu[i - this.seciliUrunler.length - 1].kategori_id;
+              this.listToDisplay[i - this.seciliUrunler.length - 1].kategori_id;
           }
         }
         break;
@@ -154,6 +154,9 @@ export class HizmetEklePage implements OnInit {
   //SEARCHBAR
   onInput(event) {
     this.searchName = event.detail.value;
+    this.listToDisplay = this.storeMenu.filter((name) =>
+      name.hizmet_adi.toLowerCase().includes(this.searchName)
+    );
   }
 
   onCancel() {
@@ -162,28 +165,26 @@ export class HizmetEklePage implements OnInit {
 
   ionViewWillLeave() {
     this.storeMenu = [];
+    this.listToDisplay = [];
     this.seciliUrunler = [];
   }
 
   urunSecim(item: Hizmet) {
     let index = this.seciliUrunler.indexOf(item);
-    if (index >= 0) {
-      this.seciliUrunler[index].adet++;
-    } else {
-      item.adet = 1;
-      this.seciliUrunler.push(item);
+    if (index < 0) {
+      this.siparisSrv.sepeteEkle(item);
+      this.sepetSize = this.siparisSrv.getSepetSize();
     }
-    this.listToDisplay = this.seciliUrunler.concat(this.storeMenu);
+  }
+
+  adetArti(item: Hizmet) {
+    this.siparisSrv.sepeteEkle(item);
+    this.sepetSize = this.siparisSrv.getSepetSize();
   }
 
   adetEksi(item: Hizmet) {
-    let index = this.seciliUrunler.indexOf(item);
-    if (index >= 0) {
-      if (this.seciliUrunler[index].adet > 1) this.seciliUrunler[index].adet--;
-      else {
-        this.seciliUrunler.splice(index, 1);
-      }
-    }
+    this.siparisSrv.sepettenEksilt(item);
+    this.sepetSize = this.siparisSrv.getSepetSize();
   }
 
   navigateToMagazaSecim() {

@@ -94,8 +94,9 @@ export class AuthService {
     //   return { mail, pass, token };
     // } else {
     let token =
-      'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbiIsImF1ZCI6ImljbGliZXJhQGdtYWlsLmNvbSIsImp0aSI6IjE2ODU5IiwiZXhwIjoxNjI5OTEwNjM2fQ.-Oi-DTSimH7LYyXAw94F58OOt6aRGs6w366y_ZiNHAHHFOYs-qnX6ea2ZvNNN4GdAyJBGQpgUYPtQzrIGLAo2w';
-    return { mail: 'aydinabdulkerim@gmail.com', pass: '123', token };
+      'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbiIsImF1ZCI6ImFiZHVsbGFoMTg0MTBAaG90bWFpbC5jb20iLCJqdGkiOiIxNjg2NSIsImV4cCI6MTYzMDA4Mjg5MX0.HS2Jm3LwPrrrnL9DA1TsDcwNnaraaQkDPQ0NR81wJNmmUPbTqLWZAWc4qIG-cofGcsxUy4k5gSOAm6pMWPU63w';
+
+    return { mail: 'abdullah18410@hotmail.com', pass: '123', token: null };
     //}
   }
 

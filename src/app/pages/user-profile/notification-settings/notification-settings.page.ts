@@ -46,7 +46,6 @@ export class NotificationSettingsPage implements OnInit {
       this.mobileSelected,
       this.emailSelected
     );
-    console.log(opt);
 
     this.mesaggeService.bildirimAyarları(opt).subscribe((res) => {
       console.log(res, 'bildirim ayar output ');

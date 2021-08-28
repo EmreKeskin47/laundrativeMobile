@@ -9,6 +9,7 @@ import { CardItemComponent } from './card-item/card-item.component';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { UzunIsimPipe } from '../pipes/uzun-isim.pipe';
 
 //For exporting components to all pages
 @NgModule({
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     FiyatPipe,
     CityDistrictPickerComponent,
     KategoriIsmiPipe,
+    UzunIsimPipe,
   ],
   exports: [
     CardItemComponent,
@@ -28,6 +30,7 @@ import { CommonModule } from '@angular/common';
     FiyatPipe,
     CityDistrictPickerComponent,
     KategoriIsmiPipe,
+    UzunIsimPipe,
   ],
 })
 export class ComponentsModule {}

@@ -16,7 +16,7 @@ export class MagazaSecimPage implements OnInit {
 
   ngOnInit() {
     this.isletmeSrv.getInstitutionsInNeighborhood().subscribe((res) => {
-      console.log(res);
+      console.log(res, 'işletme sorgu response');
       this.isletmeList = res;
     });
   }
@@ -26,6 +26,7 @@ export class MagazaSecimPage implements OnInit {
   }
 
   selectStore() {
+    this.isletmeSrv.setSelectedIsletme('BURAYA GERÇEK İSLETME BİLGİLERİ');
     this.router.navigate(['yeni-siparis/sepet']);
   }
 }

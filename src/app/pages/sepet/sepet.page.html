@@ -13,19 +13,17 @@
             <ion-card class="store-card full-width global-shadow ">
                 <ion-item class="ion-item-inner-padding">
                     <img src="../../../assets/images/bilwash.png" class="store-img" />
-                    <ion-label class="text-size8 bold-text">bil-wash <br> laundry</ion-label>
-                    <div style="width: 40%;">
-                        <ion-row>
-                            <ion-label class="black-text text-size6 bold-text right-text"> teslimat tarihi </ion-label>
-                        </ion-row>
-                        <ion-row class="black-text text-size6 right-text"> 15 haz cts 08:00 - 10:00 </ion-row>
+                    <ion-label class="text-size8 bold-text line-height-1rem">bil-wash <br> laundry</ion-label>
+                    <div style="width: 40%; text-align: right;">
+                        <ion-label class="black-text text-size6 bold-text right-text"> teslimat tarihi </ion-label>
+                        <ion-label class="black-text text-size6 right-text"> 15 haz cts 08:00 - 10:00 </ion-label>
                     </div>
                 </ion-item>
                 <ion-card-content class="store-card-content">
-                    <ion-row>
-                        <ion-col size=2.3 class="black-text text-size6 bold-text "> teslim alma </ion-col>
-                        <ion-col size=4 class="black-text text-size6"> 14 haz cts 08:00 - 10:00 </ion-col>
-                    </ion-row>
+                    <div style="display: flex">
+                        <ion-label class="black-text text-size6 bold-text "> teslim alma </ion-label>
+                        <ion-label class="black-text text-size6 left-margin"> 14 haz cts 08:00 - 10:00 </ion-label>
+                    </div>
                 </ion-card-content>
             </ion-card>
         </div>
@@ -43,18 +41,31 @@
                             <div class="item-container">
                                 <div style="display: flex;">
                                     <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
-                                    <ion-label class="text-size8 text-color name-label lowercase">
+                                    <ion-label *ngIf="item.hizmet_adi.length<20 else uzunHizmetAdi" class="text-size8 text-color name-label lowercase">
                                         {{ item.hizmet_adi }}
                                     </ion-label>
+                                    <ng-template #uzunHizmetAdi>
+                                        <div class="text-size8 long-name-margin text-color lowercase" [innerHTML]="item.hizmet_adi | uzunIsim:item.hizmet_adi"></div>
+                                    </ng-template>
                                 </div>
                             </div>
                             <div class="amount-cost-container">
-                                <ion-label class="text-size8 text-color amount-text">
-                                    {{ item.adet }} adet
-                                </ion-label>
-                                <ion-label class="text-size10 pink-color">
-                                    {{ item.fiyatlar[0].fiyat | fiyat: item.fiyatlar[0].fiyat }}
-                                </ion-label>
+                                <div style="display: flex;">
+                                    <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
+                                        <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
+                                    </ion-button>
+                                    <ion-label class="text-size8 text-color amount-text">
+                                        {{ item.adet }} adet
+                                    </ion-label>
+                                    <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="urunSecim(item)">
+                                        <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
+                                    </ion-button>
+                                </div>
+                                <div>
+                                    <ion-label class="text-size10 pink-color margin-top-6">
+                                        {{ item.fiyatlar[0].fiyat * item.adet| fiyat: item.fiyatlar[0].fiyat * item.adet}}
+                                    </ion-label>
+                                </div>
                             </div>
                         </ion-item>
                     </div>
@@ -66,11 +77,11 @@
             <ion-grid>
                 <ion-row>
                     <ion-col> </ion-col>
-                    <ion-col class="label-fee text-color text-size6">
+                    <ion-col class="label-fee text-color text-size8">
                         <div>kdv(%8)</div>
                         <div>teslimat</div>
                     </ion-col>
-                    <ion-col class="label-fee text-color text-size6">
+                    <ion-col class="label-fee text-color text-size8">
                         <div>
                             {{0 | fiyat:0}}
                         </div>
@@ -85,17 +96,17 @@
             <ion-grid>
                 <ion-row>
                     <ion-col> </ion-col>
-                    <ion-col class="bold-text text-color total-cost text-size6"> toplam ödeme </ion-col>
+                    <ion-col class="bold-text text-color total-cost text-size8"> toplam ödeme </ion-col>
                     <ion-col class="bold-text pink-color total-cost text-size10">
-                        {{112 | fiyat:112 }}
+                        {{toplam | fiyat:toplam }}
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </div>
         <div>
             <ion-item lines="none" class="input-item my-4">
-                <div class="input-label full-width text-size6">
-                    <ion-label class="text-color"> sipariş notu</ion-label>
+                <div class="input-label full-width">
+                    <ion-label class="text-color text-size8"> sipariş notu</ion-label>
                     <ion-input value="{{not}}" (ionChange)="notChange($event)" style="--padding-bottom: 0">
                     </ion-input>
                 </div>

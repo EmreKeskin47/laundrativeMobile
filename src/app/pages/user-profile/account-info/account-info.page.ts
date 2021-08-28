@@ -58,7 +58,7 @@ export class AccountInfoPage implements OnInit {
   saveClicked() {
     let user = new Musteri(this.name, this.phone, this.email, this.password);
     this.authService.updateUserInfo(user).subscribe((res) => {
-      console.log(res);
+      console.log(res, 'update user res');
       if (res.result == 'ok') {
         this.disableEdit = true;
         this.alertSrv.successAlert('Kullanıcı başarıyla güncellendi!');

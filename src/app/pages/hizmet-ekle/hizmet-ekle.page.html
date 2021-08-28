@@ -3,11 +3,11 @@
         <ion-buttons slot="start">
             <ion-back-button text=""></ion-back-button>
         </ion-buttons>
-        <ion-title>hizmet ekleyin</ion-title>
+        <ion-title class="header-title">hizmet ekleyin</ion-title>
     </ion-toolbar>
     <ion-toolbar class="searchtoolbar">
         <ion-searchbar (ionChange)="onInput($event)" (ionClear)="onCancel()" placeholder="hizmet arayın" class="searchbar full-width-padding"></ion-searchbar>
-        <ion-slides *ngIf="storeMenu" style="opacity: 1">
+        <ion-slides *ngIf="listToDisplay" style="opacity: 1">
             <div *ngFor="let item of selectedCategoryOptions; let i = index; ">
                 <ion-slide>
                     <ion-button [class.active-category]="activeCategory == item" fill="clear" (click)="selectCategory(item)">
@@ -19,9 +19,10 @@
                     </ion-button>
                 </ion-slide>
             </div>
-            <ion-button *ngIf="seciliUrunler.length>0" [class.active-category]="activeCategory == 0" fill="clear" (click)="selectCategory(0)">
+            <ion-button *ngIf="seciliUrunler.length>0" [class.active-category]="activeCategory == 0" fill="clear" (click)="selectCategory(0)" class="sepet-btn">
                 <div class="cat-container">
-                    <img src='{{"../../../assets/icons/sepet_icon.png"}}' class="sepet-icon" />
+                    <ion-badge class="badge" color="primary"> {{sepetSize}}</ion-badge>
+                    <img src='{{"../../../assets/icons/sepet_icon_beyaz.png"}}' class="sepet-icon" />
                     <div class="text-size8 white-color" [ngClass]="{'disable-opacity': activeCategory != 0 }"> seçilenler </div>
                 </div>
             </ion-button>
@@ -31,27 +32,29 @@
 <ion-content color="medium" [fullscreen]=false style="height: 88%" scrollEvents=true (ionScroll)="onScroll()">
     <!-- SEÇİLİ ÜRÜNLER LOOP-->
     <ion-list-header *ngIf="seciliUrunler.length>0">
-        <ion-label class="text-size8 black-text cat-name-header"> seçilenler </ion-label>
+        <ion-label class="text-size10 black-text cat-name-header"> seçilenler </ion-label>
     </ion-list-header>
     <div *ngFor="let item of seciliUrunler; let i = index;">
         <ion-list color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 1110">
             <div class="full-width-margin ">
                 <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
                     <div class="item-container">
-                        <div style="display: flex;">
+                        <div class="half-item-amount">
                             <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
-                            <ion-label class="text-size8 text-color name-label lowercase">
-                                {{ item.hizmet_adi }}
-                            </ion-label>
+                            <div class="text-size8 name-label-selected text-color lowercase" [innerHTML]="item.hizmet_adi | uzunIsim:item.hizmet_adi">
+                            </div>
                         </div>
-                        <div style="display: flex">
-                            <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
-                                <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
-                            </ion-button>
-                            <ion-label class="amount-text text-color text-size8">{{ item.adet }} Adet</ion-label>
-                            <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="urunSecim(item)">
-                                <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
-                            </ion-button>
+                        <div class="half-item-amount">
+                            <div class="text-size8 pink-color sepet-kat-isim" style="width:5rem" [innerHTML]="itemCategoryName[item.kategori_id] | kategoriIsmi:itemCategoryName[item.kategori_id]"></div>
+                            <div style="display: flex; margin-left: 0.5rem; align-items: center;">
+                                <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
+                                    <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
+                                </ion-button>
+                                <ion-label class="amount-text text-color text-size8">{{ item.adet }}</ion-label>
+                                <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetArti(item)">
+                                    <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
+                                </ion-button>
+                            </div>
                         </div>
                     </div>
                 </ion-item>
@@ -59,46 +62,51 @@
         </ion-list>
     </div>
     <!-- BÜTÜN ÜRÜNLER-->
-    <div *ngFor="let item of storeMenu; let i = index;">
-        <ion-list-header *ngIf="!storeMenu[i-1] || storeMenu[i-1].kategori_id != item.kategori_id">
-            <ion-label *ngIf="item.kategori_id!=0" class="text-size8 black-text cat-name-header">
-                {{itemCategoryName[item.kategori_id]}}
-            </ion-label>
-        </ion-list-header>
-        <ion-list color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 1110">
-            <div class="full-width-margin ">
-                <ion-item button detail="false" lines="none" class="store-menu-item item-padding ">
-                    <div class="item-container">
-                        <div style="display: flex;">
-                            <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
-                            <ion-label class="text-size8 text-color name-label lowercase">
-                                {{ item.hizmet_adi }}
-                            </ion-label>
-                        </div>
-                        <ion-button fill="clear" (click)="urunSecim(item)" *ngIf="seciliUrunler.indexOf(item) < 0 else adetAyar">
-                            <ion-label class="text-size8 text-color add-btn"> ekle </ion-label>
-                        </ion-button>
-                        <ng-template #adetAyar>
-                            <div style="display: flex">
-                                <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
-                                    <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
-                                </ion-button>
-                                <ion-label class="amount-text text-color text-size8">{{ item.adet }} Adet</ion-label>
-                                <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="urunSecim(item)">
-                                    <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
-                                </ion-button>
+    <div *ngIf="listToDisplay.length === 0; else menu" class="spinner-container">
+        <ion-spinner class="spinner-size" name=lines></ion-spinner>
+    </div>
+    <ng-template #menu>
+        <div *ngFor="let item of listToDisplay; let i = index;">
+            <ion-list-header *ngIf="!listToDisplay[i-1] || listToDisplay[i-1].kategori_id != item.kategori_id">
+                <ion-label *ngIf="item.kategori_id!=0" class="text-size10 black-text cat-name-header">
+                    {{itemCategoryName[item.kategori_id]}}
+                </ion-label>
+            </ion-list-header>
+            <ion-list color="medium" class="full-width-margin border-radius" [class.ozel-istek-margin]="i == 1110">
+                <div class="full-width-margin ">
+                    <ion-item button detail="false" lines="none" class="store-menu-item item-padding " (click)="seciliUrunler.indexOf(item) < 0  && urunSecim(item)">
+                        <div class="item-container">
+                            <div style="display: flex; align-items: center;">
+                                <img [src]="item.hizmet_resmi" alt="Resim Hatası" class="item-img text-color" />
+                                <ion-label class="text-size8 text-color name-label lowercase">
+                                    {{ item.hizmet_adi }}
+                                </ion-label>
                             </div>
-                        </ng-template>
-                    </div>
-                </ion-item>
-            </div>
-        </ion-list>
-        <!-- <ion-item *ngIf="i==1" color="tertiary" button detail="false" lines="none" class="ozel-istek">
+                            <ion-button fill="clear" *ngIf="seciliUrunler.indexOf(item) < 0 else adetAyar">
+                                <ion-label class="text-size8 text-color add-btn"> ekle </ion-label>
+                            </ion-button>
+                            <ng-template #adetAyar>
+                                <div style="display: flex; align-items: center;">
+                                    <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetEksi(item)">
+                                        <img src="../../../assets/icons/filled/minus.png" class="amount-minus" />
+                                    </ion-button>
+                                    <ion-label class="amount-text text-color text-size8">{{ item.adet }} Adet</ion-label>
+                                    <ion-button fill="clear" shape="round" class="plus-minus-btn" (click)="adetArti(item)">
+                                        <img src="../../../assets/icons/filled/ekle.png" class="amount-icons" />
+                                    </ion-button>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ion-item>
+                </div>
+            </ion-list>
+            <!-- <ion-item *ngIf="i==1" color="tertiary" button detail="false" lines="none" class="ozel-istek">
             <ion-label class="text-size6 ozel-istek-label">
                 özel istek ekle
             </ion-label>
         </ion-item> -->
-    </div>
+        </div>
+    </ng-template>
 </ion-content>
 <div slot="fixed" class="bottom-btn-padding">
     <ion-button expand="block" class="ion-button-block" (click)="navigateToMagazaSecim()">uygun mağazaları göster</ion-button>

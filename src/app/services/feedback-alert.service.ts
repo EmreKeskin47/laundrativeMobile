@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +11,7 @@ export class FeedbackAlertService {
       header: header,
       buttons: [
         {
-          text: 'Anladım',
+          text: 'Tamam',
           handler: () => {},
         },
       ],
@@ -26,7 +25,7 @@ export class FeedbackAlertService {
       header: header,
       buttons: [
         {
-          text: 'Anladım',
+          text: 'Tamam',
           handler: () => {},
         },
       ],

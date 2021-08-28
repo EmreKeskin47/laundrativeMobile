@@ -14,8 +14,20 @@
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: linear-gradient(
+    270deg,
+    #e75761,
+    #db5776,
+    #cf4f87,
+    #b84092
+  );
+  --ion-color-primary-tint: linear-gradient(
+    270deg,
+    #e75761,
+    #db5776,
+    #cf4f87,
+    #b84092
+  );
 
   /** secondary **/
   --ion-color-secondary: linear-gradient(-45deg, #ff9300, #ee5f5f);

@@ -25,6 +25,7 @@ export class IsletmeService {
   currentInstitutionList: Isletme[];
   selectedInstitution: Isletme = null;
   locationOfSelected: string;
+  selectedIsletme: string = '';
 
   workingHoursOfSelectedIns = [];
   standardDelivery;
@@ -46,27 +47,34 @@ export class IsletmeService {
     this.options = { headers: this.httpHeaders, withCredentials: true };
   }
 
-  setSelectedCategoryList(selected: any) {
+  setSelectedCategoryList(selected: number[]) {
     this.secilenKategoriler = selected;
   }
 
-  getSelected() {
+  getSelectedKategoriler() {
     return this.secilenKategoriler;
   }
 
-  setSelectedTeslimAlma(hour, day) {
-    this.selectedDeliveryDate.setDate(day);
-    this.selectedDeliveryDate.setHours(hour);
-    console.log(this.selectedDeliveryDate);
+  setSelectedTeslimAlma(hour: Date, day: Date) {
+    this.selectedDeliveryDate.setDate(day.getDate());
+    this.selectedDeliveryDate.setHours(hour.getHours());
+  }
+
+  setSelectedIsletme(isletme: string) {
+    this.selectedIsletme = isletme;
+  }
+
+  getSelectedIsletme() {
+    return this.selectedIsletme;
   }
 
   getInstitutionsInNeighborhood(): Observable<any[]> {
     this.selectedDeliveryAddress;
     try {
       return this.http.post<any[]>(
-        this.url,
+        `${this.url}/liste`,
         {
-          mahalleId: this.selectedDeliveryAddress,
+          mahalleId: this.selectedDeliveryAddress.mahalleId,
           teslimAlmaTarihi: this.selectedDeliveryDate,
           hizmetlerArr: this.secilenKategoriler,
         },
@@ -82,11 +90,10 @@ export class IsletmeService {
       let myhttpHeaders = {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
-        'Authorization': `Bearer ${this.authService.getCredentials().token}`,
+        Authorization: `Bearer ${this.authService.getCredentials().token}`,
       };
 
       let myoptions = { headers: myhttpHeaders, withCredentials: true };
-      console.log(myoptions.headers);
       return this.http.get<KategoriCins[]>(
         `${this.url}/sorgu?isletmeId=${storeID}`,
         myoptions

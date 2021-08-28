@@ -48,6 +48,8 @@ siparisDurum.set('SIPARIS_GUNCELLENDI', { isim: 'güncellendi', durum: 1 });
 export class SiparisService {
   url = `${BASE_URL}/siparis`;
   sepeteEklenenler: Hizmet[] = [];
+  toplamTutar: number = 0;
+  sepetSize: number = 0;
 
   httpHeaders = new HttpHeaders()
     .set('Content-Type', 'application/json')
@@ -68,6 +70,58 @@ export class SiparisService {
 
   getSepeteEklenenler() {
     return this.sepeteEklenenler;
+  }
+
+  getSepetSize() {
+    return this.sepetSize;
+  }
+
+  sortSepet() {
+    this.sepeteEklenenler.sort((a, b) => {
+      return a.kategori_id - b.kategori_id;
+    });
+  }
+
+  sepeteEkle(item: Hizmet) {
+    let index = this.sepeteEklenenler.indexOf(item);
+    if (index >= 0) {
+      this.sepeteEklenenler[index].adet++;
+      this.sepetSize++;
+    } else {
+      item.adet = 1;
+      this.sepeteEklenenler.push(item);
+      this.sepetSize++;
+    }
+    this.sortSepet();
+    this.calculateSepetToplam();
+  }
+
+  sepettenEksilt(item: Hizmet) {
+    let index = this.sepeteEklenenler.indexOf(item);
+    if (index >= 0) {
+      if (this.sepeteEklenenler[index].adet > 1) {
+        this.sepeteEklenenler[index].adet--;
+        this.sepetSize--;
+      } else {
+        this.sepeteEklenenler.splice(index, 1);
+        this.sepetSize--;
+      }
+    }
+    this.calculateSepetToplam();
+  }
+
+  calculateSepetToplam() {
+    this.toplamTutar = 0;
+    for (let i = 0; i < this.sepeteEklenenler.length; i++) {
+      this.toplamTutar =
+        this.toplamTutar +
+        this.sepeteEklenenler[i].adet *
+          this.sepeteEklenenler[i].fiyatlar[0].fiyat;
+    }
+  }
+
+  getSepetTotal() {
+    return this.toplamTutar;
   }
 
   getOrderList(): Observable<MusteriSiparis[]> {

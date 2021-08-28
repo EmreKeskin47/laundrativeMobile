@@ -28,7 +28,7 @@ export class AddressListPage implements OnInit {
   ngOnInit() {
     this.addressService.getAddressOfCustomer().subscribe((address) => {
       this.adresList = address;
-      console.log(address);
+      console.log(address, 'adreslisteis');
     });
   }
 

@@ -1,12 +1,8 @@
 <ion-item lines="none" class="full-width-padding item-padding-top">
-    <ion-label class="text-color text-size10">il</ion-label>
-    <ionic-selectable [(ngModel)]="selectedProvince" [items]="provinceList" itemValueField="id" itemTextField="adi" searchFailText="İl bulunamadı" closeButtonText="Vazgeç" searchPlaceholder="Ara" [canSearch]="true" (onChange)="provinceChange($event)" class="black-text bold-text">
+    <ionic-selectable placeholder="İl" style="max-width: 100%" [(ngModel)]="selectedProvince" [items]="provinceList" itemValueField="id" itemTextField="adi" searchFailText="İl bulunamadı" closeButtonText="Vazgeç" searchPlaceholder="Ara" [canSearch]="true" (onChange)="provinceChange($event)" class="black-text bold-text" [ngClass]="{'selectedProvince' : 'full-width' }">
     </ionic-selectable>
 </ion-item>
-
 <ion-item lines="none" class="full-width-padding item-padding-top">
-    <ion-label class="text-color text-size10">Mahalle</ion-label>
-    <ionic-selectable [(ngModel)]="selectedDistrict" [items]="searchableDistrictList" itemValueField="mahalleId" itemTextField="listeAdi" searchFailText="Mahalle bulunamadı" closeButtonText="Vazgeç" searchPlaceholder="Ara" [canSearch]="true" [hasVirtualScroll]="true"
-        (onChange)="districtChange($event)" class="black-text bold-text">
+    <ionic-selectable placeholder="Mahalle" style="max-width: 100%" [(ngModel)]="selectedDistrict" [items]="searchableDistrictList" itemValueField="mahalleId" itemTextField="listeAdi" searchFailText="Mahalle bulunamadı" closeButtonText="Vazgeç" searchPlaceholder="Ara" [canSearch]="true" [hasVirtualScroll]="true" (onChange)="districtChange($event)" class="black-text bold-text" [ngClass]="{'selectedDistrict' : 'full-width' }">
     </ionic-selectable>
 </ion-item>

@@ -1,3 +1,4 @@
+import { FeedbackAlertService } from './../../../services/feedback-alert.service';
 import { Musteri } from '../../../models/Musteri';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
@@ -21,7 +22,8 @@ export class SigninPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertSrv: FeedbackAlertService
   ) {}
 
   ngOnInit() {
@@ -61,9 +63,10 @@ export class SigninPage implements OnInit {
     );
     this.authService.registerUser(user).subscribe((res) => {
       console.log(res);
-
       if (res.result === 'ok') {
         this.navigateToAccountResult();
+      } else {
+        this.alertSrv.errorAlert('Kaydolma hatası');
       }
     });
   }

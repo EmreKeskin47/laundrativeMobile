@@ -14,6 +14,7 @@ export class SepetPage implements OnInit {
   sepet: Hizmet[] = [];
   itemCategoryName = kategoriAdi;
   not: string;
+  toplam: number;
   isLogged = this.authService.getCredentials().token;
 
   constructor(
@@ -24,7 +25,7 @@ export class SepetPage implements OnInit {
 
   ngOnInit() {
     this.sepet = this.siparisSrv.getSepeteEklenenler();
-    console.log(this.sepet);
+    this.getToplamFromServis();
   }
 
   navigateToLogin() {
@@ -37,6 +38,20 @@ export class SepetPage implements OnInit {
 
   notChange(event: any) {
     this.not = event.detail.value;
+  }
+
+  urunSecim(item: Hizmet) {
+    this.siparisSrv.sepeteEkle(item);
+    this.getToplamFromServis();
+  }
+
+  adetEksi(item: Hizmet) {
+    this.siparisSrv.sepettenEksilt(item);
+    this.getToplamFromServis();
+  }
+
+  getToplamFromServis() {
+    this.toplam = this.siparisSrv.getSepetTotal();
   }
 
   navigateToPayment() {}

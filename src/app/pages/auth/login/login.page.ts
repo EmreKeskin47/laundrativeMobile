@@ -1,3 +1,4 @@
+import { FeedbackAlertService } from './../../../services/feedback-alert.service';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertSrv: FeedbackAlertService
   ) {}
 
   ngOnInit() {
@@ -38,8 +40,6 @@ export class LoginPage implements OnInit {
   }
   onSubmit(values) {
     this.authService.login(values.email, values.password).subscribe((res) => {
-      console.log(res);
-
       if (res.status && res.result.token) {
         console.log('login success', res.result.token);
         this.authService.setCredentials(
@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
           res.token
         );
       } else {
-        console.log('Login Failed');
+        this.alertSrv.errorAlert('Login Failed');
       }
     });
     this.navigateToAccount();

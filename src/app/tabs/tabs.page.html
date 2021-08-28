@@ -1,15 +1,14 @@
 <ion-tabs class="medium-bg">
     <ion-tab-bar slot="bottom" color="medium" class="border-margin">
         <ion-tab-button tab="yeni-siparis/sepet">
+            <ion-badge *ngIf="sepetSize > 0" class="badge" color="primary"> {{sepetSize}}</ion-badge>
             <img src="../../assets/icons/sepet_icon.png" class="sepet-icon" />
             <ion-label class="text-size8 text-color">sepet</ion-label>
         </ion-tab-button>
-
         <ion-tab-button tab="yeni-siparis">
             <img src="./assets/icons/filled/yeni_siparis_filled.png" class="yeni-icon" />
             <ion-label class="text-size8 text-color">yeni sipariş</ion-label>
         </ion-tab-button>
-
         <ion-tab-button tab="profile">
             <img src="../../assets/icons/profil/profil_icon.png" class="profil-icon" />
             <ion-label class="text-size8 text-color">profil</ion-label>
