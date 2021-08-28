@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-content color=medium>
-    <div *ngIf="sepet.length > 0 else sepetBos">
+    <div *ngIf="sepet.length == 0 else sepetBos">
         <!-- STORE CARD -->
         <div class="full-width-padding store-card-container">
             <ion-card class="store-card full-width global-shadow ">
@@ -113,13 +113,7 @@
             </ion-item>
             <!--Sign up / add address container-->
             <div *ngIf="!isLogged; else logged">
-                <div class="text-size8 text-color center-text login-container"> ödeme yapabilmek için lütfen kullanıcı girişi yapın </div>
-                <div>
-                    <ion-button (click)="navigateToLogin()" expand="block" class="ion-button-block">giriş yap</ion-button>
-                </div>
-                <div>
-                    <ion-button (click)="navigateToSignup()" fill="outline" expand="block" class="ion-button-block pink-color"> yeni hesap oluştur</ion-button>
-                </div>
+                <app-signup-login-field header="ödeme yapabilmek için lütfen kullanıcı girişi yapınız"></app-signup-login-field>
             </div>
             <ng-template #logged>
                 <div class="my-2">

@@ -3,21 +3,16 @@
         <ion-buttons slot="start">
             <ion-back-button text=""></ion-back-button>
         </ion-buttons>
-        <ion-title>{{ pageTitle }}</ion-title>
+        <ion-title class="header-title">{{ pageTitle }}</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content color="medium">
     <div class="root">
         <div>
             <div class="message-container">
                 <div class="title black-text text-size12 bold-text">gittiğinize üzüldük</div>
-                <div class="text-color text-size8">
-                    hesabınızı silme nedeninizi bize söyleme ister
-                    <br />misiniz ?
-                </div>
+                <div class="text-color text-size8"> hesabınızı silme nedeninizi bize söyleme ister <br />misiniz ? </div>
             </div>
-
             <div>
                 <ion-item color="medium" lines="none" class="checkbox-label text-size8">
                     <ion-checkbox (click)="selectReason('başka bir platform kullanıyorum')" color="primary" slot="start" [disabled]="!select"></ion-checkbox>
@@ -25,37 +20,31 @@
                         <ion-label class="black-text">başka bir platform kullanıyorum</ion-label>
                     </ion-item>
                 </ion-item>
-
                 <ion-item color="medium" lines="none" class="checkbox-label text-size8">
                     <ion-checkbox (click)="selectReason('ihtiyacım yok')" color="primary" slot="start" [disabled]="!select"></ion-checkbox>
                     <ion-item lines="none" class="inner-item text-size8 border-radius">
                         <ion-label class="black-text">ihtiyacım yok</ion-label>
                     </ion-item>
                 </ion-item>
-
                 <ion-item color="medium" lines="none" class="checkbox-label text-size8">
                     <ion-checkbox (click)="selectReason('sorun yasadim')" color="primary" slot="start" [disabled]="!select"></ion-checkbox>
                     <ion-item lines="none" class="inner-item text-size8 border-radius">
                         <ion-label class="black-text">sorun yaşadım</ion-label>
                     </ion-item>
                 </ion-item>
-
                 <ion-item color="medium" lines="none" class="checkbox-label text-size8">
                     <ion-checkbox [disabled]="!select" color="primary" slot="start" (click)="customReason()"></ion-checkbox>
                     <ion-item lines="none" class="inner-item text-size8 text-size8 border-radius">
                         <ion-label class="black-text">diğer</ion-label>
                     </ion-item>
                 </ion-item>
-
                 <ion-item lines="none" class="text-area text-size8">
                     <ion-textarea rows="4" placeholder="ayrılma sebebinizi bize yazarsanız seviniriz..." (ionChange)="editCustomReason($event)" [disabled]="!otherSelected"></ion-textarea>
                 </ion-item>
             </div>
         </div>
-
         <div class="btn-padding">
-            <div class="text-color text-size8 message-container">
-                hesabınızı silerseniz daha önceki siparişleriniz, <br /> tercihleriniz, tüm bilgileriniz ve tanımlı <br /> promosyonlarınız silinecektir. her hangi sorun <br /> yaşıyorsanız bize buradan ulaşabilirsiniz. <br />
+            <div class="text-color text-size8 message-container"> hesabınızı silerseniz daha önceki siparişleriniz, <br /> tercihleriniz, tüm bilgileriniz ve tanımlı <br /> promosyonlarınız silinecektir. her hangi sorun <br /> yaşıyorsanız bize buradan ulaşabilirsiniz. <br />
             </div>
             <ion-button (click)="deleteButton()" expand="block" class="ion-button-block">hesabımı sil</ion-button>
         </div>

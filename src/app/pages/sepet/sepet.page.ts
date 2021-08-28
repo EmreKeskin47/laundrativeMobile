@@ -28,14 +28,6 @@ export class SepetPage implements OnInit {
     this.getToplamFromServis();
   }
 
-  navigateToLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  navigateToSignup() {
-    this.router.navigate(['/signin']);
-  }
-
   notChange(event: any) {
     this.not = event.detail.value;
   }

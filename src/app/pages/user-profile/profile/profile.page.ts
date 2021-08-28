@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  constructor(private router: Router) {}
+  isLogged = this.authService.getCredentials().token;
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
 

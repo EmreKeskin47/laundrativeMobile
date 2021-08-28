@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-signup-login-field',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup-login-field.component.scss'],
 })
 export class SignupLoginFieldComponent implements OnInit {
-
-  constructor() { }
+  @Input() public header;
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  navigateToSignup() {
+    this.router.navigate(['/signin']);
+  }
 }

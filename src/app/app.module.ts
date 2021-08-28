@@ -10,12 +10,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
 import localeEn from '@angular/common/locales/en';
+import { LongPressDirective } from './long-press.directive';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeTr, 'tr');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LongPressDirective],
   entryComponents: [],
   imports: [
     BrowserModule,

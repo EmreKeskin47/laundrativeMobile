@@ -1,3 +1,4 @@
+import { SignupLoginFieldComponent } from './../components/signup-login-field/signup-login-field.component';
 import { KategoriIsmiPipe } from './../pipes/kategori-ismi.pipe';
 import { FormsModule } from '@angular/forms';
 import { IonicSelectableModule } from 'ionic-selectable';
@@ -22,6 +23,7 @@ import { UzunIsimPipe } from '../pipes/uzun-isim.pipe';
     CityDistrictPickerComponent,
     KategoriIsmiPipe,
     UzunIsimPipe,
+    SignupLoginFieldComponent,
   ],
   exports: [
     CardItemComponent,
@@ -31,6 +33,7 @@ import { UzunIsimPipe } from '../pipes/uzun-isim.pipe';
     CityDistrictPickerComponent,
     KategoriIsmiPipe,
     UzunIsimPipe,
+    SignupLoginFieldComponent,
   ],
 })
 export class ComponentsModule {}

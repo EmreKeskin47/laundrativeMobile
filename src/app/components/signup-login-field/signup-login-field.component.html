@@ -1,3 +1,9 @@
-<p>
-  signup-login-field works!
-</p>
+<div>
+    <div class="text-size8 text-color center-text login-container"> {{header}} </div>
+    <div>
+        <ion-button (click)="navigateToLogin()" expand="block" class="ion-button-block">giriş yap</ion-button>
+    </div>
+    <div>
+        <ion-button (click)="navigateToSignup()" fill="outline" expand="block" class="ion-button-block pink-color"> yeni hesap oluştur</ion-button>
+    </div>
+</div>
